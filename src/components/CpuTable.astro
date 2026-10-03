@@ -1,0 +1,126 @@
+---
+// The table view behind every chart. Click a column header to sort.
+import data from '../data/intel-vs-amd-2026-10/cpus.json';
+
+const rows = [...data.cpus].sort((a, b) => b.mark_per_dollar - a.mark_per_dollar);
+const product = (cpu: string) => cpu.replace(/^(AMD|Intel) /, '');
+const n = (v: number) => v.toLocaleString('en-US');
+---
+
+<div class="table-wrap card">
+  <table id="cpu-table">
+    <thead>
+      <tr>
+        <th data-key="cpu" data-type="text">CPU</th>
+        <th data-key="price" class="r">Price</th>
+        <th data-key="mark" class="r">CPU Mark</th>
+        <th data-key="ppd" class="r" aria-sort="descending">Pts / $</th>
+        <th data-key="st" class="r">Single-thread</th>
+        <th data-key="cores" class="r">Cores</th>
+        <th data-key="tdp" class="r">TDP</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((d) => (
+          <tr data-cpu={product(d.cpu)} data-price={d.price_usd} data-mark={d.cpu_mark} data-ppd={d.mark_per_dollar} data-st={d.single_thread} data-cores={d.cores} data-tdp={d.tdp_w}>
+            <td>
+              <span class="swatch" style={`background: var(--${d.brand.toLowerCase()})`} />
+              <a href={d.passmark_url} rel="noopener">{product(d.cpu)}</a>
+            </td>
+            <td class="r num">${d.price_usd.toFixed(2)}</td>
+            <td class="r num">{n(d.cpu_mark)}</td>
+            <td class="r num strong">{d.mark_per_dollar.toFixed(1)}</td>
+            <td class="r num">{n(d.single_thread)}</td>
+            <td class="r num">{d.cores}</td>
+            <td class="r num">{d.tdp_w} W</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<script>
+  const table = document.getElementById('cpu-table') as HTMLTableElement;
+  const body = table.tBodies[0];
+  table.querySelectorAll<HTMLTableCellElement>('th').forEach((th) => {
+    th.tabIndex = 0;
+    const sort = () => {
+      const key = th.dataset.key!;
+      const desc = th.getAttribute('aria-sort') !== 'descending';
+      table.querySelectorAll('th').forEach((h) => h.removeAttribute('aria-sort'));
+      th.setAttribute('aria-sort', desc ? 'descending' : 'ascending');
+      const value = (tr: HTMLTableRowElement) => (th.dataset.type === 'text' ? tr.dataset[key]! : Number(tr.dataset[key]));
+      const rows = [...body.rows].sort((a, b) => {
+        const [x, y] = [value(a), value(b)];
+        const c = typeof x === 'string' ? x.localeCompare(y as string) : x - (y as number);
+        return desc ? -c : c;
+      });
+      body.append(...rows);
+    };
+    th.addEventListener('click', sort);
+    th.addEventListener('keydown', (e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), sort()));
+  });
+</script>
+
+<style>
+  .table-wrap {
+    margin: 1.5em 0;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+  th,
+  td {
+    padding: 9px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--grid);
+  }
+  th {
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: var(--muted);
+    cursor: pointer;
+    user-select: none;
+  }
+  th:hover {
+    color: var(--ink);
+  }
+  th[aria-sort='descending']::after {
+    content: ' ↓';
+  }
+  th[aria-sort='ascending']::after {
+    content: ' ↑';
+  }
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  tbody tr:hover {
+    background: var(--page);
+  }
+  .r {
+    text-align: right;
+  }
+  .strong {
+    font-weight: 650;
+  }
+  td a {
+    text-decoration: none;
+  }
+  td a:hover {
+    text-decoration: underline;
+  }
+  .swatch {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 9px;
+    vertical-align: 1px;
+  }
+</style>

@@ -1,0 +1,188 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, tagSlug } from '../lib/posts';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+}
+const { posts } = Astro.props;
+
+// Publication-day closes, one snapshot file per study (written by its snapshot_stocks.py).
+type Snapshot = { tickers: Record<string, { close: number; close_date: string }> };
+const snapshots = import.meta.glob<Snapshot>('../data/*/stocks_snapshot.json', { eager: true, import: 'default' });
+const stocksFor = (p: CollectionEntry<'posts'>) => {
+  const snap = snapshots[`../data/${p.id}/stocks_snapshot.json`];
+  return p.data.stocks.filter((s) => snap?.tickers[s]).map((s) => ({ symbol: s, close: snap.tickers[s].close }));
+};
+---
+
+<ul class="posts">
+  {
+    posts.map((p) => {
+      const stocks = stocksFor(p);
+      return (
+        <li class="card" style={p.data.accents && `--accent-1: ${p.data.accents[0]}; --accent-2: ${p.data.accents[1]};`}>
+          <a class="title" href={`/posts/${p.id}/`}>
+            {p.data.title}
+          </a>
+          <p class="desc">{p.data.description}</p>
+          <div class="foot">
+            <div class="meta">
+              <time datetime={p.data.date.toISOString()} class="muted">
+                {formatDate(p.data.date)}
+              </time>
+              {p.data.tags.map((t) => (
+                <a class="tag" href={`/tags/${tagSlug(t)}/`}>
+                  {t}
+                </a>
+              ))}
+            </div>
+            {stocks.length > 0 && (
+              <div class="stocks" aria-label="Share price since publication">
+                {stocks.map((s) => (
+                  <div class="stock" data-symbol={s.symbol} data-ref={s.close} title={`${s.symbol}: close at publication vs latest price`}>
+                    <span class="sym">{s.symbol}</span>
+                    <span class="prices">
+                      ${s.close.toFixed(2)} → <span data-now>…</span>
+                    </span>
+                    <span class="pct" data-pct>
+                      …
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<script>
+  // One request for every ticker shown on the page.
+  const chips = [...document.querySelectorAll<HTMLElement>('.stock[data-symbol]')];
+  const symbols = [...new Set(chips.map((c) => c.dataset.symbol!))];
+
+  if (symbols.length) {
+    const from = new Date(Date.now() - 7 * 86_400_000).toISOString().slice(0, 10);
+    fetch(`/api/quote?symbols=${symbols.join(',')}&from=${from}`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((body) => {
+        for (const chip of chips) {
+          const q = body.quotes[chip.dataset.symbol!];
+          if (!q) continue;
+          const ref = Number(chip.dataset.ref);
+          const pct = (q.price / ref - 1) * 100;
+          const dir = Math.abs(q.price - ref) < 0.005 ? 'flat' : pct > 0 ? 'up' : 'down';
+          chip.querySelector('[data-now]')!.textContent = `$${q.price.toFixed(2)}`;
+          const pctEl = chip.querySelector<HTMLElement>('[data-pct]')!;
+          pctEl.dataset.dir = dir;
+          pctEl.textContent = `${dir === 'up' ? '▲' : dir === 'down' ? '▼' : '■'} ${pct > 0 ? '+' : pct < 0 ? '−' : ''}${Math.abs(pct).toFixed(2)}%`;
+        }
+      })
+      .catch(() => {
+        for (const chip of chips) {
+          chip.querySelector('[data-now]')!.textContent = '—';
+          chip.querySelector('[data-pct]')!.textContent = 'n/a';
+        }
+      });
+  }
+</script>
+
+<style>
+  .posts {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+  li {
+    position: relative;
+    overflow: hidden;
+    padding: 24px 26px 22px 30px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  li::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+  }
+  li:hover {
+    transform: translateY(-2px);
+  }
+  .title {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .title:hover {
+    text-decoration: underline;
+  }
+  .desc {
+    color: var(--ink-2);
+    margin: 0.35em 0 0.8em;
+  }
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+  }
+  time {
+    margin-right: 6px;
+  }
+
+  /* Bottom-right: share price at publication -> now */
+  .stocks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .stock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px 6px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--page);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .sym {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .prices {
+    color: var(--muted);
+  }
+  .pct {
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--ink-2);
+    background: color-mix(in srgb, currentColor 10%, transparent);
+  }
+  .pct[data-dir='up'] {
+    color: var(--up);
+  }
+  .pct[data-dir='down'] {
+    color: var(--down);
+  }
+</style>

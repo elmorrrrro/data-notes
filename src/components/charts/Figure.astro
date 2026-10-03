@@ -1,0 +1,92 @@
+---
+// Frame for every chart: title, subtitle, legend, plot area, source line.
+interface Props {
+  id: string;
+  title: string;
+  subtitle?: string;
+  legend?: boolean;
+  source?: string;
+  height?: number;
+}
+const { id, title, subtitle, legend = true, source, height = 360 } = Astro.props;
+---
+
+<figure class="figure card" id={id}>
+  <figcaption>
+    <h3>{title}</h3>
+    {subtitle && <p class="subtitle">{subtitle}</p>}
+    {
+      legend && (
+        <ul class="legend" aria-label="Legend">
+          <li>
+            <span class="swatch" style="background: var(--intel)" />
+            Intel
+          </li>
+          <li>
+            <span class="swatch" style="background: var(--amd)" />
+            AMD
+          </li>
+        </ul>
+      )
+    }
+  </figcaption>
+  <div class="plot" style={`min-height: ${height}px`}></div>
+  <slot />
+  {source && <p class="source">{source}</p>}
+</figure>
+
+<style>
+  .figure {
+    margin: 2em 0;
+    padding: 22px 24px 16px;
+  }
+  @media (max-width: 560px) {
+    .figure {
+      padding: 18px 14px 14px;
+    }
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+  .subtitle {
+    margin: 0.2em 0 0;
+    color: var(--ink-2);
+    font-size: 0.92rem;
+  }
+  .legend {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+    font-size: 0.85rem;
+    color: var(--ink-2);
+  }
+  .legend li {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 3px 10px 3px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .plot {
+    margin-top: 12px;
+    width: 100%;
+  }
+  .plot :global(svg) {
+    display: block;
+  }
+  .source {
+    margin: 10px 0 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+</style>

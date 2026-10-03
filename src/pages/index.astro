@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts } from '../lib/posts';
+
+const posts = await getPosts();
+---
+
+<Base title="Data Notes">
+  <section class="wrap">
+    <h1>Data <span class="grad">Notes</span></h1>
+    <p class="lead">Independent data studies: prices, markets, statistics. Every chart links to its data.</p>
+    <PostList posts={posts} />
+  </section>
+</Base>
+
+<style>
+  section {
+    padding-top: 48px;
+  }
+  .grad {
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lead {
+    color: var(--ink-2);
+    font-size: 1.1rem;
+    max-width: 560px;
+    margin-bottom: 2em;
+  }
+</style>

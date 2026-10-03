@@ -1,0 +1,53 @@
+---
+import Figure from './Figure.astro';
+import data from '../../data/intel-vs-amd-2026-10/cpus.json';
+
+const height = data.cpus.length * 32 + 50;
+---
+
+<Figure
+  id="value-bars"
+  title="Performance per dollar, ranked"
+  subtitle="PassMark CPU Mark points per US dollar of retail price. Longer is better."
+  source="Sources: PassMark CPU Mark, PassMark listed US prices retrieved Oct 3, 2026."
+  height={height}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/intel-vs-amd-2026-10/cpus.json';
+  import { mount, base, brandScale, tipStyle, usd, productName } from '../../lib/chart';
+
+  const cpus = data.cpus
+    .map((d) => ({ ...d, product: productName(d.cpu) }))
+    .sort((a, b) => b.mark_per_dollar - a.mark_per_dollar);
+  const max = Math.max(...cpus.map((d) => d.mark_per_dollar));
+
+  mount(document.querySelector<HTMLElement>('#value-bars .plot')!, (width, t) => {
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: cpus.length * 32 + 50,
+      marginLeft: narrow ? 128 : 168,
+      marginRight: 44,
+      x: { label: 'Points per $ →', domain: [0, max * 1.05], grid: false, axis: narrow ? null : 'bottom' },
+      y: { label: null, domain: cpus.map((d) => d.product), padding: 0.3, tickSize: 0 },
+      color: brandScale(t),
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.barX(cpus, { x: 'mark_per_dollar', y: 'product', fill: 'brand', rx2: 4, insetTop: 0, insetBottom: 0 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        Plot.text(cpus, { x: 'mark_per_dollar', y: 'product', text: (d) => d.mark_per_dollar.toFixed(0), dx: 6, textAnchor: 'start', fill: t.ink2, fontSize: 11.5 }),
+        Plot.tip(
+          cpus,
+          Plot.pointerY({
+            x: 'mark_per_dollar',
+            y: 'product',
+            ...tipStyle(t),
+            title: (d) => `${d.product}\n${d.mark_per_dollar} pts per $\n${usd(d.price_usd)} · ${d.cpu_mark.toLocaleString('en-US')} pts`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

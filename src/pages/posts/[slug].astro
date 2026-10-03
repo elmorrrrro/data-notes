@@ -1,0 +1,151 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getPosts, formatDate, tagSlug } from '../../lib/posts';
+import { AUTHOR } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const minutes = Math.max(1, Math.round((post.body ?? '').split(/\s+/).length / 230));
+---
+
+<Base title={post.data.title} description={post.data.description} accents={post.data.accents}>
+  <article class="wrap">
+    <header class="post-header">
+      <div class="meta">
+        <span class="kicker">Study</span>
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+        <span class="dot" aria-hidden="true">·</span>
+        <span>{minutes} min read</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span class="ai" title={`Research assisted by AI agents, reviewed and edited by ${AUTHOR.name}`}>AI-assisted</span>
+      </div>
+      <h1>{post.data.title}</h1>
+      <p class="lead">{post.data.description}</p>
+      <div class="tags">
+        {post.data.tags.map((t) => <a class="tag" href={`/tags/${tagSlug(t)}/`}>{t}</a>)}
+      </div>
+      <div class="rule" aria-hidden="true"></div>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    <aside class="ai-note card">
+      <span class="ai-badge" aria-hidden="true">AI</span>
+      <p>
+        <strong>AI-assisted research.</strong> Data collection, analysis code and drafts were produced with AI agents, then reviewed
+        and edited by {AUTHOR.name}, who is responsible for the content. Found an error? <a href="/about/">Get in touch</a>.
+      </p>
+    </aside>
+  </article>
+</Base>
+
+<style>
+  .post-header {
+    padding-top: 40px;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3em 0.7em;
+    border-radius: 999px;
+    color: #fff;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    margin-right: 4px;
+  }
+  .ai {
+    font-weight: 600;
+    color: var(--accent-1);
+  }
+  .ai-note {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-top: 3em;
+    padding: 18px 20px;
+    font-size: 0.9rem;
+    color: var(--ink-2);
+  }
+  .ai-note p {
+    margin: 0;
+  }
+  .ai-badge {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  }
+  .lead {
+    font-size: 1.22rem;
+    color: var(--ink-2);
+    max-width: 680px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .rule {
+    height: 4px;
+    margin: 32px 0 8px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent-1) 0 50%, var(--accent-2) 50% 100%);
+  }
+
+  /* Numbered section headings: 01, 02, ... */
+  .prose {
+    counter-reset: section;
+  }
+  .prose :global(h2) {
+    counter-increment: section;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .prose :global(h2)::before {
+    content: counter(section, decimal-leading-zero);
+    flex: none;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    padding: 0.25em 0.55em;
+    border-radius: 8px;
+    color: var(--accent-1);
+    background: color-mix(in srgb, var(--accent-1) 12%, transparent);
+    transform: translateY(-0.25em);
+  }
+  .prose :global(li) {
+    margin-bottom: 0.4em;
+  }
+  .prose :global(li::marker) {
+    color: var(--accent-1);
+  }
+  .prose :global(blockquote) {
+    margin: 1.5em 0;
+    padding: 0.2em 0 0.2em 1.1em;
+    border-left: 3px solid var(--accent-1);
+    color: var(--ink-2);
+  }
+</style>

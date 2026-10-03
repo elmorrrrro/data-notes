@@ -1,0 +1,78 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="budget-frontier"
+  title="The fastest chip each brand sells under a given budget"
+  subtitle="For every price cap, the highest multi-thread score available from Intel and from AMD at or below it."
+  source="Sources: PassMark CPU Mark, PassMark listed US prices retrieved Oct 3, 2026."
+  height={360}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/intel-vs-amd-2026-10/cpus.json';
+  import { mount, base, brandScale, tipStyle, thousands } from '../../lib/chart';
+
+  const frontier = data.frontier;
+  // Points where the best available chip changes: worth a dot and, for a few, a label.
+  const steps = frontier.filter(
+    (d, i) => !frontier.slice(0, i).some((p) => p.brand === d.brand && p.cpu === d.cpu),
+  );
+  // Intel labels sit above its line and AMD labels below, except at the far right
+  // where AMD climbs above Intel (that label is right-aligned to stay inside the frame).
+  const LABELS: Record<string, 'above' | 'below' | 'aboveEnd'> = {
+    '5 245K': 'above',
+    '7 270K Plus': 'above',
+    '5 9600X': 'below',
+    '9 9900X': 'below',
+    '9 9950X': 'below',
+    '9 9950X3D2': 'aboveEnd',
+  };
+  const PLACEMENT = {
+    above: { dx: 4, dy: -12, textAnchor: 'start' },
+    below: { dx: 4, dy: 14, textAnchor: 'start' },
+    aboveEnd: { dx: 0, dy: -12, textAnchor: 'end' },
+  } as const;
+
+  mount(document.querySelector<HTMLElement>('#budget-frontier .plot')!, (width, t) => {
+    const narrow = width < 560;
+    return Plot.plot({
+      ...base(t, width),
+      height: 360,
+      marginRight: 24,
+      x: { label: 'Budget (USD) →', domain: [150, 920], tickFormat: (d: number) => `$${d}` },
+      y: { label: '↑ Best CPU Mark available', domain: [0, 76_000], tickFormat: thousands },
+      color: brandScale(t),
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.ruleY([0], { stroke: t.axis }),
+        Plot.line(frontier, { x: 'budget', y: 'cpu_mark', stroke: 'brand', strokeWidth: 2, curve: 'step-after' }),
+        Plot.dot(steps, { x: 'budget', y: 'cpu_mark', fill: 'brand', r: 4.5, stroke: t.surface, strokeWidth: 2 }),
+        ...(['above', 'below', 'aboveEnd'] as const).map((side) =>
+          Plot.text(
+            steps.filter((d) => LABELS[d.cpu] === side && !(narrow && d.cpu === '5 245K')),
+            {
+              x: 'budget',
+              y: 'cpu_mark',
+              text: (d) => d.cpu.replace(/^\d /, ''),
+              ...PLACEMENT[side],
+              fill: t.ink2,
+              fontSize: 11.5,
+            },
+          ),
+        ),
+        Plot.tip(
+          frontier,
+          Plot.pointerX({
+            x: 'budget',
+            y: 'cpu_mark',
+            ...tipStyle(t),
+            title: (d) => `${d.brand} at ≤ $${d.budget}\n${d.cpu.replace(/^\d /, '')} · ${d.cpu_mark.toLocaleString('en-US')} pts`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

@@ -1,0 +1,209 @@
+/* Design tokens. Charts read the same variables (see src/lib/chart.ts).
+   --accent-1 / --accent-2 are per-post (frontmatter `accents`), defaulting to the site's violet/cyan. */
+:root {
+  color-scheme: light;
+  --page: #f5f5f7;
+  --surface: #ffffff;
+  --ink: #0b0b10;
+  --ink-2: #4a4a55;
+  --muted: #74737d;
+  --grid: #ececf0;
+  --axis: #c8c8d0;
+  --border: rgba(15, 15, 30, 0.08);
+  --shadow: 0 1px 2px rgba(15, 15, 30, 0.04), 0 10px 30px -14px rgba(15, 15, 30, 0.18);
+  --glow: 0.13;
+  --intel: #1d5ff5;
+  --amd: #e8173f;
+  --up: #0a7d32;
+  --down: #c4262e;
+  --accent-1: #6d4aff;
+  --accent-2: #0ea5c6;
+  --radius: 20px;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #08080c;
+    --surface: #111118;
+    --ink: #f5f5f7;
+    --ink-2: #c4c4ce;
+    --muted: #8d8c98;
+    --grid: #22222b;
+    --axis: #3a3a46;
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -16px rgba(0, 0, 0, 0.7);
+    --glow: 0.22;
+    --intel: #4d86ff;
+    --amd: #ff3b5c;
+    --up: #2fbf5b;
+    --down: #ff5a5f;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #08080c;
+  --surface: #111118;
+  --ink: #f5f5f7;
+  --ink-2: #c4c4ce;
+  --muted: #8d8c98;
+  --grid: #22222b;
+  --axis: #3a3a46;
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -16px rgba(0, 0, 0, 0.7);
+  --glow: 0.22;
+  --intel: #4d86ff;
+  --amd: #ff3b5c;
+  --up: #2fbf5b;
+  --down: #ff5a5f;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Two soft accent glows behind the top of every page. */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 760px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(520px 380px at 12% 0%, color-mix(in srgb, var(--accent-1) calc(var(--glow) * 100%), transparent), transparent 70%),
+    radial-gradient(560px 400px at 88% 4%, color-mix(in srgb, var(--accent-2) calc(var(--glow) * 100%), transparent), transparent 70%);
+}
+
+/* Faint dot grid, fading out downwards. */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 760px;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent-1) 25%, transparent);
+}
+
+a {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, var(--accent-1) 45%, transparent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+a:hover {
+  text-decoration-color: var(--accent-1);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+h1 {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  margin: 0.2em 0 0.4em;
+}
+h2 {
+  font-size: clamp(1.45rem, 3.5vw, 1.85rem);
+  margin: 2.2em 0 0.6em;
+}
+h3 {
+  font-size: 1.1rem;
+  margin: 1.8em 0 0.4em;
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 1em;
+}
+
+strong {
+  font-weight: 650;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.84em;
+  padding: 0.1em 0.4em;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25em 0.75em;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  backdrop-filter: blur(6px);
+  color: var(--ink-2);
+  text-decoration: none;
+}
+.tag::before {
+  content: "#";
+  color: var(--accent-1);
+  font-weight: 700;
+}
+.tag:hover {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--accent-1) 45%, transparent);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}

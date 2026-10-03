@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import { AUTHOR, CF_ANALYTICS_TOKEN } from '../lib/site';
+
+const UPDATED = 'October 3, 2026';
+---
+
+<Base title="Privacy" description="What data this site processes, and what it does not.">
+  <section class="wrap privacy">
+    <span class="eyebrow">Privacy</span>
+    <h1>Privacy policy</h1>
+    <p class="lead">Short version: no cookies, no ads, no tracking profiles, no accounts. Last updated {UPDATED}.</p>
+
+    <div class="summary">
+      <div class="card"><strong>0</strong><span>cookies</span></div>
+      <div class="card"><strong>0</strong><span>ad or tracking scripts</span></div>
+      <div class="card"><strong>0</strong><span>third-party fonts</span></div>
+    </div>
+
+    <h2>Who is responsible</h2>
+    <p>
+      This site is run by {AUTHOR.name} as a personal, non-commercial blog. For any privacy question or request, contact me via{' '}
+      {
+        AUTHOR.socials.map((s, i) => (
+          <>
+            {i > 0 && ' or '}
+            <a href={s.href} target="_blank" rel="noopener">
+              {s.label}
+            </a>
+          </>
+        ))
+      }.
+    </p>
+
+    <h2>Hosting</h2>
+    <p>
+      The site is hosted on Cloudflare. To deliver pages and protect the site from abuse, Cloudflare processes technical request
+      data such as your IP address, browser type and the pages requested, and may keep it in short-lived logs. Cloudflare acts as a
+      data processor; see the <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare privacy policy</a>.
+      The legal basis is legitimate interest in running a secure website (Art. 6(1)(f) GDPR).
+    </p>
+
+    <h2>Analytics</h2>
+    {
+      CF_ANALYTICS_TOKEN ? (
+        <p>
+          Visits are counted with Cloudflare Web Analytics. It sets no cookies, does not use local storage and does not build
+          profiles of visitors; it only reports aggregate numbers such as page views, referrers and countries.
+        </p>
+      ) : (
+        <p>The site currently runs no analytics script. Only Cloudflare's aggregate request counts exist.</p>
+      )
+    }
+
+    <h2>Live share prices</h2>
+    <p>
+      Some studies show current share prices. Your browser asks this site's own server for them, and the server fetches the
+      prices from Yahoo Finance. Your IP address is not passed on to Yahoo.
+    </p>
+
+    <h2>Stored on your device</h2>
+    <p>
+      If you switch between light and dark mode, the choice is saved in your browser's local storage under the key
+      <code>theme</code>. It never leaves your device and you can clear it at any time in your browser settings.
+    </p>
+
+    <h2>Fonts and external links</h2>
+    <p>
+      All fonts are served from this site, so no font requests go to Google or other providers. Links to LinkedIn, Instagram and
+      data sources open those sites, whose own privacy policies apply once you visit them.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>
+      Under the GDPR you can ask for access to, correction or deletion of your personal data, and you can lodge a complaint with
+      your data protection authority. This site itself stores no personal data about visitors beyond the hosting logs described
+      above.
+    </p>
+  </section>
+</Base>
+
+<style>
+  .privacy {
+    padding-top: 48px;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3em 0.75em;
+    border-radius: 999px;
+    color: #fff;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  }
+  .lead {
+    font-size: 1.15rem;
+    color: var(--ink-2);
+  }
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 1.5em 0 1em;
+  }
+  .summary .card {
+    padding: 16px 18px;
+  }
+  .summary strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+  .summary span {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  @media (max-width: 560px) {
+    .summary {
+      grid-template-columns: 1fr;
+    }
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+</style>

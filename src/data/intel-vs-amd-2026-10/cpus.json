@@ -1,0 +1,2244 @@
+{
+ "cpus": [
+  {
+   "cpu": "AMD Ryzen 9 9950X3D2",
+   "brand": "AMD",
+   "cpu_mark": 72018.0,
+   "single_thread": 4670.0,
+   "cores": 16.0,
+   "threads": 32.0,
+   "tdp_w": 200.0,
+   "first_seen": "Q4 2025",
+   "samples": 469.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+9950X3D2&id=7115",
+   "price_usd": 899.0,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 899.0,
+   "toms_updated": "2026-10-02",
+   "short": "9 9950X3D2",
+   "excluded": null,
+   "mark_per_dollar": 80.1,
+   "price_gap_vs_toms": 0.0,
+   "value_rank": 17
+  },
+  {
+   "cpu": "AMD Ryzen 9 9950X3D",
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "single_thread": 4737.0,
+   "cores": 16.0,
+   "threads": 32.0,
+   "tdp_w": 170.0,
+   "first_seen": "Q1 2025",
+   "samples": 12238.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+9950X3D&id=6549",
+   "price_usd": 657.95,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 657.0,
+   "toms_updated": "2026-10-02",
+   "short": "9 9950X3D",
+   "excluded": null,
+   "mark_per_dollar": 106.5,
+   "price_gap_vs_toms": 0.95,
+   "value_rank": 14
+  },
+  {
+   "cpu": "AMD Ryzen 9 9950X",
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "single_thread": 4728.0,
+   "cores": 16.0,
+   "threads": 32.0,
+   "tdp_w": 170.0,
+   "first_seen": "Q3 2024",
+   "samples": 6839.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+9950X&id=6211",
+   "price_usd": 549.0,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 549.0,
+   "toms_updated": "2026-10-02",
+   "short": "9 9950X",
+   "excluded": null,
+   "mark_per_dollar": 119.7,
+   "price_gap_vs_toms": 0.0,
+   "value_rank": 11
+  },
+  {
+   "cpu": "AMD Ryzen 9 9900X3D",
+   "brand": "AMD",
+   "cpu_mark": 56045.0,
+   "single_thread": 4628.0,
+   "cores": 12.0,
+   "threads": 24.0,
+   "tdp_w": 120.0,
+   "first_seen": "Q1 2025",
+   "samples": 1225.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+9900X3D&id=6548",
+   "price_usd": 504.4,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 504.0,
+   "toms_updated": "2026-10-02",
+   "short": "9 9900X3D",
+   "excluded": null,
+   "mark_per_dollar": 111.1,
+   "price_gap_vs_toms": 0.4,
+   "value_rank": 12
+  },
+  {
+   "cpu": "AMD Ryzen 9 9900X",
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "single_thread": 4670.0,
+   "cores": 12.0,
+   "threads": 24.0,
+   "tdp_w": 120.0,
+   "first_seen": "Q3 2024",
+   "samples": 6788.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+9900X&id=6171",
+   "price_usd": 332.99,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 332.0,
+   "toms_updated": "2026-10-02",
+   "short": "9 9900X",
+   "excluded": null,
+   "mark_per_dollar": 163.0,
+   "price_gap_vs_toms": 0.99,
+   "value_rank": 9
+  },
+  {
+   "cpu": "AMD Ryzen 7 9850X3D",
+   "brand": "AMD",
+   "cpu_mark": 41289.0,
+   "single_thread": 4705.0,
+   "cores": 8.0,
+   "threads": 16.0,
+   "tdp_w": 120.0,
+   "first_seen": "Q4 2025",
+   "samples": 1701.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+7+9850X3D&id=7074",
+   "price_usd": 484.0,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": null,
+   "toms_updated": "2026-10-02",
+   "short": "7 9850X3D",
+   "excluded": null,
+   "mark_per_dollar": 85.3,
+   "price_gap_vs_toms": null,
+   "value_rank": 16
+  },
+  {
+   "cpu": "AMD Ryzen 7 9800X3D",
+   "brand": "AMD",
+   "cpu_mark": 39918.0,
+   "single_thread": 4420.0,
+   "cores": 8.0,
+   "threads": 16.0,
+   "tdp_w": 120.0,
+   "first_seen": "Q4 2024",
+   "samples": 26880.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+7+9800X3D&id=6344",
+   "price_usd": 444.0,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 444.0,
+   "toms_updated": "2026-10-02",
+   "short": "7 9800X3D",
+   "excluded": null,
+   "mark_per_dollar": 89.9,
+   "price_gap_vs_toms": 0.0,
+   "value_rank": 15
+  },
+  {
+   "cpu": "AMD Ryzen 7 9700X",
+   "brand": "AMD",
+   "cpu_mark": 36932.0,
+   "single_thread": 4642.0,
+   "cores": 8.0,
+   "threads": 16.0,
+   "tdp_w": 65.0,
+   "first_seen": "Q3 2024",
+   "samples": 9947.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+7+9700X&id=6205",
+   "price_usd": 339.0,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 339.0,
+   "toms_updated": "2026-10-02",
+   "short": "7 9700X",
+   "excluded": null,
+   "mark_per_dollar": 108.9,
+   "price_gap_vs_toms": 0.0,
+   "value_rank": 13
+  },
+  {
+   "cpu": "AMD Ryzen 5 9600X",
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "single_thread": 4569.0,
+   "cores": 6.0,
+   "threads": 12.0,
+   "tdp_w": 65.0,
+   "first_seen": "Q3 2024",
+   "samples": 9689.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+5+9600X&id=6199",
+   "price_usd": 174.0,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 174.0,
+   "toms_updated": "2026-10-02",
+   "short": "5 9600X",
+   "excluded": null,
+   "mark_per_dollar": 172.6,
+   "price_gap_vs_toms": 0.0,
+   "value_rank": 7
+  },
+  {
+   "cpu": "Intel Core Ultra 9 285K",
+   "brand": "Intel",
+   "cpu_mark": 67218.0,
+   "single_thread": 5085.0,
+   "cores": 24.0,
+   "threads": 24.0,
+   "tdp_w": 125.0,
+   "first_seen": "Q4 2024",
+   "samples": 8934.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+9+285K&id=6296",
+   "price_usd": 519.99,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 519.0,
+   "toms_updated": "2026-10-02",
+   "short": "9 285K",
+   "excluded": null,
+   "mark_per_dollar": 129.3,
+   "price_gap_vs_toms": 0.99,
+   "value_rank": 10
+  },
+  {
+   "cpu": "Intel Core Ultra 7 270K Plus",
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "single_thread": 5070.0,
+   "cores": 24.0,
+   "threads": 24.0,
+   "tdp_w": 125.0,
+   "first_seen": "Q4 2025",
+   "samples": 2560.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+7+270K+Plus&id=7114",
+   "price_usd": 315.0,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": null,
+   "toms_updated": "2026-10-02",
+   "short": "7 270K Plus",
+   "excluded": null,
+   "mark_per_dollar": 217.3,
+   "price_gap_vs_toms": null,
+   "value_rank": 4
+  },
+  {
+   "cpu": "Intel Core Ultra 7 265K",
+   "brand": "Intel",
+   "cpu_mark": 58567.0,
+   "single_thread": 4928.0,
+   "cores": 20.0,
+   "threads": 20.0,
+   "tdp_w": 125.0,
+   "first_seen": "Q4 2024",
+   "samples": 8479.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+7+265K&id=6326",
+   "price_usd": 328.0,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": null,
+   "toms_updated": "2026-10-02",
+   "short": "7 265K",
+   "excluded": null,
+   "mark_per_dollar": 178.6,
+   "price_gap_vs_toms": null,
+   "value_rank": 6
+  },
+  {
+   "cpu": "Intel Core Ultra 7 265KF",
+   "brand": "Intel",
+   "cpu_mark": 58447.0,
+   "single_thread": 4925.0,
+   "cores": 20.0,
+   "threads": 20.0,
+   "tdp_w": 125.0,
+   "first_seen": "Q4 2024",
+   "samples": 3918.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+7+265KF&id=6338",
+   "price_usd": 309.57,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 378.0,
+   "toms_updated": "2026-10-02",
+   "short": "7 265KF",
+   "excluded": null,
+   "mark_per_dollar": 188.8,
+   "price_gap_vs_toms": -68.43,
+   "value_rank": 5
+  },
+  {
+   "cpu": "Intel Core Ultra 5 250K Plus",
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "single_thread": 4757.0,
+   "cores": 18.0,
+   "threads": 18.0,
+   "tdp_w": 125.0,
+   "first_seen": "Q1 2026",
+   "samples": 352.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+5+250K+Plus&id=7221",
+   "price_usd": 215.86,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": null,
+   "toms_updated": "2026-10-02",
+   "short": "5 250K Plus",
+   "excluded": null,
+   "mark_per_dollar": 238.8,
+   "price_gap_vs_toms": null,
+   "value_rank": 2
+  },
+  {
+   "cpu": "Intel Core Ultra 5 245K",
+   "brand": "Intel",
+   "cpu_mark": 43046.0,
+   "single_thread": 4716.0,
+   "cores": 14.0,
+   "threads": 14.0,
+   "tdp_w": 125.0,
+   "first_seen": "Q4 2024",
+   "samples": 1102.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+5+245K&id=6324",
+   "price_usd": 189.99,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 179.0,
+   "toms_updated": "2026-10-02",
+   "short": "5 245K",
+   "excluded": null,
+   "mark_per_dollar": 226.6,
+   "price_gap_vs_toms": 10.99,
+   "value_rank": 3
+  },
+  {
+   "cpu": "Intel Core Ultra 5 245KF",
+   "brand": "Intel",
+   "cpu_mark": 43026.0,
+   "single_thread": 4713.0,
+   "cores": 14.0,
+   "threads": 14.0,
+   "tdp_w": 125.0,
+   "first_seen": "Q4 2024",
+   "samples": 746.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+5+245KF&id=6336",
+   "price_usd": 178.0,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": 178.0,
+   "toms_updated": "2026-10-02",
+   "short": "5 245KF",
+   "excluded": null,
+   "mark_per_dollar": 241.7,
+   "price_gap_vs_toms": 0.0,
+   "value_rank": 1
+  },
+  {
+   "cpu": "Intel Core Ultra 5 225",
+   "brand": "Intel",
+   "cpu_mark": 30312.0,
+   "single_thread": 4409.0,
+   "cores": 10.0,
+   "threads": 10.0,
+   "tdp_w": 65.0,
+   "first_seen": "Q1 2025",
+   "samples": 1116.0,
+   "passmark_url": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+5+225&id=6469",
+   "price_usd": 178.55,
+   "price_stale": false,
+   "price_source": "PassMark listed US price",
+   "price_retrieved": "2026-10-03",
+   "toms_best_price_usd": null,
+   "toms_updated": "2026-10-02",
+   "short": "5 225",
+   "excluded": null,
+   "mark_per_dollar": 169.8,
+   "price_gap_vs_toms": null,
+   "value_rank": 8
+  }
+ ],
+ "excluded": [
+  {
+   "cpu": "AMD Ryzen 5 9600",
+   "short": "5 9600",
+   "brand": "AMD",
+   "excluded": "Price not refreshed recently (PassMark *)"
+  },
+  {
+   "cpu": "Intel Core Ultra 9 290K Plus",
+   "short": "9 290K Plus",
+   "brand": "Intel",
+   "excluded": "No current US retail price"
+  }
+ ],
+ "by_brand": [
+  {
+   "brand": "AMD",
+   "models": 9,
+   "median_mark_per_dollar": 108.9,
+   "best_mark_per_dollar": 172.6,
+   "top_mark": 72018.0,
+   "cheapest": 174.0
+  },
+  {
+   "brand": "Intel",
+   "models": 8,
+   "median_mark_per_dollar": 203.0,
+   "best_mark_per_dollar": 241.7,
+   "top_mark": 68436.0,
+   "cheapest": 178.0
+  }
+ ],
+ "best_value": [
+  {
+   "brand": "AMD",
+   "short": "5 9600X",
+   "price_usd": 174.0,
+   "cpu_mark": 30040.0,
+   "mark_per_dollar": 172.6
+  },
+  {
+   "brand": "Intel",
+   "short": "5 245KF",
+   "price_usd": 178.0,
+   "cpu_mark": 43026.0,
+   "mark_per_dollar": 241.7
+  }
+ ],
+ "frontier": [
+  {
+   "budget": 175,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 180,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 180,
+   "brand": "Intel",
+   "cpu_mark": 43026.0,
+   "cpu": "5 245KF"
+  },
+  {
+   "budget": 185,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 185,
+   "brand": "Intel",
+   "cpu_mark": 43026.0,
+   "cpu": "5 245KF"
+  },
+  {
+   "budget": 190,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 190,
+   "brand": "Intel",
+   "cpu_mark": 43046.0,
+   "cpu": "5 245K"
+  },
+  {
+   "budget": 195,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 195,
+   "brand": "Intel",
+   "cpu_mark": 43046.0,
+   "cpu": "5 245K"
+  },
+  {
+   "budget": 200,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 200,
+   "brand": "Intel",
+   "cpu_mark": 43046.0,
+   "cpu": "5 245K"
+  },
+  {
+   "budget": 205,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 205,
+   "brand": "Intel",
+   "cpu_mark": 43046.0,
+   "cpu": "5 245K"
+  },
+  {
+   "budget": 210,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 210,
+   "brand": "Intel",
+   "cpu_mark": 43046.0,
+   "cpu": "5 245K"
+  },
+  {
+   "budget": 215,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 215,
+   "brand": "Intel",
+   "cpu_mark": 43046.0,
+   "cpu": "5 245K"
+  },
+  {
+   "budget": 220,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 220,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 225,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 225,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 230,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 230,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 235,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 235,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 240,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 240,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 245,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 245,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 250,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 250,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 255,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 255,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 260,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 260,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 265,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 265,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 270,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 270,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 275,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 275,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 280,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 280,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 285,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 285,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 290,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 290,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 295,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 295,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 300,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 300,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 305,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 305,
+   "brand": "Intel",
+   "cpu_mark": 51540.0,
+   "cpu": "5 250K Plus"
+  },
+  {
+   "budget": 310,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 310,
+   "brand": "Intel",
+   "cpu_mark": 58447.0,
+   "cpu": "7 265KF"
+  },
+  {
+   "budget": 315,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 315,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 320,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 320,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 325,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 325,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 330,
+   "brand": "AMD",
+   "cpu_mark": 30040.0,
+   "cpu": "5 9600X"
+  },
+  {
+   "budget": 330,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 335,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 335,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 340,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 340,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 345,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 345,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 350,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 350,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 355,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 355,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 360,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 360,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 365,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 365,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 370,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 370,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 375,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 375,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 380,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 380,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 385,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 385,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 390,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 390,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 395,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 395,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 400,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 400,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 405,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 405,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 410,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 410,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 415,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 415,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 420,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 420,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 425,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 425,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 430,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 430,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 435,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 435,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 440,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 440,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 445,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 445,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 450,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 450,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 455,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 455,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 460,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 460,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 465,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 465,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 470,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 470,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 475,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 475,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 480,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 480,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 485,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 485,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 490,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 490,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 495,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 495,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 500,
+   "brand": "AMD",
+   "cpu_mark": 54292.0,
+   "cpu": "9 9900X"
+  },
+  {
+   "budget": 500,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 505,
+   "brand": "AMD",
+   "cpu_mark": 56045.0,
+   "cpu": "9 9900X3D"
+  },
+  {
+   "budget": 505,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 510,
+   "brand": "AMD",
+   "cpu_mark": 56045.0,
+   "cpu": "9 9900X3D"
+  },
+  {
+   "budget": 510,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 515,
+   "brand": "AMD",
+   "cpu_mark": 56045.0,
+   "cpu": "9 9900X3D"
+  },
+  {
+   "budget": 515,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 520,
+   "brand": "AMD",
+   "cpu_mark": 56045.0,
+   "cpu": "9 9900X3D"
+  },
+  {
+   "budget": 520,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 525,
+   "brand": "AMD",
+   "cpu_mark": 56045.0,
+   "cpu": "9 9900X3D"
+  },
+  {
+   "budget": 525,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 530,
+   "brand": "AMD",
+   "cpu_mark": 56045.0,
+   "cpu": "9 9900X3D"
+  },
+  {
+   "budget": 530,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 535,
+   "brand": "AMD",
+   "cpu_mark": 56045.0,
+   "cpu": "9 9900X3D"
+  },
+  {
+   "budget": 535,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 540,
+   "brand": "AMD",
+   "cpu_mark": 56045.0,
+   "cpu": "9 9900X3D"
+  },
+  {
+   "budget": 540,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 545,
+   "brand": "AMD",
+   "cpu_mark": 56045.0,
+   "cpu": "9 9900X3D"
+  },
+  {
+   "budget": 545,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 550,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 550,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 555,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 555,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 560,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 560,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 565,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 565,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 570,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 570,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 575,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 575,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 580,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 580,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 585,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 585,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 590,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 590,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 595,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 595,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 600,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 600,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 605,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 605,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 610,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 610,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 615,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 615,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 620,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 620,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 625,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 625,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 630,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 630,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 635,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 635,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 640,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 640,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 645,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 645,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 650,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 650,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 655,
+   "brand": "AMD",
+   "cpu_mark": 65708.0,
+   "cpu": "9 9950X"
+  },
+  {
+   "budget": 655,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 660,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 660,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 665,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 665,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 670,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 670,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 675,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 675,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 680,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 680,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 685,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 685,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 690,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 690,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 695,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 695,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 700,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 700,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 705,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 705,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 710,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 710,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 715,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 715,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 720,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 720,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 725,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 725,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 730,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 730,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 735,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 735,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 740,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 740,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 745,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 745,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 750,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 750,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 755,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 755,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 760,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 760,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 765,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 765,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 770,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 770,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 775,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 775,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 780,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 780,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 785,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 785,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 790,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 790,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 795,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 795,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 800,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 800,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 805,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 805,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 810,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 810,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 815,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 815,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 820,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 820,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 825,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 825,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 830,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 830,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 835,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 835,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 840,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 840,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 845,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 845,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 850,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 850,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 855,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 855,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 860,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 860,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 865,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 865,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 870,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 870,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 875,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 875,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 880,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 880,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 885,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 885,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 890,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 890,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 895,
+   "brand": "AMD",
+   "cpu_mark": 70100.0,
+   "cpu": "9 9950X3D"
+  },
+  {
+   "budget": 895,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 900,
+   "brand": "AMD",
+   "cpu_mark": 72018.0,
+   "cpu": "9 9950X3D2"
+  },
+  {
+   "budget": 900,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 905,
+   "brand": "AMD",
+   "cpu_mark": 72018.0,
+   "cpu": "9 9950X3D2"
+  },
+  {
+   "budget": 905,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 910,
+   "brand": "AMD",
+   "cpu_mark": 72018.0,
+   "cpu": "9 9950X3D2"
+  },
+  {
+   "budget": 910,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 915,
+   "brand": "AMD",
+   "cpu_mark": 72018.0,
+   "cpu": "9 9950X3D2"
+  },
+  {
+   "budget": 915,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  },
+  {
+   "budget": 920,
+   "brand": "AMD",
+   "cpu_mark": 72018.0,
+   "cpu": "9 9950X3D2"
+  },
+  {
+   "budget": 920,
+   "brand": "Intel",
+   "cpu_mark": 68436.0,
+   "cpu": "7 270K Plus"
+  }
+ ],
+ "meta": {
+  "price_retrieved": "2026-10-03",
+  "toms_updated": "2026-10-02",
+  "min_samples": 50
+ }
+}

@@ -1,0 +1,181 @@
+---
+// Self-hosted fonts (no requests to Google: GDPR-friendly). Browsers fetch only the subsets a page uses.
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/600.css';
+import '@fontsource/space-grotesk/700.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '../styles/global.css';
+import SocialIcon from '../components/SocialIcon.astro';
+import { AUTHOR, CF_ANALYTICS_TOKEN } from '../lib/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Two accent colors for this page's glow, links and highlights. */
+  accents?: [string, string];
+}
+
+const { title, description = 'Data studies, statistics and charts.', accents } = Astro.props;
+const accentStyle = accents ? `--accent-1: ${accents[0]}; --accent-2: ${accents[1]};` : undefined;
+const siteName = 'Data Notes';
+---
+
+<!doctype html>
+<html lang="en" style={accentStyle}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title === siteName ? title : `${title} · ${siteName}`}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <header class="site-header wrap">
+      <a href="/" class="brand"><span class="logo" aria-hidden="true"></span>{siteName}</a>
+      <nav>
+        <a href="/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="wrap muted">
+      <p>
+        © {new Date().getFullYear()} {siteName} · {AUTHOR.name}. Product names are trademarks of their owners.{' · '}
+        <a href="/privacy/">Privacy</a>
+      </p>
+      <div class="footer-socials">
+        {
+          AUTHOR.socials.map((s) => (
+            <a href={s.href} target="_blank" rel="noopener me" aria-label={s.label} title={s.label}>
+              <SocialIcon name={s.icon} />
+            </a>
+          ))
+        }
+      </div>
+    </footer>
+    {
+      CF_ANALYTICS_TOKEN && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: CF_ANALYTICS_TOKEN })}
+        />
+      )
+    }
+    <script is:inline>
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const root = document.documentElement;
+        const dark = getComputedStyle(root).colorScheme === 'dark';
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try {
+          localStorage.setItem('theme', root.dataset.theme);
+        } catch {}
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .logo {
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    background: conic-gradient(from 210deg, var(--accent-1), var(--accent-2), var(--accent-1));
+    box-shadow: 0 4px 14px -4px color-mix(in srgb, var(--accent-1) 60%, transparent);
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 0.95rem;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--ink-2);
+  }
+  nav a:hover {
+    color: var(--ink);
+  }
+  #theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  #theme-toggle:hover {
+    color: var(--ink);
+  }
+  .footer-socials {
+    display: flex;
+    gap: 8px;
+  }
+  .footer-socials a {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-2);
+  }
+  .footer-socials a:hover {
+    color: var(--ink);
+    border-color: color-mix(in srgb, var(--accent-1) 45%, transparent);
+  }
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 64px;
+    padding-bottom: 40px;
+    font-size: 0.85rem;
+  }
+  footer p {
+    margin: 0;
+  }
+</style>

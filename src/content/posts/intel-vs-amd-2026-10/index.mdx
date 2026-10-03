@@ -1,0 +1,97 @@
+---
+title: "Intel vs AMD: who gives more CPU per dollar in October 2026?"
+description: "Multi-thread performance per dollar for 17 current desktop processors, at US retail prices on October 3, 2026, plus how both stocks have moved since."
+date: 2026-10-03
+tags: [intel, amd, semiconductors]
+accents: ['var(--intel)', 'var(--amd)']
+stocks: [INTC, AMD]
+---
+
+import KeyNumbers from '../../../components/KeyNumbers.astro';
+import ValueScatter from '../../../components/charts/ValueScatter.astro';
+import ValueBars from '../../../components/charts/ValueBars.astro';
+import BudgetFrontier from '../../../components/charts/BudgetFrontier.astro';
+import StockWatch from '../../../components/StockWatch.astro';
+import CpuTable from '../../../components/CpuTable.astro';
+
+**Short answer: for multi-threaded work, Intel is clearly the better value right now.** Its current desktop chips deliver
+a median of 203 PassMark points per dollar, against 109 for AMD. In every budget up to about $650, the fastest chip you can
+buy is an Intel one. AMD only takes the absolute top spot, and it charges a lot for the privilege.
+
+<KeyNumbers />
+
+## Shares: at publication vs now
+
+Each company's share price is frozen at the last close before this post (Friday, October 2, 2026, since the post went
+out on a Saturday). The live price is fetched every time the page loads, so the difference below is always current.
+Nothing here suggests that CPU prices drive share prices; it only shows how both companies have moved since.
+
+<StockWatch />
+
+## What was compared
+
+Both companies' **current desktop generations**, as sold in the US on October 3, 2026:
+
+- **AMD Ryzen 9000** (Zen 5, socket AM5), 9 models from the Ryzen 5 9600X to the Ryzen 9 9950X3D2.
+- **Intel Core Ultra 200S and 200S Plus** (Arrow Lake and Arrow Lake Refresh, socket LGA1851), 8 models from the Core Ultra 5 225 to the Core Ultra 9 285K.
+
+"Quality" here means **multi-thread performance**: the PassMark CPU Mark, which averages thousands of user-submitted runs
+of the same test for each chip. Value is simply `CPU Mark ÷ price`. The full method and its limits are [at the end](#methodology).
+
+## Price against performance
+
+<ValueScatter />
+
+The blue dots sit almost entirely above the red ones at the same price. The Intel cluster between $178 and $330 is
+the story: the Core Ultra 5 245KF, Core Ultra 5 250K Plus and Core Ultra 7 270K Plus all land at or above the line of
+200 points per dollar. No AMD chip gets there. The best AMD value, the Ryzen 5 9600X, reaches 173.
+
+## The ranking
+
+<ValueBars />
+
+The **top six places all go to Intel**. The best AMD entry, the Ryzen 5 9600X, comes in seventh. The bottom of the table
+belongs to AMD's X3D chips (9800X3D, 9850X3D, 9950X3D2). They carry a large stacked L3 cache that helps in games but
+does little for multi-thread benchmarks, and their price includes that cache.
+
+Removing X3D chips makes the comparison fairer to AMD, but Intel still leads: the AMD median rises to 141 points per
+dollar, against Intel's 203.
+
+## What a given budget buys
+
+<BudgetFrontier />
+
+The step chart answers a buyer's question directly: *with $X to spend, how fast a chip can I get?*
+
+- **Up to $200:** Intel's Core Ultra 5 245K scores 43,046 vs 30,040 for AMD's Ryzen 5 9600X. That is **43% more**.
+- **Up to $350:** the Core Ultra 7 270K Plus ($315) scores 68,436 vs 54,292 for the Ryzen 9 9900X, **26% more**.
+- **Up to $550:** the 270K Plus is still Intel's fastest chip. AMD's Ryzen 9 9950X ($549) gets close at 65,708, but costs **$234 more**.
+- **Above $650:** AMD wins outright. The Ryzen 9 9950X3D2 tops the chart at 72,018, just 5% above the 270K Plus, for 2.9× the price.
+
+## What the numbers leave out
+
+This is a narrow question on purpose, and the answer depends on what the CPU is for:
+
+- **Gaming.** The X3D chips that look poor here are generally the fastest gaming CPUs. A gaming-focused comparison would rank AMD much higher.
+- **Platform cost.** The study counts the processor only. Motherboard and memory prices differ between AM5 and LGA1851, and AM5 has a longer upgrade path. Intel is expected to move to a new socket next generation.
+- **Power.** The 65 W Ryzen 5 9600X and Ryzen 7 9700X use less power than Intel's 125 W K-series chips. Over years of heavy use, that eats into Intel's price advantage.
+- **Prices move weekly.** These are prices from one day. The data section links the source pages so the numbers can be checked.
+
+## Data
+
+<CpuTable />
+
+<p class="muted" style="font-size: 0.85rem">
+  Download the price dataset, including excluded chips and the Tom's Hardware cross-check prices:
+  <a href="/data/intel-vs-amd-2026-10/cpus.csv">cpus.csv</a>. Benchmark scores are not included, as PassMark only
+  permits personal, non-commercial reproduction of its data; each row links to the chip's PassMark page instead.
+</p>
+
+## Methodology
+
+- **Performance:** PassMark CPU Mark (multi-thread) and Single Thread Rating, read on October 3, 2026 from each chip's page on [cpubenchmark.net](https://www.cpubenchmark.net/). PassMark scores are averages of user-submitted results, so they mix stock and tuned systems.
+- **Prices:** the US retail price PassMark lists for each chip on October 3, 2026. As a cross-check, they were compared with the "best US price" in [Tom's Hardware's CPU Price Index](https://www.tomshardware.com/news/lowest-cpu-prices) (updated October 2, 2026). The two agree within $1 for 10 of the 12 chips both sources list. The exceptions are the Core Ultra 7 265KF ($309.57 on PassMark vs $378 on Tom's) and the Core Ultra 5 245K ($189.99 vs $179). Neither difference changes the ranking between brands.
+- **Excluded:** the Ryzen 5 9600 (its listed price had not been refreshed recently) and the Core Ultra 9 290K Plus (no US retail price and only 4 benchmark samples). Chips with fewer than 50 benchmark samples are excluded automatically.
+- **Stocks:** daily closes from Yahoo Finance. The publication snapshot was saved with `yfinance`; live prices come from a small server function that queries Yahoo Finance when the page loads.
+- **Code:** collection and analysis are plain Python scripts (`collect.py`, `analyze.py`, `snapshot_stocks.py`). They save every source page as raw HTML, so each number can be traced back to where it came from.
+- **Trademarks:** Intel, Core Ultra, AMD and Ryzen are trademarks of their respective owners. This site is independent and not affiliated with or sponsored by Intel or AMD.

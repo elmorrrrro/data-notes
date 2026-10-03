@@ -1,0 +1,233 @@
+---
+import Base from '../layouts/Base.astro';
+import SocialIcon from '../components/SocialIcon.astro';
+import { AUTHOR } from '../lib/site';
+import { getPosts } from '../lib/posts';
+
+const posts = await getPosts();
+const tags = new Set(posts.flatMap((p) => p.data.tags));
+---
+
+<Base title="About" description="Data studies run with AI agents: why this blog exists and how to reach the author.">
+  <section class="wrap about">
+    <span class="eyebrow">About</span>
+    <h1>If AI takes over the routine, <span class="grad">we get to create.</span></h1>
+
+    <div class="intro card">
+      <p>
+        So I started this blog. Here I run data studies with the help of <strong>AI agents</strong>: they collect sources,
+        clean the data and do the heavy lifting, and I ask the questions, check the numbers and decide what the results mean.
+      </p>
+      <p>
+        Maybe the findings will be useful to you. Read along, and if you have questions or ideas for the next study,
+        message me on social media.
+      </p>
+      <p class="sign">— {AUTHOR.name}</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat card">
+        <p class="value">{posts.length}</p>
+        <p class="label">{posts.length === 1 ? 'study' : 'studies'} published</p>
+      </div>
+      <div class="stat card">
+        <p class="value">{tags.size}</p>
+        <p class="label">topics tagged</p>
+      </div>
+      <div class="stat card">
+        <p class="value">100%</p>
+        <p class="label">of the data linked</p>
+      </div>
+    </div>
+
+    <h2>How every study works</h2>
+    <ol class="steps">
+      <li>
+        <span class="n">1</span>
+        <div><strong>A question.</strong> Something concrete, like which CPU brand gives more performance per dollar.</div>
+      </li>
+      <li>
+        <span class="n">2</span>
+        <div><strong>Data, collected by agents.</strong> Every number keeps a link to its source, and raw pages are saved.</div>
+      </li>
+      <li>
+        <span class="n">3</span>
+        <div><strong>Analysis in Python.</strong> Plain scripts, so each result can be re-run and checked.</div>
+      </li>
+      <li>
+        <span class="n">4</span>
+        <div><strong>A human check.</strong> I review the method, the outliers and the claims before anything is published.</div>
+      </li>
+    </ol>
+
+    <h2>Get in touch</h2>
+    <div class="socials">
+      {
+        AUTHOR.socials.map((s) => (
+          <a class={`social card ${s.icon}`} href={s.href} target="_blank" rel="noopener me">
+            <span class="icon">
+              <SocialIcon name={s.icon} size={20} />
+            </span>
+            <span>
+              <span class="net">{s.label}</span>
+              <span class="handle">{s.handle}</span>
+            </span>
+            <span class="go" aria-hidden="true">↗</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about {
+    padding-top: 48px;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3em 0.75em;
+    border-radius: 999px;
+    color: #fff;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  }
+  h1 {
+    max-width: 720px;
+  }
+  .grad {
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .intro {
+    position: relative;
+    padding: 28px 30px;
+    margin: 28px 0 14px;
+    font-size: 1.1rem;
+    overflow: hidden;
+  }
+  .intro::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+  }
+  .intro p:last-child {
+    margin-bottom: 0;
+  }
+  .sign {
+    font-family: var(--display);
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .stat {
+    padding: 18px 20px;
+  }
+  .stat .value {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .stat .label {
+    margin: 4px 0 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  @media (max-width: 560px) {
+    .stats {
+      grid-template-columns: 1fr;
+    }
+    .intro {
+      padding: 22px 20px 22px 24px;
+    }
+  }
+  .steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+  .steps li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .n {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent-1);
+    background: color-mix(in srgb, var(--accent-1) 12%, transparent);
+  }
+  .socials {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 600px) {
+    .socials {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .social {
+    --c: #0a66c2;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+  }
+  .social.instagram {
+    --c: #e1306c;
+  }
+  .social:hover {
+    transform: translateY(-2px);
+  }
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    color: #fff;
+    background: var(--c);
+    box-shadow: 0 6px 16px -6px var(--c);
+  }
+  .social.instagram .icon {
+    background: linear-gradient(45deg, #f9a825, #e1306c 50%, #833ab4);
+  }
+  .net {
+    display: block;
+    font-family: var(--display);
+    font-weight: 700;
+  }
+  .handle {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .go {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="value-scatter"
+  title="Price vs multi-thread performance"
+  subtitle="Each dot is one CPU. Up and to the left is better value. Dashed guides mark constant points per dollar."
+  source="Sources: PassMark CPU Mark (multi-thread), PassMark listed US prices retrieved Oct 3, 2026."
+  height={420}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/intel-vs-amd-2026-10/cpus.json';
+  import { mount, base, brandScale, tipStyle, usd, thousands, modelName, productName } from '../../lib/chart';
+
+  // Selective direct labels, each placed where it clears the neighbouring dots.
+  const LABELS: Record<string, 'right' | 'above' | 'below'> = {
+    '5 245KF': 'above',
+    '5 250K Plus': 'right',
+    '7 270K Plus': 'right',
+    '9 285K': 'above',
+    '5 9600X': 'below',
+    '9 9900X': 'right',
+    '9 9950X': 'right',
+    '7 9800X3D': 'below',
+    '9 9950X3D2': 'above',
+  };
+  const PLACEMENT = {
+    right: { dx: 10, dy: 0, textAnchor: 'start' },
+    above: { dx: 0, dy: -14, textAnchor: 'middle' },
+    below: { dx: 0, dy: 15, textAnchor: 'middle' },
+  } as const;
+  const cpus = data.cpus.map((d) => ({ ...d, model: modelName(d.cpu), product: productName(d.cpu) }));
+  const Y_MAX = 76_000;
+  const guides = [100, 200].map((k) => {
+    const xEnd = Math.min(950, Y_MAX / k);
+    return { k, xEnd, yEnd: k * xEnd, pts: [{ x: 150, y: 150 * k }, { x: xEnd, y: k * xEnd }] };
+  });
+
+  // Labels dropped on narrow screens, where they would collide (tooltip still has them).
+  const NARROW_HIDDEN = new Set(['9 9950X3D2', '9 285K', '7 9800X3D']);
+
+  mount(document.querySelector<HTMLElement>('#value-scatter .plot')!, (width, t) => {
+    const narrow = width < 560;
+    return Plot.plot({
+      ...base(t, width),
+      height: 420,
+      marginRight: 20,
+      x: { label: 'Price (USD) →', domain: [150, 950], tickFormat: (d: number) => `$${d}`, grid: false },
+      y: { label: '↑ PassMark CPU Mark', domain: [0, Y_MAX], tickFormat: thousands },
+      color: brandScale(t),
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
+        ...guides.map((g) => Plot.line(g.pts, { x: 'x', y: 'y', stroke: t.axis, strokeWidth: 1, strokeDasharray: '3 4' })),
+        ...guides.map((g) =>
+          Plot.text([g], {
+            x: 'xEnd',
+            y: 'yEnd',
+            text: () => `${g.k} pts / $`,
+            fill: t.muted,
+            textAnchor: 'start',
+            dx: 6,
+            dy: 4,
+            fontSize: 11,
+          }),
+        ),
+        Plot.ruleY([0], { stroke: t.axis }),
+        Plot.dot(cpus, { x: 'price_usd', y: 'cpu_mark', fill: 'brand', r: 6, stroke: t.surface, strokeWidth: 2 }),
+        ...(['right', 'above', 'below'] as const).map((side) =>
+          Plot.text(
+            cpus.filter((d) => LABELS[d.short] === side && !(narrow && NARROW_HIDDEN.has(d.short))),
+            { x: 'price_usd', y: 'cpu_mark', text: 'model', ...PLACEMENT[side], fill: t.ink2, fontSize: 11.5 },
+          ),
+        ),
+        Plot.tip(
+          cpus,
+          Plot.pointer({
+            x: 'price_usd',
+            y: 'cpu_mark',
+            ...tipStyle(t),
+            title: (d) =>
+              `${d.product}\n${usd(d.price_usd)} · ${d.cpu_mark.toLocaleString('en-US')} pts\n${d.mark_per_dollar} pts per $ · ${d.cores} cores`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

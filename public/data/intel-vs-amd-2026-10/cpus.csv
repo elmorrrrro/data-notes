@@ -1,0 +1,20 @@
+cpu,brand,cores,threads,tdp_w,first_seen,passmark_url,price_usd,price_stale,price_source,price_retrieved,toms_best_price_usd,toms_updated,excluded,price_gap_vs_toms
+AMD Ryzen 9 9950X3D2,AMD,16.0,32.0,200.0,Q4 2025,https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+9950X3D2&id=7115,899.0,False,PassMark listed US price,2026-10-03,899.0,2026-10-02,,0.0
+AMD Ryzen 9 9950X3D,AMD,16.0,32.0,170.0,Q1 2025,https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+9950X3D&id=6549,657.95,False,PassMark listed US price,2026-10-03,657.0,2026-10-02,,0.95
+AMD Ryzen 9 9950X,AMD,16.0,32.0,170.0,Q3 2024,https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+9950X&id=6211,549.0,False,PassMark listed US price,2026-10-03,549.0,2026-10-02,,0.0
+AMD Ryzen 9 9900X3D,AMD,12.0,24.0,120.0,Q1 2025,https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+9900X3D&id=6548,504.4,False,PassMark listed US price,2026-10-03,504.0,2026-10-02,,0.4
+AMD Ryzen 9 9900X,AMD,12.0,24.0,120.0,Q3 2024,https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+9900X&id=6171,332.99,False,PassMark listed US price,2026-10-03,332.0,2026-10-02,,0.99
+AMD Ryzen 7 9850X3D,AMD,8.0,16.0,120.0,Q4 2025,https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+7+9850X3D&id=7074,484.0,False,PassMark listed US price,2026-10-03,,2026-10-02,,
+AMD Ryzen 7 9800X3D,AMD,8.0,16.0,120.0,Q4 2024,https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+7+9800X3D&id=6344,444.0,False,PassMark listed US price,2026-10-03,444.0,2026-10-02,,0.0
+AMD Ryzen 7 9700X,AMD,8.0,16.0,65.0,Q3 2024,https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+7+9700X&id=6205,339.0,False,PassMark listed US price,2026-10-03,339.0,2026-10-02,,0.0
+AMD Ryzen 5 9600X,AMD,6.0,12.0,65.0,Q3 2024,https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+5+9600X&id=6199,174.0,False,PassMark listed US price,2026-10-03,174.0,2026-10-02,,0.0
+AMD Ryzen 5 9600,AMD,6.0,12.0,65.0,Q1 2025,https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+5+9600&id=6590,272.62,True,PassMark listed US price,2026-10-03,,2026-10-02,Price not refreshed recently (PassMark *),
+Intel Core Ultra 9 290K Plus,Intel,24.0,24.0,,Q1 2026,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+9+290K+Plus&id=7210,,False,PassMark listed US price,2026-10-03,,2026-10-02,No current US retail price,
+Intel Core Ultra 9 285K,Intel,24.0,24.0,125.0,Q4 2024,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+9+285K&id=6296,519.99,False,PassMark listed US price,2026-10-03,519.0,2026-10-02,,0.99
+Intel Core Ultra 7 270K Plus,Intel,24.0,24.0,125.0,Q4 2025,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+7+270K+Plus&id=7114,315.0,False,PassMark listed US price,2026-10-03,,2026-10-02,,
+Intel Core Ultra 7 265K,Intel,20.0,20.0,125.0,Q4 2024,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+7+265K&id=6326,328.0,False,PassMark listed US price,2026-10-03,,2026-10-02,,
+Intel Core Ultra 7 265KF,Intel,20.0,20.0,125.0,Q4 2024,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+7+265KF&id=6338,309.57,False,PassMark listed US price,2026-10-03,378.0,2026-10-02,,-68.43
+Intel Core Ultra 5 250K Plus,Intel,18.0,18.0,125.0,Q1 2026,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+5+250K+Plus&id=7221,215.86,False,PassMark listed US price,2026-10-03,,2026-10-02,,
+Intel Core Ultra 5 245K,Intel,14.0,14.0,125.0,Q4 2024,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+5+245K&id=6324,189.99,False,PassMark listed US price,2026-10-03,179.0,2026-10-02,,10.99
+Intel Core Ultra 5 245KF,Intel,14.0,14.0,125.0,Q4 2024,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+5+245KF&id=6336,178.0,False,PassMark listed US price,2026-10-03,178.0,2026-10-02,,0.0
+Intel Core Ultra 5 225,Intel,10.0,10.0,65.0,Q1 2025,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+Ultra+5+225&id=6469,178.55,False,PassMark listed US price,2026-10-03,,2026-10-02,,
