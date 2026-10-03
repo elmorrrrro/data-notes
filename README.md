@@ -38,6 +38,11 @@ python snapshot_stocks.py  # only once: freezes share prices at publication
 
 ## Deploy (Cloudflare)
 
+Automatic: every push to `main` is built and deployed by Cloudflare Workers Builds
+(`npm run build`, then `npx wrangler deploy`). Build logs: Cloudflare dashboard → Workers & Pages → data-notes → Deployments.
+
+Manual fallback (stop `astro dev` first, a running dev server breaks the build cache):
+
 ```sh
 npm run build
 npx wrangler deploy
