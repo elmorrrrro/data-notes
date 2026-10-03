@@ -73,6 +73,9 @@ html {
 }
 
 body {
+  position: relative; /* contains the decorative layers below, so they never add scroll height */
+  display: flex;
+  flex-direction: column;
   margin: 0;
   min-height: 100vh;
   background: var(--page);
@@ -89,7 +92,7 @@ body::before {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
-  height: 760px;
+  height: min(760px, 100%);
   z-index: -1;
   pointer-events: none;
   background:
@@ -102,7 +105,7 @@ body::after {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
-  height: 760px;
+  height: min(760px, 100%);
   z-index: -1;
   pointer-events: none;
   background-image: radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1px);
@@ -163,7 +166,13 @@ code {
   background: color-mix(in srgb, var(--ink) 6%, transparent);
 }
 
+/* Main content grows so the footer sits at the bottom of short pages instead of adding scroll. */
+body > main {
+  flex: 1 0 auto;
+}
+
 .wrap {
+  width: 100%;
   max-width: 820px;
   margin: 0 auto;
   padding: 0 16px;

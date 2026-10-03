@@ -184,7 +184,7 @@ const tags = new Set(posts.flatMap((p) => p.data.tags));
   }
   @media (min-width: 600px) {
     .socials {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
   .social {
@@ -198,6 +198,12 @@ const tags = new Set(posts.flatMap((p) => p.data.tags));
   }
   .social.instagram {
     --c: #e1306c;
+  }
+  .social.github {
+    --c: var(--ink);
+  }
+  .social.github .icon {
+    color: var(--surface);
   }
   .social:hover {
     transform: translateY(-2px);

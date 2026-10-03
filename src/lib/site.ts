@@ -4,6 +4,7 @@ export const AUTHOR = {
   socials: [
     { label: 'LinkedIn', handle: 'Illia Hrebenko', href: 'https://www.linkedin.com/in/illia-hrebenko-3595ab215/', icon: 'linkedin' },
     { label: 'Instagram', handle: '@elmorrrrro', href: 'https://www.instagram.com/elmorrrrro/', icon: 'instagram' },
+    { label: 'GitHub', handle: 'elmorrrrro', href: 'https://github.com/elmorrrrro', icon: 'github' },
   ],
 } as const;
 
