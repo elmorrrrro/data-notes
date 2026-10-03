@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
+import Subscribe from '../components/Subscribe.astro';
 import { getPosts } from '../lib/posts';
 
 const posts = await getPosts();
@@ -11,6 +12,7 @@ const posts = await getPosts();
     <h1>Data <span class="grad">Notes</span></h1>
     <p class="lead">Independent data studies: prices, markets, statistics. Every chart links to its data.</p>
     <PostList posts={posts} />
+    <Subscribe tag="home" variant="compact" />
   </section>
 </Base>
 

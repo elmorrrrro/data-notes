@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { AUTHOR, CF_ANALYTICS_TOKEN } from '../lib/site';
+import { AUTHOR, CF_ANALYTICS_TOKEN, NEWSLETTER_USERNAME } from '../lib/site';
 
 const UPDATED = 'October 3, 2026';
 ---
@@ -49,6 +49,22 @@ const UPDATED = 'October 3, 2026';
         </p>
       ) : (
         <p>The site currently runs no analytics script. Only Cloudflare's aggregate request counts exist.</p>
+      )
+    }
+
+    {
+      NEWSLETTER_USERNAME && (
+        <>
+          <h2>Email newsletter</h2>
+          <p>
+            If you subscribe, your email address is stored by{' '}
+            <a href="https://buttondown.com/legal/privacy" target="_blank" rel="noopener">Buttondown</a>, the newsletter service
+            this site uses, together with the page you subscribed from (to send updates about that study). It is used only to send
+            you new studies and study updates. Subscription needs your confirmation by email (double opt-in), every email has an
+            unsubscribe link, and you can ask me to delete your address at any time. The legal basis is your consent
+            (Art. 6(1)(a) GDPR).
+          </p>
+        </>
       )
     }
 

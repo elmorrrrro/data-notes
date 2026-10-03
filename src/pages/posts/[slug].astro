@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { getPosts, formatDate, tagSlug } from '../../lib/posts';
 import { AUTHOR } from '../../lib/site';
+import Subscribe from '../../components/Subscribe.astro';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -35,6 +36,7 @@ const minutes = Math.max(1, Math.round((post.body ?? '').split(/\s+/).length / 2
     <div class="prose">
       <Content />
     </div>
+    <Subscribe tag={post.id} />
     <aside class="ai-note card">
       <span class="ai-badge" aria-hidden="true">AI</span>
       <p>

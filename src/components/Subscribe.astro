@@ -1,0 +1,150 @@
+---
+// Email signup (Buttondown). Rendered only when NEWSLETTER_USERNAME is set.
+// The form posts to Buttondown in a new tab, which handles double opt-in (GDPR) and unsubscribes.
+import { NEWSLETTER_USERNAME } from '../lib/site';
+
+interface Props {
+  /** Tag stored on the subscriber, e.g. the post slug, so updates to one study reach only its readers. */
+  tag?: string;
+  variant?: 'post' | 'compact';
+}
+const { tag, variant = 'post' } = Astro.props;
+const action = `https://buttondown.com/api/emails/embed-subscribe/${NEWSLETTER_USERNAME}`;
+---
+
+{
+  NEWSLETTER_USERNAME && (
+    <section class={`subscribe card ${variant}`} aria-label="Email subscription">
+      <div class="text">
+        <span class="icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="5" width="18" height="14" rx="3" />
+            <path d="m4 7 8 6 8-6" />
+          </svg>
+        </span>
+        <div>
+          <p class="title">{variant === 'post' ? 'Get the next study by email' : 'New studies, straight to your inbox'}</p>
+          <p class="sub">
+            {variant === 'post'
+              ? 'One email when a new study is out, plus a note if this one gets updated. No spam, unsubscribe anytime.'
+              : 'One email per study. No spam, unsubscribe anytime.'}
+          </p>
+        </div>
+      </div>
+      <form action={action} method="post" target="_blank" class="form">
+        <label class="sr-only" for={`email-${variant}`}>
+          Email address
+        </label>
+        <input id={`email-${variant}`} type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+        <input type="hidden" name="embed" value="1" />
+        {tag && <input type="hidden" name="tag" value={tag} />}
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="fine">
+        You'll get a confirmation email first. See the <a href="/privacy/">privacy policy</a>.
+      </p>
+    </section>
+  )
+}
+
+<style>
+  .subscribe {
+    position: relative;
+    overflow: hidden;
+    margin: 2.5em 0;
+    padding: 24px;
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(110deg, var(--accent-1), var(--accent-2)) border-box;
+  }
+  .subscribe.compact {
+    margin: 1.5em 0 0;
+    padding: 18px 20px;
+  }
+  .text {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  }
+  .title {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .compact .title {
+    font-size: 1.05rem;
+  }
+  .sub {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: var(--ink-2);
+  }
+  .form {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  input[type='email'] {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--axis);
+    background: var(--page);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.95rem;
+  }
+  input[type='email']:focus {
+    outline: 2px solid color-mix(in srgb, var(--accent-1) 50%, transparent);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+  button {
+    flex: none;
+    padding: 11px 18px;
+    border: 0;
+    border-radius: 12px;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 650;
+    color: #fff;
+    background: linear-gradient(110deg, var(--accent-1), var(--accent-2));
+    cursor: pointer;
+    box-shadow: 0 6px 18px -8px var(--accent-1);
+  }
+  button:hover {
+    filter: brightness(1.08);
+  }
+  .fine {
+    margin: 10px 0 0;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  @media (max-width: 480px) {
+    .form {
+      flex-direction: column;
+    }
+  }
+</style>
