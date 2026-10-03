@@ -39,3 +39,4 @@ analysis/*/exports/
 # private notes never go to this public repo (they live in the private data-notes-private repo)
 private/
 *.private.md
+CLAUDE.local.md
