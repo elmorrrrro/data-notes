@@ -39,8 +39,14 @@ import Figure from './Figure.astro';
     return { k, xEnd, yEnd: k * xEnd, pts: [{ x: 150, y: 150 * k }, { x: xEnd, y: k * xEnd }] };
   });
 
-  // Labels dropped on narrow screens, where they would collide (tooltip still has them).
-  const NARROW_HIDDEN = new Set(['9 9950X3D2', '9 285K', '7 9800X3D']);
+  // Phones get fewer labels, re-placed to clear the tighter dot spacing (the tooltip still has every chip).
+  const NARROW_LABELS: typeof LABELS = {
+    '5 245KF': 'above',
+    '7 270K Plus': 'above',
+    '5 9600X': 'below',
+    '9 9900X': 'right',
+    '9 9950X': 'right',
+  };
 
   mount(document.querySelector<HTMLElement>('#value-scatter .plot')!, (width, t) => {
     const narrow = width < 560;
@@ -48,7 +54,8 @@ import Figure from './Figure.astro';
       ...base(t, width),
       height: 420,
       marginRight: 20,
-      x: { label: 'Price (USD) →', domain: [150, 950], tickFormat: (d: number) => `$${d}`, grid: false },
+      marginBottom: 46,
+      x: { label: 'Price (USD) →', labelOffset: 42, domain: [150, 950], ticks: narrow ? 4 : 8, tickFormat: (d: number) => `$${d}`, grid: false },
       y: { label: '↑ PassMark CPU Mark', domain: [0, Y_MAX], tickFormat: thousands },
       color: brandScale(t),
       marks: [
@@ -67,10 +74,10 @@ import Figure from './Figure.astro';
           }),
         ),
         Plot.ruleY([0], { stroke: t.axis }),
-        Plot.dot(cpus, { x: 'price_usd', y: 'cpu_mark', fill: 'brand', r: 6, stroke: t.surface, strokeWidth: 2 }),
+        Plot.dot(cpus, { x: 'price_usd', y: 'cpu_mark', fill: 'brand', r: narrow ? 4.5 : 6, stroke: t.surface, strokeWidth: 2 }),
         ...(['right', 'above', 'below'] as const).map((side) =>
           Plot.text(
-            cpus.filter((d) => LABELS[d.short] === side && !(narrow && NARROW_HIDDEN.has(d.short))),
+            cpus.filter((d) => (narrow ? NARROW_LABELS : LABELS)[d.short] === side),
             { x: 'price_usd', y: 'cpu_mark', text: 'model', ...PLACEMENT[side], fill: t.ink2, fontSize: 11.5 },
           ),
         ),

@@ -42,7 +42,8 @@ import Figure from './Figure.astro';
       ...base(t, width),
       height: 360,
       marginRight: 24,
-      x: { label: 'Budget (USD) →', domain: [150, 920], tickFormat: (d: number) => `$${d}` },
+      marginBottom: 46,
+      x: { label: 'Budget (USD) →', labelOffset: 42, domain: [150, 920], ticks: narrow ? 4 : 8, tickFormat: (d: number) => `$${d}` },
       y: { label: '↑ Best CPU Mark available', domain: [0, 76_000], tickFormat: thousands },
       color: brandScale(t),
       marks: [
