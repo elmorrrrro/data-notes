@@ -35,3 +35,7 @@ analysis/*/exports/
 # wrangler local state and secrets
 .wrangler/
 .dev.vars*
+
+# private notes never go to this public repo (they live in the private data-notes-private repo)
+private/
+*.private.md
