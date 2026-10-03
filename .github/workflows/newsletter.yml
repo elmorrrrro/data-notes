@@ -1,0 +1,54 @@
+name: Newsletter
+
+# Announces newly added posts on Buttondown.
+# Mode: repository variable NEWSLETTER_MODE = "draft" (default, review and send in Buttondown) or "send".
+on:
+  push:
+    branches: [main]
+    paths: ['src/content/posts/*/index.mdx']
+  workflow_dispatch:
+    inputs:
+      post:
+        description: 'Post folder to send a [TEST] draft for (default: newest post)'
+        required: false
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Find posts to announce
+        id: posts
+        env:
+          BEFORE: ${{ github.event.before }}
+          INPUT_POST: ${{ inputs.post }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            newest=$(git log --diff-filter=A --format= --name-only -- 'src/content/posts/*/index.mdx' | head -1 | cut -d/ -f4)
+            post="${INPUT_POST:-$newest}"
+            echo "list=$post" >> "$GITHUB_OUTPUT"
+            echo "test=1" >> "$GITHUB_OUTPUT"
+          else
+            # Only posts whose index.mdx was ADDED in this push, never edits of existing ones.
+            list=$(git diff --diff-filter=A --name-only "$BEFORE" "${{ github.sha }}" -- 'src/content/posts/*/index.mdx' \
+              | cut -d/ -f4 | tr '\n' ' ')
+            echo "list=$list" >> "$GITHUB_OUTPUT"
+            echo "test=0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.posts.outputs.list != ''
+        with:
+          node-version: 24
+
+      - name: Create Buttondown email
+        if: steps.posts.outputs.list != ''
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          NEWSLETTER_MODE: ${{ vars.NEWSLETTER_MODE || 'draft' }}
+          POSTS: ${{ steps.posts.outputs.list }}
+          TEST: ${{ steps.posts.outputs.test }}
+        run: node scripts/notify-new-posts.mjs
