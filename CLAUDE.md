@@ -35,6 +35,11 @@ Live: https://data-notes.data-notes.workers.dev · Repo: https://github.com/elmo
    look for label collisions and overflow.
 5. **Publish**: `git add -A && git commit && git push` to `main`. Cloudflare Workers Builds deploys automatically
    (~1 min). Verify with `npx wrangler deployments list` and by opening the live URL.
+6. **Newsletter**: pushing a NEW `src/content/posts/<slug>/index.mdx` triggers `.github/workflows/newsletter.yml`, which
+   runs `scripts/notify-new-posts.mjs` and creates a Buttondown email (newsletter `datanotes`) from the post's title and
+   description. Default is a draft the owner reviews and sends; repo variable `NEWSLETTER_MODE=send` makes it automatic.
+   Edits to existing posts never send. Manual test: Actions → Newsletter → Run workflow (always a `[TEST]` draft).
+   Study-update emails are sent by hand to the post's tag (signups are tagged with the post slug).
 
 ## Gotchas (learned the hard way)
 - Never run `astro build` while `astro dev` is running: it wipes Vite's deps cache and the dev server's charts go blank.
@@ -42,7 +47,10 @@ Live: https://data-notes.data-notes.workers.dev · Repo: https://github.com/elmo
 - After changing `src/content.config.ts` (schema), restart dev with the content cache cleared: `rm -rf .astro`.
 - Git Bash mangles URL paths in curl: prefix with `MSYS_NO_PATHCONV=1`. PowerShell 5.1 can't do modern TLS; use curl.
 - Fonts are self-hosted via `@fontsource` (GDPR); don't add Google Fonts links.
-- Analytics token lives in `src/lib/site.ts` (`CF_ANALYTICS_TOKEN`); socials there too.
+- `src/lib/site.ts` holds socials, `CF_ANALYTICS_TOKEN` and `NEWSLETTER_USERNAME` (subscribe forms render only when set).
+- Secrets never go in files: `BUTTONDOWN_API_KEY` is a GitHub Actions secret (`gh secret set BUTTONDOWN_API_KEY`).
+- `gh` is installed at `C:\Program Files\GitHub CLI\gh.exe` (may not be on PATH in older shells).
+- RSS: `/rss.xml` (`src/pages/rss.xml.ts`) lists every post automatically.
 
 ## Development
 
