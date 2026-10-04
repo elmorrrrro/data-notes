@@ -1,7 +1,7 @@
 # Data Notes — project guide
 
 Public blog of data studies by Illia Hrebenko, made with AI agents and reviewed by him.
-Live: https://data-notes.data-notes.workers.dev · Repo: https://github.com/elmorrrrro/data-notes (public)
+Live: https://datanotes.org · Repo: https://github.com/elmorrrrro/data-notes (public)
 
 ## Conventions
 - Site, code and commits are in English.

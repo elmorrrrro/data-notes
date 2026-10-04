@@ -6,8 +6,8 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  // Public URL; change when a custom domain is attached.
-  site: 'https://data-notes.data-notes.workers.dev',
+  // Public URL (custom domain, attached in wrangler.jsonc).
+  site: 'https://datanotes.org',
   integrations: [mdx()],
   adapter: cloudflare(),
   vite: {

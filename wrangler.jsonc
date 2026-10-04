@@ -8,6 +8,11 @@
 		"directory": "./dist",
 		"binding": "ASSETS"
 	},
+	// Custom domains: Cloudflare creates the DNS records and certificates on deploy.
+	"routes": [
+		{ "pattern": "datanotes.org", "custom_domain": true },
+		{ "pattern": "www.datanotes.org", "custom_domain": true }
+	],
 	"observability": {
 		"enabled": true
 	}

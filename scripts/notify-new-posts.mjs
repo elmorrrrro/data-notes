@@ -10,7 +10,7 @@
 import { readFileSync } from 'node:fs';
 
 const API = 'https://api.buttondown.com/v1/emails';
-const { BUTTONDOWN_API_KEY: KEY, NEWSLETTER_MODE = 'draft', POSTS = '', TEST, SITE_URL = 'https://data-notes.data-notes.workers.dev' } = process.env;
+const { BUTTONDOWN_API_KEY: KEY, NEWSLETTER_MODE = 'draft', POSTS = '', TEST, SITE_URL = 'https://datanotes.org' } = process.env;
 const test = TEST === '1';
 const send = NEWSLETTER_MODE === 'send' && !test;
 
