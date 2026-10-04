@@ -8,6 +8,8 @@
 		"directory": "./dist",
 		"binding": "ASSETS"
 	},
+	// Keep the old workers.dev address alive for links shared before the domain (wrangler turns it off once routes exist).
+	"workers_dev": true,
 	// Custom domains: Cloudflare creates the DNS records and certificates on deploy.
 	"routes": [
 		{ "pattern": "datanotes.org", "custom_domain": true },
