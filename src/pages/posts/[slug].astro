@@ -45,6 +45,24 @@ const minutes = Math.max(1, Math.round((post.body ?? '').split(/\s+/).length / 2
       </p>
     </aside>
   </article>
+  <button id="to-top" class="to-top" type="button" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7"></path>
+    </svg>
+  </button>
+  <script is:inline>
+    // Shows once the reader is a screen or so into the post.
+    (() => {
+      const btn = document.getElementById('to-top');
+      const sync = () => btn.classList.toggle('shown', window.scrollY > window.innerHeight);
+      addEventListener('scroll', sync, { passive: true });
+      sync();
+      btn.addEventListener('click', () => {
+        const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+        scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+      });
+    })();
+  </script>
 </Base>
 
 <style>
@@ -97,6 +115,37 @@ const minutes = Math.max(1, Math.round((post.body ?? '').split(/\s+/).length / 2
     font-size: 0.8rem;
     color: #fff;
     background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  }
+  .to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 10;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0.2s;
+  }
+  .to-top.shown {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .to-top:hover {
+    color: var(--accent-1);
   }
   .lead {
     font-size: 1.22rem;
