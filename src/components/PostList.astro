@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { formatDate, tagSlug } from '../lib/posts';
+import { money } from '../lib/money';
 
 interface Props {
   posts: CollectionEntry<'posts'>[];
@@ -8,11 +9,11 @@ interface Props {
 const { posts } = Astro.props;
 
 // Publication-day closes, one snapshot file per study (written by its snapshot_stocks.py).
-type Snapshot = { tickers: Record<string, { close: number; close_date: string }> };
+type Snapshot = { tickers: Record<string, { close: number; close_date: string; currency?: string }> };
 const snapshots = import.meta.glob<Snapshot>('../data/*/stocks_snapshot.json', { eager: true, import: 'default' });
 const stocksFor = (p: CollectionEntry<'posts'>) => {
   const snap = snapshots[`../data/${p.id}/stocks_snapshot.json`];
-  return p.data.stocks.filter((s) => snap?.tickers[s]).map((s) => ({ symbol: s, close: snap.tickers[s].close }));
+  return p.data.stocks.filter((s) => snap?.tickers[s]).map((s) => ({ symbol: s, close: snap.tickers[s].close, currency: snap.tickers[s].currency ?? 'USD' }));
 };
 ---
 
@@ -40,10 +41,10 @@ const stocksFor = (p: CollectionEntry<'posts'>) => {
             {stocks.length > 0 && (
               <div class="stocks" aria-label="Share price since publication">
                 {stocks.map((s) => (
-                  <div class="stock" data-symbol={s.symbol} data-ref={s.close} title={`${s.symbol}: close at publication vs latest price`}>
+                  <div class="stock" data-symbol={s.symbol} data-ref={s.close} data-currency={s.currency} title={`${s.symbol}: close at publication vs latest price`}>
                     <span class="sym">{s.symbol}</span>
                     <span class="prices">
-                      ${s.close.toFixed(2)} → <span data-now>…</span>
+                      {money(s.close, s.currency)} → <span data-now>…</span>
                     </span>
                     <span class="pct" data-pct>
                       …
@@ -60,6 +61,8 @@ const stocksFor = (p: CollectionEntry<'posts'>) => {
 </ul>
 
 <script>
+  import { money } from '../lib/money';
+
   // One request for every ticker shown on the page.
   const chips = [...document.querySelectorAll<HTMLElement>('.stock[data-symbol]')];
   const symbols = [...new Set(chips.map((c) => c.dataset.symbol!))];
@@ -75,7 +78,7 @@ const stocksFor = (p: CollectionEntry<'posts'>) => {
           const ref = Number(chip.dataset.ref);
           const pct = (q.price / ref - 1) * 100;
           const dir = Math.abs(q.price - ref) < 0.005 ? 'flat' : pct > 0 ? 'up' : 'down';
-          chip.querySelector('[data-now]')!.textContent = `$${q.price.toFixed(2)}`;
+          chip.querySelector('[data-now]')!.textContent = money(q.price, chip.dataset.currency);
           const pctEl = chip.querySelector<HTMLElement>('[data-pct]')!;
           pctEl.dataset.dir = dir;
           pctEl.textContent = `${dir === 'up' ? '▲' : dir === 'down' ? '▼' : '■'} ${pct > 0 ? '+' : pct < 0 ? '−' : ''}${Math.abs(pct).toFixed(2)}%`;

@@ -1,0 +1,201 @@
+---
+// Scoreboard for the fuel hedging study: a verdict banner plus one card per group.
+import data from '../data/airline-fuel-hedging-2026-10/airlines.json';
+
+const { hedged, unhedged } = data.groups;
+const { market } = data;
+const europe = data.airlines.filter((a) => a.region === 'Europe');
+const minHedge = Math.min(...europe.map((a) => a.hedged));
+const maxHedge = Math.max(...europe.map((a) => a.hedged));
+const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+const pts = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)} pts`;
+
+const cards = [
+  {
+    css: 'eu',
+    name: 'Hedged: Europe',
+    line: `Lufthansa, Ryanair, IAG, Air France-KLM`,
+    hedge: `${hedged.avg_hedged.toFixed(0)}%`,
+    hedgeNote: 'of fuel hedged (average)',
+    g: hedged,
+    market: market.Europe,
+  },
+  {
+    css: 'us',
+    name: 'Unhedged: US',
+    line: 'Delta, United, American, Southwest, Alaska',
+    hedge: '0%',
+    hedgeNote: 'of fuel hedged',
+    g: unhedged,
+    market: market.US,
+  },
+];
+---
+
+<section class="board" aria-label="Key numbers">
+  <div class="verdict">
+    <span class="eyebrow">The split</span>
+    <p class="headline">
+      Five of Europe's biggest airlines hedged <span class="big">{minHedge}–{maxHedge}%</span> of their fuel. The five biggest US airlines hedged <span class="big">none</span>.
+    </p>
+    <p class="sub">Share of upcoming fuel use locked in at a fixed price, from each airline's latest results before October 4, 2026</p>
+  </div>
+
+  <div class="groups">
+    {
+      cards.map((c) => (
+        <div class={`group ${c.css}`}>
+          <p class="name">{c.name}</p>
+          <p class="line">{c.line}</p>
+          <p class="value">
+            {c.hedge}
+            <span class="unit">{c.hedgeNote}</span>
+          </p>
+          <dl>
+            <div>
+              <dt>Worst point</dt>
+              <dd>{pct(c.g.avg_low_pct)}</dd>
+            </div>
+            <div>
+              <dt>Shares since Feb 27</dt>
+              <dd>{pct(c.g.avg_change_pct)}</dd>
+            </div>
+            <div>
+              <dt>vs {c.market.name}</dt>
+              <dd>{pts(c.g.avg_vs_market_pts)}</dd>
+            </div>
+          </dl>
+        </div>
+      ))
+    }
+  </div>
+  <p class="foot">
+    Averages per airline. easyJet is left out of the share figures because takeover bids, not fuel, drove its price from July.
+  </p>
+</section>
+
+<style>
+  .board {
+    display: grid;
+    gap: 14px;
+    margin: 2.2em 0;
+  }
+  .verdict {
+    padding: 26px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(110deg, var(--accent-1), var(--accent-2)) border-box;
+    box-shadow: var(--shadow);
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .headline {
+    margin: 6px 0 8px;
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .big {
+    font-weight: 700;
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .groups {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 620px) {
+    .groups {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .group {
+    --c: var(--accent-1);
+    position: relative;
+    padding: 22px 22px 18px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .group.us {
+    --c: var(--accent-2);
+  }
+  .group::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--c);
+  }
+  .name {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+  .line {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .value {
+    margin: 16px 0 4px;
+    font-family: var(--display);
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .unit {
+    display: block;
+    margin-top: 6px;
+    font-family: var(--font);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--muted);
+  }
+  dl {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 16px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  dt {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  dd {
+    margin: 2px 0 0;
+    font-size: 1rem;
+    font-weight: 650;
+  }
+  .foot {
+    margin: 0 4px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+</style>

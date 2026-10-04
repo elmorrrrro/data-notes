@@ -1,0 +1,54 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="hedge-bars"
+  title="How much fuel each airline had hedged"
+  subtitle="Share of expected fuel use for the nearest reported period, locked in at a fixed price. Periods differ: hover for details."
+  source="Sources: each airline's latest quarterly results or filing before Oct 4, 2026 (links in Methodology)."
+  legend={false}
+  height={470}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/airline-fuel-hedging-2026-10/airlines.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const rows = [...data.airlines].sort((a, b) => b.hedged - a.hedged);
+  // Region headers get their own band, so the two groups read as separate lists on one scale.
+  const HEADERS = ['EUROPE', 'UNITED STATES'];
+  const domain = HEADERS.flatMap((h) => [h, ...rows.filter((d) => (h === 'EUROPE') === (d.region === 'Europe')).map((d) => d.short)]);
+  const label = (d: (typeof rows)[number]) =>
+    d.hedged > 0 ? `${d.hedged}%` : d.ticker === 'DAL' ? '0% · owns a refinery' : '0% · no hedges';
+
+  mount(document.querySelector<HTMLElement>('#hedge-bars .plot')!, (width, t) => {
+    const bar = getComputedStyle(document.documentElement).getPropertyValue('--s1').trim();
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 470,
+      marginLeft: narrow ? 104 : 120,
+      marginRight: 30,
+      x: { label: null, domain: [0, 100], tickFormat: (d) => `${d}%`, grid: false, axis: narrow ? null : 'bottom' },
+      y: { label: null, domain, padding: 0.3, tickSize: 0, tickFormat: (d) => (HEADERS.includes(d) ? '' : d) },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.barX(rows, { x: 'hedged', y: 'short', fill: bar, rx2: 4 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        Plot.text(rows, { x: 'hedged', y: 'short', text: label, dx: 6, textAnchor: 'start', fill: t.ink2, fontSize: 11.5 }),
+        Plot.text(HEADERS, { x: 0, y: (d) => d, text: (d) => d, textAnchor: 'start', dy: 4, fill: t.muted, fontSize: 10.5, fontWeight: 700 }),
+        Plot.tip(
+          rows,
+          Plot.pointerY({
+            x: 'hedged',
+            y: 'short',
+            ...tipStyle(t),
+            title: (d) => `${d.airline}\n${d.hedged}% hedged for ${d.period}\nNext: ${d.next_hedged} for ${d.next_period}\nSource: ${d.source}`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

@@ -1,0 +1,61 @@
+---
+import Figure from './Figure.astro';
+import data from '../../data/airline-fuel-hedging-2026-10/airlines.json';
+
+const { US, Europe } = data.market;
+const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+---
+
+<Figure
+  id="vs-market"
+  title="Against their own stock market"
+  subtitle={`Share change since Feb 27 minus the change in the region's index over the same days: ${US.name} ${pct(US.change_pct)}, ${Europe.name} ${pct(Europe.change_pct)}.`}
+  source="Percentage points. Source: Yahoo Finance daily closes (^GSPC, ^STOXX), Feb 27 – Oct 2, 2026. easyJet is left out (takeover bids)."
+  legend={false}
+  height={440}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/airline-fuel-hedging-2026-10/airlines.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const rows = data.airlines.filter((d) => !d.excluded).sort((a, b) => b.hedged - a.hedged);
+  const HEADERS = ['EUROPE', 'UNITED STATES'];
+  const domain = HEADERS.flatMap((h) => [h, ...rows.filter((d) => (h === 'EUROPE') === (d.region === 'Europe')).map((d) => d.short)]);
+  const pts = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}`;
+  const pct = (n: number) => `${pts(n)}%`;
+
+  mount(document.querySelector<HTMLElement>('#vs-market .plot')!, (width, t) => {
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 440,
+      marginLeft: narrow ? 104 : 120,
+      marginRight: 40,
+      x: { label: null, domain: [-50, 25], tickFormat: (d) => (d > 0 ? `+${d}` : `${d}`) },
+      y: { label: null, domain, padding: 0.3, tickSize: 0, tickFormat: (d) => (HEADERS.includes(d) ? '' : d) },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1 }),
+        // Rounded only at the data end, square on the zero line.
+        Plot.barX(rows.filter((d) => d.vs_market_pts >= 0), { x: 'vs_market_pts', y: 'short', fill: t.up, rx2: 4 }),
+        Plot.barX(rows.filter((d) => d.vs_market_pts < 0), { x: 'vs_market_pts', y: 'short', fill: t.down, rx1: 4 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        // Value labels sit past the bar end: right of positive bars, left of negative ones.
+        Plot.text(rows.filter((d) => d.vs_market_pts >= 0), { x: 'vs_market_pts', y: 'short', text: (d) => pts(d.vs_market_pts), dx: 6, textAnchor: 'start', fill: t.ink2, fontSize: 11.5 }),
+        Plot.text(rows.filter((d) => d.vs_market_pts < 0), { x: 'vs_market_pts', y: 'short', text: (d) => pts(d.vs_market_pts), dx: -6, textAnchor: 'end', fill: t.ink2, fontSize: 11.5 }),
+        Plot.text(HEADERS, { x: -50, y: (d) => d, text: (d) => d, textAnchor: 'start', dy: 4, fill: t.muted, fontSize: 10.5, fontWeight: 700 }),
+        Plot.tip(
+          rows,
+          Plot.pointerY({
+            x: 'vs_market_pts',
+            y: 'short',
+            ...tipStyle(t),
+            title: (d) =>
+              `${d.airline} · ${d.hedged}% hedged\nShares ${pct(d.change_pct)}, ${d.region === 'US' ? data.market.US.name : data.market.Europe.name} ${pct(d.region === 'US' ? data.market.US.change_pct : data.market.Europe.change_pct)}\n${pts(d.vs_market_pts)} pts vs market`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

@@ -1,0 +1,162 @@
+---
+title: "Europe's airlines locked in cheap fuel. It didn't save their shares, and it runs out in 2027"
+description: "Five European airlines hedged most of their fuel before the 2026 oil shock; the five biggest US airlines hedged none. Their shares fell just as far, and Europe's cover runs out next year. With a live tracker."
+date: 2026-10-04
+tags: [airlines, oil]
+accents: ['#0ea5c6', '#f59e0b']
+stocks: [LHA.DE, RYA.IR, UAL]
+---
+
+import HedgeScoreboard from '../../../components/HedgeScoreboard.astro';
+import BrentLine from '../../../components/charts/BrentLine.astro';
+import HedgeBars from '../../../components/charts/HedgeBars.astro';
+import ShareRange from '../../../components/charts/ShareRange.astro';
+import VsMarket from '../../../components/charts/VsMarket.astro';
+import StockWatch from '../../../components/StockWatch.astro';
+import AirlineTable from '../../../components/AirlineTable.astro';
+import snapshot from '../../../data/airline-fuel-hedging-2026-10/stocks_snapshot.json';
+
+**Short answer: fuel hedges saved Europe's airlines billions, but not their shares.** Five of Europe's biggest airline
+groups went into the 2026 oil shock with two-thirds or more of their fuel bought in advance at pre-war prices. The five
+biggest US airlines had nothing hedged. At the worst point, both groups' shares were down about 23%. And most of
+Europe's cover runs out in 2027, while oil is still near $100 a barrel. The real test is next year, and this page
+tracks it live.
+
+<HedgeScoreboard />
+
+## 1. The shock
+
+<BrentLine />
+
+US and Israeli strikes on Iran on February 28, 2026, and Iran's retaliation, cut off most tanker traffic through the
+Strait of Hormuz. Brent crude went from $72 a barrel on the last close before the strikes to a peak of $118 on March 31,
+63% higher. Jet fuel rose even more than crude. A conditional ceasefire on April 8 brought prices back down to
+pre-war levels by early July, but they climbed again over the summer. On October 2, Brent closed at $102, still 41%
+above where it started.
+
+Fuel is one of an airline's largest costs. A **fuel hedge** fixes part of that cost in advance,
+usually with futures, swaps or options, so a price spike hurts less (and a price drop helps less).
+
+## 2. Who was hedged
+
+<HedgeBars />
+
+The split is complete. **Lufthansa, Ryanair, easyJet, IAG and Air France-KLM** had 67% to 82% of their upcoming fuel
+hedged. The gains were large:
+
+- Ryanair's hedges cover 80% of its fuel to March 2027 at about $67 a barrel. Its unhedged fuel cost about $150 a barrel
+  in April to June.
+- easyJet had hedged 79% of its July–September fuel at $786 a tonne, when the spot price was $1,275.
+- IAG booked €769 million of hedging gains in the first half alone. Air France-KLM expects $1.6 billion for the year,
+  Lufthansa about €1.5 billion.
+
+**None of the five US airlines had any hedges.** United's stated policy is not to hedge. American had no fuel hedging
+contracts outstanding at the end of June, and says each extra cent per gallon adds about $50 million to its annual bill. Southwest, long the
+best-known hedger in the industry, closed its program in 2025. Alaska stopped in 2023. Delta also has no hedges on the
+fuel it burns, but it owns an oil refinery near Philadelphia, which works as a partial natural hedge: when jet fuel
+margins rise, the refinery earns more.
+
+## 3. Hedged or not, the shares fell the same
+
+<ShareRange />
+
+Hedges protect an airline's fuel bill, so hedged airlines should have fallen less. They did not. At the worst close, the four
+hedged European groups (easyJet aside) were down 22.8% on average, and the five US airlines 22.7%. **Almost identical.**
+
+By October 2, the US group was roughly back where it started (−0.9% on average), while the European group was still
+down 8.3%. On these raw numbers, the airlines without hedges did better.
+
+easyJet is the exception, up 47%, but that comes from rival takeover bids in July, not from fuel. It is shown but left
+out of every average.
+
+## 4. A small edge, once markets are taken out
+
+<VsMarket />
+
+The raw numbers flatter the US group, because its home market did much better: since February 27, the S&P 500 rose
+12.3%, while the STOXX Europe 600 ended flat (−0.4%). Against their own market, the hedged Europeans lagged by 7.9 points
+on average and the unhedged US airlines by 13.2 (20.4 without Delta and its refinery). So hedging bought a small edge,
+not a shield: Lufthansa, the most hedged at 82%, did worse against its market than United, with no hedges at all.
+
+## 5. The open question: protection, or just a delay?
+
+Hedges are bought months or years ahead, so they always run out. Europe's cover drops sharply next year:
+
+- **Ryanair:** 80% hedged to March 2027, then **15%** (at $85 a barrel, not $67).
+- **easyJet:** 62% for October 2026 to March 2027, then **37%**.
+- **IAG and Air France-KLM:** about **40%** for 2027. **Lufthansa:** just over **50%**.
+
+Brent is still around $100. If it stays there, European airlines will pay war prices for most of their fuel in 2027,
+a year after US airlines did, and possibly while US rivals are already passing the cost on through fares. If oil falls,
+the unhedged US airlines get the full benefit at once, while the Europeans stay locked into their hedges.
+
+**Did hedging protect European airlines, or only delay their pain by a year?** The answer will show up over the next
+12 months, so this page tracks it live: one airline for each scenario.
+
+## Tracker: Lufthansa, Ryanair and United
+
+- **Lufthansa** has the most fuel hedged for 2027 among the five Europeans: just over 50%.
+- **Ryanair** has the least: 80% until March 2027, then 15%. Its cheap fuel runs out first.
+- **United** has none, and no refinery either. It is the largest US airline with a stated policy not to hedge.
+
+If oil stays high, Ryanair should feel it before Lufthansa, while United has already lived with war prices for months.
+If oil falls, United should benefit first. Each share price is frozen at the last close before this post
+(Friday, October 2, 2026), and the live price loads every time the page opens. Shares are in their home currency
+(euros for Lufthansa and Ryanair), and the comparison is in percent, so currencies do not distort it. Each share also
+follows its own stock market, as section 4 showed, so read the gaps between the lines rather than any single line.
+
+<StockWatch
+  snapshot={snapshot}
+  tickers={[
+    { symbol: 'LHA.DE', name: 'Lufthansa', color: 'var(--s1)' },
+    { symbol: 'RYA.IR', name: 'Ryanair', color: 'var(--s2)' },
+    { symbol: 'UAL', name: 'United', color: 'var(--s3)' },
+  ]}
+  title="Share price since the oil shock, indexed to publication day"
+/>
+
+## What the numbers leave out
+
+- **Hedge periods differ.** Each airline reports cover for its own nearest period: a calendar half-year, a fiscal year
+  or a quarter. The percentages are the closest comparable figure, not an exact match.
+- **Hedge quality differs.** Lufthansa hedges partly with crude oil and gasoil, which do not track jet fuel exactly.
+  When jet fuel rose faster than crude, part of the risk stayed open; its CFO said this "highlighted certain limitations". Options-based hedges also cost a premium upfront.
+- **Share prices are not profits.** Share prices react to everything at once: fares, demand, debt, takeover talk.
+  This study does not try to isolate the effect of fuel.
+- **Ten airlines is a small sample.** Group averages can be moved by one company, as Delta shows.
+- **Currencies.** Each share is measured in its home currency; the euro and pound against the dollar are not adjusted for.
+
+## Data
+
+<AirlineTable />
+
+<p class="muted" style="font-size: 0.85rem">
+  Download the dataset, with hedge ratios, periods, share moves and a source link for every airline:
+  <a href="/data/airline-fuel-hedging-2026-10/airlines.csv">airlines.csv</a>.
+</p>
+
+## Methodology
+
+- **Hedge ratios** come from each airline's latest results or filing before October 4, 2026, as the share of expected
+  fuel use hedged for the nearest reported period:
+  - Lufthansa Group: [Q2 2026 results presentation](https://investor-relations.lufthansagroup.com/fileadmin/downloads/en/charts-speeches/LH-QR-2026-2-charts.pdf), August 4, 2026 (82% for the rest of 2026, as of July 27). 2027 cover and the €1.5 billion hedge gain: CFO on the [Q2 2026 earnings call](https://www.investing.com/news/transcripts/earnings-call-transcript-lufthansa-group-posts-q2-revenue-record-misses-eps-in-2026-93CH-4833787).
+  - Ryanair: [Q1 FY27 results](https://investor.ryanair.com/wp-content/uploads/2026/07/Q1-FY27-Ryanair-Results.pdf), July 20, 2026.
+  - easyJet: [Q3 FY26 trading update](https://s203.q4cdn.com/522538739/files/doc_financials/2026/q3/FY26-Q3-RNS-vf.pdf), July 23, 2026 (positions as of July 20).
+  - IAG: [H1 2026 earnings call](https://www.investing.com/news/transcripts/earnings-call-transcript-iag-posts-resilient-h1-2026-results-as-shares-slip-1-93CH-4827044), July 31, 2026, for the hedge ratios (stated by the CFO); [H1 2026 results](https://www.iairgroup.com/press-releases/2026/iag-half-year-results-2026/) for the €769 million of hedging gains.
+  - Air France-KLM: [Q2 2026 results](https://www.globenewswire.com/news-release/2026/07/30/3335784/0/en/air-france-klm-q2-2026-results.html), July 30, 2026.
+  - Delta: [Form 10-Q for Q2 2026](https://www.sec.gov/Archives/edgar/data/27904/000002790426000031/dal-20260630.htm). United: [Form 10-K for 2025](https://www.sec.gov/Archives/edgar/data/100517/000010051726000023/ual-20251231.htm). American: [Form 10-Q for Q2 2026](https://www.sec.gov/Archives/edgar/data/6201/000000620126000052/aal-20260630.htm). Southwest: [Form 10-Q for Q2 2026](https://www.sec.gov/Archives/edgar/data/92380/000009238026000077/luv-20260630.htm). Alaska: [Form 10-K for 2025](https://www.sec.gov/Archives/edgar/data/766421/000076642126000010/alk-20251231.htm).
+- **Share prices and indices:** daily closes from Yahoo Finance via `yfinance` (unadjusted for dividends), each airline
+  on its main listing: Frankfurt (LHA), Dublin (RYA), London (IAG, EZJ), Paris (AF) and New York. Markets: S&P 500
+  (^GSPC) and STOXX Europe 600 (^STOXX). The base is the close on Friday, February 27, 2026, the last trading day
+  before the strikes; the end is Friday, October 2, 2026. "vs market" is the share's change minus its region's index
+  change over the same days, in percentage points.
+- **Oil:** Brent front-month futures (BZ=F) from Yahoo Finance. Event dates from Wikipedia's article on the
+  [2026 Iran war fuel crisis](https://en.wikipedia.org/wiki/2026_Iran_war_fuel_crisis).
+- **Excluded from averages:** easyJet, whose share price since July reflects takeover bids from Castlelake and Apollo.
+- **Tracker:** one airline per scenario: the most fuel hedged for 2027 (Lufthansa), the least (Ryanair, 15% from
+  April 2027) and none (United, the largest US airline with a no-hedging policy and no refinery). Their publication-day prices were saved with `yfinance`; live prices come from a small server
+  function that queries Yahoo Finance when the page loads.
+- **Code:** plain Python scripts (`collect.py`, `analyze.py`, `snapshot_stocks.py`). They save every filing and results
+  document locally, and each hedge figure is stored next to the exact sentence it was taken from.
+- **Trademarks:** airline names are trademarks of their respective owners. This site is independent and not affiliated
+  with or sponsored by any airline mentioned.

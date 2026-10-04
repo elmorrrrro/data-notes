@@ -16,6 +16,9 @@
   --amd: #e8173f;
   --up: #0a7d32;
   --down: #c4262e;
+  --s1: #2a78d6;
+  --s2: #eb6834;
+  --s3: #1baf7a;
   --accent-1: #6d4aff;
   --accent-2: #0ea5c6;
   --radius: 20px;
@@ -41,6 +44,9 @@
     --amd: #ff3b5c;
     --up: #2fbf5b;
     --down: #ff5a5f;
+    --s1: #3987e5;
+    --s2: #d95926;
+    --s3: #199e70;
   }
 }
 
@@ -60,6 +66,9 @@
   --amd: #ff3b5c;
   --up: #2fbf5b;
   --down: #ff5a5f;
+  --s1: #3987e5;
+  --s2: #d95926;
+  --s3: #199e70;
 }
 
 *,

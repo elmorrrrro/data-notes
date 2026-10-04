@@ -1,0 +1,59 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="share-range"
+  title="Share prices since the oil shock: the worst close and where they stood on Oct 2"
+  subtitle="Change from the Feb 27, 2026 close, in each airline's home currency. Ordered by how much fuel was hedged."
+  source="Source: Yahoo Finance daily closes, Feb 27 – Oct 2, 2026. * easyJet's rise reflects takeover bids, not fuel."
+  legendItems={[
+    { label: 'Worst close', color: 'var(--muted)' },
+    { label: 'Oct 2 close', color: 'var(--s1)' },
+  ]}
+  height={470}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/airline-fuel-hedging-2026-10/airlines.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const rows = [...data.airlines].sort((a, b) => b.hedged - a.hedged).map((d) => ({ ...d, name: d.excluded ? `${d.short} *` : d.short }));
+  const HEADERS = ['EUROPE', 'UNITED STATES'];
+  const domain = HEADERS.flatMap((h) => [h, ...rows.filter((d) => (h === 'EUROPE') === (d.region === 'Europe')).map((d) => d.name)]);
+  const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+  const fmt = (d: string) => new Date(`${d}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+  mount(document.querySelector<HTMLElement>('#share-range .plot')!, (width, t) => {
+    const now = getComputedStyle(document.documentElement).getPropertyValue('--s1').trim();
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 470,
+      marginLeft: narrow ? 104 : 120,
+      marginRight: 46,
+      x: { label: null, domain: [-40, 50], tickFormat: (d) => `${d > 0 ? '+' : ''}${d}%` },
+      y: { label: null, domain, padding: 0.3, tickSize: 0, tickFormat: (d) => (HEADERS.includes(d) ? '' : d) },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        Plot.link(rows, { x1: 'low_pct', x2: 'change_pct', y1: 'name', y2: 'name', stroke: t.axis, strokeWidth: 2 }),
+        Plot.dot(rows, { x: 'low_pct', y: 'name', r: 4.5, fill: t.surface, stroke: t.muted, strokeWidth: 2 }),
+        Plot.dot(rows, { x: 'change_pct', y: 'name', r: 5, fill: now, stroke: t.surface, strokeWidth: 2 }),
+        Plot.text(rows, { x: 'change_pct', y: 'name', text: (d) => pct(d.change_pct), dx: 10, textAnchor: 'start', fill: t.ink2, fontSize: 11.5 }),
+        Plot.text(HEADERS, { x: -40, y: (d) => d, text: (d) => d, textAnchor: 'start', dy: 4, fill: t.muted, fontSize: 10.5, fontWeight: 700 }),
+        Plot.tip(
+          rows,
+          Plot.pointerY({
+            x: 'change_pct',
+            y: 'name',
+            ...tipStyle(t),
+            title: (d) =>
+              `${d.airline} · ${d.hedged}% hedged\nWorst close: ${pct(d.low_pct)} on ${fmt(d.low_date)}\nOct 2: ${pct(d.change_pct)}${d.excluded ? `\n${d.excluded}` : ''}`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

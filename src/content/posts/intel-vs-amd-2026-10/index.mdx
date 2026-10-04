@@ -13,6 +13,7 @@ import ValueBars from '../../../components/charts/ValueBars.astro';
 import BudgetFrontier from '../../../components/charts/BudgetFrontier.astro';
 import StockWatch from '../../../components/StockWatch.astro';
 import CpuTable from '../../../components/CpuTable.astro';
+import snapshot from '../../../data/intel-vs-amd-2026-10/stocks_snapshot.json';
 
 **Short answer: for multi-threaded work, Intel is clearly the better value right now.** Its current desktop chips deliver
 a median of 203 PassMark points per dollar, against 109 for AMD. In every budget up to about $650, the fastest chip you can
@@ -26,7 +27,14 @@ Each company's share price is frozen at the last close before this post (Friday,
 out on a Saturday). The live price is fetched every time the page loads, so the difference below is always current.
 Nothing here suggests that CPU prices drive share prices; it only shows how both companies have moved since.
 
-<StockWatch />
+<StockWatch
+  snapshot={snapshot}
+  tickers={[
+    { symbol: 'INTC', name: 'Intel', color: 'var(--intel)' },
+    { symbol: 'AMD', name: 'AMD', color: 'var(--amd)' },
+  ]}
+  title="Share price since July, indexed to publication day"
+/>
 
 ## What was compared
 

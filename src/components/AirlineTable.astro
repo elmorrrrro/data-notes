@@ -1,0 +1,135 @@
+---
+// The table view behind the fuel hedging charts. Click a column header to sort.
+import data from '../data/airline-fuel-hedging-2026-10/airlines.json';
+
+const rows = [...data.airlines].sort((a, b) => b.hedged - a.hedged);
+const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+const pts = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}`;
+---
+
+<div class="table-wrap card">
+  <table id="airline-table">
+    <thead>
+      <tr>
+        <th data-key="name" data-type="text">Airline</th>
+        <th data-key="region" data-type="text">Region</th>
+        <th data-key="hedged" class="r" aria-sort="descending">Hedged</th>
+        <th data-type="none">For</th>
+        <th data-type="none">Next period</th>
+        <th data-key="low" class="r">Worst close</th>
+        <th data-key="change" class="r">Since Feb 27</th>
+        <th data-key="vs" class="r">vs market (pts)</th>
+        <th data-type="none">Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((d) => (
+          <tr data-name={d.short} data-region={d.region} data-hedged={d.hedged} data-low={d.low_pct} data-change={d.change_pct} data-vs={d.vs_market_pts}>
+            <td>
+              <strong>{d.short}</strong> <span class="muted">{d.ticker}</span>
+            </td>
+            <td>{d.region}</td>
+            <td class="r num strong">{d.hedged}%</td>
+            <td>{d.period}</td>
+            <td>
+              {d.next_hedged} <span class="muted">· {d.next_period}</span>
+            </td>
+            <td class="r num">{pct(d.low_pct)}</td>
+            <td class="r num">
+              {pct(d.change_pct)}
+              {d.excluded && <span title={d.excluded}> *</span>}
+            </td>
+            <td class="r num">{pts(d.vs_market_pts)}</td>
+            <td>
+              <a href={d.url} rel="noopener">{d.source.split(',')[0]}</a>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+<p class="muted note">* easyJet: takeover bids from Castlelake and Apollo in July 2026 moved the share price; it is left out of group averages.</p>
+
+<script>
+  const table = document.getElementById('airline-table') as HTMLTableElement;
+  const body = table.tBodies[0];
+  table.querySelectorAll<HTMLTableCellElement>('th[data-key]').forEach((th) => {
+    th.tabIndex = 0;
+    const sort = () => {
+      const key = th.dataset.key!;
+      const desc = th.getAttribute('aria-sort') !== 'descending';
+      table.querySelectorAll('th').forEach((h) => h.removeAttribute('aria-sort'));
+      th.setAttribute('aria-sort', desc ? 'descending' : 'ascending');
+      const value = (tr: HTMLTableRowElement) => (th.dataset.type === 'text' ? tr.dataset[key]! : Number(tr.dataset[key]));
+      const rows = [...body.rows].sort((a, b) => {
+        const [x, y] = [value(a), value(b)];
+        const c = typeof x === 'string' ? x.localeCompare(y as string) : x - (y as number);
+        return desc ? -c : c;
+      });
+      body.append(...rows);
+    };
+    th.addEventListener('click', sort);
+    th.addEventListener('keydown', (e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), sort()));
+  });
+</script>
+
+<style>
+  .table-wrap {
+    margin: 1.5em 0 0.6em;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+  th,
+  td {
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--grid);
+  }
+  th {
+    font-weight: 600;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+  th[data-key] {
+    cursor: pointer;
+    user-select: none;
+  }
+  th[data-key]:hover {
+    color: var(--ink);
+  }
+  th[aria-sort='descending']::after {
+    content: ' ↓';
+  }
+  th[aria-sort='ascending']::after {
+    content: ' ↑';
+  }
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  tbody tr:hover {
+    background: var(--page);
+  }
+  .r {
+    text-align: right;
+  }
+  .strong {
+    font-weight: 650;
+  }
+  td a {
+    text-decoration: none;
+  }
+  td a:hover {
+    text-decoration: underline;
+  }
+  .note {
+    font-size: 0.8rem;
+    margin: 0 4px 1.5em;
+  }
+</style>

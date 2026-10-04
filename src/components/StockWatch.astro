@@ -1,32 +1,51 @@
 ---
-// Share prices frozen at publication (stocks_snapshot.json, from snapshot_stocks.py)
+// Share prices frozen at publication (a study's stocks_snapshot.json, from its snapshot_stocks.py)
 // compared with live prices from /api/quote. Falls back to the snapshot if the API fails.
+// Works for any tickers in ALLOWED (src/pages/api/quote.ts); each needs a CSS color.
+// Currency and exchange time zone come from the snapshot per ticker (US dollars and New York time if missing).
 import Figure from './charts/Figure.astro';
-import snapshot from '../data/intel-vs-amd-2026-10/stocks_snapshot.json';
+import { money } from '../lib/money';
 
-const tickers = [
-  { symbol: 'INTC', brand: 'intel', name: 'Intel' },
-  { symbol: 'AMD', brand: 'amd', name: 'AMD' },
-] as const;
+interface Snapshot {
+  post_date: string;
+  tickers: Record<
+    string,
+    { currency?: string; tz?: string; tz_label?: string; close_date: string; close: number; history: { date: string; close: number }[] }
+  >;
+}
+interface Props {
+  snapshot: Snapshot;
+  /** In display order; `color` is any CSS color, usually a theme variable such as 'var(--intel)'. */
+  tickers: { symbol: string; name: string; color: string }[];
+  id?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const { snapshot, tickers, id = 'stock-chart', title = 'Share price, indexed to publication day', subtitle } = Astro.props;
 const fmtDate = (d: string) =>
   new Date(`${d}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const first = snapshot.tickers[tickers[0].symbol];
+const config = JSON.stringify({ chartId: id, symbols: tickers.map((t) => t.symbol), names: Object.fromEntries(tickers.map((t) => [t.symbol, t.name])), snapshot });
+// Each ticker's color becomes --c0, --c1, ... on the root, so tiles and the chart resolve it per theme.
+const colorVars = tickers.map((t, i) => `--c${i}: ${t.color}`).join('; ');
 ---
 
-<section class="stocks" aria-label="Share prices">
-  <div class="tiles">
+<section class="stocks" aria-label="Share prices" data-stockwatch={config} style={`${colorVars}; --n: ${tickers.length}`}>
+  <div class:list={['tiles', { compact: tickers.length > 2 }]}>
     {
-      tickers.map((t) => {
+      tickers.map((t, i) => {
         const s = snapshot.tickers[t.symbol];
         return (
-          <div class={`tile card ${t.brand}`} data-symbol={t.symbol}>
+          <div class="tile card" data-symbol={t.symbol} style={`--c: var(--c${i})`}>
             <p class="label">
-              <span class="swatch" style={`background: var(--${t.brand})`} />
+              <span class="swatch" style="background: var(--c)" />
               {t.name} {t.symbol !== t.name && <span class="muted">{t.symbol}</span>}
             </p>
             <div class="row">
               <div>
                 <p class="cap">At publication</p>
-                <p class="price">${s.close.toFixed(2)}</p>
+                <p class="price">{money(s.close, s.currency)}</p>
                 <p class="when">{fmtDate(s.close_date)} close</p>
               </div>
               <div class="arrow" aria-hidden="true">→</div>
@@ -53,115 +72,137 @@ const fmtDate = (d: string) =>
 </section>
 
 <Figure
-  id="stock-chart"
-  title="Share price since July, indexed to publication day"
-  subtitle={`Closing price ÷ close on ${fmtDate(snapshot.tickers.INTC.close_date)} × 100. Above 100 means the stock is up since this study was published.`}
+  id={id}
+  title={title}
+  subtitle={subtitle ?? `Closing price ÷ close on ${fmtDate(first.close_date)} × 100. Above 100 means the stock is up since this study was published.`}
   source="Source: Yahoo Finance daily closes. Live data refreshes on page load."
   height={300}
+  legendItems={tickers.map((t) => ({ label: t.name, color: t.color }))}
 />
 
 <script>
   import * as Plot from '@observablehq/plot';
-  import snapshot from '../data/intel-vs-amd-2026-10/stocks_snapshot.json';
   import { mount, base, tipStyle } from '../lib/chart';
+  import { money } from '../lib/money';
 
   type Point = { date: string; close: number };
-  const SYMBOLS = ['INTC', 'AMD'] as const;
-  const BRAND = { INTC: 'Intel', AMD: 'AMD' } as const;
-  const HISTORY_FROM = snapshot.tickers.INTC.history[0].date;
-  const PUBLISHED = snapshot.tickers.INTC.close_date;
-
-  let history: Record<string, Point[]> = Object.fromEntries(SYMBOLS.map((s) => [s, snapshot.tickers[s].history]));
-
-  const indexed = () =>
-    SYMBOLS.flatMap((s) => {
-      const ref = snapshot.tickers[s].close;
-      return history[s].map((p) => ({ symbol: s, brand: BRAND[s], date: new Date(`${p.date}T12:00:00Z`), close: p.close, index: (p.close / ref) * 100 }));
-    });
-
-  const rerender = mount(document.querySelector<HTMLElement>('#stock-chart .plot')!, (width, t) => {
-    const rows = indexed();
-    const last = SYMBOLS.map((s) => rows.filter((r) => r.symbol === s).at(-1)!);
-    // End labels only when the lines end far enough apart; otherwise legend + tooltip carry identity.
-    const values = rows.map((r) => r.index);
-    const pxPerUnit = 240 / (Math.max(...values) - Math.min(...values));
-    const endLabels = Math.abs(last[0].index - last[1].index) * pxPerUnit >= 14 ? last : [];
-    return Plot.plot({
-      ...base(t, width),
-      height: 300,
-      marginRight: 52,
-      x: { type: 'utc', label: null },
-      y: { label: '↑ Index (publication = 100)', nice: true },
-      color: { domain: ['Intel', 'AMD'], range: [t.intel, t.amd] },
-      marks: [
-        Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
-        Plot.ruleY([100], { stroke: t.axis }),
-        Plot.ruleX([new Date(`${PUBLISHED}T12:00:00Z`)], { stroke: t.muted, strokeWidth: 1 }),
-        Plot.text([new Date(`${PUBLISHED}T12:00:00Z`)], { x: (d) => d, frameAnchor: 'top', text: () => 'Published', dx: -6, dy: 2, textAnchor: 'end', fill: t.muted, fontSize: 11 }),
-        Plot.line(rows, { x: 'date', y: 'index', z: 'symbol', stroke: 'brand', strokeWidth: 2 }),
-        Plot.dot(last, { x: 'date', y: 'index', fill: 'brand', r: 4.5, stroke: t.surface, strokeWidth: 2 }),
-        Plot.text(endLabels, { x: 'date', y: 'index', text: 'symbol', dx: 10, textAnchor: 'start', fill: t.ink2, fontSize: 11.5 }),
-        Plot.tip(
-          rows,
-          Plot.pointerX({
-            x: 'date',
-            y: 'index',
-            ...tipStyle(t),
-            title: (d) => `${d.symbol} · ${d.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}\n$${d.close.toFixed(2)} · index ${d.index.toFixed(1)}`,
-          }),
-        ),
-      ],
-    });
-  });
+  type Config = {
+    chartId: string;
+    symbols: string[];
+    names: Record<string, string>;
+    snapshot: {
+      tickers: Record<string, { currency?: string; tz?: string; tz_label?: string; close_date: string; close: number; history: Point[] }>;
+    };
+  };
 
   const sign = (n: number) => (n > 0 ? '+' : n < 0 ? '−' : '');
+  const MIN_LABEL_GAP = 14; // px between end labels
 
-  function showTile(symbol: string, price: number, time: Date) {
-    const tile = document.querySelector<HTMLElement>(`.tile[data-symbol="${symbol}"]`)!;
-    const snap = snapshot.tickers[symbol as keyof typeof snapshot.tickers];
-    const diff = price - snap.close;
-    const pct = (price / snap.close - 1) * 100;
-    const dir = Math.abs(diff) < 0.005 ? 'flat' : diff > 0 ? 'up' : 'down';
-    // Exchange-local date of the latest trade; equal to the snapshot date means no session since publication.
-    const tradeDay = time.toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  function init(root: HTMLElement) {
+    const { chartId, symbols, names, snapshot } = JSON.parse(root.dataset.stockwatch!) as Config;
+    const tickers = snapshot.tickers;
+    const historyFrom = tickers[symbols[0]].history[0].date;
+    const published = new Date(`${tickers[symbols[0]].close_date}T12:00:00Z`);
+    const history: Record<string, Point[]> = Object.fromEntries(symbols.map((s) => [s, tickers[s].history]));
+    const color = (i: number) => getComputedStyle(root).getPropertyValue(`--c${i}`).trim();
 
-    tile.querySelector('[data-now]')!.textContent = `$${price.toFixed(2)}`;
-    tile.querySelector('[data-when]')!.textContent = `Last trade ${time.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' })} ET`;
-    const diffEl = tile.querySelector<HTMLElement>('[data-diff]')!;
-    diffEl.textContent = `${sign(diff)}$${Math.abs(diff).toFixed(2)}`;
-    diffEl.dataset.dir = dir;
-    const delta = tile.querySelector<HTMLElement>('[data-delta]')!;
-    delta.dataset.dir = dir;
-    delta.textContent = `${dir === 'up' ? '▲' : dir === 'down' ? '▼' : '■'} ${sign(pct)}${Math.abs(pct).toFixed(2)}%`;
-    tile.querySelector('[data-note]')!.textContent =
-      tradeDay <= snap.close_date ? 'No trading session since publication yet. This updates from the next market open.' : '';
-  }
+    const indexed = () =>
+      symbols.flatMap((s) => {
+        const ref = tickers[s].close;
+        return history[s].map((p) => ({ symbol: s, date: new Date(`${p.date}T12:00:00Z`), close: p.close, index: (p.close / ref) * 100 }));
+      });
 
-  async function loadLive() {
-    const status = document.querySelector<HTMLElement>('[data-status]')!;
-    try {
-      const res = await fetch(`/api/quote?symbols=${SYMBOLS.join(',')}&from=${HISTORY_FROM}`);
-      const body = await res.json();
-      if (!res.ok) throw new Error(body.error ?? res.statusText);
-      for (const s of SYMBOLS) {
-        const q = body.quotes[s];
-        showTile(s, q.price, new Date(q.time));
-        if (q.history.length) history[s] = q.history;
+    const rerender = mount(document.querySelector<HTMLElement>(`#${chartId} .plot`)!, (width, t) => {
+      const rows = indexed();
+      const values = rows.map((r) => r.index);
+      const pxPerUnit = 240 / (Math.max(...values) - Math.min(...values));
+      // End labels, pushed apart vertically so they never overlap; the legend and tooltip also carry identity.
+      const last = symbols.map((s) => rows.filter((r) => r.symbol === s).at(-1)!);
+      const labels = [...last].sort((a, b) => b.index - a.index).map((d) => ({ ...d, labelY: d.index }));
+      for (let i = 1; i < labels.length; i++) {
+        const gap = (labels[i - 1].labelY - labels[i].labelY) * pxPerUnit;
+        if (gap < MIN_LABEL_GAP) labels[i].labelY = labels[i - 1].labelY - MIN_LABEL_GAP / pxPerUnit;
       }
-      rerender();
-      status.textContent = `Live prices from ${body.source}, fetched ${new Date(body.fetchedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}.`;
-    } catch (err) {
-      for (const s of SYMBOLS) {
-        const tile = document.querySelector<HTMLElement>(`.tile[data-symbol="${s}"]`)!;
-        tile.querySelector('[data-now]')!.textContent = '—';
-        tile.querySelector('[data-when]')!.textContent = 'Unavailable';
-        tile.querySelector('[data-diff]')!.textContent = '—';
-      }
-      status.textContent = `Live prices are unavailable right now (${(err as Error).message}). Showing the publication snapshot.`;
+      return Plot.plot({
+        ...base(t, width),
+        height: 300,
+        marginRight: 52,
+        x: { type: 'utc', label: null },
+        y: { label: '↑ Index (publication = 100)', nice: true },
+        color: { domain: symbols, range: symbols.map((_, i) => color(i)) },
+        marks: [
+          Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
+          Plot.ruleY([100], { stroke: t.axis }),
+          Plot.ruleX([published], { stroke: t.muted, strokeWidth: 1 }),
+          Plot.text([published], { x: (d) => d, frameAnchor: 'top', text: () => 'Published', dx: -6, dy: 2, textAnchor: 'end', fill: t.muted, fontSize: 11 }),
+          Plot.line(rows, { x: 'date', y: 'index', z: 'symbol', stroke: 'symbol', strokeWidth: 2 }),
+          Plot.dot(last, { x: 'date', y: 'index', fill: 'symbol', r: 4.5, stroke: t.surface, strokeWidth: 2 }),
+          Plot.text(labels, { x: 'date', y: 'labelY', text: (d) => names[d.symbol], dx: 10, textAnchor: 'start', fill: t.ink2, fontSize: 11.5 }),
+          Plot.tip(
+            rows,
+            Plot.pointerX({
+              x: 'date',
+              y: 'index',
+              ...tipStyle(t),
+              title: (d) =>
+                `${names[d.symbol]} · ${d.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}\n${money(d.close, tickers[d.symbol].currency)} · index ${d.index.toFixed(1)}`,
+            }),
+          ),
+        ],
+      });
+    });
+
+    function showTile(symbol: string, price: number, time: Date) {
+      const tile = root.querySelector<HTMLElement>(`.tile[data-symbol="${symbol}"]`)!;
+      const snap = tickers[symbol];
+      const { currency = 'USD', tz: timeZone = 'America/New_York', tz_label: tzLabel = 'ET' } = snap;
+      const diff = price - snap.close;
+      const pct = (price / snap.close - 1) * 100;
+      const dir = Math.abs(diff) < 0.005 ? 'flat' : diff > 0 ? 'up' : 'down';
+      // Exchange-local date of the latest trade; equal to the snapshot date means no session since publication.
+      const tradeDay = time.toLocaleDateString('en-CA', { timeZone });
+
+      tile.querySelector('[data-now]')!.textContent = money(price, currency);
+      tile.querySelector('[data-when]')!.textContent =
+        `Last trade ${time.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone })} ${tzLabel}`;
+      const diffEl = tile.querySelector<HTMLElement>('[data-diff]')!;
+      diffEl.textContent = `${sign(diff)}${money(Math.abs(diff), currency)}`;
+      diffEl.dataset.dir = dir;
+      const delta = tile.querySelector<HTMLElement>('[data-delta]')!;
+      delta.dataset.dir = dir;
+      delta.textContent = `${dir === 'up' ? '▲' : dir === 'down' ? '▼' : '■'} ${sign(pct)}${Math.abs(pct).toFixed(2)}%`;
+      tile.querySelector('[data-note]')!.textContent =
+        tradeDay <= snap.close_date ? 'No trading session since publication yet. This updates from the next market open.' : '';
     }
+
+    async function loadLive() {
+      const status = root.querySelector<HTMLElement>('[data-status]')!;
+      try {
+        const res = await fetch(`/api/quote?symbols=${symbols.join(',')}&from=${historyFrom}`);
+        const body = await res.json();
+        if (!res.ok) throw new Error(body.error ?? res.statusText);
+        for (const s of symbols) {
+          const q = body.quotes[s];
+          showTile(s, q.price, new Date(q.time));
+          if (q.history.length) history[s] = q.history;
+        }
+        rerender();
+        status.textContent = `Live prices from ${body.source}, fetched ${new Date(body.fetchedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}.`;
+      } catch (err) {
+        for (const s of symbols) {
+          const tile = root.querySelector<HTMLElement>(`.tile[data-symbol="${s}"]`)!;
+          tile.querySelector('[data-now]')!.textContent = '—';
+          tile.querySelector('[data-when]')!.textContent = 'Unavailable';
+          tile.querySelector('[data-diff]')!.textContent = '—';
+        }
+        status.textContent = `Live prices are unavailable right now (${(err as Error).message}). Showing the publication snapshot.`;
+      }
+    }
+
+    loadLive();
   }
 
-  loadLive();
+  document.querySelectorAll<HTMLElement>('[data-stockwatch]').forEach(init);
 </script>
 
 <style>
@@ -174,18 +215,38 @@ const fmtDate = (d: string) =>
   }
   @media (min-width: 640px) {
     .tiles {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(var(--n), 1fr);
     }
   }
   .tile {
-    --c: var(--intel);
     position: relative;
     overflow: hidden;
     padding: 22px 22px 18px;
     background: linear-gradient(180deg, color-mix(in srgb, var(--c) 6%, var(--surface)), var(--surface) 60%);
   }
-  .tile.amd {
-    --c: var(--amd);
+  /* Three or more tiles in a row: tighter type so both prices fit side by side. */
+  @media (min-width: 640px) {
+    .compact .tile {
+      padding: 18px 16px 14px;
+    }
+    .compact .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .compact .arrow {
+      display: none;
+    }
+    .compact .cap {
+      white-space: nowrap;
+    }
+    .compact .price {
+      font-size: 1.4rem;
+    }
+    .compact .diff-value {
+      font-size: 1.3rem;
+    }
   }
   .tile::before {
     content: '';

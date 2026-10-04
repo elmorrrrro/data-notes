@@ -1,0 +1,51 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="brent-line"
+  title="Brent crude, 2026"
+  subtitle="US dollars per barrel, daily close of the front-month futures contract."
+  source="Source: Yahoo Finance (BZ=F). Event dates: Wikipedia, 2026 Iran war fuel crisis."
+  legend={false}
+  height={300}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/airline-fuel-hedging-2026-10/airlines.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const day = (d: string) => new Date(`${d}T12:00:00Z`);
+  const rows = data.brent.history.map((p) => ({ date: day(p.date), close: p.close }));
+  const s = data.brent.summary;
+  const peak = { date: day(s.peak_date), close: s.peak };
+  const events = [
+    { date: day('2026-02-28'), label: 'Strikes on Iran' },
+    { date: day('2026-04-08'), label: 'Ceasefire' },
+  ];
+  const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+  mount(document.querySelector<HTMLElement>('#brent-line .plot')!, (width, t) => {
+    const line = getComputedStyle(document.documentElement).getPropertyValue('--s2').trim();
+    return Plot.plot({
+      ...base(t, width),
+      height: 300,
+      marginRight: 20,
+      x: { type: 'utc', label: null },
+      y: { label: '↑ $ per barrel', domain: [50, 130], grid: false },
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.ruleX(events, { x: 'date', stroke: t.axis, strokeDasharray: '3,3' }),
+        // Event labels sit in the empty band under the line, staggered so they never touch on narrow screens.
+        ...events.map((e, i) =>
+          Plot.text([e], { x: 'date', text: 'label', frameAnchor: 'bottom', dx: 6, dy: -6 - i * 16, textAnchor: 'start', fill: t.muted, fontSize: 11 }),
+        ),
+        Plot.line(rows, { x: 'date', y: 'close', stroke: line, strokeWidth: 2 }),
+        Plot.dot([peak], { x: 'date', y: 'close', fill: line, r: 4.5, stroke: t.surface, strokeWidth: 2 }),
+        Plot.text([peak], { x: 'date', y: 'close', text: (d) => `$${d.close.toFixed(0)} peak`, dx: 8, textAnchor: 'start', fill: t.ink2, fontSize: 11.5 }),
+        Plot.tip(rows, Plot.pointerX({ x: 'date', y: 'close', ...tipStyle(t), title: (d) => `${fmt(d.date)}\n$${d.close.toFixed(2)} a barrel` })),
+      ],
+    });
+  });
+</script>
