@@ -1,0 +1,34 @@
+ticker,company,ipo_date,offer_price,shares_after_ipo,value_at_offer_bn,quarter_end,run_rate_bn,quarter_growth,ps_run_rate,first_close,ret_offer_1y,ret_first_1y,qqq_1y,ret_offer_3y,ret_first_3y,qqq_3y,prospectus
+GRPN,Groupon,2011-11-04,20.0,637803328,12.7561,2011-09-30,1.7206,,7.4135,26.11,-0.8085,-0.8533,0.1396,-0.608,-0.6997,0.824,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1490281&type=424B4
+META,Facebook (Meta),2012-05-18,38.0,2138085037,81.2472,2012-03-31,4.232,,19.1983,38.23,-0.3092,-0.3134,0.2378,1.1284,1.1156,0.8835,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1326801&type=424B4
+WDAY,Workday,2012-10-12,28.0,160290031,4.4881,2012-07-31,0.2508,1.0813,17.8946,48.69,1.9179,0.678,0.205,1.7682,0.5919,0.6659,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1327811&type=424B4
+BABA,Alibaba,2014-09-19,68.0,2465005966,167.6204,2014-06-30,10.2836,0.4633,16.2997,93.89,-0.0331,-0.2997,0.0651,1.6481,0.9179,0.5055,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1577552&type=424B4
+XYZ,Square (Block),2015-11-19,9.0,327944711,2.9515,2015-09-30,1.3288,,2.2213,13.07,0.3511,-0.0696,0.0433,5.9967,3.8179,0.4668,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1512673&type=424B4
+SNAP,Snap,2017-03-02,17.0,1157213232,19.6726,2016-12-31,0.6627,,29.6843,24.48,0.0594,-0.2643,0.2808,-0.1535,-0.4122,0.6979,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1564408&type=424B4
+DBX,Dropbox,2018-03-23,21.0,391903011,8.23,2017-12-31,1.222,,6.7348,28.48,0.0343,-0.2374,0.1362,0.3024,-0.0397,1.0457,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1467623&type=424B4
+LYFT,Lyft,2019-03-29,72.0,285877300,20.5832,2018-12-31,2.6783,,7.6853,78.29,-0.6167,-0.6475,0.0402,-0.4422,-0.487,1.1038,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1759509&type=424B4
+PINS,Pinterest,2019-04-18,19.0,529372774,10.0581,2018-12-31,1.0927,,9.2045,24.4,-0.0816,-0.2848,0.1587,0.1489,-0.1053,0.8404,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1506293&type=424B4
+ZM,Zoom,2019-04-18,36.0,256388371,9.23,2019-01-31,0.4232,,21.81,62.0,3.1683,1.4203,0.1587,1.9372,0.7055,0.8404,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1585521&type=424B4
+UBER,Uber,2019-05-10,45.0,1682521965,75.7135,2019-03-31,12.396,0.1993,6.1079,41.57,-0.2713,-0.2112,0.2259,-0.474,-0.4306,0.6554,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1543151&type=424B4
+CRWD,CrowdStrike,2019-06-12,34.0,196688971,6.6874,2019-04-30,0.3843,1.0317,17.4012,58.0,1.7388,0.6055,0.3047,3.98,1.9193,0.613,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1535527&type=424B4
+DDOG,Datadog,2019-09-19,27.0,289834665,7.8255,2019-06-30,0.3329,,23.508,37.55,2.1737,1.282,0.3951,2.4741,1.498,0.5392,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1561550&type=424B4
+PTON,Peloton,2019-09-26,29.0,279390508,8.1023,2019-06-30,0.8932,,9.0711,25.76,2.37,2.7939,0.4426,-0.7166,-0.6809,0.4745,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1639825&type=424B4
+SNOW,Snowflake,2020-09-16,120.0,276694828,33.2034,2020-07-31,0.5326,,62.3444,253.93,1.696,0.2741,0.3835,0.3534,-0.3604,0.3733,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1640147&type=424B4
+U,Unity,2020-09-18,52.0,263366733,13.6951,2020-06-30,0.7373,,18.574,68.35,1.6287,0.9999,0.4067,-0.3567,-0.5106,0.4146,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1810806&type=424B4
+DASH,DoorDash,2020-12-09,102.0,317656521,32.401,2020-09-30,3.516,,9.2153,189.51,0.6163,-0.1301,0.3137,-0.0196,-0.4723,0.3256,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1792789&type=424B4
+ABNB,Airbnb,2020-12-10,68.0,597448251,40.6265,2020-09-30,5.3693,,7.5664,144.71,1.6532,0.2468,0.3227,1.0688,-0.0278,0.3203,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1559720&type=424B4
+AFRM,Affirm,2021-01-13,49.0,242746771,11.8946,2020-09-30,0.6959,,17.0921,96.365,0.472,-0.2515,0.2007,-0.1471,-0.5663,0.3208,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1820953&type=424B4
+BMBL,Bumble,2021-02-11,43.0,184613467,7.9384,2020-09-30,0.6492,,12.2279,70.31,-0.3465,-0.6003,0.0423,-0.6912,-0.8111,0.3314,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1830043&type=424B4
+CPNG,Coupang,2021-03-11,35.0,1715140797,60.0299,2020-12-31,15.214,,3.9457,49.25,-0.5023,-0.6463,0.0249,-0.4706,-0.6238,0.4017,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1834584&type=424B4
+PATH,UiPath,2021-04-21,56.0,519153731,29.0726,2021-01-31,0.8315,,34.9641,69.0,-0.6779,-0.7386,-0.0104,-0.6652,-0.7283,0.2457,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1734722&type=424B4
+S,SentinelOne,2021-06-30,35.0,256371279,8.973,2021-04-30,0.1496,,59.9879,42.5,-0.3334,-0.4511,-0.2048,-0.3986,-0.5047,0.3784,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1583708&type=424B4
+HOOD,Robinhood,2021-07-29,38.0,842404025,32.0114,2021-03-31,2.088,,15.3311,34.82,-0.7618,-0.7401,-0.1344,-0.4426,-0.3917,0.2908,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1783879&type=424B4
+TOST,Toast,2021-09-22,40.0,499332681,19.9733,2021-06-30,1.704,,11.7214,62.51,-0.5557,-0.7157,-0.2374,-0.3073,-0.5567,0.3297,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1650164&type=424B4
+GTLB,GitLab,2021-10-14,77.0,143014821,11.0121,2021-07-31,0.2325,,47.3624,103.89,-0.4555,-0.5964,-0.2844,-0.2861,-0.4709,0.3841,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1653482&type=424B4
+RIVN,Rivian,2021-11-10,78.0,868277142,67.7256,2021-09-30,0.004,,16931.4043,100.73,-0.5774,-0.6728,-0.2696,-0.8642,-0.8949,0.3464,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1874178&type=424B4
+MBLY,Mobileye,2022-10-26,21.0,795761905,16.711,2022-07-02,1.84,,9.0821,28.97,0.7343,0.2572,0.2449,-0.36,-0.5361,1.2629,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1910139&type=424B4
+ARM,Arm,2023-09-14,51.0,1026054856,52.3288,2023-06-30,2.7,,19.381,63.59,1.8896,1.3175,0.2686,3.6865,2.7586,0.9126,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1973239&type=424B4
+CART,Instacart (Maplebear),2023-09-19,30.0,276653464,8.2996,2023-06-30,2.864,,2.8979,33.7,0.3943,0.2412,0.314,0.5123,0.3463,0.9817,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1579091&type=424B4
+ALAB,Astera Labs,2024-03-20,36.0,152503008,5.4901,2023-12-31,0.2021,,27.1712,62.03,0.9158,0.1119,0.085,,,,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1736297&type=424B4
+RDDT,Reddit,2024-03-21,34.0,158993090,5.4058,2023-12-31,0.999,,5.4112,50.44,2.4029,1.2938,0.0834,,,,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1713445&type=424B4
+CRWV,CoreWeave,2025-03-28,40.0,464099446,18.564,2024-12-31,2.988,,6.2128,40.0,0.8702,0.8702,0.2055,,,,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1769628&type=424B4

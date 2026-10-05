@@ -1,0 +1,101 @@
+[
+ {
+  "ticker":"KO",
+  "company":"The Coca-Cola Company",
+  "market_cap_bn":368.5133492281,
+  "fiscal_year_end":"2025-12-31",
+  "revenue_bn":47.941,
+  "net_income_bn":13.107,
+  "cumulative_cap_bn":368.5133492281
+ },
+ {
+  "ticker":"PEP",
+  "company":"PepsiCo, Inc.",
+  "market_cap_bn":171.9657391663,
+  "fiscal_year_end":"2025-12-27",
+  "revenue_bn":93.925,
+  "net_income_bn":8.24,
+  "cumulative_cap_bn":540.4790883944
+ },
+ {
+  "ticker":"MCD",
+  "company":"McDonald's Corporation",
+  "market_cap_bn":164.0949941917,
+  "fiscal_year_end":"2025-12-31",
+  "revenue_bn":26.885,
+  "net_income_bn":8.563,
+  "cumulative_cap_bn":704.5740825861
+ },
+ {
+  "ticker":"SBUX",
+  "company":"Starbucks Corporation",
+  "market_cap_bn":107.9693989563,
+  "fiscal_year_end":"2025-09-28",
+  "revenue_bn":37.1844,
+  "net_income_bn":1.8564,
+  "cumulative_cap_bn":812.5434815424
+ },
+ {
+  "ticker":"NKE",
+  "company":"NIKE, Inc.",
+  "market_cap_bn":50.2460994861,
+  "fiscal_year_end":"2026-05-31",
+  "revenue_bn":46.398,
+  "net_income_bn":3.108,
+  "cumulative_cap_bn":862.7895810284
+ },
+ {
+  "ticker":"DIS",
+  "company":"The Walt Disney Company",
+  "market_cap_bn":176.4501387309,
+  "fiscal_year_end":"2025-09-27",
+  "revenue_bn":94.425,
+  "net_income_bn":12.404,
+  "cumulative_cap_bn":1039.2397197593
+ },
+ {
+  "ticker":"NFLX",
+  "company":"Netflix, Inc.",
+  "market_cap_bn":279.2337845067,
+  "fiscal_year_end":"2025-12-31",
+  "revenue_bn":45.183036,
+  "net_income_bn":10.981,
+  "cumulative_cap_bn":1318.473504266
+ },
+ {
+  "ticker":"BA",
+  "company":"The Boeing Company",
+  "market_cap_bn":152.8722409528,
+  "fiscal_year_end":"2025-12-31",
+  "revenue_bn":89.463,
+  "net_income_bn":2.235,
+  "cumulative_cap_bn":1471.3457452189
+ },
+ {
+  "ticker":"F",
+  "company":"Ford Motor Company",
+  "market_cap_bn":48.2499090918,
+  "fiscal_year_end":"2025-12-31",
+  "revenue_bn":187.267,
+  "net_income_bn":-8.182,
+  "cumulative_cap_bn":1519.5956543107
+ },
+ {
+  "ticker":"GM",
+  "company":"General Motors Company",
+  "market_cap_bn":68.6781291685,
+  "fiscal_year_end":"2025-12-31",
+  "revenue_bn":185.019,
+  "net_income_bn":2.78,
+  "cumulative_cap_bn":1588.2737834792
+ },
+ {
+  "ticker":"COST",
+  "company":"Costco Wholesale Corporation",
+  "market_cap_bn":408.0928537219,
+  "fiscal_year_end":"2025-08-31",
+  "revenue_bn":275.235,
+  "net_income_bn":8.099,
+  "cumulative_cap_bn":1996.3666372012
+ }
+]

@@ -1,0 +1,84 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="basket-stack"
+  title="What $2 trillion buys on the stock market"
+  subtitle="Market value and yearly revenue, in billions of dollars. Hover a segment for the company."
+  source="Sources: market values at the close on Oct 2, 2026 (Yahoo Finance); revenue from each company's latest 10-K (SEC EDGAR); Anthropic per CNBC and the FT (links in Methodology)."
+  legendItems={[
+    { label: 'Anthropic', color: 'var(--s2)' },
+    { label: '11 listed brands', color: 'var(--s1)' },
+  ]}
+  height={300}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import basket from '../../data/anthropic-ipo-2026-10/basket.json';
+  import stats from '../../data/anthropic-ipo-2026-10/stats.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const SHORT: Record<string, string> = {
+    KO: 'Coca-Cola', PEP: 'PepsiCo', MCD: "McDonald's", SBUX: 'Starbucks', NKE: 'Nike', DIS: 'Disney',
+    NFLX: 'Netflix', BA: 'Boeing', F: 'Ford', GM: 'GM', COST: 'Costco',
+  };
+  const ROWS = ['Anthropic, value', '11 brands, value', 'Anthropic, revenue', '11 brands, revenue'];
+  const a = stats.anthropic;
+  const [seriesH, target] = a.scenarios;
+  const b = (n: number) => `$${Math.round(n).toLocaleString('en-US')}B`;
+
+  type Seg = { row: string; who: string; value: number; ticker: string; anthropic: boolean; note: string };
+  const segs: Seg[] = [
+    { row: ROWS[0], who: 'Anthropic at the reported IPO price', value: target.valuation_bn, ticker: '', anthropic: true, note: `Series H in May 2026: ${b(seriesH.valuation_bn)}` },
+    ...basket.map((d) => ({ row: ROWS[1], who: SHORT[d.ticker], value: d.market_cap_bn, ticker: d.ticker, anthropic: false, note: `Net income: ${d.net_income_bn < 0 ? '−' : ''}$${Math.abs(d.net_income_bn).toFixed(1)}B` })),
+    { row: ROWS[2], who: 'Anthropic, latest quarter × 4', value: a.run_rate_bn, ticker: '', anthropic: true, note: 'Q2 2026 revenue $11.5B, preliminary' },
+    ...basket.map((d) => ({ row: ROWS[3], who: SHORT[d.ticker], value: d.revenue_bn, ticker: d.ticker, anthropic: false, note: `Fiscal year to ${d.fiscal_year_end}` })),
+  ];
+  // Stacked by hand so the labels and tooltips sit exactly on their segments.
+  const stacked = ROWS.flatMap((row) => {
+    let x = 0;
+    return segs.filter((s) => s.row === row).map((s) => ({ ...s, x1: x, x2: (x += s.value), mid: x - s.value / 2 }));
+  });
+  type Placed = (typeof stacked)[number];
+  const totals = ROWS.map((row) => ({ row, total: segs.filter((s) => s.row === row).reduce((x, s) => x + s.value, 0) }));
+
+  mount(document.querySelector<HTMLElement>('#basket-stack .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const [s1, s2] = ['--s1', '--s2'].map((v) => css.getPropertyValue(v).trim());
+    const narrow = width < 560;
+    const marginLeft = narrow ? 84 : 140;
+    const xMax = 2150;
+    // A name goes inside its segment only when the segment is wide enough on screen.
+    const px = (v: number) => (v / xMax) * (width - marginLeft - 20);
+    const fits = (s: Placed) => s.ticker && px(s.value) > (narrow ? s.ticker.length * 7 + 6 : SHORT[s.ticker].length * 6.4 + 10);
+    return Plot.plot({
+      ...base(t, width),
+      height: 300,
+      marginLeft,
+      marginRight: 20,
+      x: { label: null, domain: [0, xMax], tickFormat: (d: number) => `$${d.toLocaleString('en-US')}B`, ticks: narrow ? 3 : 5 },
+      y: { label: null, domain: ROWS, padding: 0.28, tickSize: 0, tickFormat: (d: string) => (narrow ? d.replace('Anthropic', 'Anthr.').replace(', ', '\n') : d) },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.barX(stacked, { x1: 'x1', x2: 'x2', y: 'row', fill: (d: Placed) => (d.anthropic ? s2 : s1), insetLeft: 1, insetRight: 1 }),
+        Plot.text(stacked.filter(fits), {
+          x: 'mid', y: 'row', text: (d: Placed) => (narrow ? d.ticker : SHORT[d.ticker]), fill: 'white', fontSize: narrow ? 10 : 11,
+        }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        Plot.text(totals.filter((d) => d.row.includes('revenue')), {
+          x: 'total', y: 'row', text: (d) => b(d.total), dx: 6, textAnchor: 'start', fill: t.ink, fontSize: 12, fontWeight: 600,
+        }),
+        Plot.tip(
+          stacked,
+          Plot.pointer({
+            x: 'mid', y: 'row', ...tipStyle(t),
+            title: (d: Placed) =>
+              `${d.who}${d.ticker ? ` (${d.ticker})` : ''}\n${d.row.includes('value') ? 'Market value' : 'Revenue'}: ${b(d.value)}\n${d.note}`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

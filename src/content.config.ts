@@ -14,6 +14,8 @@ const posts = defineCollection({
     accents: z.tuple([z.string(), z.string()]).optional(),
     // Tickers to compare "at publication vs now" on the post card; closes come from src/data/<slug>/stocks_snapshot.json.
     stocks: z.array(z.string()).default([]),
+    // A company with no listed shares yet: the card shows an "IPO expected" badge instead of prices.
+    ipo: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });

@@ -1,0 +1,69 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="cisco-index"
+  title="Cisco: the business grew, the share price waited 25 years"
+  subtitle="Yearly revenue and the share price at each fiscal year end (late July), both indexed to fiscal 2000 = 100."
+  source="Sources: Cisco 10-K filings and annual reports (SEC EDGAR); share prices from Yahoo Finance, split-adjusted, without dividends."
+  legendItems={[
+    { label: 'Revenue', color: 'var(--s1)' },
+    { label: 'Share price', color: 'var(--s3)' },
+  ]}
+  height={340}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import cisco from '../../data/anthropic-ipo-2026-10/cisco.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const base2000 = cisco.find((d) => d.fiscal_year === 2000)!;
+  const SERIES = ['Revenue', 'Share price'] as const;
+  const rows = cisco.flatMap((d) => [
+    { year: d.fiscal_year, series: SERIES[0], index: (d.revenue_bn / base2000.revenue_bn) * 100, raw: `$${d.revenue_bn.toFixed(1)}B` },
+    { year: d.fiscal_year, series: SERIES[1], index: (d.close_at_fy_end / base2000.close_at_fy_end) * 100, raw: `$${d.close_at_fy_end.toFixed(2)}` },
+  ]);
+  const last = rows.filter((d) => d.year === cisco.at(-1)!.fiscal_year);
+  const byYear = cisco.map((d) => ({
+    year: d.fiscal_year,
+    rev: rows.find((r) => r.year === d.fiscal_year && r.series === 'Revenue')!,
+    px: rows.find((r) => r.year === d.fiscal_year && r.series === 'Share price')!,
+  }));
+
+  mount(document.querySelector<HTMLElement>('#cisco-index .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const [s1, s3] = ['--s1', '--s3'].map((v) => css.getPropertyValue(v).trim());
+    const narrow = width < 560;
+    return Plot.plot({
+      ...base(t, width),
+      height: 340,
+      marginRight: narrow ? 62 : 90,
+      x: { label: null, tickFormat: (d: number) => `${d}`, ticks: narrow ? 4 : 8 },
+      y: { label: '↑ fiscal 2000 = 100', domain: [0, 360], grid: false },
+      color: { domain: [...SERIES], range: [s1, s3] },
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.ruleY([100], { stroke: t.axis, strokeDasharray: '3 4' }),
+        Plot.ruleX([2000], { stroke: t.axis, strokeDasharray: '3 4' }),
+        Plot.text([{ x: 2000, y: 352 }], { x: 'x', y: 'y', text: () => 'Fiscal 2000: the bubble peaks', dx: 6, textAnchor: 'start', fill: t.muted, fontSize: 11 }),
+        Plot.ruleY([0], { stroke: t.axis }),
+        Plot.line(rows, { x: 'year', y: 'index', stroke: 'series', strokeWidth: 2, curve: 'monotone-x' }),
+        Plot.dot(last, { x: 'year', y: 'index', fill: 'series', r: 4, stroke: t.surface, strokeWidth: 2 }),
+        Plot.text(last, {
+          x: 'year', y: 'index', dx: 8, textAnchor: 'start', fill: t.ink2, fontSize: 11.5, lineAnchor: 'middle',
+          text: (d) => `${d.series === 'Revenue' ? 'Revenue' : 'Price'}\n${Math.round(d.index)}`,
+        }),
+        Plot.ruleX(byYear, Plot.pointerX({ x: 'year', stroke: t.axis })),
+        Plot.tip(
+          byYear,
+          Plot.pointerX({
+            x: 'year', y: (d) => d.rev.index, ...tipStyle(t),
+            title: (d) => `Fiscal ${d.year}\nRevenue: ${d.rev.raw} (${Math.round(d.rev.index)})\nShare price: ${d.px.raw} (${Math.round(d.px.index)})`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

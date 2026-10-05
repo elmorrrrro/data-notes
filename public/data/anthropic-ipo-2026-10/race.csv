@@ -1,0 +1,5 @@
+ticker,company,incorporated,quarter_end,quarter_bn,run_rate_bn,previous_quarter_bn,years
+AMZN,Amazon,1994-07,2010-12-31,12.948,51.792,7.56,16.501
+GOOGL,Google,1998-09,2012-06-30,11.807,47.228,10.645,13.8289
+META,Facebook,2004-07,2017-12-31,12.972,51.888,10.328,13.5003
+ANTHROPIC,Anthropic,2021-01,2026-06-30,11.5,46.0,4.73,5.4921

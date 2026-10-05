@@ -1,0 +1,93 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="peer-scatter"
+  title="Faster growth buys a higher price, but only a little"
+  subtitle="Each dot is a listed US tech company: revenue growth over the past year, and its price-to-sales today. The dashed line is the best fit."
+  source="Sources: revenue from the last four quarters vs the four before (SEC EDGAR); market values at the close on Oct 2, 2026 (Yahoo Finance)."
+  legendItems={[
+    { label: 'Listed tech company', color: 'var(--s1)' },
+    { label: 'Anthropic, at both prices', color: 'var(--s2)' },
+  ]}
+  height={420}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import peers from '../../data/anthropic-ipo-2026-10/peers.json';
+  import stats from '../../data/anthropic-ipo-2026-10/stats.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const fit = stats.peers_growth_vs_ps;
+  const a = stats.anthropic;
+  const [seriesH, target] = a.scenarios;
+  const X_MAX = 2;
+  const line = Array.from({ length: 41 }, (_, i) => {
+    const g = (i / 40) * X_MAX;
+    return { g, ps: Math.exp(fit.intercept + fit.slope * g) };
+  });
+  const SHORT: Record<string, string> = {
+    NVDA: 'Nvidia', MU: 'Micron', PLTR: 'Palantir', CRWD: 'CrowdStrike', NET: 'Cloudflare', AAPL: 'Apple', SMCI: 'Supermicro',
+    ALAB: 'Astera Labs', CRWV: 'CoreWeave', IBM: 'IBM', DELL: 'Dell', INTC: 'Intel',
+  };
+  const LABELS: Record<string, 'right' | 'left' | 'above' | 'below'> = {
+    NVDA: 'below', MU: 'above', PLTR: 'right', CRWD: 'below', NET: 'right', AAPL: 'above', SMCI: 'right',
+    ALAB: 'right', CRWV: 'below', IBM: 'below', DELL: 'below', INTC: 'left',
+  };
+  const NARROW: typeof LABELS = { MU: 'above', PLTR: 'right', SMCI: 'right', CRWV: 'below', ALAB: 'right' };
+  const PLACE = {
+    right: { dx: 9, dy: 0, textAnchor: 'start' },
+    left: { dx: -9, dy: 0, textAnchor: 'end' },
+    above: { dx: 0, dy: -12, textAnchor: 'middle' },
+    below: { dx: 0, dy: 13, textAnchor: 'middle' },
+  } as const;
+  const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.round(Math.abs(n) * 100).toLocaleString('en-US')}%`;
+  const anthropic = [
+    { ps: seriesH.ps_quarter_x4, label: `$965B: ${Math.round(seriesH.ps_quarter_x4)}×` },
+    { ps: target.ps_quarter_x4, label: `$2T: ${Math.round(target.ps_quarter_x4)}×` },
+  ];
+
+  mount(document.querySelector<HTMLElement>('#peer-scatter .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const [s1, s2] = ['--s1', '--s2'].map((v) => css.getPropertyValue(v).trim());
+    const narrow = width < 560;
+    return Plot.plot({
+      ...base(t, width),
+      height: 420,
+      marginRight: narrow ? 74 : 100,
+      marginBottom: 44,
+      x: { label: 'Revenue growth, past year →', labelOffset: 38, domain: [0, X_MAX], tickFormat: (d: number) => pct(d), ticks: narrow ? 4 : 5 },
+      y: { type: 'log', label: '↑ Price-to-sales (log scale)', domain: [0.6, 90] },
+      marks: [
+        // Tick labels drawn by hand: Plot's log axis blanks some of them (5× and 50×) even with explicit ticks.
+        Plot.axisY([1, 2, 5, 10, 20, 50], { tickFormat: () => '', label: '↑ Price-to-sales (log scale)' }),
+        Plot.text([1, 2, 5, 10, 20, 50], { y: (d) => d, frameAnchor: 'left', dx: -9, textAnchor: 'end', text: (d) => `${d}×`, fill: t.muted }),
+        Plot.gridY([1, 2, 5, 10, 20, 50], { stroke: t.grid, strokeOpacity: 1 }),
+        Plot.line(line, { x: 'g', y: 'ps', stroke: t.axis, strokeWidth: 1.5, strokeDasharray: '4 4' }),
+        Plot.dot(peers, { x: 'revenue_growth', y: 'ps_ttm', fill: s1, r: narrow ? 4.5 : 5.5, stroke: t.surface, strokeWidth: 2 }),
+        ...(['right', 'left', 'above', 'below'] as const).map((side) =>
+          Plot.text(peers.filter((d) => (narrow ? NARROW : LABELS)[d.ticker] === side), {
+            x: 'revenue_growth', y: 'ps_ttm', text: (d) => SHORT[d.ticker] ?? d.ticker, ...PLACE[side], fill: t.ink2, fontSize: 11,
+          }),
+        ),
+        // Anthropic grew far faster than the axis allows: pin it to the right edge, pointing off the chart.
+        Plot.dot(anthropic, { x: X_MAX, y: 'ps', fill: s2, r: 6, stroke: t.surface, strokeWidth: 2, symbol: 'triangle', rotate: 90 }),
+        Plot.text(anthropic, { x: X_MAX, y: 'ps', text: 'label', dx: 10, textAnchor: 'start', fill: t.ink, fontSize: 11.5, fontWeight: 600 }),
+        Plot.text([0], {
+          x: X_MAX, y: 75, text: () => `Anthropic grew ${pct(a.growth)}`, dx: 10, textAnchor: 'start', fill: t.ink, fontSize: 11.5,
+          fontWeight: 600, lineWidth: 6,
+        }),
+        Plot.tip(
+          peers,
+          Plot.pointer({
+            x: 'revenue_growth', y: 'ps_ttm', ...tipStyle(t),
+            title: (d) =>
+              `${d.company} (${d.ticker})\nMarket value: $${Math.round(d.market_cap_bn).toLocaleString('en-US')}B\nRevenue, last 4 quarters: $${d.revenue_ttm_bn.toFixed(1)}B\nGrowth: ${pct(d.revenue_growth)}\nPrice-to-sales: ${d.ps_ttm.toFixed(1)}×`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

@@ -1,0 +1,190 @@
+---
+// Scoreboard for the Anthropic IPO study: a verdict banner plus one card per valuation.
+import stats from '../data/anthropic-ipo-2026-10/stats.json';
+import basket from '../data/anthropic-ipo-2026-10/basket.json';
+
+const a = stats.anthropic;
+const { cisco, gdp } = stats.comparisons;
+const [seriesH, target] = a.scenarios;
+// How many brands, stacked in order, it takes to reach the valuation (within 1%).
+const brandsFor = (v: number) => basket.findIndex((d) => d.cumulative_cap_bn >= v * 0.99) + 1;
+const below = { 965: gdp.countries_below_965bn, 2000: gdp.countries_below_2000bn } as Record<number, number>;
+
+const cards = [
+  { css: 'h', name: '$965 billion', line: 'Series H funding round, May 2026', s: seriesH },
+  { css: 't', name: '$2 trillion', line: 'IPO price investors expect, per the FT', s: target },
+].map((c) => ({ ...c, brands: brandsFor(c.s.valuation_bn), countries: below[c.s.valuation_bn] }));
+---
+
+<section class="board" aria-label="Key numbers">
+  <div class="verdict">
+    <span class="eyebrow">The price tag</span>
+    <p class="headline">
+      At $2 trillion, Anthropic would cost <span class="big">{Math.round(target.ps_quarter_x4)}×</span> its revenue.
+      Cisco, at the very top of the dot-com bubble, cost {Math.round(cisco.ps_quarter_x4)}×.
+    </p>
+    <p class="sub">
+      Market value divided by the latest quarter's revenue × 4: ${a.run_rate_bn}B a year for Anthropic (Q2 2026), ${cisco.run_rate_bn}B
+      for Cisco (Q2 of fiscal 2000)
+    </p>
+  </div>
+
+  <div class="groups">
+    {
+      cards.map((c) => (
+        <div class={`group ${c.css}`}>
+          <p class="name">{c.name}</p>
+          <p class="line">{c.line}</p>
+          <p class="value">
+            {Math.round(c.s.ps_quarter_x4)}×
+            <span class="unit">revenue (price-to-sales)</span>
+          </p>
+          <dl>
+            <div>
+              <dt>Rank among {c.s.ipo_n} big tech IPOs</dt>
+              <dd>{c.s.ipo_rank === 4 ? '4th' : `${c.s.ipo_rank}th`} priciest</dd>
+            </div>
+            <div>
+              <dt>Costs about as much as</dt>
+              <dd>{c.brands} famous brands</dd>
+            </div>
+            <div>
+              <dt>Bigger than the GDP of</dt>
+              <dd>{c.countries} economies</dd>
+            </div>
+          </dl>
+        </div>
+      ))
+    }
+  </div>
+  <p class="foot">
+    Anthropic's revenue grew {Math.round(a.growth * 100).toLocaleString('en-US')}% in a year (Q2 2026 vs Q2 2025). No listed
+    tech company in this study grew faster than {Math.round(a.max_peer_growth * 100)}%.
+  </p>
+</section>
+
+<style>
+  .board {
+    display: grid;
+    gap: 14px;
+    margin: 2.2em 0;
+  }
+  .verdict {
+    padding: 26px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(110deg, var(--accent-1), var(--accent-2)) border-box;
+    box-shadow: var(--shadow);
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .headline {
+    margin: 6px 0 8px;
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .big {
+    font-weight: 700;
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .groups {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 620px) {
+    .groups {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .group {
+    --c: var(--accent-2);
+    position: relative;
+    padding: 22px 22px 18px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .group.t {
+    --c: var(--accent-1);
+  }
+  .group::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--c);
+  }
+  .name {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+  .line {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .value {
+    margin: 16px 0 4px;
+    font-family: var(--display);
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .unit {
+    display: block;
+    margin-top: 6px;
+    font-family: var(--font);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--muted);
+  }
+  dl {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 16px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  dt {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  dd {
+    margin: 2px 0 0;
+    font-size: 1rem;
+    font-weight: 650;
+  }
+  .foot {
+    margin: 0 4px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,178 @@
+{
+ "end_date": "2026-10-02",
+ "gone": [
+  "LinkedIn (2011, bought by Microsoft 2016)",
+  "Zynga (2011, bought by Take-Two 2022)",
+  "Twitter (2013, taken private 2022)",
+  "Qualtrics (2021, taken private 2023)",
+  "Confluent (2021, bought by IBM 2026)"
+ ],
+ "permutations": 20000,
+ "ipo_n": 33,
+ "ipo_n_fit": 32,
+ "ipo_vs_excess": {
+  "offer_1y": {
+   "n": 32,
+   "slope": 0.07972831153261764,
+   "intercept": -0.15674652603188421,
+   "r": 0.08684213535231876,
+   "r2": 0.0075415564725504515,
+   "p_pearson": 0.6368181590920454,
+   "spearman": 0.1063049853372434,
+   "p_spearman": 0.5633218339083046,
+   "slope_90ci": [
+    -0.14998633580767062,
+    0.3359173937005902
+   ]
+  },
+  "first_1y": {
+   "n": 32,
+   "slope": 0.016555441036062782,
+   "intercept": -0.3170281331302859,
+   "r": 0.019640010380215914,
+   "r2": 0.00038573000773498885,
+   "p_pearson": 0.9163541822908855,
+   "spearman": 0.020161290322580645,
+   "p_spearman": 0.9125043747812609,
+   "slope_90ci": [
+    -0.18025917870336614,
+    0.23951734588892973
+   ]
+  },
+  "offer_3y": {
+   "n": 29,
+   "slope": 0.009944152632037975,
+   "intercept": -0.3903841566420123,
+   "r": 0.009375894465234715,
+   "r2": 8.790739702321896e-05,
+   "p_pearson": 0.9630018499075046,
+   "spearman": 0.18669950738916252,
+   "p_spearman": 0.3264336783160842,
+   "slope_90ci": [
+    -0.32362162636650155,
+    0.45101147778475126
+   ]
+  },
+  "first_3y": {
+   "n": 29,
+   "slope": -0.04144820625859051,
+   "intercept": -0.5802197223052021,
+   "r": -0.042326601039669336,
+   "r2": 0.0017915411555713373,
+   "p_pearson": 0.8286085695715214,
+   "spearman": 0.15665024630541868,
+   "p_spearman": 0.42177891105444726,
+   "slope_90ci": [
+    -0.3396610739673334,
+    0.375865344402539
+   ]
+  }
+ },
+ "ipo_share_beating_qqq": {
+  "offer_1y": 0.5151515151515151,
+  "first_1y": 0.3333333333333333,
+  "offer_3y": 0.3,
+  "first_3y": 0.2
+ },
+ "ipo_median": {
+  "ps_run_rate": 15.33110773467433,
+  "first_day_pop": 0.37952377682640415,
+  "excess_first_1y": -0.32879921630955333,
+  "excess_first_3y": -0.6098305233622444,
+  "excess_offer_1y": 0.061173513265117,
+  "excess_offer_3y": -0.4273624187593428
+ },
+ "peers_growth_vs_ps": {
+  "n": 40,
+  "slope": 0.5926989084166729,
+  "intercept": 2.071448850508992,
+  "r": 0.20677194779753633,
+  "r2": 0.04275463839598709,
+  "p_pearson": 0.19529023548822558,
+  "spearman": 0.3814258911819888,
+  "p_spearman": 0.015549222538873057,
+  "slope_90ci": [
+   -0.16009465276627574,
+   1.6905654145910105
+  ]
+ },
+ "peers_median_ps": 10.103682092995463,
+ "anthropic": {
+  "run_rate_bn": 46.0,
+  "growth": 13.612452350698856,
+  "max_peer_growth": 1.6698015556147046,
+  "scenarios": [
+   {
+    "label": "Series H, May 2026",
+    "valuation_bn": 965.0,
+    "ps_quarter_x4": 20.97826086956522,
+    "ps_july_run_rate": 14.846153846153847,
+    "ipo_rank": 9,
+    "ipo_n": 32,
+    "times_largest_ipo": 5.7570556283952765,
+    "growth_line_needs": 1.6400196466323629
+   },
+   {
+    "label": "IPO target reported by the FT",
+    "valuation_bn": 2000.0,
+    "ps_quarter_x4": 43.47826086956522,
+    "ps_july_run_rate": 30.76923076923077,
+    "ipo_rank": 4,
+    "ipo_n": 32,
+    "times_largest_ipo": 11.931721509627517,
+    "growth_line_needs": 2.8696057785689537
+   }
+  ],
+  "sources": {
+   "quarters": "https://www.cnbc.com/2026/08/15/anthropic-revenue-jumps-to-over-11point5-billion-in-q2-report.html",
+   "run_rate": "https://www.cnbc.com/2026/08/17/anthropic-says-annualized-revenue-climbed-to-65-billion-in-july.html",
+   "series_h": "https://www.anthropic.com/news/series-h"
+  }
+ },
+ "comparisons": {
+  "basket": {
+   "n": 11,
+   "cap_bn": 1996.3666372011655,
+   "revenue_bn": 1128.925436,
+   "net_income_bn": 63.1914,
+   "n_to_reach_series_h": 6
+  },
+  "race": {
+   "target_run_rate_bn": 46.0
+  },
+  "cisco": {
+   "peak_date": "2000-03-27",
+   "peak_close": 80.0625,
+   "market_cap_bn": 555.444009721125,
+   "revenue_ttm_bn": 14.994,
+   "ps_ttm": 37.04441841544118,
+   "run_rate_bn": 17.4,
+   "ps_quarter_x4": 31.922069524202588,
+   "quarter_growth": 0.5289982425307558,
+   "low_date": "2002-10-08",
+   "low_close": 8.600000381469727,
+   "drawdown": -0.8925839140487778,
+   "regained_date": "2025-12-10",
+   "years_to_regain": 25.7056810403833,
+   "close_end": 112.1999969482422,
+   "total_return_since_peak": 1.1941879289568624,
+   "qqq_total_return_since_peak": 6.5625785612119705,
+   "latest_fiscal_year": 2026,
+   "revenue_multiple_since_2000": 3.345572696534235,
+   "sources": {
+    "q10": "https://www.sec.gov/Archives/edgar/data/858877/0000891618-00-001422.txt",
+    "k10_2000": "https://www.sec.gov/Archives/edgar/data/858877/000109581100003692/f65797e10-k.txt",
+    "ar_2004": "https://www.sec.gov/Archives/edgar/data/858877/000119312504158427/dex131.htm",
+    "ar_2009": "https://www.sec.gov/Archives/edgar/data/858877/000119312509190326/dex131.htm"
+   }
+  },
+  "gdp": {
+   "source": "https://www.imf.org/external/datamapper/NGDPD@WEO",
+   "countries": 190,
+   "rank_of_965bn": 23,
+   "rank_of_2000bn": 15,
+   "countries_below_965bn": 168,
+   "countries_below_2000bn": 176
+  }
+ }
+}

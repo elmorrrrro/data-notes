@@ -1,0 +1,79 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="ipo-scatter"
+  title="Pricier IPOs did no better and no worse"
+  subtitle="Each dot is a big US tech IPO since 2011: its price-to-sales at the offer price, and how the share did over its first 3 years against the Nasdaq-100, bought at the first day's close."
+  source="Sources: offer prices and share counts from each final prospectus (SEC Form 424B4); revenue from SEC filings; prices from Yahoo Finance (with dividends). Rivian, which had almost no revenue at its IPO, is off the scale."
+  legendItems={[
+    { label: 'Big tech IPO', color: 'var(--s1)' },
+    { label: 'Anthropic, at both prices', color: 'var(--s2)' },
+  ]}
+  height={420}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import ipos from '../../data/anthropic-ipo-2026-10/ipos.json';
+  import stats from '../../data/anthropic-ipo-2026-10/stats.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const rows = ipos.filter((d) => d.excess_first_3y != null && !d.pre_revenue && d.ps_run_rate < 1000);
+  const [seriesH, target] = stats.anthropic.scenarios;
+  const ruleAt = [
+    { x: seriesH.ps_quarter_x4, label: 'Anthropic at $965B', short: '$965B' },
+    { x: target.ps_quarter_x4, label: 'at $2T', short: '$2T' },
+  ];
+  type Side = 'right' | 'left' | 'above' | 'below' | 'aboveLeft';
+  const LABELS: Record<string, Side> = {
+    SNOW: 'above', S: 'below', GTLB: 'aboveLeft', PATH: 'right', SNAP: 'above', ARM: 'right', CRWD: 'left',
+    XYZ: 'right', GRPN: 'below', DDOG: 'right', BABA: 'left',
+  };
+  const NARROW: typeof LABELS = { SNOW: 'above', GTLB: 'aboveLeft', ARM: 'right', XYZ: 'right', PATH: 'below' };
+  const PLACE = {
+    right: { dx: 9, dy: 0, textAnchor: 'start' },
+    left: { dx: -9, dy: 0, textAnchor: 'end' },
+    above: { dx: 0, dy: -12, textAnchor: 'middle' },
+    below: { dx: 0, dy: 13, textAnchor: 'middle' },
+    aboveLeft: { dx: -2, dy: -12, textAnchor: 'end' },
+  } as const;
+  const short = (c: string) => c.replace(/ \(.*\)/, '');
+  const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.round(Math.abs(n) * 100)}%`;
+
+  mount(document.querySelector<HTMLElement>('#ipo-scatter .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const [s1, s2] = ['--s1', '--s2'].map((v) => css.getPropertyValue(v).trim());
+    const narrow = width < 560;
+    return Plot.plot({
+      ...base(t, width),
+      height: 420,
+      marginRight: 16,
+      marginBottom: 44,
+      x: { type: 'log', label: 'Price-to-sales at the IPO (log scale) →', labelOffset: 38, domain: [1.8, 75], ticks: [2, 5, 10, 20, 50], tickFormat: (d: number) => `${d}×` },
+      y: { label: '↑ 3 years vs Nasdaq-100', domain: [-1, 2.4], tickFormat: (d: number) => pct(d), ticks: 6 },
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.ruleY([0], { stroke: t.axis }),
+        Plot.text([0], { x: narrow ? 1.8 : 75, y: 0, text: () => 'matched the index', dy: -7, textAnchor: narrow ? 'start' : 'end', fill: t.muted, fontSize: 11 }),
+        Plot.ruleX(ruleAt, { x: 'x', stroke: s2, strokeWidth: 2, strokeDasharray: '4 3' }),
+        Plot.text(ruleAt, { x: 'x', y: 2.4, text: narrow ? 'short' : 'label', dx: -6, dy: narrow ? 30 : 4, textAnchor: 'end', fill: t.ink, fontSize: 11.5, fontWeight: 600 }),
+        Plot.dot(rows, { x: 'ps_run_rate', y: 'excess_first_3y', fill: s1, r: narrow ? 4.5 : 5.5, stroke: t.surface, strokeWidth: 2 }),
+        ...(['right', 'left', 'above', 'below', 'aboveLeft'] as const).map((side) =>
+          Plot.text(rows.filter((d) => (narrow ? NARROW : LABELS)[d.ticker] === side), {
+            x: 'ps_run_rate', y: 'excess_first_3y', text: (d) => short(d.company), ...PLACE[side], fill: t.ink2, fontSize: 11,
+          }),
+        ),
+        Plot.tip(
+          rows,
+          Plot.pointer({
+            x: 'ps_run_rate', y: 'excess_first_3y', ...tipStyle(t),
+            title: (d) =>
+              `${d.company}, IPO ${d.ipo_date}\nValue at offer: $${d.value_at_offer_bn.toFixed(1)}B\nPrice-to-sales: ${d.ps_run_rate.toFixed(1)}×\nFirst day: ${pct(d.first_day_pop)}\n3 years vs Nasdaq-100: ${pct(d.excess_first_3y)}`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

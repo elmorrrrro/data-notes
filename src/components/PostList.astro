@@ -38,6 +38,15 @@ const stocksFor = (p: CollectionEntry<'posts'>) => {
                 </a>
               ))}
             </div>
+            {p.data.ipo && (
+              <div class="stocks">
+                <div class="stock ipo" title={`${p.data.ipo} has no listed shares yet, so there is no price to track`}>
+                  <span class="pulse" aria-hidden="true" />
+                  <span class="sym">{p.data.ipo}</span>
+                  <span class="prices">IPO expected · not listed yet</span>
+                </div>
+              </div>
+            )}
             {stocks.length > 0 && (
               <div class="stocks" aria-label="Share price since publication">
                 {stocks.map((s) => (
@@ -168,6 +177,26 @@ const stocksFor = (p: CollectionEntry<'posts'>) => {
     font-size: 0.8rem;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+  }
+  .ipo {
+    padding-right: 12px;
+  }
+  .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-1, var(--muted));
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 0.35;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pulse {
+      animation: none;
+    }
   }
   .sym {
     font-weight: 700;

@@ -1,0 +1,135 @@
+---
+// The table view behind the IPO chart. Click a column header to sort.
+import ipos from '../data/anthropic-ipo-2026-10/ipos.json';
+
+const rows = [...ipos].sort((a, b) => b.ps_run_rate - a.ps_run_rate);
+const pct = (n: number | null) => (n == null ? '–' : `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.round(Math.abs(n) * 100)}%`);
+const num = (n: number | null) => (n == null ? '' : String(n));
+---
+
+<div class="table-wrap card">
+  <table id="ipo-table">
+    <thead>
+      <tr>
+        <th data-key="name" data-type="text">Company</th>
+        <th data-key="date" data-type="text">IPO</th>
+        <th data-key="value" class="r">Value at offer</th>
+        <th data-key="ps" class="r" aria-sort="descending">Price-to-sales</th>
+        <th data-key="pop" class="r">First day</th>
+        <th data-key="y1" class="r">1 year vs QQQ</th>
+        <th data-key="y3" class="r">3 years vs QQQ</th>
+        <th data-type="none">Prospectus</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((d) => (
+          <tr data-name={d.company} data-date={d.ipo_date} data-value={d.value_at_offer_bn} data-ps={d.ps_run_rate} data-pop={d.first_day_pop} data-y1={num(d.excess_first_1y)} data-y3={num(d.excess_first_3y)}>
+            <td>
+              <strong>{d.company}</strong> <span class="muted">{d.ticker}</span>
+            </td>
+            <td>{d.ipo_date}</td>
+            <td class="r num">${d.value_at_offer_bn.toFixed(1)}B</td>
+            <td class="r num strong">{d.ps_run_rate > 1000 ? '>1,000×' : `${d.ps_run_rate.toFixed(1)}×`}</td>
+            <td class="r num">{pct(d.first_day_pop)}</td>
+            <td class="r num">{pct(d.excess_first_1y)}</td>
+            <td class="r num">{pct(d.excess_first_3y)}</td>
+            <td>
+              <a href={d.prospectus} rel="noopener">424B4</a>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+<p class="muted note">
+  Returns are from the first day's close, with dividends, compared with the Nasdaq-100 (QQQ) over the same days. "–" means the
+  IPO is less than 3 years old.
+</p>
+
+<script>
+  const table = document.getElementById('ipo-table') as HTMLTableElement;
+  const body = table.tBodies[0];
+  table.querySelectorAll<HTMLTableCellElement>('th[data-key]').forEach((th) => {
+    th.tabIndex = 0;
+    const sort = () => {
+      const key = th.dataset.key!;
+      const desc = th.getAttribute('aria-sort') !== 'descending';
+      table.querySelectorAll('th').forEach((h) => h.removeAttribute('aria-sort'));
+      th.setAttribute('aria-sort', desc ? 'descending' : 'ascending');
+      // Empty cells (no 3-year return yet) always sort last.
+      const value = (tr: HTMLTableRowElement) =>
+        th.dataset.type === 'text' ? tr.dataset[key]! : tr.dataset[key] === '' ? NaN : Number(tr.dataset[key]);
+      const rows = [...body.rows].sort((a, b) => {
+        const [x, y] = [value(a), value(b)];
+        if (typeof x === 'number' && Number.isNaN(x)) return 1;
+        if (typeof y === 'number' && Number.isNaN(y)) return -1;
+        const c = typeof x === 'string' ? x.localeCompare(y as string) : x - (y as number);
+        return desc ? -c : c;
+      });
+      body.append(...rows);
+    };
+    th.addEventListener('click', sort);
+    th.addEventListener('keydown', (e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), sort()));
+  });
+</script>
+
+<style>
+  .table-wrap {
+    margin: 1.5em 0 0.6em;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+  th,
+  td {
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--grid);
+  }
+  th {
+    font-weight: 600;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+  th[data-key] {
+    cursor: pointer;
+    user-select: none;
+  }
+  th[data-key]:hover {
+    color: var(--ink);
+  }
+  th[aria-sort='descending']::after {
+    content: ' ↓';
+  }
+  th[aria-sort='ascending']::after {
+    content: ' ↑';
+  }
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  tbody tr:hover {
+    background: var(--page);
+  }
+  .r {
+    text-align: right;
+  }
+  .strong {
+    font-weight: 650;
+  }
+  td a {
+    text-decoration: none;
+  }
+  td a:hover {
+    text-decoration: underline;
+  }
+  .note {
+    font-size: 0.8rem;
+    margin: 0 4px 1.5em;
+  }
+</style>

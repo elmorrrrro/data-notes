@@ -1,0 +1,55 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="race-bars"
+  title="Years from founding to a $46 billion revenue pace"
+  subtitle="Time from incorporation to the first quarter whose revenue × 4 reached $46B, Anthropic's level in Q2 2026."
+  source="Sources: quarterly revenue from SEC EDGAR filings; incorporation dates from each company's IPO prospectus; Anthropic per CNBC (links in Methodology)."
+  legend={false}
+  height={210}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import race from '../../data/anthropic-ipo-2026-10/race.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const rows = [...race].sort((a, b) => b.years - a.years);
+  const quarter = (iso: string) => {
+    const d = new Date(iso);
+    return `Q${Math.floor(d.getUTCMonth() / 3) + 1} ${d.getUTCFullYear()}`;
+  };
+  const month = (ym: string) => new Date(`${ym}-01`).toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+
+  mount(document.querySelector<HTMLElement>('#race-bars .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const [s1, s2] = ['--s1', '--s2'].map((v) => css.getPropertyValue(v).trim());
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 210,
+      marginLeft: 82,
+      marginRight: narrow ? 70 : 130,
+      x: { label: null, domain: [0, 18], axis: null },
+      y: { label: null, domain: rows.map((d) => d.company), padding: 0.3, tickSize: 0 },
+      marks: [
+        Plot.barX(rows, { x: 'years', y: 'company', fill: (d) => (d.ticker === 'ANTHROPIC' ? s2 : s1), rx2: 4 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        Plot.text(rows, {
+          x: 'years', y: 'company', dx: 6, textAnchor: 'start', fill: t.ink2, fontSize: 11.5,
+          text: (d) => `${d.years.toFixed(1)} years${narrow ? '' : ` · ${quarter(d.quarter_end)}`}`,
+        }),
+        Plot.tip(
+          rows,
+          Plot.pointerY({
+            x: 'years', y: 'company', ...tipStyle(t),
+            title: (d) =>
+              `${d.company}\nIncorporated ${month(d.incorporated)}\nReached it in ${quarter(d.quarter_end)}: $${d.quarter_bn.toFixed(1)}B × 4 = $${d.run_rate_bn.toFixed(1)}B\nQuarter before: $${d.previous_quarter_bn.toFixed(1)}B`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

@@ -1,0 +1,12 @@
+ticker,company,market_cap_bn,fiscal_year_end,revenue_bn,net_income_bn,cumulative_cap_bn
+KO,The Coca-Cola Company,368.5133,2025-12-31,47.941,13.107,368.5133
+PEP,"PepsiCo, Inc.",171.9657,2025-12-27,93.925,8.24,540.4791
+MCD,McDonald's Corporation,164.095,2025-12-31,26.885,8.563,704.5741
+SBUX,Starbucks Corporation,107.9694,2025-09-28,37.1844,1.8564,812.5435
+NKE,"NIKE, Inc.",50.2461,2026-05-31,46.398,3.108,862.7896
+DIS,The Walt Disney Company,176.4501,2025-09-27,94.425,12.404,1039.2397
+NFLX,"Netflix, Inc.",279.2338,2025-12-31,45.183,10.981,1318.4735
+BA,The Boeing Company,152.8722,2025-12-31,89.463,2.235,1471.3457
+F,Ford Motor Company,48.2499,2025-12-31,187.267,-8.182,1519.5957
+GM,General Motors Company,68.6781,2025-12-31,185.019,2.78,1588.2738
+COST,Costco Wholesale Corporation,408.0929,2025-08-31,275.235,8.099,1996.3666

@@ -1,0 +1,59 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="gdp-bars"
+  title="Anthropic's price tag next to a year of national output"
+  subtitle="Projected 2026 GDP in current US dollars, countries ranked 10th to 25th, with Anthropic's two valuations slotted in."
+  source="Sources: IMF World Economic Outlook (GDP, current prices); Anthropic valuations per Anthropic and the FT. A valuation and a GDP measure different things: see the note below."
+  legendItems={[
+    { label: 'Anthropic', color: 'var(--s2)' },
+    { label: 'Country GDP, 2026', color: 'var(--s1)' },
+  ]}
+  height={520}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import gdp from '../../data/anthropic-ipo-2026-10/gdp.json';
+  import stats from '../../data/anthropic-ipo-2026-10/stats.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const NAMES: Record<string, string> = {
+    RUS: 'Russia', KOR: 'South Korea', TUR: 'Türkiye', TWN: 'Taiwan', CHN: 'China',
+  };
+  const [seriesH, target] = stats.anthropic.scenarios;
+  const countries = gdp
+    .filter((d) => d.rank >= 10 && d.rank <= 25)
+    .map((d) => ({ name: NAMES[d.iso] ?? d.country, value: d.gdp_2026_bn, anthropic: false, note: `#${d.rank} of ${gdp.length} economies` }));
+  const rows = [
+    ...countries,
+    { name: 'Anthropic at $2T', value: target.valuation_bn, anthropic: true, note: `Would rank #${stats.comparisons.gdp.rank_of_2000bn}: bigger than ${stats.comparisons.gdp.countries_below_2000bn} economies` },
+    { name: 'Anthropic at $965B', value: seriesH.valuation_bn, anthropic: true, note: `Would rank #${stats.comparisons.gdp.rank_of_965bn}: bigger than ${stats.comparisons.gdp.countries_below_965bn} economies` },
+  ].sort((a, b) => b.value - a.value);
+  const b = (n: number) => `$${Math.round(n).toLocaleString('en-US')}B`;
+
+  mount(document.querySelector<HTMLElement>('#gdp-bars .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const [s1, s2] = ['--s1', '--s2'].map((v) => css.getPropertyValue(v).trim());
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 520,
+      marginLeft: narrow ? 118 : 132,
+      marginRight: 58,
+      x: { label: null, domain: [0, 2700], axis: null },
+      y: { label: null, domain: rows.map((d) => d.name), padding: 0.25, tickSize: 0 },
+      marks: [
+        Plot.barX(rows, { x: 'value', y: 'name', fill: (d) => (d.anthropic ? s2 : s1), rx2: 4 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        Plot.text(rows, {
+          x: 'value', y: 'name', text: (d) => b(d.value), dx: 6, textAnchor: 'start', fontSize: 11.5,
+          fill: (d) => (d.anthropic ? t.ink : t.ink2), fontWeight: (d) => (d.anthropic ? 650 : 400),
+        }),
+        Plot.tip(rows, Plot.pointerY({ x: 'value', y: 'name', ...tipStyle(t), title: (d) => `${d.name}\n${b(d.value)}\n${d.note}` })),
+      ],
+    });
+  });
+</script>

@@ -1,0 +1,41 @@
+ticker,company,industry,close,shares_all_classes,market_cap_bn,revenue_ttm_bn,revenue_basis,revenue_period_end,revenue_growth,ps_ttm
+NVDA,NVIDIA Corporation,Semiconductors,233.95,24147000000,5649.1906,302.969,last 4 quarters,2026-07-26,0.8338,18.6461
+MSFT,Microsoft Corporation,Software - Infrastructure,517.53,7425545491,3842.9428,331.839,last 4 quarters,2026-06-30,0.1779,11.5807
+AAPL,Apple Inc.,Consumer Electronics,333.69,14594180000,4869.932,466.823,last 4 quarters,2026-06-27,0.1424,10.4321
+GOOGL,Alphabet Inc.,Internet Content & Information,343.5,12229934831,4200.9826,445.867,last 4 quarters,2026-06-30,0.2005,9.4221
+AMZN,"Amazon.com, Inc.",Internet Retail,251.52,10786313572,2712.9736,775.68,last 4 quarters,2026-06-30,0.1577,3.4975
+META,"Meta Platforms, Inc.",Internet Content & Information,728.08,2547506225,1854.7884,228.247,last 4 quarters,2026-06-30,0.2765,8.1262
+AVGO,Broadcom Inc.,Semiconductors,355.14,4773629865,1695.307,89.104,last 4 quarters,2026-08-02,0.4869,19.0262
+TSLA,"Tesla, Inc.",Auto Manufacturers,370.59,3949547394,1463.6628,103.619,last 4 quarters,2026-06-30,0.1175,14.1254
+ORCL,Oracle Corporation,Software - Infrastructure,142.3,3031501149,431.3826,71.777,last 4 quarters,2026-08-31,0.2162,6.01
+NFLX,"Netflix, Inc.",Entertainment,67.06,4163939676,279.2338,48.3708,last 4 quarters,2026-06-30,0.1602,5.7728
+PLTR,Palantir Technologies Inc.,Software - Infrastructure,188.75,2403058480,453.5773,6.1559,last 4 quarters,2026-06-30,0.7892,73.6812
+AMD,"Advanced Micro Devices, Inc.",Semiconductors,633.91,1632475042,1034.8422,41.305,last 4 quarters,2026-06-27,0.3954,25.0537
+CRM,"Salesforce, Inc.",Software - Application,234.69,823000000,193.1499,43.938,last 4 quarters,2026-07-31,0.1123,4.396
+NOW,"ServiceNow, Inc.",Software - Application,134.38,1033862000,138.9304,14.732,last 4 quarters,2026-06-30,0.2219,9.4305
+ADBE,Adobe Inc.,Software - Application,237.69,389200000,92.5089,25.97,last 4 quarters,2026-08-28,0.1203,3.5621
+INTU,Intuit Inc.,Software - Application,281.08,267236000,75.1147,21.448,last 4 quarters,2026-07-31,0.139,3.5022
+IBM,International Business Machines Corporation,Information Technology Services,222.64,942134390,209.7568,69.096,last 4 quarters,2026-06-30,0.079,3.0357
+QCOM,QUALCOMM Incorporated,Semiconductors,184.87,1068060487,197.4523,44.069,last 4 quarters,2026-06-28,0.0188,4.4805
+MU,"Micron Technology, Inc.",Semiconductors,1074.89,1129393151,1213.9734,90.274,last 4 quarters,2026-05-28,1.6698,13.4477
+INTC,Intel Corporation,Semiconductors,119.33,5286105262,630.791,57.032,last 4 quarters,2026-06-27,0.0747,11.0603
+ANET,"Arista Networks, Inc.",Computer Hardware,207.35,1261224648,261.5149,10.5408,last 4 quarters,2026-06-30,0.3257,24.8098
+PANW,"Palo Alto Networks, Inc.",Software - Infrastructure,403.24,818000000,329.8503,11.48,last 4 quarters,2026-07-31,0.245,28.7326
+CRWD,"CrowdStrike Holdings, Inc.",Software - Infrastructure,270.04,1023934842,276.5034,5.3961,last 4 quarters,2026-07-31,0.243,51.2409
+SNPS,"Synopsys, Inc.",Software - Infrastructure,489.9,191636646,93.8828,9.4165,last 4 quarters,2026-07-31,0.4633,9.9701
+CDNS,"Cadence Design Systems, Inc.",Software - Application,351.35,275816000,96.908,5.5286,last 4 quarters,2026-03-31,0.1342,17.5284
+APP,AppLovin Corporation,Advertising Agencies,268.22,334650521,89.76,6.8291,last 4 quarters,2026-06-30,0.6059,13.1437
+UBER,"Uber Technologies, Inc.",Software - Application,68.11,2042560121,139.1188,55.227,last 4 quarters,2026-06-30,0.1668,2.519
+ABNB,"Airbnb, Inc.",Travel Services,162.43,598785682,97.2608,13.159,last 4 quarters,2026-06-30,0.1364,7.3912
+DELL,Dell Technologies Inc.,Computer Hardware,562.52,635812750,357.6574,151.197,last 4 quarters,2026-07-31,0.4903,2.3655
+SMCI,"Super Micro Computer, Inc.",Computer Hardware,43.69,646873027,28.2619,39.0631,last 4 quarters,2026-06-30,0.7779,0.7235
+SNOW,Snowflake Inc.,Software - Application,341.04,352800000,120.3189,5.4346,last 4 quarters,2026-07-31,0.3204,22.1392
+DDOG,"Datadog, Inc.",Software - Application,277.22,359075024,99.5428,3.9667,last 4 quarters,2026-06-30,0.3152,25.0944
+NET,"Cloudflare, Inc.",Software - Infrastructure,349.07,356079715,124.2967,2.5124,last 4 quarters,2026-06-30,0.3353,49.4743
+MDB,"MongoDB, Inc.",Software - Infrastructure,357.96,80556341,28.8359,2.7828,last 4 quarters,2026-07-31,0.2545,10.3623
+ZS,"Zscaler, Inc.",Software - Infrastructure,196.6,163054698,32.0566,3.3525,last 4 quarters,2026-07-31,0.2542,9.5619
+HUBS,"HubSpot, Inc.",Software - Application,214.53,49866201,10.6978,3.449,last 4 quarters,2026-06-30,0.2111,3.1017
+TEAM,Atlassian Corporation,Software - Application,187.89,253138815,47.5623,6.5723,last 4 quarters,2026-06-30,0.2602,7.2368
+CRWV,"CoreWeave, Inc.",Software - Infrastructure,89.62,551536602,49.4287,7.5896,last 4 quarters,2026-06-30,1.1531,6.5127
+RDDT,"Reddit, Inc.",Internet Content & Information,147.86,192396510,28.4477,2.7788,last 4 quarters,2026-06-30,0.6659,10.2373
+ALAB,"Astera Labs, Inc.",Semiconductors,350.33,173485104,60.777,1.2019,last 4 quarters,2026-06-30,0.9848,50.5667
