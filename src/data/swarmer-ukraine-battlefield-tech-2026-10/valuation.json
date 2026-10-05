@@ -1,0 +1,82 @@
+[
+ {
+  "ticker": "SWMR",
+  "name": "Swarmer alone",
+  "market_cap_bn": 0.2604,
+  "revenue_ttm_m": 0.2977,
+  "ps": 874.7294,
+  "group": "swarmer"
+ },
+ {
+  "ticker": "ACHR",
+  "name": "Archer Aviation",
+  "market_cap_bn": 3.6345,
+  "revenue_ttm_m": 6.9,
+  "ps": 526.743,
+  "group": "peer"
+ },
+ {
+  "ticker": "PLTR",
+  "name": "Palantir",
+  "market_cap_bn": 455.1393,
+  "revenue_ttm_m": 6155.9409,
+  "ps": 73.935,
+  "group": "peer"
+ },
+ {
+  "ticker": "RKLB",
+  "name": "Rocket Lab",
+  "market_cap_bn": 46.6898,
+  "revenue_ttm_m": 769.146,
+  "ps": 60.7034,
+  "group": "peer"
+ },
+ {
+  "ticker": "JOBY",
+  "name": "Joby Aviation",
+  "market_cap_bn": 5.7586,
+  "revenue_ttm_m": 116.295,
+  "ps": 49.517,
+  "group": "peer"
+ },
+ {
+  "ticker": "ONDS",
+  "name": "Ondas",
+  "market_cap_bn": 4.3207,
+  "revenue_ttm_m": 174.103,
+  "ps": 24.8168,
+  "group": "peer"
+ },
+ {
+  "ticker": "SWMR+R",
+  "name": "Swarmer + Ratel",
+  "market_cap_bn": 0.2771,
+  "revenue_ttm_m": 18.9456,
+  "ps": 14.6286,
+  "group": "swarmer"
+ },
+ {
+  "ticker": "RCAT",
+  "name": "Red Cat",
+  "market_cap_bn": 0.969,
+  "revenue_ttm_m": 71.541,
+  "ps": 13.5443,
+  "group": "peer"
+ },
+ {
+  "ticker": "KTOS",
+  "name": "Kratos",
+  "market_cap_bn": 7.8796,
+  "revenue_ttm_m": 1522.5,
+  "ps": 5.1754,
+  "group": "peer"
+ },
+ {
+  "ticker": "AVAV",
+  "name": "AeroVironment",
+  "market_cap_bn": 7.0793,
+  "revenue_ttm_m": 2002.6589,
+  "ps": 3.535,
+  "group": "peer"
+ }
+]

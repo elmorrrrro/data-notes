@@ -1,0 +1,19 @@
+track,date,label,kind,source,launched_30d_before,launched_30d_after,change
+russia,2025-02-18,US and Russia meet in Riyadh,talks,https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present),3293,4716,0.432
+russia,2025-03-18,Trump-Putin call: 30-day energy truce,pause,https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present),4720,3144,-0.334
+russia,2025-07-14,Trump gives Russia 50 days,deadline,https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present),6615,4191,-0.366
+russia,2025-08-15,Alaska summit,talks,https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present),3663,6331,0.728
+russia,2025-10-16,"Budapest summit announced, later cancelled",talks,https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present),5910,5243,-0.113
+russia,2025-11-19,28-point plan reported,talks,https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present),5754,5737,-0.003
+russia,2026-01-23,"First US-Russia-Ukraine round, Abu Dhabi",talks,https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present),4895,6007,0.227
+russia,2026-02-17,"Trilateral round, Geneva",talks,https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present),6061,6190,0.021
+russia,2026-04-11,32-hour Easter truce,pause,https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present),8715,7838,-0.101
+russia,2026-05-08,48-hour Victory Day truce,pause,https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present),8304,10098,0.216
+russia,2026-09-05,Witkoff and Kushner meet Putin,talks,https://www.axios.com/2026/09/05/putin-witkoff-kushner-trump-ukraine-war,7104,7746,0.09
+iran,2025-04-12,"First US-Iran round, Oman",talks,https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations,3392,3302,-0.027
+iran,2025-06-13,Israel strikes Iran,war,https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations,5375,6533,0.215
+iran,2026-02-06,"US-Iran talks, Muscat",talks,https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations,5697,6163,0.082
+iran,2026-02-28,US and Israel strike Iran,war,https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations,6174,7530,0.22
+iran,2026-04-07,Two-week ceasefire,pause,https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations,8545,8393,-0.018
+iran,2026-06-17,Islamabad Memorandum signed,talks,https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations,9071,6667,-0.265
+iran,2026-07-08,Ceasefire breaks over Hormuz,war,https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations,7342,6713,-0.086

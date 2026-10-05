@@ -1,0 +1,118 @@
+---
+// Scoreboard for the Swarmer study: the war the talks don't stop, then three numbers on the company.
+import stats from '../data/swarmer-ukraine-battlefield-tech-2026-10/stats.json';
+
+const k = (n: number) => `${(n / 1000).toFixed(1)}k`;
+const ratio = stats.launched_first_year_of_talks / stats.launched_year_before_talks;
+const cards = [
+  { value: `${Math.round(stats.ps_alone)}× → ${Math.round(stats.ps_with_ratel)}×`, label: 'Price per $1 of sales: Swarmer alone, then with Ratel Robotics' },
+  { value: `$${(stats.ratel_advances_jun_2026 / 1e6).toFixed(1)}M`, label: 'Paid upfront to Ratel by the state for robots not yet delivered' },
+  { value: `+${Math.round(stats.vs_ipo * 100)}%`, label: `Share price since the $${stats.ipo_price.toFixed(0)} IPO in March, but −${Math.abs(Math.round(stats.vs_peak * 100))}% from the June peak` },
+];
+---
+
+<section class="board" aria-label="Key numbers">
+  <div class="verdict">
+    <span class="eyebrow">Talks vs reality</span>
+    <p class="headline">
+      In the first year of US–Russia talks, Russia launched <span class="big">{ratio.toFixed(1)}×</span> as many drones and
+      missiles at Ukraine as in the year before.
+    </p>
+    <p class="sub">
+      {k(stats.launched_year_before_talks)} launches in the 12 months before the Riyadh meeting of Feb 18, 2025;{' '}
+      {k(stats.launched_first_year_of_talks)} in the 12 months after. Ukrainian Air Force reports.
+    </p>
+  </div>
+  <div class="cards">
+    {
+      cards.map((c) => (
+        <div class="card-k">
+          <p class="value">{c.value}</p>
+          <p class="label">{c.label}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .board {
+    display: grid;
+    gap: 14px;
+    margin: 2.2em 0;
+  }
+  .verdict {
+    padding: 26px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(110deg, var(--accent-1), var(--accent-2)) border-box;
+    box-shadow: var(--shadow);
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .headline {
+    margin: 6px 0 8px;
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .big {
+    font-weight: 700;
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .cards {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 620px) {
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .card-k {
+    position: relative;
+    padding: 20px 20px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .card-k::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--accent-1);
+  }
+  .value {
+    margin: 4px 0 6px;
+    font-family: var(--display);
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .label {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+</style>

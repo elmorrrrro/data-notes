@@ -1,0 +1,18 @@
+[
+ {
+  "year": 2024,
+  "drones": 2200000,
+  "source": "https://www.osw.waw.pl/en/publikacje/osw-commentary/2025-10-14/game-drones-production-and-use-ukrainian-battlefield-unmanned"
+ },
+ {
+  "year": 2025,
+  "drones": 4000000,
+  "source": "https://aviationweek.com/defense/supply-chain/ukraine-eyes-drone-production-topping-7-million-units"
+ },
+ {
+  "year": 2026,
+  "drones": 7000000,
+  "target": true,
+  "source": "https://aviationweek.com/defense/supply-chain/ukraine-eyes-drone-production-topping-7-million-units"
+ }
+]

@@ -1,0 +1,324 @@
+[
+ {
+  "month": "2023-01",
+  "drones": 117,
+  "missiles": 96,
+  "partial": false,
+  "total": 213
+ },
+ {
+  "month": "2023-02",
+  "drones": 48,
+  "missiles": 145,
+  "partial": false,
+  "total": 193
+ },
+ {
+  "month": "2023-03",
+  "drones": 90,
+  "missiles": 91,
+  "partial": false,
+  "total": 181
+ },
+ {
+  "month": "2023-04",
+  "drones": 94,
+  "missiles": 23,
+  "partial": false,
+  "total": 117
+ },
+ {
+  "month": "2023-05",
+  "drones": 467,
+  "missiles": 200,
+  "partial": false,
+  "total": 667
+ },
+ {
+  "month": "2023-06",
+  "drones": 244,
+  "missiles": 203,
+  "partial": false,
+  "total": 447
+ },
+ {
+  "month": "2023-07",
+  "drones": 297,
+  "missiles": 136,
+  "partial": false,
+  "total": 433
+ },
+ {
+  "month": "2023-08",
+  "drones": 183,
+  "missiles": 141,
+  "partial": false,
+  "total": 324
+ },
+ {
+  "month": "2023-09",
+  "drones": 520,
+  "missiles": 101,
+  "partial": false,
+  "total": 621
+ },
+ {
+  "month": "2023-10",
+  "drones": 307,
+  "missiles": 40,
+  "partial": false,
+  "total": 347
+ },
+ {
+  "month": "2023-11",
+  "drones": 387,
+  "missiles": 45,
+  "partial": false,
+  "total": 432
+ },
+ {
+  "month": "2023-12",
+  "drones": 641,
+  "missiles": 199,
+  "partial": false,
+  "total": 840
+ },
+ {
+  "month": "2024-01",
+  "drones": 393,
+  "missiles": 284,
+  "partial": false,
+  "total": 677
+ },
+ {
+  "month": "2024-02",
+  "drones": 400,
+  "missiles": 123,
+  "partial": false,
+  "total": 523
+ },
+ {
+  "month": "2024-03",
+  "drones": 579,
+  "missiles": 270,
+  "partial": false,
+  "total": 849
+ },
+ {
+  "month": "2024-04",
+  "drones": 347,
+  "missiles": 158,
+  "partial": false,
+  "total": 505
+ },
+ {
+  "month": "2024-05",
+  "drones": 427,
+  "missiles": 128,
+  "partial": false,
+  "total": 555
+ },
+ {
+  "month": "2024-06",
+  "drones": 438,
+  "missiles": 152,
+  "partial": false,
+  "total": 590
+ },
+ {
+  "month": "2024-07",
+  "drones": 601,
+  "missiles": 123,
+  "partial": false,
+  "total": 724
+ },
+ {
+  "month": "2024-08",
+  "drones": 888,
+  "missiles": 228,
+  "partial": false,
+  "total": 1116
+ },
+ {
+  "month": "2024-09",
+  "drones": 1407,
+  "missiles": 145,
+  "partial": false,
+  "total": 1552
+ },
+ {
+  "month": "2024-10",
+  "drones": 2010,
+  "missiles": 110,
+  "partial": false,
+  "total": 2120
+ },
+ {
+  "month": "2024-11",
+  "drones": 2516,
+  "missiles": 270,
+  "partial": false,
+  "total": 2786
+ },
+ {
+  "month": "2024-12",
+  "drones": 1881,
+  "missiles": 234,
+  "partial": false,
+  "total": 2115
+ },
+ {
+  "month": "2025-01",
+  "drones": 2727,
+  "missiles": 123,
+  "partial": false,
+  "total": 2850
+ },
+ {
+  "month": "2025-02",
+  "drones": 4034,
+  "missiles": 73,
+  "partial": false,
+  "total": 4107
+ },
+ {
+  "month": "2025-03",
+  "drones": 4154,
+  "missiles": 92,
+  "partial": false,
+  "total": 4246
+ },
+ {
+  "month": "2025-04",
+  "drones": 2760,
+  "missiles": 130,
+  "partial": false,
+  "total": 2890
+ },
+ {
+  "month": "2025-05",
+  "drones": 4445,
+  "missiles": 129,
+  "partial": false,
+  "total": 4574
+ },
+ {
+  "month": "2025-06",
+  "drones": 5132,
+  "missiles": 242,
+  "partial": false,
+  "total": 5374
+ },
+ {
+  "month": "2025-07",
+  "drones": 6480,
+  "missiles": 208,
+  "partial": false,
+  "total": 6688
+ },
+ {
+  "month": "2025-08",
+  "drones": 4301,
+  "missiles": 161,
+  "partial": false,
+  "total": 4462
+ },
+ {
+  "month": "2025-09",
+  "drones": 5828,
+  "missiles": 192,
+  "partial": false,
+  "total": 6020
+ },
+ {
+  "month": "2025-10",
+  "drones": 5663,
+  "missiles": 269,
+  "partial": false,
+  "total": 5932
+ },
+ {
+  "month": "2025-11",
+  "drones": 5585,
+  "missiles": 217,
+  "partial": false,
+  "total": 5802
+ },
+ {
+  "month": "2025-12",
+  "drones": 5649,
+  "missiles": 181,
+  "partial": false,
+  "total": 5830
+ },
+ {
+  "month": "2026-01",
+  "drones": 4838,
+  "missiles": 141,
+  "partial": false,
+  "total": 4979
+ },
+ {
+  "month": "2026-02",
+  "drones": 5732,
+  "missiles": 298,
+  "partial": false,
+  "total": 6030
+ },
+ {
+  "month": "2026-03",
+  "drones": 7889,
+  "missiles": 146,
+  "partial": false,
+  "total": 8035
+ },
+ {
+  "month": "2026-04",
+  "drones": 8043,
+  "missiles": 144,
+  "partial": false,
+  "total": 8187
+ },
+ {
+  "month": "2026-05",
+  "drones": 9881,
+  "missiles": 217,
+  "partial": false,
+  "total": 10098
+ },
+ {
+  "month": "2026-06",
+  "drones": 7709,
+  "missiles": 195,
+  "partial": false,
+  "total": 7904
+ },
+ {
+  "month": "2026-07",
+  "drones": 7056,
+  "missiles": 463,
+  "partial": false,
+  "total": 7519
+ },
+ {
+  "month": "2026-08",
+  "drones": 7025,
+  "missiles": 199,
+  "partial": false,
+  "total": 7224
+ },
+ {
+  "month": "2026-09",
+  "drones": 8033,
+  "missiles": 92,
+  "partial": false,
+  "total": 8125
+ },
+ {
+  "month": "2026-10",
+  "drones": 521,
+  "missiles": 1,
+  "partial": true,
+  "total": 522
+ }
+]

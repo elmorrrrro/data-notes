@@ -1,0 +1,198 @@
+[
+ {
+  "track": "russia",
+  "date": "2022-02-24",
+  "label": "Full-scale invasion of Ukraine",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine"
+ },
+ {
+  "track": "russia",
+  "date": "2022-02-27",
+  "label": "Putin puts nuclear forces on high alert",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Nuclear_risk_during_the_Russo-Ukrainian_war_(2022%E2%80%93present)"
+ },
+ {
+  "track": "russia",
+  "date": "2022-09-21",
+  "label": "Mobilization of reservists",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/2022_Russian_mobilization"
+ },
+ {
+  "track": "russia",
+  "date": "2022-09-30",
+  "label": "Russia declares four Ukrainian regions annexed",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Russian_annexation_of_Donetsk,_Kherson,_Luhansk_and_Zaporizhzhia_oblasts"
+ },
+ {
+  "track": "russia",
+  "date": "2023-02-21",
+  "label": "Russia suspends the New START nuclear treaty",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Nuclear_risk_during_the_Russo-Ukrainian_war_(2022%E2%80%93present)"
+ },
+ {
+  "track": "russia",
+  "date": "2023-03-25",
+  "label": "Putin plans nuclear weapons in Belarus",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Nuclear_risk_during_the_Russo-Ukrainian_war_(2022%E2%80%93present)"
+ },
+ {
+  "track": "russia",
+  "date": "2024-02-29",
+  "label": "Putin warns the West of nuclear war",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Nuclear_risk_during_the_Russo-Ukrainian_war_(2022%E2%80%93present)"
+ },
+ {
+  "track": "russia",
+  "date": "2024-10-25",
+  "label": "North Korean troops reach Kursk region",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/North_Korean_involvement_in_the_Russian_invasion_of_Ukraine"
+ },
+ {
+  "track": "russia",
+  "date": "2024-11-19",
+  "label": "New doctrine lowers the nuclear threshold",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Nuclear_risk_during_the_Russo-Ukrainian_war_(2022%E2%80%93present)"
+ },
+ {
+  "track": "russia",
+  "date": "2024-11-21",
+  "label": "First Oreshnik missile hits Dnipro",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Oreshnik_(missile)"
+ },
+ {
+  "track": "russia",
+  "date": "2025-09-09",
+  "label": "Russian drones enter Poland",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/2025_Russian_drone_incursion_into_Poland"
+ },
+ {
+  "track": "russia",
+  "date": "2025-10-21",
+  "label": "Nuclear-powered Burevestnik missile test",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/9M730_Burevestnik"
+ },
+ {
+  "track": "russia",
+  "date": "2025-12-30",
+  "label": "Oreshnik on combat duty in Belarus",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Oreshnik_(missile)"
+ },
+ {
+  "track": "russia",
+  "date": "2026-01-08",
+  "label": "Oreshnik hits Lviv",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Oreshnik_(missile)"
+ },
+ {
+  "track": "russia",
+  "date": "2026-05-24",
+  "label": "Two Oreshniks and 600 drones in one night",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Oreshnik_(missile)"
+ },
+ {
+  "track": "iran",
+  "date": "2024-04-13",
+  "label": "Iran's first direct attack on Israel",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/April_2024_Iranian_strikes_on_Israel"
+ },
+ {
+  "track": "iran",
+  "date": "2024-10-01",
+  "label": "Iran fires about 200 missiles at Israel",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/October_2024_Iranian_strikes_on_Israel"
+ },
+ {
+  "track": "iran",
+  "date": "2025-06-22",
+  "label": "US bombs Iran's nuclear sites",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/2025_United_States_strikes_on_Iranian_nuclear_sites"
+ },
+ {
+  "track": "china",
+  "date": "2022-08-04",
+  "label": "Largest drills around Taiwan to date",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/2022_Chinese_military_exercises_around_Taiwan"
+ },
+ {
+  "track": "china",
+  "date": "2023-02-15",
+  "label": "Chinese dual-use goods reach Russian arms makers (WSJ)",
+  "precision": "month",
+  "source": "https://en.wikipedia.org/wiki/Support_for_Russia_in_the_Russo-Ukrainian_war"
+ },
+ {
+  "track": "china",
+  "date": "2023-04-08",
+  "label": "Joint Sword drills around Taiwan",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Joint_Sword_(2023)"
+ },
+ {
+  "track": "china",
+  "date": "2024-05-23",
+  "label": "Joint Sword-2024A drills",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Joint_Sword-2024A"
+ },
+ {
+  "track": "china",
+  "date": "2024-07-15",
+  "label": "NATO calls China a decisive enabler of Russia's war",
+  "precision": "month",
+  "source": "https://en.wikipedia.org/wiki/Support_for_Russia_in_the_Russo-Ukrainian_war"
+ },
+ {
+  "track": "china",
+  "date": "2024-10-14",
+  "label": "Joint Sword-2024B drills",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Joint_Sword-2024B"
+ },
+ {
+  "track": "china",
+  "date": "2024-10-16",
+  "label": "Evidence of Chinese attack drones for Russia",
+  "precision": "month",
+  "source": "https://en.wikipedia.org/wiki/Support_for_Russia_in_the_Russo-Ukrainian_war"
+ },
+ {
+  "track": "china",
+  "date": "2025-04-01",
+  "label": "Strait Thunder-2025A drills",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Strait_Thunder-2025A"
+ },
+ {
+  "track": "china",
+  "date": "2025-04-15",
+  "label": "Ukraine sanctions Chinese makers of Iskander parts",
+  "precision": "month",
+  "source": "https://en.wikipedia.org/wiki/Support_for_Russia_in_the_Russo-Ukrainian_war"
+ },
+ {
+  "track": "china",
+  "date": "2025-12-29",
+  "label": "Justice Mission-2025 drills",
+  "precision": "day",
+  "source": "https://en.wikipedia.org/wiki/Justice_Mission-2025"
+ }
+]

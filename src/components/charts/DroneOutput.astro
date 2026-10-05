@@ -1,0 +1,40 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="drone-output"
+  title="Drones made in Ukraine per year"
+  subtitle="Millions of drones of all types. 2026 is the government's target."
+  source="Sources: OSW (2024), Aviation Week (2025 and the 2026 target)."
+  legend={false}
+  height={200}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import rows from '../../data/swarmer-ukraine-battlefield-tech-2026-10/production.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const data = rows.map((d) => ({ year: String(d.year), m: d.drones / 1e6, target: !!(d as { target?: boolean }).target }));
+  const label = (d: (typeof data)[number]) => `${d.target ? 'target ' : d.year === '2025' ? 'over ' : 'about '}${d.m.toFixed(1)}M`;
+
+  mount(document.querySelector<HTMLElement>('#drone-output .plot')!, (width, t) => {
+    const green = getComputedStyle(document.documentElement).getPropertyValue('--s3').trim();
+    return Plot.plot({
+      ...base(t, width),
+      height: 200,
+      marginLeft: 44,
+      marginRight: 90,
+      x: { label: null, domain: [0, 7.2], axis: null },
+      y: { label: null, domain: data.map((d) => d.year), padding: 0.3, tickSize: 0 },
+      marks: [
+        Plot.barX(data.filter((d) => !d.target), { x: 'm', y: 'year', fill: green, rx2: 4 }),
+        Plot.barX(data.filter((d) => d.target), { x: 'm', y: 'year', fill: 'none', stroke: green, strokeWidth: 1.5, strokeDasharray: '5,4', rx2: 4 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        Plot.text(data, { x: 'm', y: 'year', text: label, dx: 6, textAnchor: 'start', fill: t.ink2, fontSize: 12 }),
+        Plot.tip(data, Plot.pointerY({ x: 'm', y: 'year', ...tipStyle(t), title: (d) => `${d.year}${d.target ? ' (target)' : ''}\n${label(d)} drones` })),
+      ],
+    });
+  });
+</script>

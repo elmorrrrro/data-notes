@@ -1,0 +1,182 @@
+[
+ {
+  "track": "russia",
+  "date": "2025-02-18",
+  "label": "US and Russia meet in Riyadh",
+  "kind": "talks",
+  "source": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+  "launched_30d_before": 3293,
+  "launched_30d_after": 4716,
+  "change": 0.432
+ },
+ {
+  "track": "russia",
+  "date": "2025-03-18",
+  "label": "Trump-Putin call: 30-day energy truce",
+  "kind": "pause",
+  "source": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+  "launched_30d_before": 4720,
+  "launched_30d_after": 3144,
+  "change": -0.334
+ },
+ {
+  "track": "russia",
+  "date": "2025-07-14",
+  "label": "Trump gives Russia 50 days",
+  "kind": "deadline",
+  "source": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+  "launched_30d_before": 6615,
+  "launched_30d_after": 4191,
+  "change": -0.366
+ },
+ {
+  "track": "russia",
+  "date": "2025-08-15",
+  "label": "Alaska summit",
+  "kind": "talks",
+  "source": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+  "launched_30d_before": 3663,
+  "launched_30d_after": 6331,
+  "change": 0.728
+ },
+ {
+  "track": "russia",
+  "date": "2025-10-16",
+  "label": "Budapest summit announced, later cancelled",
+  "kind": "talks",
+  "source": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+  "launched_30d_before": 5910,
+  "launched_30d_after": 5243,
+  "change": -0.113
+ },
+ {
+  "track": "russia",
+  "date": "2025-11-19",
+  "label": "28-point plan reported",
+  "kind": "talks",
+  "source": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+  "launched_30d_before": 5754,
+  "launched_30d_after": 5737,
+  "change": -0.003
+ },
+ {
+  "track": "russia",
+  "date": "2026-01-23",
+  "label": "First US-Russia-Ukraine round, Abu Dhabi",
+  "kind": "talks",
+  "source": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+  "launched_30d_before": 4895,
+  "launched_30d_after": 6007,
+  "change": 0.227
+ },
+ {
+  "track": "russia",
+  "date": "2026-02-17",
+  "label": "Trilateral round, Geneva",
+  "kind": "talks",
+  "source": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+  "launched_30d_before": 6061,
+  "launched_30d_after": 6190,
+  "change": 0.021
+ },
+ {
+  "track": "russia",
+  "date": "2026-04-11",
+  "label": "32-hour Easter truce",
+  "kind": "pause",
+  "source": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+  "launched_30d_before": 8715,
+  "launched_30d_after": 7838,
+  "change": -0.101
+ },
+ {
+  "track": "russia",
+  "date": "2026-05-08",
+  "label": "48-hour Victory Day truce",
+  "kind": "pause",
+  "source": "https://en.wikipedia.org/wiki/Peace_negotiations_in_the_Russo-Ukrainian_war_(2022%E2%80%93present)",
+  "launched_30d_before": 8304,
+  "launched_30d_after": 10098,
+  "change": 0.216
+ },
+ {
+  "track": "russia",
+  "date": "2026-09-05",
+  "label": "Witkoff and Kushner meet Putin",
+  "kind": "talks",
+  "source": "https://www.axios.com/2026/09/05/putin-witkoff-kushner-trump-ukraine-war",
+  "launched_30d_before": 7104,
+  "launched_30d_after": 7746,
+  "change": 0.09
+ },
+ {
+  "track": "iran",
+  "date": "2025-04-12",
+  "label": "First US-Iran round, Oman",
+  "kind": "talks",
+  "source": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations",
+  "launched_30d_before": 3392,
+  "launched_30d_after": 3302,
+  "change": -0.027
+ },
+ {
+  "track": "iran",
+  "date": "2025-06-13",
+  "label": "Israel strikes Iran",
+  "kind": "war",
+  "source": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations",
+  "launched_30d_before": 5375,
+  "launched_30d_after": 6533,
+  "change": 0.215
+ },
+ {
+  "track": "iran",
+  "date": "2026-02-06",
+  "label": "US-Iran talks, Muscat",
+  "kind": "talks",
+  "source": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations",
+  "launched_30d_before": 5697,
+  "launched_30d_after": 6163,
+  "change": 0.082
+ },
+ {
+  "track": "iran",
+  "date": "2026-02-28",
+  "label": "US and Israel strike Iran",
+  "kind": "war",
+  "source": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations",
+  "launched_30d_before": 6174,
+  "launched_30d_after": 7530,
+  "change": 0.22
+ },
+ {
+  "track": "iran",
+  "date": "2026-04-07",
+  "label": "Two-week ceasefire",
+  "kind": "pause",
+  "source": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations",
+  "launched_30d_before": 8545,
+  "launched_30d_after": 8393,
+  "change": -0.018
+ },
+ {
+  "track": "iran",
+  "date": "2026-06-17",
+  "label": "Islamabad Memorandum signed",
+  "kind": "talks",
+  "source": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations",
+  "launched_30d_before": 9071,
+  "launched_30d_after": 6667,
+  "change": -0.265
+ },
+ {
+  "track": "iran",
+  "date": "2026-07-08",
+  "label": "Ceasefire breaks over Hormuz",
+  "kind": "war",
+  "source": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations",
+  "launched_30d_before": 7342,
+  "launched_30d_after": 6713,
+  "change": -0.086
+ }
+]

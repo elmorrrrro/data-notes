@@ -1,0 +1,11 @@
+ticker,name,market_cap_bn,revenue_ttm_m,ps,group
+SWMR,Swarmer alone,0.2604,0.2977,874.7294,swarmer
+ACHR,Archer Aviation,3.6345,6.9,526.743,peer
+PLTR,Palantir,455.1393,6155.9409,73.935,peer
+RKLB,Rocket Lab,46.6898,769.146,60.7034,peer
+JOBY,Joby Aviation,5.7586,116.295,49.517,peer
+ONDS,Ondas,4.3207,174.103,24.8168,peer
+SWMR+R,Swarmer + Ratel,0.2771,18.9456,14.6286,swarmer
+RCAT,Red Cat,0.969,71.541,13.5443,peer
+KTOS,Kratos,7.8796,1522.5,5.1754,peer
+AVAV,AeroVironment,7.0793,2002.6589,3.535,peer

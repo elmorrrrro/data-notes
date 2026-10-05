@@ -1,0 +1,77 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="escalation-timeline"
+  title="Threats, strikes and talks since 2022"
+  subtitle="Filled dots: threats, strikes and drills. Hollow dots: US talks, truces and deadlines. Bars: drones and missiles Russia launched at Ukraine each month, from 2024 (October 2026 is partial)."
+  source="Sources: Wikipedia timelines and articles for each event, Axios; Kaggle, Massive Missile Attacks on Ukraine (CC BY-NC-SA 4.0)."
+  legend={false}
+  height={400}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import launches from '../../data/swarmer-ukraine-battlefield-tech-2026-10/launches.json';
+  import talks from '../../data/swarmer-ukraine-battlefield-tech-2026-10/events.json';
+  import escalation from '../../data/swarmer-ukraine-battlefield-tech-2026-10/escalation.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  type Track = 'russia' | 'iran' | 'china';
+  const day = (d: string) => new Date(`${d}T00:00:00Z`);
+  const bars = launches.filter((d) => d.month >= '2024-01').map((d) => ({ ...d, date: day(`${d.month}-01`) }));
+  const ymax = Math.max(...bars.map((d) => d.total));
+  const rowY: Record<Track, number> = { russia: ymax * 1.42, iran: ymax * 1.28, china: ymax * 1.14 };
+  const rowName: Record<Track, string> = { russia: 'Russia', iran: 'US–Iran', china: 'China' };
+
+  // Talks with a "war" kind (strikes on Iran, the broken ceasefire) count as escalation.
+  const events = [
+    ...talks.map((e) => ({ track: e.track as Track, date: day(e.date), label: e.label, hit: e.kind === 'war', month: false })),
+    ...escalation.map((e) => ({ track: e.track as Track, date: day(e.date), label: e.label, hit: true, month: e.precision === 'month' })),
+  ].map((e) => ({ ...e, y: rowY[e.track] }));
+
+  // One tooltip row per month, from the invasion to now: launches when counted, plus that month's events.
+  const key = (d: Date) => d.toISOString().slice(0, 7);
+  const byMonth = new Map(bars.map((b) => [b.month, b]));
+  const months: { date: Date; month: string }[] = [];
+  for (let d = day('2022-02-01'); d <= day(`${launches[launches.length - 1].month}-01`); d = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)))
+    months.push({ date: d, month: key(d) });
+  const short = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const monthName = (d: Date) => d.toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const title = (m: (typeof months)[number]) => {
+    const b = byMonth.get(m.month);
+    const lines = [`${monthName(m.date)}${b?.partial ? ' (to Oct 3)' : ''}`];
+    if (b) lines.push(`${b.drones.toLocaleString('en-US')} drones, ${b.missiles.toLocaleString('en-US')} missiles launched`);
+    for (const e of events.filter((e) => key(e.date) === m.month).sort((a, b) => +a.date - +b.date))
+      lines.push(`${e.month ? '' : `${short(e.date)} `}${rowName[e.track]}: ${e.label}${e.hit ? '' : ' (talks)'}`);
+    return lines.join('\n');
+  };
+  const ticks = [0, 2000, 4000, 6000, 8000, 10000].filter((v) => v <= ymax);
+
+  mount(document.querySelector<HTMLElement>('#escalation-timeline .plot')!, (width, t) => {
+    const bar = getComputedStyle(document.documentElement).getPropertyValue('--s4').trim();
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 400,
+      marginLeft: 62,
+      marginRight: 10,
+      x: { type: 'utc', label: null, domain: [day('2022-01-01'), day('2026-11-01')], ticks: 'year' },
+      y: { label: null, domain: [0, ymax * 1.5], ticks, tickFormat: (v: number) => (v === 0 ? '0' : `${v / 1000}k`) },
+      marks: [
+        Plot.gridY(ticks, { stroke: t.grid, strokeOpacity: 1 }),
+        Plot.rectY(bars, {
+          x: 'date', y: 'total', interval: 'month', insetLeft: narrow ? 0.5 : 1, insetRight: narrow ? 0.5 : 1, fill: bar,
+          fillOpacity: (d) => (d.partial ? 0.35 : 1),
+        }),
+        Plot.ruleY([0], { stroke: t.axis }),
+        Plot.text([narrow ? 'Counts from 2024' : 'Launch counts start in 2024'], { x: day('2023-11-15'), y: ymax * 0.06, textAnchor: 'end', fill: t.muted, fontSize: 11 }),
+        Plot.text(Object.entries(rowY), { x: day('2022-01-01'), y: ([, y]) => y, text: ([k]) => rowName[k as Track], textAnchor: 'end', dx: -8, fill: t.ink2, fontSize: 11.5, fontWeight: 600 }),
+        Plot.dot(events.filter((e) => !e.hit), { x: 'date', y: 'y', r: narrow ? 3 : 4, fill: t.surface, stroke: t.ink2, strokeWidth: 1.5 }),
+        Plot.dot(events.filter((e) => e.hit), { x: 'date', y: 'y', r: narrow ? 3 : 4, fill: t.ink, stroke: t.surface, strokeWidth: 1 }),
+        Plot.tip(months, Plot.pointerX({ x: 'date', y: (m) => byMonth.get(m.month)?.total ?? 0, ...tipStyle(t), title })),
+      ],
+    });
+  });
+</script>

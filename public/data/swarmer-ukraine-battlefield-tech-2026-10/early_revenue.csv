@@ -1,0 +1,6 @@
+ticker,name,listed_year,revenue_listing_year_m,revenue_ttm_m,market_cap_bn,note
+JOBY,Joby Aviation,2021,0.0,116.295,5.7586,"air taxis, listed via SPAC merger Aug 2021"
+ACHR,Archer Aviation,2021,0.0,6.9,3.6345,"air taxis, listed via SPAC merger Sep 2021"
+ONDS,Ondas,2020,2.1637,174.103,4.3207,"drones and networks, Nasdaq from Dec 2020"
+RCAT,Red Cat,2021,4.9995,71.541,0.969,"military drones, Nasdaq from Apr 2021 (fiscal year to April)"
+SWMR,Swarmer,2026,0.2977,0.2977,0.2604,"drone-swarm software, Nasdaq IPO Mar 2026; revenue = last 12 months"

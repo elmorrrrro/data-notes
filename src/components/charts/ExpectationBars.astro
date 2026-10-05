@@ -1,0 +1,47 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="expectation-bars"
+  title="What the market pays for $1 of sales"
+  subtitle="Market value ÷ revenue over the last 12 months, log scale. Swarmer + Ratel uses the two companies' combined 2025 revenue."
+  source="Sources: Yahoo Finance (market values and revenue, Oct 5, 2026); Swarmer's 10-Q and merger proxy on SEC EDGAR."
+  legendItems={[
+    { label: 'Swarmer', color: 'var(--s3)' },
+    { label: 'Other listed companies', color: 'var(--axis)' },
+  ]}
+  height={400}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import rows from '../../data/swarmer-ukraine-battlefield-tech-2026-10/valuation.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const data = rows.map((d) => ({ ...d, swarmer: d.group === 'swarmer' }));
+  const money = (bn: number) => (bn >= 1 ? `$${bn.toFixed(1)}B` : `$${Math.round(bn * 1000)}M`);
+  const rev = (m: number) => (m >= 1000 ? `$${(m / 1000).toFixed(1)}B` : m >= 1 ? `$${m.toFixed(1)}M` : `$${Math.round(m * 1000)}k`);
+
+  mount(document.querySelector<HTMLElement>('#expectation-bars .plot')!, (width, t) => {
+    const green = getComputedStyle(document.documentElement).getPropertyValue('--s3').trim();
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 400,
+      marginLeft: narrow ? 112 : 126,
+      marginRight: 44,
+      x: { type: 'log', domain: [1, 1500], label: null, ticks: [1, 10, 100, 1000], tickFormat: (d: number) => `${d}×` },
+      y: { label: null, domain: data.map((d) => d.name), padding: 0.25, tickSize: 0 },
+      marks: [
+        Plot.gridX([1, 10, 100, 1000], { stroke: t.grid, strokeOpacity: 1 }),
+        Plot.barX(data, { x1: 1, x2: 'ps', y: 'name', fill: (d) => (d.swarmer ? green : t.axis), rx2: 4 }),
+        Plot.text(data, {
+          x: 'ps', y: 'name', text: (d) => `${Math.round(d.ps)}×`, dx: 6, textAnchor: 'start', fontSize: 11.5,
+          fill: (d) => (d.swarmer ? t.ink : t.ink2), fontWeight: (d) => (d.swarmer ? 650 : 400),
+        }),
+        Plot.tip(data, Plot.pointerY({ x: 'ps', y: 'name', ...tipStyle(t), title: (d) => `${d.name}\nWorth ${money(d.market_cap_bn)}\nSales ${rev(d.revenue_ttm_m)} a year\n${Math.round(d.ps)}× sales` })),
+      ],
+    });
+  });
+</script>
