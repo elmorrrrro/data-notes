@@ -1,0 +1,65 @@
+---
+// Government cross-check for the Hormuz study: Kuwait (no route around Hormuz) reports its crude exports to JODI;
+// compared month by month with the tanker capacity open AIS data saw crossing the strait.
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="kuwait-check"
+  title="Kuwait's oil exports vs the tankers open data saw"
+  subtitle="Monthly, as a share of the July 2025 to February 2026 average. Kuwait has no pipeline around Hormuz."
+  source="Sources: JODI Oil World Database (crude exports reported by Kuwait); IMF PortWatch (tanker capacity crossing Hormuz, AIS)."
+  legendItems={[
+    { label: 'Kuwait crude exports (government)', color: 'var(--hz-oil)' },
+    { label: 'Tanker capacity seen (open data)', color: 'var(--hz-seen)' },
+  ]}
+  height={300}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/hormuz-shipping-2026-10/hormuz.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const k = data.stats.kuwait;
+  const month = (m: string) => new Date(`${m}-15T12:00:00Z`);
+  const rows = k.months.flatMap((m) => [
+    { x: month(m.month), y: m.exports_share, series: 'Kuwait exports', m },
+    { x: month(m.month), y: m.tanker_capacity_seen_share, series: 'Seen', m },
+  ]);
+  const pct = (v: number) => `${Math.round(v * 100)}%`;
+  const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const war = new Date('2026-02-28T12:00:00Z');
+
+  mount(document.querySelector<HTMLElement>('#kuwait-check .plot')!, (width, t) => {
+    const css = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+    const color = { 'Kuwait exports': css('--hz-oil'), Seen: css('--hz-seen') } as Record<string, string>;
+    const last = rows.slice(-2);
+    return Plot.plot({
+      ...base(t, width),
+      height: 300,
+      marginRight: 48,
+      x: { type: 'utc', label: null, ticks: width < 560 ? 4 : 7 },
+      y: { label: '↑ share of prewar', domain: [0, 1.3], tickFormat: pct, grid: false },
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.ruleY([1], { stroke: t.axis, strokeDasharray: '3,3' }),
+        Plot.ruleX([war], { stroke: t.axis, strokeDasharray: '3,3' }),
+        Plot.text([war], { x: (d) => d, text: () => 'War', frameAnchor: 'top', dx: 4, dy: 4, textAnchor: 'start', fill: t.muted, fontSize: 11 }),
+        Plot.line(rows, { x: 'x', y: 'y', z: 'series', stroke: (d) => color[d.series], strokeWidth: 2 }),
+        Plot.dot(rows, { x: 'x', y: 'y', fill: (d) => color[d.series], r: 3.5, stroke: t.surface, strokeWidth: 1.5 }),
+        Plot.text(last, { x: 'x', y: 'y', text: (d) => pct(d.y), dx: 8, textAnchor: 'start', fill: t.ink2, fontWeight: 700, fontSize: 12 }),
+        Plot.tip(
+          rows.filter((d) => d.series === 'Kuwait exports'),
+          Plot.pointerX({
+            x: 'x',
+            y: 'y',
+            ...tipStyle(t),
+            title: (d) =>
+              `${fmt(d.x)}\nKuwait crude exports: ${d.m.exports_kbd.toLocaleString('en-US')}k barrels a day (${pct(d.m.exports_share)})\nTanker capacity seen in Hormuz: ${pct(d.m.tanker_capacity_seen_share)}`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

@@ -1,0 +1,119 @@
+---
+// Scoreboard for the Hormuz study: what open AIS data sees vs the crude that commercial trackers say gets through.
+import data from '../data/hormuz-shipping-2026-10/hormuz.json';
+import snapshot from '../data/hormuz-shipping-2026-10/stocks_snapshot.json';
+
+const s = data.stats;
+const w = s.gap_week;
+const [seen, , kpler] = s.gap;
+const fro = snapshot.tickers.FRO;
+const froUp = fro.close / fro.history[0].close - 1;
+const cards = [
+  { value: `${Math.round(seen.share * 100)}%`, label: 'Ships seen crossing Hormuz in open data, vs before the war' },
+  { value: `${Math.round(kpler.share * 100)}%`, label: 'Crude still getting through, vs before the war (Kpler)' },
+  { value: `+${Math.round(froUp * 100)}%`, label: 'Frontline, a supertanker owner, from the eve of the war to publication' },
+];
+---
+
+<section class="board" aria-label="Key numbers">
+  <div class="verdict">
+    <span class="eyebrow">Dark, not empty</span>
+    <p class="headline">
+      In the last week of September, open satellite data saw <span class="big">{w.tankers_seen} tankers</span> cross
+      Hormuz. Kpler counted <span class="big">{Math.round(w.barrels_kpler_m)} million barrels</span> of crude going through.
+    </p>
+    <p class="sub">September 27 to October 3, 2026. IMF PortWatch (ships with tracking on); Kpler via CNBC.</p>
+  </div>
+  <div class="cards">
+    {
+      cards.map((c) => (
+        <div class="card-k">
+          <p class="value">{c.value}</p>
+          <p class="label">{c.label}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .board {
+    display: grid;
+    gap: 14px;
+    margin: 2.2em 0;
+  }
+  .verdict {
+    padding: 26px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(110deg, var(--accent-1), var(--accent-2)) border-box;
+    box-shadow: var(--shadow);
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .headline {
+    margin: 6px 0 8px;
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .big {
+    font-weight: 700;
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .cards {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 620px) {
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .card-k {
+    position: relative;
+    padding: 20px 20px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .card-k::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--accent-1);
+  }
+  .value {
+    margin: 4px 0 6px;
+    font-family: var(--display);
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .label {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+</style>

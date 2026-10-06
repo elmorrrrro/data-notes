@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 // Server-rendered on every request (the rest of the site is static).
 export const prerender = false;
 
-const ALLOWED = new Set(['INTC', 'AMD', 'NVDA', 'TSM', 'SPY', 'QQQ', 'SOXX', 'UAL', 'LHA.DE', 'RYA.IR', 'SWMR']);
+const ALLOWED = new Set(['INTC', 'AMD', 'NVDA', 'TSM', 'SPY', 'QQQ', 'SOXX', 'UAL', 'LHA.DE', 'RYA.IR', 'SWMR', 'FRO', 'BNO']);
 const MAX_HISTORY_DAYS = 400;
 const CACHE_SECONDS = 300;
 

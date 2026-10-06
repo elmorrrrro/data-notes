@@ -1,0 +1,144 @@
+---
+title: "Hormuz isn't empty. It went dark"
+description: "Open satellite data says the Strait of Hormuz is all but closed: 3% of the ships it saw before the war. Commercial trackers say three quarters of the crude still gets through, unseen, escorted and at a steep price. Here is the gap, and who gets paid for it."
+date: 2026-10-06
+tags: [hormuz, oil, shipping]
+accents: ['var(--hz-seen)', 'var(--hz-oil)']
+stocks: [FRO, BNO]
+---
+
+import HormuzScoreboard from '../../../components/HormuzScoreboard.astro';
+import ShipFlow from '../../../components/charts/ShipFlow.astro';
+import HormuzGap from '../../../components/charts/HormuzGap.astro';
+import KuwaitCheck from '../../../components/charts/KuwaitCheck.astro';
+import StockWatch from '../../../components/StockWatch.astro';
+import snapshot from '../../../data/hormuz-shipping-2026-10/stocks_snapshot.json';
+
+**Every open chart of the Strait of Hormuz says it is closed. It is not.** Since the US and Israel struck Iran on
+February 28, 2026, the ships that free satellite data can see crossing the strait fell to almost nothing. Yet the oil
+kept moving: most of it now crosses without showing up in open tracking data, under US naval escort. The strait did not go empty.
+It went dark, and that changes who you should believe.
+
+<HormuzScoreboard />
+
+## 1. What the open data sees
+
+<ShipFlow />
+
+On February 27, satellites still saw 64 ships cross. On March 4, for the first time, they saw none. Watch the peace
+deals, though. After the Islamabad Memorandum in June, the visible ships came back, up to 51 on June 24. When the
+ceasefire broke on July 8, they vanished again within days. Real cargo does not appear and disappear that fast;
+transponders do. The open count measures how safe captains feel to be seen, not how much oil moves.
+
+## 2. What actually gets through
+
+<HormuzGap />
+
+In the last week of September, PortWatch saw seven tankers cross, and together they were smaller than one supertanker.
+In the same week, Kpler, a commercial tracker, counted 10.3 million barrels a day of crude through Hormuz, about 23%
+below its prewar level. That is roughly 36 supertanker loads a week that the open data does not show. Windward, another
+tracker, puts the flow a bit lower, but in the same range. The oil goes along a route next to Oman's coast that the US
+Navy protects, often transferred to other ships in the Gulf of Oman to keep tankers out of reach.
+
+## 3. Who to believe
+
+<KuwaitCheck />
+
+Commercial trackers sell their data, so they have a reason to see what nobody else sees. I wanted a check that does
+not depend on them. Kuwait is one: it has no pipeline around the strait, so every barrel it exports crosses Hormuz, and
+its government reports those exports every month. In April and May, Kuwait's exports fell to almost zero and it cut
+production to under a quarter. The open data agreed: the strait really was shut that spring. Then the two lines split.
+By July, Kuwait was back to 82% of its prewar exports, while the tanker capacity PortWatch saw stayed at 13%.
+
+And a government that publishes its own collapse is not dressing up its numbers. The blind spot is also older than
+the war: from November 2025 to January 2026, PortWatch counted a third fewer ships crossing Hormuz, while Kuwait kept
+exporting and Jebel Ali in Dubai, a port ships can only reach through Hormuz, stayed as busy as before. My first draft
+of this study read that dip as ships fleeing ahead of the war. It was not.
+
+## 4. Who pays, and who gets paid
+
+<StockWatch
+  snapshot={snapshot}
+  tickers={[
+    { symbol: 'FRO', name: 'Frontline', color: 'var(--hz-seen)' },
+    { symbol: 'BNO', name: 'Brent fund', color: 'var(--hz-oil)' },
+  ]}
+  id="hormuz-stocks"
+  title="Tanker owner and oil price since the war, indexed to publication day"
+/>
+
+Moving oil in the dark is expensive. Shipping a tanker of Gulf crude to China costs about $1 million a day, and in the
+third quarter Iran attacked about two ships for every hundred that crossed. Since July, at least nine sailors have died.
+Somebody earns that risk premium: Frontline, one of the largest owners of supertankers, is up 42% since the eve of the
+war. BNO, a fund that tracks Brent crude, is up 77%. Both are frozen at the last close before this post and update live
+every time the page opens.
+
+## So what
+
+I see two lessons. First, open data is going blind exactly where it matters most: the places where ships have reasons
+to hide. A free dashboard showing "Hormuz traffic −97%" is right about what it counts and wrong about the world. Second,
+the market already prices this. Oil is high not because the strait is closed but because getting through it is slow,
+dangerous and costly. As Lloyd's List's editor Richard Meade put it, "The oil market is not becoming more secure. It is
+becoming more efficient at operating under sustained insecurity." That can last as long as the escort does.
+
+## What the numbers leave out
+
+- **Two kinds of count.** PortWatch counts ships whose tracking transponder (AIS) is on. Kpler and Windward combine AIS
+  with satellite imagery, port data and other sources they do not publish. We compare each source with its own prewar
+  level, not the raw numbers with each other.
+- **Four published figures.** The commercial numbers are a weekly Kpler average and a Windward range, as reported by
+  CNBC. We do not have their daily series, so the chart shows one recent week, not a history.
+- **Ships, not barrels, in the open data.** A count does not show cargo, which is why the chart also uses PortWatch's
+  tanker capacity (deadweight tons).
+- **Government figures are self-reported.** JODI publishes what each country submits and marks these figures as not
+  yet assessed. Kuwait's production is flat at exactly 2.58 million barrels a day from December to February, which
+  looks like an estimate. The latest month is July 2026, so the check does not cover August and September. Customs
+  data of the buyers (Japan, Korea, India) would be the next independent check.
+- **Why the blind spot started in winter.** We do not know. GPS jamming in the Gulf and ships switching transponders off
+  are the usual reasons; Windward recorded jamming hitting more than 1,100 vessels in a single day once the war began.
+- **Schematic map.** The animation is a drawing, not a map: shapes, lanes and dot positions are illustrative. Only the
+  number of ships a day comes from the data.
+- **Share prices are not profits.** Frontline's shares react to freight rates everywhere, not only in the Gulf.
+
+## Data
+
+<p class="muted" style="font-size: 0.85rem">
+  Download the datasets: <a href="/data/hormuz-shipping-2026-10/hormuz_daily.csv">hormuz_daily.csv</a> (ships a day
+  through Hormuz by type, with capacity, 2019 to October 4, 2026) and
+  <a href="/data/hormuz-shipping-2026-10/chokepoints_monthly.csv">chokepoints_monthly.csv</a> (Hormuz, Suez, Bab
+  el-Mandeb and the Cape of Good Hope, monthly, vs their 2025 average). Source: IMF PortWatch.
+</p>
+
+## Methodology
+
+- **Ships seen:** [IMF PortWatch](https://portwatch.imf.org/pages/cb5856222a5b4105adc6ee7e880a1730), daily chokepoint
+  transits built from satellite AIS data, January 1, 2019 to October 4, 2026. "Before the war" is January 1 to February
+  27, 2026; the comparison week is September 27 to October 3, 2026, the same week as the Kpler figure. Tankers and
+  tanker capacity (deadweight tons) are PortWatch's tanker category. Used under the
+  [IMF terms](https://www.imf.org/external/terms.htm), with attribution.
+- **Crude that gets through:** Kpler (10.3 million barrels a day in the week ended October 3, vs a prewar 13.5 million)
+  and Windward (9–10 million vs 14.5 million; we use 9.5), both as reported by
+  [CNBC on October 6, 2026](https://www.cnbc.com/2026/10/06/crude-oil-tanker-strait-hormuz-iran-attack.html). The same
+  article is the source for the escorted route along Oman, ship-to-ship transfers, the $1 million a day freight cost,
+  the Q3 attack rate (Windward), the sailors' deaths (International Maritime Organization) and the Richard Meade quote.
+- **Supertanker loads:** a very large crude carrier (VLCC) carries about 2 million barrels and is 160,000 to 320,000
+  deadweight tons, per the [EIA](https://www.eia.gov/todayinenergy/detail.php?id=17991). 10.3 million barrels a day
+  for seven days is 72 million barrels, about 36 loads. The seven tankers PortWatch saw that week totalled about
+  123,000 deadweight tons.
+- **Blind spot:** Hormuz transits averaged 92 a day in July–October 2025 and 60 in November 2025–January 2026. Over
+  the same periods, Jebel Ali averaged 25 and 24 port calls a day, from PortWatch's
+  [daily port data](https://portwatch.imf.org/). Jamming:
+  [Windward, March 1, 2026](https://windward.ai/blog/gps-jamming-disrupts-1100-ships-in-the-middle-east-gulf/).
+- **Government check:** Kuwait's monthly crude oil exports and production, in thousand barrels a day, from the
+  [JODI Oil World Database](https://www.jodidata.org/oil/) (Joint Organisations Data Initiative), July 2025 to July
+  2026. Both Kuwait's exports and PortWatch's tanker capacity are shown as a share of their own July 2025 to February
+  2026 average.
+- **Events:** dates from Wikipedia's
+  [2025–2026 Iran–United States negotiations](https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations).
+- **Share prices:** Yahoo Finance daily closes. "Since the eve of the war" is the close on February 27, 2026 vs the
+  close on October 5, 2026, the last before this post.
+- **Animation:** each day, ships appear at a rate proportional to that day's PortWatch count (tankers in proportion to
+  that day's tanker share), split at random between the two directions. The speed is eight days a second.
+- **Code:** plain Python scripts (`collect.py`, `analyze.py`, `snapshot_stocks.py`).
+- **Trademarks:** names of companies, funds and data providers belong to their owners. This site is independent and not
+  affiliated with or sponsored by any of them. This study was produced with Claude, a model made by Anthropic.

@@ -1,0 +1,48 @@
+---
+// The Hormuz study's core chart: what open AIS data sees vs the crude commercial trackers say gets through,
+// each as a share of its own prewar level.
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="hormuz-gap"
+  title="What open data sees vs what gets through"
+  subtitle="Late September 2026, as a share of each source's own level before the war (100% = business as usual)."
+  source="Sources: IMF PortWatch (AIS transits, week to October 3, vs January 1 to February 27, 2026); Kpler and Windward via CNBC, October 6, 2026."
+  legendItems={[
+    { label: 'Open data (IMF PortWatch)', color: 'var(--hz-seen)' },
+    { label: 'Commercial trackers', color: 'var(--hz-oil)' },
+  ]}
+  height={220}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/hormuz-shipping-2026-10/hormuz.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const rows = data.stats.gap;
+  const pct = (v: number) => `${Math.round(v * 100)}%`;
+
+  mount(document.querySelector<HTMLElement>('#hormuz-gap .plot')!, (width, t) => {
+    const css = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+    const color = { 'Open data': css('--hz-seen'), 'Commercial trackers': css('--hz-oil') } as Record<string, string>;
+    const narrow = width < 500;
+    return Plot.plot({
+      ...base(t, width),
+      height: 220,
+      marginLeft: narrow ? 128 : 200,
+      marginRight: 44,
+      x: { domain: [0, 1], tickFormat: pct, ticks: narrow ? [0, 0.5, 1] : 5, label: null },
+      y: { domain: rows.map((d) => d.label), label: null, tickSize: 0, tickFormat: (s: string) => (narrow ? s.replace(', ', '\n') : s) },
+      marks: [
+        Plot.gridX(narrow ? [0, 0.5, 1] : undefined, { stroke: t.grid, strokeOpacity: 1, ticks: 5 }),
+        Plot.ruleX([1], { stroke: t.axis, strokeDasharray: '3,3' }),
+        Plot.barX(rows, { y: 'label', x: 'share', fill: (d) => color[d.group], insetTop: 9, insetBottom: 9, rx: 4 }),
+        Plot.ruleX([0], { stroke: t.ink2 }),
+        Plot.text(rows, { y: 'label', x: 'share', text: (d) => pct(d.share), dx: 6, textAnchor: 'start', fill: t.ink2, fontWeight: 700, fontSize: 12 }),
+        Plot.tip(rows, Plot.pointerY({ y: 'label', x: 'share', ...tipStyle(t), title: (d) => `${d.label}: ${pct(d.share)} of prewar\n${d.detail}` })),
+      ],
+    });
+  });
+</script>
