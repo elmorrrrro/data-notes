@@ -1,0 +1,120 @@
+---
+// Scoreboard for the FPV drone cost study: Spiderweb's cost vs its claimed damage, then three numbers on reach and price.
+import stats from '../data/fpv-drone-cost-2026-10/stats.json';
+import companies from '../data/fpv-drone-cost-2026-10/companies.json';
+
+const words = ['none', 'one', 'two', 'three', 'all four'];
+const behind = words[companies.filter((c) => c.change < stats.spy_change).length];
+
+const cards = [
+  { value: `${stats.belaya_km.toLocaleString('en-US')} km`, label: 'From Ukraine’s border to Belaya air base in Siberia, hit in Spiderweb' },
+  { value: `${stats.javelin_per_fpv}×`, label: 'A Javelin missile costs as much as this many Ukrainian FPV drones' },
+  { value: `+${Math.round(stats.spy_change * 100)}%`, label: `The S&P 500 since Spiderweb; ${behind} of four small-drone stocks did worse` },
+];
+---
+
+<section class="board" aria-label="Key numbers">
+  <div class="verdict">
+    <span class="eyebrow">Operation Spiderweb</span>
+    <p class="headline">
+      {stats.drones} drones at about <span class="big">${(stats.drones_cost_usd / 1000).toFixed(0)}k</span> in total, against
+      bombers Ukraine valued at <span class="big">${stats.claimed_damage_usd / 1e9}B</span>.
+    </p>
+    <p class="sub">
+      Ukrainian officials' figures: ${stats.drone_usd.toLocaleString('en-US')} per drone, {stats.claimed_hit} aircraft hit. Two US
+      officials told Reuters about {stats.us_hit} were hit and {stats.us_destroyed} destroyed.
+    </p>
+  </div>
+  <div class="cards">
+    {
+      cards.map((c) => (
+        <div class="card-k">
+          <p class="value">{c.value}</p>
+          <p class="label">{c.label}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .board {
+    display: grid;
+    gap: 14px;
+    margin: 2.2em 0;
+  }
+  .verdict {
+    padding: 26px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(110deg, var(--accent-1), var(--accent-2)) border-box;
+    box-shadow: var(--shadow);
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .headline {
+    margin: 6px 0 8px;
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .big {
+    font-weight: 700;
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .cards {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 620px) {
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .card-k {
+    position: relative;
+    padding: 20px 20px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .card-k::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--accent-1);
+  }
+  .value {
+    margin: 4px 0 6px;
+    font-family: var(--display);
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .label {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+</style>

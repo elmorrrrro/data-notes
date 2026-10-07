@@ -1,0 +1,56 @@
+[
+ {
+  "item": "Ukrainian FPV drone",
+  "short": "Ukrainian FPV",
+  "usd": 400,
+  "kind": "small drone",
+  "basis": "typical unit price, as reported",
+  "source": "https://defence-blog.com/what-ukraines-drones-really-cost/",
+  "x_fpv": 1.0
+ },
+ {
+  "item": "Osa drone used in Spiderweb",
+  "short": "Spiderweb drone",
+  "usd": 2000,
+  "kind": "small drone",
+  "basis": "Ukrainian officials, via WSJ",
+  "source": "https://en.wikipedia.org/wiki/Operation_Spiderweb",
+  "x_fpv": 5.0
+ },
+ {
+  "item": "US Army FPV target price",
+  "short": "US Army FPV goal",
+  "usd": 2000,
+  "kind": "small drone",
+  "basis": "ceiling the Army asked industry for",
+  "source": "https://www.govconwire.com/articles/neros-500m-army-archer-fpv-contract",
+  "x_fpv": 5.0
+ },
+ {
+  "item": "US Marines FPV target price",
+  "short": "US Marines FPV goal",
+  "usd": 4000,
+  "kind": "small drone",
+  "basis": "ceiling in a Dec 2025 request for 10,000",
+  "source": "https://www.twz.com/air/marines-seeking-10000-first-person-view-drones-at-4k-a-pop",
+  "x_fpv": 10.0
+ },
+ {
+  "item": "Switchblade 300 (AeroVironment)",
+  "short": "Switchblade 300",
+  "usd": 58063,
+  "kind": "loitering munition",
+  "basis": "US Army FY2022 budget",
+  "source": "https://www.19fortyfive.com/2023/04/the-u-s-army-wont-buy-anymore-switchblade-300-kamikaze-drones/",
+  "x_fpv": 145.2
+ },
+ {
+  "item": "Javelin missile (Lockheed Martin / RTX)",
+  "short": "Javelin missile",
+  "usd": 192772,
+  "kind": "missile",
+  "basis": "US Army FY2022 budget",
+  "source": "https://www.twz.com/45132/as-ukraine-pummels-russians-with-javelin-missiles-can-production-keep-pace-with-demand",
+  "x_fpv": 481.9
+ }
+]

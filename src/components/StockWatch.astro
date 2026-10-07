@@ -123,10 +123,13 @@ const colorVars = tickers.map((t, i) => `--c${i}: ${t.color}`).join('; ');
         const gap = (labels[i - 1].labelY - labels[i].labelY) * pxPerUnit;
         if (gap < MIN_LABEL_GAP) labels[i].labelY = labels[i - 1].labelY - MIN_LABEL_GAP / pxPerUnit;
       }
+      // Long company names don't fit at the line ends: fall back to tickers (the legend keeps the full names).
+      const useNames = Math.max(...symbols.map((s) => names[s].length)) * 6.6 + 16 <= width * 0.16;
+      const endLabel = (s: string) => (useNames ? names[s] : s);
       return Plot.plot({
         ...base(t, width),
         height: 300,
-        marginRight: 52,
+        marginRight: Math.max(52, Math.ceil(Math.max(...symbols.map((s) => endLabel(s).length)) * 6.6 + 16)),
         x: { type: 'utc', label: null },
         y: { label: '↑ Index (publication = 100)', nice: true },
         color: { domain: symbols, range: symbols.map((_, i) => color(i)) },
@@ -137,7 +140,7 @@ const colorVars = tickers.map((t, i) => `--c${i}: ${t.color}`).join('; ');
           Plot.text([published], { x: (d) => d, frameAnchor: 'top', text: () => 'Published', dx: -6, dy: 2, textAnchor: 'end', fill: t.muted, fontSize: 11 }),
           Plot.line(rows, { x: 'date', y: 'index', z: 'symbol', stroke: 'symbol', strokeWidth: 2 }),
           Plot.dot(last, { x: 'date', y: 'index', fill: 'symbol', r: 4.5, stroke: t.surface, strokeWidth: 2 }),
-          Plot.text(labels, { x: 'date', y: 'labelY', text: (d) => names[d.symbol], dx: 10, textAnchor: 'start', fill: t.ink2, fontSize: 11.5 }),
+          Plot.text(labels, { x: 'date', y: 'labelY', text: (d) => endLabel(d.symbol), dx: 10, textAnchor: 'start', fill: t.ink2, fontSize: 11.5 }),
           Plot.tip(
             rows,
             Plot.pointerX({

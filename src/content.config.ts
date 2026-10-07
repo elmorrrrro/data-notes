@@ -10,6 +10,8 @@ const posts = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     tags: z.array(z.string()).default([]),
+    // The kind of study, shown as the kicker on the post and its card: 'Analysis', 'Forecast check', ...
+    rubric: z.string().default('Analysis'),
     // Any CSS colors, e.g. ['var(--intel)', 'var(--amd)']; drives the page glow and highlights.
     accents: z.tuple([z.string(), z.string()]).optional(),
     // Tickers to compare "at publication vs now" on the post card; closes come from src/data/<slug>/stocks_snapshot.json.

@@ -1,0 +1,5 @@
+ticker,name,role,source,close_base,close_end,change,revenue_usd,fy_end
+AVAV,AeroVironment,makes Switchblade loitering munitions,https://www.19fortyfive.com/2023/04/the-u-s-army-wont-buy-anymore-switchblade-300-kamikaze-drones/,178.03,138.86,-0.22,1976845000,2026-04-30
+RCAT,Red Cat,makes Black Widow for the US Army and FANG FPV drones,https://www.therobotreport.com/red-cat-wins-u-s-army-next-gen-drone-contract-over-skydio/,5.95,6.15,0.0336,40729000,2025-12-31
+UMAC,Unusual Machines,"makes FPV parts, including motors in Orlando",https://www.accessnewswire.com/newsroom/en/aerospace-and-defense/unusual-machines-accelerates-motor-factory-output-at-orlando-campus-1156555,4.96,21.88,3.4113,11199217,2025-12-31
+LMT,Lockheed Martin,"makes Javelin (with RTX), the missile FPVs undercut",https://www.twz.com/45132/as-ukraine-pummels-russians-with-javelin-missiles-can-production-keep-pace-with-demand,482.38,499.22,0.0349,75048000000,2025-12-31

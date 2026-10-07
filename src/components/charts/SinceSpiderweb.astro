@@ -1,0 +1,58 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="since-spiderweb"
+  title="Small-drone stocks since Spiderweb"
+  subtitle="Share price, last close before the attack (May 30, 2025) = 100. Grey: the S&P 500."
+  source="Source: Yahoo Finance (daily close, not adjusted for dividends), to October 7, 2026."
+  legendItems={[
+    { label: 'Unusual Machines', color: 'var(--umac)' },
+    { label: 'Red Cat', color: 'var(--rcat)' },
+    { label: 'Lockheed Martin', color: 'var(--lmt)' },
+    { label: 'AeroVironment', color: 'var(--avav)' },
+    { label: 'S&P 500', color: 'var(--muted)' },
+  ]}
+  height={340}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import rows from '../../data/fpv-drone-cost-2026-10/stocks.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const data = rows.map((d) => ({ ...d, day: new Date(d.date) }));
+  const last = data.filter((d, i) => i === data.length - 1 || data[i + 1].ticker !== d.ticker);
+  // End labels: keep neighbours at least 9% apart on the log axis so close lines (LMT, RCAT) don't collide.
+  const ends = [...last].sort((a, b) => a.index - b.index).map((d) => ({ ...d, ly: d.index }));
+  for (let i = 1; i < ends.length; i++) ends[i].ly = Math.max(ends[i].ly, ends[i - 1].ly * 1.09);
+  const short: Record<string, string> = { UMAC: 'UMAC', RCAT: 'RCAT', LMT: 'LMT', AVAV: 'AVAV', SPY: 'S&P 500' };
+
+  mount(document.querySelector<HTMLElement>('#since-spiderweb .plot')!, (width, t) => {
+    const css = (v: string) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+    const colors: Record<string, string> = { UMAC: css('--umac'), RCAT: css('--rcat'), LMT: css('--lmt'), AVAV: css('--avav'), SPY: t.muted };
+    const narrow = width < 520;
+    const name = (k: string) => (narrow && k === 'SPY' ? 'S&P' : short[k]);
+    return Plot.plot({
+      ...base(t, width),
+      height: 340,
+      marginLeft: 40,
+      marginRight: narrow ? 60 : 92,
+      x: { label: null, type: 'utc' },
+      y: { type: 'log', label: null, grid: true, ticks: [100, 200, 400, 700], tickFormat: (d: number) => `${d}` },
+      color: { domain: Object.keys(colors), range: Object.values(colors) },
+      marks: [
+        Plot.ruleY([100], { stroke: t.axis }),
+        Plot.lineY(data.filter((d) => d.ticker === 'SPY'), { x: 'day', y: 'index', stroke: 'ticker', strokeWidth: 1.2 }),
+        Plot.lineY(data.filter((d) => d.ticker !== 'SPY'), { x: 'day', y: 'index', stroke: 'ticker', strokeWidth: 1.6 }),
+        Plot.text(ends, {
+          x: 'day', y: 'ly', text: (d) => `${name(d.ticker)} ${d.index - 100 >= 0 ? '+' : '−'}${Math.abs(Math.round(d.index - 100))}%`,
+          dx: 6, textAnchor: 'start', fill: 'ticker', fontSize: narrow ? 10.5 : 11.5, fontWeight: 600,
+        }),
+        Plot.tip(data, Plot.pointer({ x: 'day', y: 'index', ...tipStyle(t),
+          title: (d) => `${d.label}\n${d.date}: $${d.close.toFixed(2)}\n${d.index - 100 >= 0 ? '+' : ''}${(d.index - 100).toFixed(0)}% since May 30, 2025` })),
+      ],
+    });
+  });
+</script>

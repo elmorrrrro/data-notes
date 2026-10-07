@@ -1,0 +1,8 @@
+name,kind,event,dates,status,note,source,lat,lon,km,border_lat,border_lon
+Belaya,air base,Spiderweb,2025-06-01,hit,"Tu-22M3 bombers, Irkutsk region",https://en.wikipedia.org/wiki/Operation_Spiderweb,52.915,103.575,4284,49.617,40.135
+Olenya,air base,Spiderweb,2025-06-01,hit,"Tu-95 bombers, Murmansk region, beyond the Arctic Circle",https://en.wikipedia.org/wiki/Operation_Spiderweb,68.15166667,33.465,1754,52.379,33.189
+Ivanovo,air base,Spiderweb,2025-06-01,hit,A-50 radar planes,https://en.wikipedia.org/wiki/Operation_Spiderweb,57.05833333,40.98166667,695,52.361,33.836
+Dyagilevo,air base,Spiderweb,2025-06-01,hit,Ryazan region,https://en.wikipedia.org/wiki/Operation_Spiderweb,54.64166667,39.57166667,455,52.305,33.922
+Ukrainka,air base,Spiderweb,2025-06-01,failed,the truck carrying the drones caught fire before launch,https://en.wikipedia.org/wiki/Operation_Spiderweb,51.17,128.445,5865,49.617,40.135
+Ust-Luga,oil port,Port strikes,2026-03-31; 2026-08-14; 2026-09-01,hit,"Russia's largest Baltic port, about 700,000 barrels of crude a day",https://www.themoscowtimes.com/2026/09/01/ukrainian-drone-attack-sparks-fire-at-ust-luga-port-a93612,59.66027778,28.27694444,853,52.337,32.377
+Primorsk,oil port,Port strikes,2026-03-23; 2026-04-05; 2026-05-03,hit,oil terminal for about 1 million barrels a day,https://www.wsls.com/news/world/2026/05/03/ukraine-hits-key-russian-oil-loading-port-and-3-shadow-fleet-tankers/,60.36666667,28.61666667,922,52.337,32.377

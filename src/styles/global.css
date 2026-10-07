@@ -23,6 +23,11 @@
   /* Hormuz study: open data (violet) vs oil that gets through (rose); validated light + dark. */
   --hz-seen: #7b5cf0;
   --hz-oil: #d6336c;
+  /* FPV study: one color per company (Red Cat red, Lockheed blue); validated light + dark, incl. color-blind sims. */
+  --umac: #b87400;
+  --rcat: #d6262e;
+  --lmt: #1f4fbf;
+  --avav: #0e8f9c;
   --accent-1: #6d4aff;
   --accent-2: #0ea5c6;
   --radius: 20px;
@@ -55,6 +60,10 @@
     --s4: #bb8800;
     --hz-seen: #9479ff;
     --hz-oil: #e8487f;
+    --umac: #e8a317;
+    --rcat: #ff4d55;
+    --lmt: #5b8cff;
+    --avav: #22b8c4;
   }
 }
 
@@ -80,6 +89,10 @@
   --s4: #bb8800;
   --hz-seen: #9479ff;
   --hz-oil: #e8487f;
+  --umac: #e8a317;
+  --rcat: #ff4d55;
+  --lmt: #5b8cff;
+  --avav: #22b8c4;
 }
 
 *,

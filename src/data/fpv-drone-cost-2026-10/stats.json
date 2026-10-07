@@ -1,0 +1,24 @@
+{
+ "date": "2025-06-01",
+ "drones": 117,
+ "drone_usd": 2000,
+ "claimed_hit": 41,
+ "claimed_share_of_carriers": 0.34,
+ "claimed_damage_usd": 7000000000,
+ "us_hit": 20,
+ "us_destroyed": 10,
+ "reported_belaya_km": 4300,
+ "source": "https://en.wikipedia.org/wiki/Operation_Spiderweb",
+ "drones_cost_usd": 234000,
+ "claimed_to_cost": 29915,
+ "belaya_km": 4284,
+ "ports_km": {
+  "Ust-Luga": 853,
+  "Primorsk": 922
+ },
+ "javelin_per_fpv": 482,
+ "switchblade_per_fpv": 145,
+ "base_date": "2025-05-30",
+ "end_date": "2026-10-07",
+ "spy_change": 0.3187
+}

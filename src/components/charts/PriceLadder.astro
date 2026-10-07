@@ -1,0 +1,45 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="price-ladder"
+  title="What one shot costs"
+  subtitle="US$ per unit, log scale: each grid step is ten times the one before. Small drones vs the US weapons they compete with."
+  source="Sources: Defence Blog, WSJ via Wikipedia, GovConWire, TWZ, US Army FY2022 budget via 19FortyFive and TWZ."
+  legendItems={[
+    { label: 'Small drone', color: 'var(--s1)' },
+    { label: 'Loitering munition / missile', color: 'var(--s2)' },
+  ]}
+  height={250}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import rows from '../../data/fpv-drone-cost-2026-10/prices.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  type R = (typeof rows)[number];
+  const usd = (n: number) => `$${n.toLocaleString('en-US')}`;
+  const label = (d: R, narrow: boolean) =>
+    d.x_fpv >= 10 ? `${usd(d.usd)} · ${Math.round(d.x_fpv)}×${narrow ? '' : ' an FPV'}` : usd(d.usd);
+
+  mount(document.querySelector<HTMLElement>('#price-ladder .plot')!, (width, t) => {
+    const css = (v: string) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+    const color = (d: R) => (d.kind === 'small drone' ? css('--s1') : css('--s2'));
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 250,
+      marginLeft: narrow ? 126 : 140,
+      marginRight: narrow ? 98 : 170,
+      x: { type: 'log', domain: [100, 300_000], label: null, grid: true, ticks: narrow ? [100, 10_000] : [100, 1_000, 10_000, 100_000], tickFormat: (d: number) => `$${d >= 1000 ? `${d / 1000}k` : d}` },
+      y: { label: null, domain: rows.map((d) => d.short), padding: 0.32, tickSize: 0 },
+      marks: [
+        Plot.barX(rows, { x1: 100, x2: 'usd', y: 'short', fill: color, rx2: 3 }),
+        Plot.text(rows, { x: 'usd', y: 'short', text: (d: R) => label(d, narrow), dx: 6, textAnchor: 'start', fill: t.ink2, fontSize: narrow ? 11 : 12 }),
+        Plot.tip(rows, Plot.pointerY({ x: 'usd', y: 'short', ...tipStyle(t), title: (d: R) => `${d.item}\n${usd(d.usd)} per unit\n${d.basis}` })),
+      ],
+    });
+  });
+</script>

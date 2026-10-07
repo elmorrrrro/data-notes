@@ -29,6 +29,7 @@ const stocksFor = (p: CollectionEntry<'posts'>) => {
           <p class="desc">{p.data.description}</p>
           <div class="foot">
             <div class="meta">
+              <span class="rubric">{p.data.rubric}</span>
               <time datetime={p.data.date.toISOString()} class="muted">
                 {formatDate(p.data.date)}
               </time>
@@ -147,6 +148,13 @@ const stocksFor = (p: CollectionEntry<'posts'>) => {
     align-items: flex-end;
     justify-content: space-between;
     gap: 14px;
+  }
+  .rubric {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-1, var(--muted));
   }
   .meta {
     display: flex;

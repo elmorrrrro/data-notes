@@ -1,0 +1,171 @@
+---
+title: "Spiderweb: a $234,000 recipe against a nuclear power. Now America wants it too"
+description: "On June 1, 2025, 117 cheap drones hit Russia's strategic bombers 4,300 km from Ukraine, and no one in Russia's security services saw it coming. Two weeks later Israel used the same recipe in Iran. Why it scares Washington as much as Moscow, why the US now wants Ukrainian prices, and why the only drone stock that won makes parts, not drones."
+date: 2026-10-08
+tags: [unusual machines, red cat, aerovironment, lockheed martin, drones]
+stocks: [UMAC, RCAT, AVAV, LMT]
+accents: ['var(--rcat)', 'var(--umac)']
+---
+
+import FpvScoreboard from '../../../components/FpvScoreboard.astro';
+import ReachMap from '../../../components/charts/ReachMap.astro';
+import PriceLadder from '../../../components/charts/PriceLadder.astro';
+import SinceSpiderweb from '../../../components/charts/SinceSpiderweb.astro';
+import DroneStocksTable from '../../../components/DroneStocksTable.astro';
+import StockWatch from '../../../components/StockWatch.astro';
+import snapshot from '../../../data/fpv-drone-cost-2026-10/stocks_snapshot.json';
+
+**The bombers are not the story. The recipe is.** On June 1, 2025, Ukraine's security service (SBU) launched 117
+small drones from trucks parked next to four Russian air bases, while the pilots steered them from Ukraine. The drones
+cost about $234,000; Ukraine valued what they hit at $7 billion. But the bigger loss for Moscow was not the aircraft.
+It was the discovery that a nuclear power cannot protect its most guarded assets from something that costs less than
+a used car. Below: how that recipe spread, why it now scares Washington, and who on the US stock market is paid to
+copy it.
+
+<FpvScoreboard />
+
+## 1. A recipe, not a raid
+
+<ReachMap />
+
+The bases were spread over four time zones; the farthest, Belaya in Siberia, is 4,300 km from Ukraine's border. Its
+bombers are the ones that launch cruise missiles at Ukrainian cities, and Russia has not built a new Tu-22M3 since
+1993. The drones did not fly that far: they were driven there in secret, after 18 months of planning. That is the
+point. As Vitaliy Portnikov, the Ukrainian political commentator, put it, the operation happened and "no one in the
+Russian security services knew about it". Distance, air defence and the secret police all failed against a truck.
+
+Twelve days later the recipe was used again. On June 13, 2025, Israel's Mossad launched drones from secret bases it had
+set up inside Iran, against air defences near Tehran, at the start of Israel's air campaign. Portnikov's verdict: the
+two services "created a universal recipe for destroying the security of a nuclear state". Ukraine kept using its own
+version the long way, by air: in 2026 its long-range drones hit **Primorsk** and **Ust-Luga**, Russia's biggest oil
+ports on the Baltic, 850–920 km from the border. After the March strikes Primorsk had lost at least 40% of its oil
+storage, according to satellite images analysed for Reuters. That is money that pays for the war.
+
+## 2. Why America now wants the Ukrainian price
+
+<PriceLadder />
+
+Portnikov's next line is the one that matters for the rest of this study: "What Vladimir Putin should fear, Donald
+Trump should fear too." Every US base, ship and airport is as exposed to a cheap drone as Belaya was, and the US
+arsenal is built on the opposite logic. A Ukrainian FPV drone costs about **$400**; a Javelin, the US anti-tank
+missile, cost the US Army $192,772 per round in its 2022 budget, **482 times** more.
+
+Washington reacted fast. Five days after Spiderweb, President Trump signed an executive order titled "Unleashing
+American Drone Dominance". In July 2025 Defense Secretary Pete Hegseth ordered that by the end of 2026 every squad
+gets "low-cost, expendable drones", calling them "the biggest battlefield innovation in a generation". In 2026 the
+Army asked industry for FPV drones under $2,000 each and the Marines for 10,000 under $4,000. Both ceilings are still
+five to ten times what Ukraine pays, and the cheap parts that would close the gap mostly come from China.
+
+## 3. Who gets the money
+
+<SinceSpiderweb />
+
+The cheapest drones in the world are made by hundreds of private Ukrainian companies, which you can't buy on an
+exchange. In the US, four listed names are tied to small drones: **Unusual Machines** makes FPV parts, including
+motors; **Red Cat** makes small drones for the US Army; **AeroVironment** makes Switchblade; **Lockheed Martin** makes
+Javelin with RTX, the missile that FPVs undercut.
+
+Only one beat the market, and it doesn't sell the finished weapon. Unusual Machines is up 341% since Spiderweb, while
+the S&P 500 rose 32%. Its pitch is exactly the gap from section 2: drone parts that are not made in China. In May 2026
+the Wall Street Journal reported that the Pentagon was in talks to fund it, possibly for an ownership stake; the stock jumped
+37% before the market even opened. With $11 million of revenue in 2025, Unusual Machines is priced on Washington's
+plans, not on its sales. The weapon makers did worse than the index: AeroVironment is down 22%, Red Cat and Lockheed
+Martin are up 3%.
+
+My reading: Spiderweb changed the idea of security, and America has started paying for it. So far the market rewards
+whoever can replace Chinese parts, not whoever builds the cheapest drone. The cheapest drones are still Ukrainian.
+
+<DroneStocksTable />
+
+<StockWatch
+  snapshot={snapshot}
+  tickers={[
+    { symbol: 'UMAC', name: 'Unusual Machines', color: 'var(--umac)' },
+    { symbol: 'RCAT', name: 'Red Cat', color: 'var(--rcat)' },
+    { symbol: 'AVAV', name: 'AeroVironment', color: 'var(--avav)' },
+    { symbol: 'LMT', name: 'Lockheed Martin', color: 'var(--lmt)' },
+  ]}
+  id="drone-stocks"
+  title="The four drone stocks since this post, indexed to publication day"
+/>
+
+The prices above are frozen at the last close before this post (October 7, 2026) and update live every time the page
+opens.
+
+## What the numbers leave out
+
+- **Price is not cost per hit.** Many FPV drones are jammed or miss, and a Javelin is far more likely to hit. There
+  are no public hit rates, so the ladder compares prices, not results.
+- **Spiderweb's $234,000 is only the drones.** It leaves out the trucks, 18 months of planning and the people. The
+  $7 billion is Ukraine's own valuation of the aircraft; independent counts are lower (two US officials told Reuters
+  about 20 hit and 10 destroyed).
+- **Distance is not flight range.** Spiderweb's drones were driven close to the bases. The map measures how far the
+  operation reached from Ukraine's border, not how far a quadcopter flies. The ports were hit by long-range drones,
+  a different and more expensive type.
+- **Prices come from different years and sources.** The Javelin and Switchblade figures are US Army budget lines for
+  fiscal 2022; the FPV price is a typical figure from press reports; the US targets are ceilings, not contract prices.
+- **Share prices have many causes.** Contracts, earnings, Pentagon plans and the whole market moved these stocks; the
+  chart does not show that Spiderweb moved them. Javelin is a small part of Lockheed Martin's $75 billion of sales.
+- **Portnikov is a commentator, not a source of data.** His quotes frame the argument; every number here comes from the
+  sources below.
+
+## Data
+
+<p class="muted" style="font-size: 0.85rem">
+  Download the datasets: <a href="/data/fpv-drone-cost-2026-10/targets.csv">targets.csv</a> (air bases and ports,
+  coordinates, distance to the border), <a href="/data/fpv-drone-cost-2026-10/prices.csv">prices.csv</a>,
+  <a href="/data/fpv-drone-cost-2026-10/companies.csv">companies.csv</a> and
+  <a href="/data/fpv-drone-cost-2026-10/stock_index.csv">stock_index.csv</a>.
+</p>
+
+## Methodology
+
+- **Operation Spiderweb:** date, the 117 drones, the Osa drones at $2,000 each (Ukrainian officials, via the Wall
+  Street Journal), 41 aircraft hit, the $7 billion valuation, the failed Ukrainka attack, the 18 months of planning,
+  pilots working from Ukraine and the US officials' count (Reuters) from
+  [Wikipedia](https://en.wikipedia.org/wiki/Operation_Spiderweb), which links the original reporting. Tu-22M
+  production years from [Wikipedia](https://en.wikipedia.org/wiki/Tupolev_Tu-22M).
+- **Vitaliy Portnikov:** "no one in the Russian security services knew about it" from his interview with
+  [Ukraїner](https://www.ukrainer.net/vitaliy-portnykov-2/); the "universal recipe" and "What Vladimir Putin should
+  fear" quotes from his comments of June 13, 2025, reported by
+  [Politarena](https://politarena.ua/operatsiia-mossadu-v-irani-nahaduie-operatsiiu-sbu-pavutyna-v-rosii-portnikov-105385/).
+  Our translations from Ukrainian.
+- **Israel in Iran:** Mossad's covert drone bases and the June 13, 2025 strikes on air defences, as reported by N12
+  and summarised by [TWZ](https://www.twz.com/air/israel-hid-drones-missiles-around-iran-to-target-nuclear-facilities-and-more-report).
+- **Primorsk storage:** at least 40% of tank capacity lost after the March 2026 strikes, Reuters citing Vantor
+  satellite images, via [Forbes Ukraine](https://forbes.ua/news/odin-z-naybilshikh-naftovikh-terminaliv-rosii-vtrativ-40-svoikh-potuzhnostey-cherez-ukrainski-ataki-reuters-02042026-37691).
+- **US policy:** Executive Order 14307 of June 6, 2025
+  ([The American Presidency Project](https://www.presidency.ucsb.edu/documents/executive-order-14307-unleashing-american-drone-dominance));
+  Hegseth's memo of July 10, 2025 ([DefenseScoop](https://defensescoop.com/2025/07/10/hegseth-memo-unleashing-us-military-drone-dominance-deadlines/)).
+- **Unusual Machines and the Pentagon:** the funding talks, possible equity stakes and the
+  premarket jump (Reuters, citing the Wall Street Journal, via
+  [GV Wire](https://gvwire.com/2026/05/28/trump-administration-in-talks-to-fund-us-drone-companies-wsj-reports/)).
+- **Port strikes:** Ust-Luga on March 31 ([Al Jazeera](https://www.aljazeera.com/news/2026/3/31/drones-strike-russias-ust-luga-port-again-as-eu-officials-visit-ukraine)),
+  August 14 and September 1, 2026, and its 700,000 barrels a day
+  ([The Moscow Times, citing Reuters](https://www.themoscowtimes.com/2026/09/01/ukrainian-drone-attack-sparks-fire-at-ust-luga-port-a93612));
+  Primorsk on March 23 ([Euromaidan Press](https://euromaidanpress.com/2026/03/23/ukrainian-drone-strike-on-primorsk-port/)),
+  April 5 ([Al Jazeera](https://www.aljazeera.com/news/2026/4/5/drone-attacks-hit-russian-oil-infrastructure-leak-and-fires-reported),
+  which also gives its capacity of one million barrels a day) and May 3, 2026
+  ([AP](https://www.wsls.com/news/world/2026/05/03/ukraine-hits-key-russian-oil-loading-port-and-3-shadow-fleet-tankers/)).
+- **Distances:** coordinates of the air bases and ports from Wikipedia; Ukraine's internationally recognised border
+  from [geoBoundaries](https://www.geoboundaries.org/) (gbOpen, CC BY 4.0). The distance is the shortest great-circle
+  distance from the target to any point of the border. Our 4,284 km to Belaya matches the 4,300 km in the reporting.
+  Map land: [Natural Earth](https://www.naturalearthdata.com/) via world-atlas.
+- **Prices:** Ukrainian FPV about $400 ([Defence Blog](https://defence-blog.com/what-ukraines-drones-really-cost/));
+  Switchblade 300 $58,063 per round in the Army's FY2022 budget
+  ([19FortyFive](https://www.19fortyfive.com/2023/04/the-u-s-army-wont-buy-anymore-switchblade-300-kamikaze-drones/));
+  Javelin $192,772 per missile in the Army's FY2022 budget request
+  ([TWZ](https://www.twz.com/45132/as-ukraine-pummels-russians-with-javelin-missiles-can-production-keep-pace-with-demand));
+  US Army FPV target under $2,000 ([GovConWire](https://www.govconwire.com/articles/neros-500m-army-archer-fpv-contract));
+  US Marines' request for 10,000 FPVs under $4,000 ([TWZ](https://www.twz.com/air/marines-seeking-10000-first-person-view-drones-at-4k-a-pop)).
+- **Companies:** what each sells from [19FortyFive](https://www.19fortyfive.com/2023/04/the-u-s-army-wont-buy-anymore-switchblade-300-kamikaze-drones/)
+  (AeroVironment), [The Robot Report](https://www.therobotreport.com/red-cat-wins-u-s-army-next-gen-drone-contract-over-skydio/)
+  (Red Cat), [ACCESS Newswire](https://www.accessnewswire.com/newsroom/en/aerospace-and-defense/unusual-machines-accelerates-motor-factory-output-at-orlando-campus-1156555)
+  (Unusual Machines) and [TWZ](https://www.twz.com/45132/as-ukraine-pummels-russians-with-javelin-missiles-can-production-keep-pace-with-demand)
+  (Lockheed Martin). Annual revenue from each company's latest 10-K on [SEC EDGAR](https://www.sec.gov/edgar/search/)
+  (AeroVironment's fiscal year ends in April). Share prices: daily close from Yahoo Finance, May 30, 2025 to
+  October 7, 2026, the last close before publication; live prices come from Yahoo Finance when the page loads.
+- **Code:** plain Python scripts (`collect.py`, `analyze.py`, `snapshot_stocks.py`).
+- **Trademarks:** company and product names are trademarks of their respective owners. This site is independent and
+  not affiliated with or sponsored by AeroVironment, Red Cat, Unusual Machines, Lockheed Martin, RTX or any other
+  company mentioned. This study was produced with Claude, a model made by Anthropic.

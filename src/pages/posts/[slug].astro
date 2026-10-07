@@ -19,7 +19,7 @@ const minutes = Math.max(1, Math.round((post.body ?? '').split(/\s+/).length / 2
   <article class="wrap">
     <header class="post-header">
       <div class="meta">
-        <span class="kicker">Study</span>
+        <span class="kicker">{post.data.rubric}</span>
         <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
         <span class="dot" aria-hidden="true">·</span>
         <span>{minutes} min read</span>

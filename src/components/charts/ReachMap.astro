@@ -1,0 +1,85 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="reach-map"
+  title="How far from Ukraine the targets were"
+  subtitle="Shortest distance from Ukraine's border. Spiderweb's air bases (June 1, 2025) and the Baltic oil ports hit by long-range drones in 2026."
+  source="Sources: Wikipedia (Operation Spiderweb, coordinates), The Moscow Times, AP; border: geoBoundaries (CC BY 4.0); land: Natural Earth. Distances: Data Notes."
+  legendItems={[
+    { label: 'Air base, Spiderweb', color: 'var(--s2)' },
+    { label: 'Oil port, 2026', color: 'var(--s4)' },
+    { label: 'Ukraine', color: 'var(--s1)' },
+  ]}
+  height={200}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import { feature } from 'topojson-client';
+  import land110 from 'world-atlas/land-110m.json';
+  import targets from '../../data/fpv-drone-cost-2026-10/targets.json';
+  import ukraine from '../../data/fpv-drone-cost-2026-10/ukraine.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  type T = (typeof targets)[number];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const land = feature(land110 as any, (land110 as any).objects.land);
+  const km = (n: number) => `${n.toLocaleString('en-US')} km`;
+  // Close neighbours share one label so they don't collide.
+  const by = (name: string) => targets.find((d) => d.name === name)!;
+  const range = (...names: string[]) => {
+    const ks = names.map((n) => by(n).km).sort((x, y) => x - y);
+    return `${ks[0]}–${ks[ks.length - 1]} km`;
+  };
+  const labels = [
+    { ...by('Belaya'), text: `Belaya\n${km(by('Belaya').km)}`, anchor: 'top' },
+    { ...by('Ukrainka'), text: 'Ukrainka\nattack failed', anchor: 'top' },
+    { ...by('Olenya'), text: `Olenya\n${km(by('Olenya').km)}`, anchor: 'bottom' },
+    { ...by('Primorsk'), text: `Baltic ports\n${range('Ust-Luga', 'Primorsk')}`, anchor: 'end' },
+    { ...by('Ivanovo'), text: `Ivanovo, Dyagilevo\n${range('Ivanovo', 'Dyagilevo')}`, anchor: 'start' },
+  ];
+
+  const css = (v: string) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const tip = (d: T) =>
+    `${d.name} (${d.kind})\n${km(d.km)} from Ukraine's border\n${d.event}: ${d.dates.replaceAll('; ', ', ')}\n${d.note}`;
+
+  mount(document.querySelector<HTMLElement>('#reach-map .plot')!, (width, t) => {
+    const color = (d: T) => (d.kind === 'oil port' ? css('--s4') : css('--s2'));
+    const height = Math.round(Math.max(190, Math.min(380, width * 0.56)));
+    return Plot.plot({
+      ...base(t, width),
+      width,
+      height,
+      projection: {
+        type: 'conic-conformal',
+        rotate: [-75, 0],
+        parallels: [50, 66],
+        domain: { type: 'MultiPoint', coordinates: [[8, 46], [132, 50], [34, 72], [100, 64]] },
+        inset: 14,
+      },
+      marks: [
+        Plot.geo(land, { fill: t.grid, stroke: 'none' }),
+        Plot.geo(ukraine, { fill: css('--s1'), fillOpacity: 0.85, stroke: css('--s1'), strokeWidth: 0.6 }),
+        Plot.link(targets, {
+          x1: 'border_lon', y1: 'border_lat', x2: 'lon', y2: 'lat',
+          stroke: color, strokeWidth: 1.1, strokeOpacity: 0.7, strokeDasharray: '3,3',
+        }),
+        Plot.dot(targets, { x: 'lon', y: 'lat', r: 4.5, fill: (d: T) => (d.status === 'failed' ? t.surface : color(d)), stroke: color, strokeWidth: 1.6 }),
+        // Plot's text anchors are constants, so each placement gets its own mark.
+        ...(['top', 'bottom', 'start', 'end'] as const).map((a) =>
+          Plot.text(labels.filter((l) => l.anchor === a), {
+            x: 'lon', y: 'lat', text: 'text',
+            textAnchor: a === 'start' || a === 'end' ? a : 'middle',
+            lineAnchor: a === 'top' || a === 'bottom' ? a : 'middle',
+            dx: a === 'start' ? 9 : a === 'end' ? -9 : 0, dy: a === 'top' ? 10 : a === 'bottom' ? -10 : 0,
+            fill: t.ink2, fontSize: width < 500 ? 10.5 : 12, stroke: t.surface, strokeWidth: 3, paintOrder: 'stroke',
+          }),
+        ),
+        Plot.text([{ lon: 31.2, lat: 48.6 }], { x: 'lon', y: 'lat', text: () => 'Ukraine', fill: '#fff', fontSize: width < 500 ? 9 : 11, fontWeight: 600 }),
+        Plot.tip(targets, Plot.pointer({ x: 'lon', y: 'lat', ...tipStyle(t), title: tip, maxRadius: 30 })),
+      ],
+    });
+  });
+</script>

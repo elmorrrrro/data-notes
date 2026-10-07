@@ -1,0 +1,46 @@
+[
+ {
+  "ticker": "AVAV",
+  "name": "AeroVironment",
+  "role": "makes Switchblade loitering munitions",
+  "source": "https://www.19fortyfive.com/2023/04/the-u-s-army-wont-buy-anymore-switchblade-300-kamikaze-drones/",
+  "close_base": 178.03,
+  "close_end": 138.86,
+  "change": -0.22,
+  "revenue_usd": 1976845000,
+  "fy_end": "2026-04-30"
+ },
+ {
+  "ticker": "RCAT",
+  "name": "Red Cat",
+  "role": "makes Black Widow for the US Army and FANG FPV drones",
+  "source": "https://www.therobotreport.com/red-cat-wins-u-s-army-next-gen-drone-contract-over-skydio/",
+  "close_base": 5.95,
+  "close_end": 6.15,
+  "change": 0.0336,
+  "revenue_usd": 40729000,
+  "fy_end": "2025-12-31"
+ },
+ {
+  "ticker": "UMAC",
+  "name": "Unusual Machines",
+  "role": "makes FPV parts, including motors in Orlando",
+  "source": "https://www.accessnewswire.com/newsroom/en/aerospace-and-defense/unusual-machines-accelerates-motor-factory-output-at-orlando-campus-1156555",
+  "close_base": 4.96,
+  "close_end": 21.88,
+  "change": 3.4113,
+  "revenue_usd": 11199217,
+  "fy_end": "2025-12-31"
+ },
+ {
+  "ticker": "LMT",
+  "name": "Lockheed Martin",
+  "role": "makes Javelin (with RTX), the missile FPVs undercut",
+  "source": "https://www.twz.com/45132/as-ukraine-pummels-russians-with-javelin-missiles-can-production-keep-pace-with-demand",
+  "close_base": 482.38,
+  "close_end": 499.22,
+  "change": 0.0349,
+  "revenue_usd": 75048000000,
+  "fy_end": "2025-12-31"
+ }
+]
