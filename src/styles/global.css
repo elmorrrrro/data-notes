@@ -28,6 +28,14 @@
   --rcat: #d6262e;
   --lmt: #1f4fbf;
   --avav: #0e8f9c;
+  /* EV vs petrol study: one color per fuel and per carmaker; validated light + dark, incl. color-blind sims. */
+  --ev-petrol: #c2410c;
+  --ev-diesel: #57534e;
+  --ev-hybrid: #7c3aed;
+  --ev-electric: #0d9488;
+  --toyota: #c81e3a;
+  --byd: #1d6fd6;
+  --tesla: #4b5563;
   --accent-1: #6d4aff;
   --accent-2: #0ea5c6;
   --radius: 20px;
@@ -56,7 +64,6 @@
     --s1: #3987e5;
     --s2: #d95926;
     --s3: #199e70;
-  --s4: #bb8800;
     --s4: #bb8800;
     --hz-seen: #9479ff;
     --hz-oil: #e8487f;
@@ -64,6 +71,13 @@
     --rcat: #ff4d55;
     --lmt: #5b8cff;
     --avav: #22b8c4;
+    --ev-petrol: #f97316;
+    --ev-diesel: #a8a29e;
+    --ev-hybrid: #a78bfa;
+    --ev-electric: #2dd4bf;
+    --toyota: #ff5c6c;
+    --byd: #5b9bff;
+    --tesla: #9ca3af;
   }
 }
 
@@ -93,6 +107,13 @@
   --rcat: #ff4d55;
   --lmt: #5b8cff;
   --avav: #22b8c4;
+  --ev-petrol: #f97316;
+  --ev-diesel: #a8a29e;
+  --ev-hybrid: #a78bfa;
+  --ev-electric: #2dd4bf;
+  --toyota: #ff5c6c;
+  --byd: #5b9bff;
+  --tesla: #9ca3af;
 }
 
 *,

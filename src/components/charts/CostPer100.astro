@@ -1,0 +1,75 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="cost-per-100"
+  title="What 100 km costs in the EU, by fuel"
+  subtitle="Euros, weekly. Average pump prices with taxes; electricity at the average household price, charged at home."
+  source="Source: European Commission Weekly Oil Bulletin; Eurostat (household electricity prices, HICP electricity). Consumption: petrol 6.5 L, diesel 5.5 L, hybrid 5.0 L, electric 18 kWh per 100 km."
+  legend={false}
+  height={320}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/ev-vs-petrol-2026-10/costs.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const FUELS = [
+    { key: 'petrol', label: 'Petrol', css: '--ev-petrol' },
+    { key: 'diesel', label: 'Diesel', css: '--ev-diesel' },
+    { key: 'hybrid', label: 'Hybrid', css: '--ev-hybrid' },
+    { key: 'ev', label: 'Electric', css: '--ev-electric' },
+  ] as const;
+  const day = (d: string) => new Date(`${d}T12:00:00Z`);
+  type Week = (typeof data.weekly)[number];
+  const weeks = data.weekly.map((w) => ({ ...w, d: day(w.date) }));
+  const rows = FUELS.flatMap((f) => weeks.map((w) => ({ fuel: f.label, date: w.d, cost: w[f.key as keyof Week] as number })));
+  const last = weeks[weeks.length - 1];
+  const war = day('2026-02-28');
+  const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+  const eur = (n: number) => `€${n.toFixed(2)}`;
+
+  mount(document.querySelector<HTMLElement>('#cost-per-100 .plot')!, (width, t) => {
+    const cs = getComputedStyle(document.documentElement);
+    const color = Object.fromEntries(FUELS.map((f) => [f.label, cs.getPropertyValue(f.css).trim()]));
+    const narrow = width < 520;
+    // Right-hand labels: name and latest cost, nudged apart where two lines end close together.
+    const ends = FUELS.map((f) => ({ fuel: f.label, date: last.d, cost: last[f.key as keyof Week] as number }));
+    return Plot.plot({
+      ...base(t, width),
+      height: 320,
+      marginRight: narrow ? 74 : 96,
+      x: { type: 'utc', label: null, ticks: narrow ? 4 : 8 },
+      y: { label: '↑ € per 100 km', domain: [0, 16], grid: false },
+      color: { domain: FUELS.map((f) => f.label), range: FUELS.map((f) => color[f.label]) },
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.ruleX([war], { stroke: t.axis, strokeDasharray: '3,3' }),
+        Plot.text([war], { x: (d) => d, frameAnchor: 'bottom', dx: -6, dy: -8, textAnchor: 'end', text: () => 'War with Iran', fill: t.muted, fontSize: 11 }),
+        Plot.line(rows, { x: 'date', y: 'cost', stroke: 'fuel', strokeWidth: 2 }),
+        Plot.text(ends, {
+          x: 'date',
+          y: 'cost',
+          text: (d) => `${d.fuel} ${eur(d.cost)}`,
+          fill: (d) => color[d.fuel],
+          dx: 6,
+          textAnchor: 'start',
+          fontSize: narrow ? 10.5 : 11.5,
+          fontWeight: 600,
+        }),
+        Plot.tip(
+          weeks,
+          Plot.pointerX({
+            x: 'd',
+            y: 'petrol',
+            ...tipStyle(t),
+            title: (w) =>
+              `Week of ${fmt(w.d)}\nPetrol ${eur(w.petrol)} (${eur(w.petrol_l)}/L)\nDiesel ${eur(w.diesel)} (${eur(w.diesel_l)}/L)\nHybrid ${eur(w.hybrid)}\nElectric ${eur(w.ev)} (€${w.kwh.toFixed(3)}/kWh)`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

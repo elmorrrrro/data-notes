@@ -1,0 +1,58 @@
+---
+import Figure from './Figure.astro';
+import data from '../../data/ev-vs-petrol-2026-10/stocks.json';
+
+const fmt = (d: string) => new Date(`${d}T12:00:00Z`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
+const lastDate = data.stocks.map((s) => s.last_date).sort().at(-1)!;
+---
+
+<Figure
+  id="carmaker-gap"
+  title="Carmaker shares since the war began"
+  subtitle={`Change in share price from February 27 to ${fmt(lastDate)}, 2026, in home currency. The vertical tick is the company's home stock market over the same days.`}
+  source="Source: Yahoo Finance daily closes (unadjusted). Markets: STOXX Europe 600, Nikkei 225, Hang Seng, S&P 500."
+  legend={false}
+  height={360}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import data from '../../data/ev-vs-petrol-2026-10/stocks.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const CSS: Record<string, string> = { Toyota: '--toyota', BYD: '--byd', Tesla: '--tesla' };
+  const rows = data.stocks;
+  const sign = (n: number) => (n > 0 ? '+' : n < 0 ? '−' : '');
+  const pct = (n: number) => `${sign(n)}${Math.abs(n).toFixed(1)}%`;
+
+  mount(document.querySelector<HTMLElement>('#carmaker-gap .plot')!, (width, t) => {
+    const cs = getComputedStyle(document.documentElement);
+    const fill = (name: string) => (CSS[name] ? cs.getPropertyValue(CSS[name]).trim() : t.muted);
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 360,
+      marginLeft: narrow ? 92 : 112,
+      marginRight: 16,
+      x: { label: null, domain: [-50, 25], tickFormat: (d: number) => `${d > 0 ? '+' : ''}${d}%`, ticks: narrow ? 4 : 8 },
+      y: { label: null, domain: rows.map((r) => r.name), tickSize: 0 },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        Plot.barX(rows, { y: 'name', x: 'change_pct', fill: (d) => fill(d.name), fillOpacity: (d) => (CSS[d.name] ? 1 : 0.45), insetTop: 6, insetBottom: 6 }),
+        Plot.tickX(rows, { y: 'name', x: 'market_pct', stroke: t.ink, strokeWidth: 2.5, insetTop: 2, insetBottom: 2 }),
+        Plot.tip(
+          rows,
+          Plot.pointerY({
+            y: 'name',
+            x: 'change_pct',
+            ...tipStyle(t),
+            title: (d) =>
+              `${d.name} (${d.symbol}): ${d.sells}\nShare: ${pct(d.change_pct)}\n${d.market}: ${pct(d.market_pct)}\n` +
+              `Against its market: ${sign(d.vs_market_pts)}${Math.abs(d.vs_market_pts).toFixed(1)} pts`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

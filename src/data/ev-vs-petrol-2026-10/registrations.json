@@ -1,0 +1,202 @@
+[
+ {
+  "month": "2025-01",
+  "bev_share": 15.0,
+  "hev_share": 34.9,
+  "phev_share": 7.4,
+  "fossil_share": 39.4,
+  "petrol_share": 29.4,
+  "diesel_share": 10.0,
+  "total": 831201
+ },
+ {
+  "month": "2025-02",
+  "bev_share": 15.4,
+  "hev_share": 35.6,
+  "phev_share": 7.4,
+  "fossil_share": 38.0,
+  "petrol_share": 28.6,
+  "diesel_share": 9.4,
+  "total": 853670
+ },
+ {
+  "month": "2025-03",
+  "bev_share": 15.3,
+  "hev_share": 36.0,
+  "phev_share": 8.0,
+  "fossil_share": 37.5,
+  "petrol_share": 28.2,
+  "diesel_share": 9.3,
+  "total": 1029519
+ },
+ {
+  "month": "2025-04",
+  "bev_share": 15.7,
+  "hev_share": 34.7,
+  "phev_share": 8.8,
+  "fossil_share": 37.9,
+  "petrol_share": 28.3,
+  "diesel_share": 9.6,
+  "total": 925359
+ },
+ {
+  "month": "2025-05",
+  "bev_share": 15.4,
+  "hev_share": 34.1,
+  "phev_share": 9.4,
+  "fossil_share": 37.7,
+  "petrol_share": 28.5,
+  "diesel_share": 9.2,
+  "total": 926582
+ },
+ {
+  "month": "2025-06",
+  "bev_share": 16.7,
+  "hev_share": 33.8,
+  "phev_share": 9.3,
+  "fossil_share": 36.7,
+  "petrol_share": 27.7,
+  "diesel_share": 9.0,
+  "total": 1010201
+ },
+ {
+  "month": "2025-07",
+  "bev_share": 15.6,
+  "hev_share": 34.2,
+  "phev_share": 10.0,
+  "fossil_share": 37.1,
+  "petrol_share": 27.2,
+  "diesel_share": 10.0,
+  "total": 914680
+ },
+ {
+  "month": "2025-08",
+  "bev_share": 17.8,
+  "hev_share": 33.9,
+  "phev_share": 10.4,
+  "fossil_share": 35.0,
+  "petrol_share": 26.3,
+  "diesel_share": 8.8,
+  "total": 677786
+ },
+ {
+  "month": "2025-09",
+  "bev_share": 18.9,
+  "hev_share": 34.7,
+  "phev_share": 10.3,
+  "fossil_share": 33.0,
+  "petrol_share": 24.9,
+  "diesel_share": 8.1,
+  "total": 888672
+ },
+ {
+  "month": "2025-10",
+  "bev_share": 18.9,
+  "hev_share": 34.5,
+  "phev_share": 10.5,
+  "fossil_share": 32.9,
+  "petrol_share": 24.8,
+  "diesel_share": 8.1,
+  "total": 916609
+ },
+ {
+  "month": "2025-11",
+  "bev_share": 21.3,
+  "hev_share": 34.0,
+  "phev_share": 10.3,
+  "fossil_share": 31.2,
+  "petrol_share": 23.3,
+  "diesel_share": 7.9,
+  "total": 887491
+ },
+ {
+  "month": "2025-12",
+  "bev_share": 22.6,
+  "hev_share": 33.7,
+  "phev_share": 10.7,
+  "fossil_share": 29.6,
+  "petrol_share": 22.5,
+  "diesel_share": 7.2,
+  "total": 963319
+ },
+ {
+  "month": "2026-01",
+  "bev_share": 19.3,
+  "hev_share": 38.6,
+  "phev_share": 9.8,
+  "fossil_share": 30.1,
+  "petrol_share": 22.0,
+  "diesel_share": 8.1,
+  "total": 799625
+ },
+ {
+  "month": "2026-02",
+  "bev_share": 18.3,
+  "hev_share": 38.7,
+  "phev_share": 9.7,
+  "fossil_share": 31.2,
+  "petrol_share": 23.1,
+  "diesel_share": 8.1,
+  "total": 865437
+ },
+ {
+  "month": "2026-03",
+  "bev_share": 20.2,
+  "hev_share": 38.4,
+  "phev_share": 9.1,
+  "fossil_share": 29.9,
+  "petrol_share": 22.7,
+  "diesel_share": 7.2,
+  "total": 1158316
+ },
+ {
+  "month": "2026-04",
+  "bev_share": 20.6,
+  "hev_share": 36.9,
+  "phev_share": 9.8,
+  "fossil_share": 30.1,
+  "petrol_share": 22.5,
+  "diesel_share": 7.6,
+  "total": 972314
+ },
+ {
+  "month": "2026-05",
+  "bev_share": 21.3,
+  "hev_share": 36.2,
+  "phev_share": 10.3,
+  "fossil_share": 29.3,
+  "petrol_share": 22.0,
+  "diesel_share": 7.3,
+  "total": 955013
+ },
+ {
+  "month": "2026-06",
+  "bev_share": 23.6,
+  "hev_share": 35.2,
+  "phev_share": 10.1,
+  "fossil_share": 28.0,
+  "petrol_share": 21.3,
+  "diesel_share": 6.7,
+  "total": 1147962
+ },
+ {
+  "month": "2026-07",
+  "bev_share": 23.8,
+  "hev_share": 34.7,
+  "phev_share": 10.8,
+  "fossil_share": 27.3,
+  "petrol_share": 20.4,
+  "diesel_share": 7.0,
+  "total": 941503
+ },
+ {
+  "month": "2026-08",
+  "bev_share": 27.7,
+  "hev_share": 33.2,
+  "phev_share": 11.1,
+  "fossil_share": 25.3,
+  "petrol_share": 18.9,
+  "diesel_share": 6.4,
+  "total": 708211
+ }
+]

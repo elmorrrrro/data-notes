@@ -1,0 +1,163 @@
+---
+title: "The war with Iran made the electric car the cheapest to run. Buyers noticed, carmaker shares didn't"
+description: "Since February, petrol in the EU is up 23% and diesel 35%, while home electricity barely moved. 100 km on petrol now costs €13, on home power €5. Electric cars' share of new sales jumped, yet carmaker shares fell, Toyota's and BYD's included. With a table for every EU country and a live tracker."
+date: 2026-10-09
+tags: [toyota, byd, tesla, electric cars, oil]
+accents: ['var(--ev-electric)', 'var(--ev-petrol)']
+stocks: [7203.T, 1211.HK, TSLA]
+---
+
+import EvScoreboard from '../../../components/EvScoreboard.astro';
+import CostPer100 from '../../../components/charts/CostPer100.astro';
+import BevShare from '../../../components/charts/BevShare.astro';
+import CarmakerGap from '../../../components/charts/CarmakerGap.astro';
+import StockWatch from '../../../components/StockWatch.astro';
+import EvTable from '../../../components/EvTable.astro';
+import snapshot from '../../../data/ev-vs-petrol-2026-10/stocks_snapshot.json';
+
+**Short answer: the oil shock made the electric car the cheapest car to run in every EU country, and buyers moved
+fast.** Petrol got a fifth more expensive and diesel a third; home electricity didn't move. A battery-electric car
+charged at home now costs less than half as much per kilometre as a petrol one. In August, more than a quarter of new cars sold in the
+EU were electric. The companies that make those cars didn't win on the stock market, though. Toyota and BYD, the
+biggest sellers of hybrids and electric cars, are both down by a fifth or more. Tariffs and a price war ate the gain.
+
+<EvScoreboard />
+
+## 1. Fuel rose, electricity didn't
+
+<CostPer100 />
+
+US and Israeli strikes on Iran on February 28, 2026, cut off most tanker traffic through the Strait of Hormuz.
+Pump prices followed crude. In the week before the war, a litre of petrol cost €1.64 on average in the EU; in the
+first week of October it cost **€2.01**. Diesel rose even more, from €1.59 to **€2.15**.
+
+Household electricity barely moved: Eurostat's price index for it is up about 1% since February. So the gap between
+the two ways of driving widened. On petrol, 100 km now costs €13. On electricity at home, about €5, the same as a year
+ago.
+
+For an average EU driver covering 15,000 km a year, an electric car charged at home now saves about **€1,150 a
+year** against a petrol car. Before the war it was about €800. The saving is largest where fuel is dear and power is
+cheap, such as the Netherlands, Denmark, Finland, Greece and France, and smallest in Poland and Sweden, where petrol is
+cheap and electricity is not.
+
+The number that matters most: **an EV stays cheaper to run as long as you pay less than about €0.72 per kWh.**
+Charging at home is far below that everywhere in the EU. Public fast chargers cost more than home power, so without a
+home charger the answer depends on where you charge. In that case a hybrid is the safe middle ground: it saves about €450 a year against a petrol car with no charging at all.
+
+## 2. Buyers switched
+
+<BevShare />
+
+Europeans were already buying more electric cars before the war, so the share alone says little. The comparison with
+the same month a year earlier says more. In February 2026, the electric share was 3 points above February 2025. By
+August, the gap had grown to **10 points**: 27.7% of new cars against 17.8%. Petrol and diesel cars fell to a quarter
+of the market, from more than a third.
+
+## 3. The stock market didn't follow
+
+<CarmakerGap />
+
+If drivers are switching to hybrids and electric cars, the companies that make them should be doing well. They aren't.
+Since the last close before the war, **Toyota** shares are down almost a quarter while the Tokyo market rose by a
+fifth. **BYD** fell further than the Hong Kong market. **Tesla** fell while the S&P 500 rose. Stellantis, BMW and
+Volkswagen fell the most, by a third or more.
+
+The market is not blind; it is pricing in other problems:
+
+- **Toyota**, the best-known hybrid maker, saw its operating profit for the year to March 2026 fall by a fifth
+  because of US tariffs, and it expects another drop this year, well below analysts' forecasts. In May it said it was
+  likely unable to absorb the new costs from the Middle East as well.
+- **BYD**, which sells only electric cars and plug-in hybrids, saw its first-quarter profit fall 55%, the fourth
+  quarterly drop in a row, because of a price war in China with Xiaomi, Geely and others.
+
+**My take:** for a driver the maths is now clear. If you can charge at home, an electric car is the cheapest way to
+drive in Europe; if you can't, a hybrid. For shareholders it is not that simple. Selling the right cars has not been
+enough, because tariffs and price wars took the gain. The oil shock is a clear win for drivers who switch, not yet for
+the companies that sell them the cars.
+
+## Tracker: Toyota, BYD and Tesla
+
+- **Toyota** is best known for hybrids, the "safe middle ground" from section 1.
+- **BYD** makes only electric cars and plug-in hybrids.
+- **Tesla** is the best-known pure electric carmaker.
+
+If buyers keep switching and the companies start to earn from it, Toyota and BYD should recover first. Each share price
+is frozen at the last close before this post, and the live price loads every time the page opens. Shares are in their
+home currency (yen, Hong Kong dollars and US dollars), and the comparison is in percent, so currencies do not
+distort it.
+
+<StockWatch
+  snapshot={snapshot}
+  tickers={[
+    { symbol: '7203.T', name: 'Toyota', color: 'var(--toyota)' },
+    { symbol: '1211.HK', name: 'BYD', color: 'var(--byd)' },
+    { symbol: 'TSLA', name: 'Tesla', color: 'var(--tesla)' },
+  ]}
+  title="Share price since the war began, indexed to publication day"
+/>
+
+## What the numbers leave out
+
+- **The price of the car.** This study compares running costs only. Electric cars still cost more to buy in many
+  segments, and depreciation, insurance and servicing differ.
+- **Where you charge.** Home charging is the cheap case. Public and motorway fast chargers vary a lot by country and
+  operator; the country table assumes home charging.
+- **Your own consumption.** Real use depends on the car, the speed, the weather and the driving style. The defaults
+  are real-world figures for a compact car, not official test values.
+- **Electricity at the newest date.** Eurostat publishes household prices twice a year. Months after its latest figure
+  are scaled with the EU consumer price index for electricity, which runs to August 2026.
+- **Cause and effect in sales.** Electric cars were gaining share before the war, and new models and subsidies also
+  matter. The year-on-year gap widened after February, but this study does not separate the fuel effect from the rest.
+  In January 2026 the hybrid share jumped by about 5 points in one month, which looks like a change in how ACEA
+  classifies cars, so the hybrid series is not used for conclusions.
+- **Cause and effect in shares.** Share prices react to everything at once: tariffs, interest rates, China, profits.
+  This study does not try to isolate the effect of fuel.
+
+## Data
+
+<EvTable />
+
+<p class="muted" style="font-size: 0.85rem">
+  Download the cost of 100 km by country and the weekly EU series:
+  <a href="/data/ev-vs-petrol-2026-10/cost-per-100km-by-country.csv">cost-per-100km-by-country.csv</a>,
+  <a href="/data/ev-vs-petrol-2026-10/cost-per-100km-eu-weekly.csv">cost-per-100km-eu-weekly.csv</a>.
+  ACEA's registration data is not included: its terms do not allow reproduction without consent.
+</p>
+
+## Methodology
+
+- **Fuel prices:** European Commission [Weekly Oil Bulletin](https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en),
+  price history with taxes for every EU country and the EU average (Euro-super 95 and diesel). Before the war: week of
+  February 23, 2026. Now: week of October 5, 2026. Malta's pump prices are fixed by the state and did not change.
+- **Electricity:** Eurostat [household electricity prices](https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_204/default/table)
+  (nrg_pc_204), consumption band 2,500–4,999 kWh a year, all taxes and levies included, first half of 2026 (second half
+  of 2025 for Denmark, Ireland, Italy, Latvia and Lithuania, where 2026 is not yet published). The weekly EU series
+  starts from the EU price for the second half of 2025 and follows the Eurostat
+  [HICP for electricity](https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table) (CP0451, EU27) month
+  by month; the latest month (August 2026) is carried forward.
+- **Consumption:** petrol 6.5 L, diesel 5.5 L, hybrid 5.0 L and electric 18 kWh per 100 km. The hybrid figure is the
+  ADAC EcoTest result for the [Toyota Corolla Touring Sports 1.8 Hybrid](https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/toyota/toyota-corolla/).
+  The others are typical official figures for a compact car raised by the real-world gap measured by TNO for the Dutch
+  government: about 15% for petrol, 10% for diesel and 25% for electric cars, charging losses included
+  ([TNO report 2025 R10815](https://www.government.nl/documents/2025/05/08/real-world-fuel-consumption-and-energy-consumption-of-passenger-cars-and-light-commercial-vehicles-in-the-netherlands-2024)).
+  "EV cheaper below" is the fuel cost of 100 km divided by the EV's kWh per 100 km. Yearly figures use 15,000 km.
+- **New-car registrations:** ACEA's monthly [press releases on new car registrations](https://www.acea.auto/nav/?content=passenger-car-registrations),
+  EU totals by power source, January 2025 to August 2026. The July 2026 release was not available at ACEA's usual
+  address, so July is August's year-to-date total minus June's year-to-date total and August's month.
+  "Petrol and diesel" excludes hybrids and plug-ins.
+- **Share prices and indices:** daily closes from Yahoo Finance via `yfinance` (unadjusted for dividends), each company
+  on its home listing: Tokyo (7203), Hong Kong (1211), Frankfurt (VOW3, BMW), Milan (STLAM), Paris (RNO) and New York
+  (TSLA, GM). Markets: STOXX Europe 600, Nikkei 225, Hang Seng and S&P 500. The base is the close on Friday,
+  February 27, 2026, the last trading day before the strikes. War dates from Wikipedia's article on the
+  [2026 Iran war fuel crisis](https://en.wikipedia.org/wiki/2026_Iran_war_fuel_crisis).
+- **Company results:** Toyota's results for the year to March 2026 and its outlook, as reported by
+  [Investing.com](https://www.investing.com/news/earnings/toyota-fy-profit-drops-as-us-tariffs-weigh-outlook-misses-estimates-4671052)
+  on May 8, 2026 (operating profit ¥3.78 trillion, down from ¥4.79 trillion; ¥3.0 trillion expected for the year to
+  March 2027, against an analyst consensus of ¥4.61 trillion). BYD's first quarter of 2026, as reported by
+  [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/byd-q1-2026-earnings-profit-131017150.html) on
+  April 28, 2026 (net profit 4.08 billion yuan, down 55%).
+- **Tracker:** prices at publication were saved with `yfinance`; live prices come from a small server function that
+  queries Yahoo Finance when the page loads.
+- **Code:** plain Python scripts (`collect.py`, `analyze.py`, `snapshot_stocks.py`).
+- **Trademarks:** company and model names are trademarks of their respective owners. This site is independent and not
+  affiliated with or sponsored by any company mentioned.

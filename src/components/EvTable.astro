@@ -1,0 +1,133 @@
+---
+// Country table for the EV vs petrol study. Click a column header to sort.
+import data from '../data/ev-vs-petrol-2026-10/costs.json';
+
+const km = data.summary.km_year;
+const rows = data.countries.map((c) => ({ ...c, saving: Math.round(((c.petrol - c.ev_home) * km) / 100) }));
+const eur2 = (n: number) => `€${n.toFixed(2)}`;
+const eur3 = (n: number) => `€${n.toFixed(3)}`;
+---
+
+<div class="table-wrap card">
+  <table id="ev-table">
+    <thead>
+      <tr>
+        <th data-key="country" data-type="text">Country</th>
+        <th data-key="petrol_l" class="r">Petrol, €/L</th>
+        <th data-key="diesel_l" class="r">Diesel, €/L</th>
+        <th data-key="kwh" class="r">Home power, €/kWh</th>
+        <th data-key="saving" class="r" aria-sort="descending">EV saves, €/yr</th>
+        <th data-key="breakeven" class="r">EV cheaper below, €/kWh</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((d) => (
+          <tr
+            data-country={d.country}
+            data-petrol_l={d.petrol_l}
+            data-diesel_l={d.diesel_l}
+            data-kwh={d.kwh}
+            data-petrol={d.petrol}
+            data-ev_home={d.ev_home}
+            data-saving={d.saving}
+            data-breakeven={d.breakeven_kwh}
+          >
+            <td>
+              <strong>{d.country}</strong>
+            </td>
+            <td class="r num">{eur3(d.petrol_l)}</td>
+            <td class="r num">{eur3(d.diesel_l)}</td>
+            <td class="r num">
+              {eur3(d.kwh)}
+              {d.kwh_period !== '2026-S1' && <span title="Eurostat price for the second half of 2025"> *</span>}
+            </td>
+            <td class="r num strong">€{d.saving.toLocaleString('en-US')}</td>
+            <td class="r num">{eur2(d.breakeven_kwh)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+<p class="muted note">
+  Pump prices: week of October 5, 2026. Home electricity: Eurostat, first half of 2026; * second half of 2025 where the
+  newer figure is not out yet. Savings for {km.toLocaleString('en-US')} km a year against a petrol car using 6.5 L per
+  100 km; the EV uses 18 kWh.
+</p>
+
+<script>
+  const table = document.getElementById('ev-table') as HTMLTableElement;
+  const body = table.tBodies[0];
+  table.querySelectorAll<HTMLTableCellElement>('th[data-key]').forEach((th) => {
+    th.tabIndex = 0;
+    const sort = () => {
+      const key = th.dataset.key!;
+      const desc = th.getAttribute('aria-sort') !== 'descending';
+      table.querySelectorAll('th').forEach((h) => h.removeAttribute('aria-sort'));
+      th.setAttribute('aria-sort', desc ? 'descending' : 'ascending');
+      const value = (tr: HTMLTableRowElement) => (th.dataset.type === 'text' ? tr.dataset[key]! : Number(tr.dataset[key]));
+      const rows = [...body.rows].sort((a, b) => {
+        const [x, y] = [value(a), value(b)];
+        const c = typeof x === 'string' ? x.localeCompare(y as string) : x - (y as number);
+        return desc ? -c : c;
+      });
+      body.append(...rows);
+    };
+    th.addEventListener('click', sort);
+    th.addEventListener('keydown', (e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), sort()));
+  });
+</script>
+
+<style>
+  .table-wrap {
+    margin: 1.5em 0 0.6em;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+  th,
+  td {
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--grid);
+  }
+  th {
+    font-weight: 600;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+  th[data-key] {
+    cursor: pointer;
+    user-select: none;
+  }
+  th[data-key]:hover {
+    color: var(--ink);
+  }
+  th[aria-sort='descending']::after {
+    content: ' ↓';
+  }
+  th[aria-sort='ascending']::after {
+    content: ' ↑';
+  }
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  tbody tr:hover {
+    background: var(--page);
+  }
+  .r {
+    text-align: right;
+  }
+  .strong {
+    font-weight: 650;
+  }
+  .note {
+    font-size: 0.8rem;
+    margin: 0 4px 1.5em;
+  }
+</style>

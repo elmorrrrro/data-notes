@@ -1,0 +1,6299 @@
+{
+ "base_day": "2026-02-27",
+ "brent": {
+  "base": 72.48,
+  "last": 103.41,
+  "last_date": "2026-10-08",
+  "change_pct": 42.7
+ },
+ "stocks": [
+  {
+   "symbol": "STLAM.MI",
+   "name": "Stellantis",
+   "sells": "petrol, hybrid, electric",
+   "base": 6.94,
+   "last": 4.0,
+   "last_date": "2026-10-08",
+   "change_pct": -42.3,
+   "market": "STOXX Europe 600",
+   "market_pct": -1.3,
+   "vs_market_pts": -41.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "name": "BMW",
+   "sells": "petrol, diesel, electric",
+   "base": 89.46,
+   "last": 52.18,
+   "last_date": "2026-10-08",
+   "change_pct": -41.7,
+   "market": "STOXX Europe 600",
+   "market_pct": -1.3,
+   "vs_market_pts": -40.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "name": "Volkswagen",
+   "sells": "petrol, diesel, electric",
+   "base": 101.2,
+   "last": 66.6,
+   "last_date": "2026-10-08",
+   "change_pct": -34.2,
+   "market": "STOXX Europe 600",
+   "market_pct": -1.3,
+   "vs_market_pts": -32.9
+  },
+  {
+   "symbol": "7203.T",
+   "name": "Toyota",
+   "sells": "hybrids and petrol",
+   "base": 3825.0,
+   "last": 2900.5,
+   "last_date": "2026-10-07",
+   "change_pct": -24.2,
+   "market": "Nikkei 225",
+   "market_pct": 19.0,
+   "vs_market_pts": -43.2
+  },
+  {
+   "symbol": "1211.HK",
+   "name": "BYD",
+   "sells": "electric and plug-in hybrid",
+   "base": 94.95,
+   "last": 74.55,
+   "last_date": "2026-10-07",
+   "change_pct": -21.5,
+   "market": "Hang Seng",
+   "market_pct": -9.4,
+   "vs_market_pts": -12.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "name": "Renault",
+   "sells": "petrol, hybrid, electric",
+   "base": 32.11,
+   "last": 26.04,
+   "last_date": "2026-10-08",
+   "change_pct": -18.9,
+   "market": "STOXX Europe 600",
+   "market_pct": -1.3,
+   "vs_market_pts": -17.6
+  },
+  {
+   "symbol": "TSLA",
+   "name": "Tesla",
+   "sells": "electric only",
+   "base": 402.51,
+   "last": 368.91,
+   "last_date": "2026-10-08",
+   "change_pct": -8.3,
+   "market": "S&P 500",
+   "market_pct": 12.4,
+   "vs_market_pts": -20.8
+  },
+  {
+   "symbol": "GM",
+   "name": "General Motors",
+   "sells": "mostly petrol pickups and SUVs",
+   "base": 78.71,
+   "last": 81.55,
+   "last_date": "2026-10-08",
+   "change_pct": 3.6,
+   "market": "S&P 500",
+   "market_pct": 12.4,
+   "vs_market_pts": -8.8
+  }
+ ],
+ "series": [
+  {
+   "symbol": "TSLA",
+   "date": "2026-02-27",
+   "index": 100.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-02",
+   "index": 100.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-03",
+   "index": 97.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-04",
+   "index": 100.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-05",
+   "index": 100.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-06",
+   "index": 98.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-09",
+   "index": 99.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-10",
+   "index": 99.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-11",
+   "index": 101.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-12",
+   "index": 98.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-13",
+   "index": 97.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-16",
+   "index": 98.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-17",
+   "index": 99.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-18",
+   "index": 97.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-19",
+   "index": 94.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-20",
+   "index": 91.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-23",
+   "index": 94.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-24",
+   "index": 95.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-25",
+   "index": 95.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-26",
+   "index": 92.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-27",
+   "index": 89.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-30",
+   "index": 88.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-03-31",
+   "index": 92.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-01",
+   "index": 94.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-02",
+   "index": 89.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-06",
+   "index": 87.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-07",
+   "index": 86.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-08",
+   "index": 85.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-09",
+   "index": 85.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-10",
+   "index": 86.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-13",
+   "index": 87.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-14",
+   "index": 90.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-15",
+   "index": 97.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-16",
+   "index": 96.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-17",
+   "index": 99.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-20",
+   "index": 97.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-21",
+   "index": 96.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-22",
+   "index": 96.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-23",
+   "index": 92.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-24",
+   "index": 93.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-27",
+   "index": 94.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-28",
+   "index": 93.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-29",
+   "index": 92.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-04-30",
+   "index": 94.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-01",
+   "index": 97.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-04",
+   "index": 97.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-05",
+   "index": 96.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-06",
+   "index": 99.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-07",
+   "index": 102.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-08",
+   "index": 106.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-11",
+   "index": 110.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-12",
+   "index": 107.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-13",
+   "index": 110.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-14",
+   "index": 110.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-15",
+   "index": 104.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-18",
+   "index": 101.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-19",
+   "index": 100.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-20",
+   "index": 103.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-21",
+   "index": 103.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-22",
+   "index": 105.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-26",
+   "index": 107.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-27",
+   "index": 109.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-28",
+   "index": 109.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-05-29",
+   "index": 108.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-01",
+   "index": 103.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-02",
+   "index": 105.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-03",
+   "index": 105.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-04",
+   "index": 104.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-05",
+   "index": 97.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-08",
+   "index": 101.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-09",
+   "index": 98.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-10",
+   "index": 94.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-11",
+   "index": 99.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-12",
+   "index": 101.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-15",
+   "index": 102.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-16",
+   "index": 100.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-17",
+   "index": 98.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-18",
+   "index": 99.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-22",
+   "index": 100.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-23",
+   "index": 94.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-24",
+   "index": 93.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-25",
+   "index": 93.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-26",
+   "index": 94.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-29",
+   "index": 102.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-06-30",
+   "index": 104.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-01",
+   "index": 105.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-02",
+   "index": 97.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-06",
+   "index": 104.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-07",
+   "index": 100.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-08",
+   "index": 97.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-09",
+   "index": 101.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-10",
+   "index": 101.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-13",
+   "index": 98.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-14",
+   "index": 98.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-15",
+   "index": 98.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-16",
+   "index": 97.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-17",
+   "index": 94.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-20",
+   "index": 91.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-21",
+   "index": 94.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-22",
+   "index": 92.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-23",
+   "index": 79.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-24",
+   "index": 77.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-27",
+   "index": 76.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-28",
+   "index": 76.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-29",
+   "index": 74.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-30",
+   "index": 76.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-07-31",
+   "index": 77.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-03",
+   "index": 80.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-04",
+   "index": 81.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-05",
+   "index": 79.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-06",
+   "index": 79.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-07",
+   "index": 81.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-10",
+   "index": 82.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-11",
+   "index": 82.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-12",
+   "index": 81.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-13",
+   "index": 84.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-14",
+   "index": 85.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-17",
+   "index": 84.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-18",
+   "index": 83.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-19",
+   "index": 87.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-20",
+   "index": 85.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-21",
+   "index": 90.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-24",
+   "index": 86.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-25",
+   "index": 87.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-26",
+   "index": 85.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-27",
+   "index": 88.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-28",
+   "index": 86.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-08-31",
+   "index": 91.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-01",
+   "index": 88.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-02",
+   "index": 88.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-03",
+   "index": 93.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-04",
+   "index": 88.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-08",
+   "index": 91.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-09",
+   "index": 91.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-10",
+   "index": 90.3
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-11",
+   "index": 90.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-14",
+   "index": 89.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-15",
+   "index": 88.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-16",
+   "index": 89.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-17",
+   "index": 91.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-18",
+   "index": 90.5
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-21",
+   "index": 93.2
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-22",
+   "index": 94.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-23",
+   "index": 94.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-24",
+   "index": 93.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-25",
+   "index": 92.4
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-28",
+   "index": 88.8
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-29",
+   "index": 87.7
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-09-30",
+   "index": 88.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-10-01",
+   "index": 88.0
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-10-02",
+   "index": 92.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-10-05",
+   "index": 94.1
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-10-06",
+   "index": 94.6
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-10-07",
+   "index": 93.9
+  },
+  {
+   "symbol": "TSLA",
+   "date": "2026-10-08",
+   "index": 91.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-02-27",
+   "index": 100.0
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-02",
+   "index": 104.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-03",
+   "index": 101.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-04",
+   "index": 100.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-05",
+   "index": 97.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-06",
+   "index": 99.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-09",
+   "index": 103.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-10",
+   "index": 102.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-11",
+   "index": 103.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-12",
+   "index": 103.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-13",
+   "index": 101.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-16",
+   "index": 109.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-17",
+   "index": 110.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-18",
+   "index": 107.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-19",
+   "index": 108.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-20",
+   "index": 109.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-23",
+   "index": 107.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-24",
+   "index": 112.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-25",
+   "index": 112.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-26",
+   "index": 108.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-27",
+   "index": 112.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-30",
+   "index": 111.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-03-31",
+   "index": 111.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-01",
+   "index": 110.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-02",
+   "index": 109.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-08",
+   "index": 112.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-09",
+   "index": 107.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-10",
+   "index": 110.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-13",
+   "index": 116.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-14",
+   "index": 115.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-15",
+   "index": 113.0
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-16",
+   "index": 119.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-17",
+   "index": 117.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-20",
+   "index": 115.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-21",
+   "index": 114.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-22",
+   "index": 112.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-23",
+   "index": 109.0
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-24",
+   "index": 106.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-27",
+   "index": 111.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-28",
+   "index": 109.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-29",
+   "index": 114.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-04-30",
+   "index": 108.0
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-04",
+   "index": 108.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-05",
+   "index": 106.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-06",
+   "index": 104.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-07",
+   "index": 106.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-08",
+   "index": 105.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-11",
+   "index": 107.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-12",
+   "index": 105.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-13",
+   "index": 103.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-14",
+   "index": 103.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-15",
+   "index": 101.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-18",
+   "index": 98.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-19",
+   "index": 98.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-20",
+   "index": 95.0
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-21",
+   "index": 95.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-22",
+   "index": 96.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-26",
+   "index": 98.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-27",
+   "index": 95.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-28",
+   "index": 95.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-05-29",
+   "index": 96.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-01",
+   "index": 95.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-02",
+   "index": 101.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-03",
+   "index": 98.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-04",
+   "index": 96.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-05",
+   "index": 94.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-08",
+   "index": 92.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-09",
+   "index": 93.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-10",
+   "index": 91.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-11",
+   "index": 89.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-12",
+   "index": 91.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-15",
+   "index": 90.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-16",
+   "index": 88.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-17",
+   "index": 86.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-18",
+   "index": 85.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-22",
+   "index": 82.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-23",
+   "index": 79.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-24",
+   "index": 80.0
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-25",
+   "index": 80.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-26",
+   "index": 76.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-29",
+   "index": 76.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-06-30",
+   "index": 76.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-02",
+   "index": 82.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-03",
+   "index": 88.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-06",
+   "index": 88.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-07",
+   "index": 87.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-08",
+   "index": 90.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-09",
+   "index": 87.0
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-10",
+   "index": 89.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-13",
+   "index": 88.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-14",
+   "index": 90.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-15",
+   "index": 91.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-16",
+   "index": 95.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-17",
+   "index": 93.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-20",
+   "index": 94.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-21",
+   "index": 94.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-22",
+   "index": 92.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-23",
+   "index": 93.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-24",
+   "index": 93.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-27",
+   "index": 93.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-28",
+   "index": 94.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-29",
+   "index": 98.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-30",
+   "index": 99.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-07-31",
+   "index": 99.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-03",
+   "index": 99.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-04",
+   "index": 98.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-05",
+   "index": 98.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-06",
+   "index": 94.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-07",
+   "index": 94.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-10",
+   "index": 97.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-11",
+   "index": 94.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-12",
+   "index": 94.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-13",
+   "index": 93.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-14",
+   "index": 92.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-17",
+   "index": 94.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-18",
+   "index": 94.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-19",
+   "index": 94.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-20",
+   "index": 96.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-21",
+   "index": 98.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-24",
+   "index": 97.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-25",
+   "index": 98.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-26",
+   "index": 97.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-27",
+   "index": 96.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-28",
+   "index": 96.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-08-31",
+   "index": 91.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-01",
+   "index": 92.9
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-02",
+   "index": 89.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-03",
+   "index": 90.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-04",
+   "index": 90.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-07",
+   "index": 89.0
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-08",
+   "index": 88.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-09",
+   "index": 86.2
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-10",
+   "index": 83.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-11",
+   "index": 84.1
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-14",
+   "index": 84.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-15",
+   "index": 83.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-16",
+   "index": 83.4
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-17",
+   "index": 85.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-18",
+   "index": 85.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-21",
+   "index": 85.5
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-22",
+   "index": 85.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-23",
+   "index": 84.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-24",
+   "index": 83.7
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-25",
+   "index": 82.3
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-28",
+   "index": 81.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-29",
+   "index": 79.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-09-30",
+   "index": 79.6
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-10-02",
+   "index": 77.8
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-10-05",
+   "index": 78.0
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-10-06",
+   "index": 79.0
+  },
+  {
+   "symbol": "1211.HK",
+   "date": "2026-10-07",
+   "index": 78.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-02-27",
+   "index": 100.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-02",
+   "index": 103.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-03",
+   "index": 96.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-04",
+   "index": 92.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-05",
+   "index": 91.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-06",
+   "index": 91.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-09",
+   "index": 88.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-10",
+   "index": 90.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-11",
+   "index": 91.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-12",
+   "index": 90.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-13",
+   "index": 88.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-16",
+   "index": 87.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-17",
+   "index": 88.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-18",
+   "index": 89.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-19",
+   "index": 86.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-23",
+   "index": 85.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-24",
+   "index": 85.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-25",
+   "index": 87.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-26",
+   "index": 88.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-27",
+   "index": 89.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-30",
+   "index": 84.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-03-31",
+   "index": 82.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-01",
+   "index": 86.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-02",
+   "index": 85.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-03",
+   "index": 85.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-06",
+   "index": 84.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-07",
+   "index": 85.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-08",
+   "index": 88.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-09",
+   "index": 87.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-10",
+   "index": 86.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-13",
+   "index": 86.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-14",
+   "index": 87.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-15",
+   "index": 88.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-16",
+   "index": 88.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-17",
+   "index": 87.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-20",
+   "index": 88.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-21",
+   "index": 85.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-22",
+   "index": 83.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-23",
+   "index": 81.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-24",
+   "index": 80.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-27",
+   "index": 80.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-28",
+   "index": 81.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-04-30",
+   "index": 79.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-01",
+   "index": 78.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-07",
+   "index": 77.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-08",
+   "index": 76.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-11",
+   "index": 75.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-12",
+   "index": 74.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-13",
+   "index": 76.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-14",
+   "index": 78.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-15",
+   "index": 80.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-18",
+   "index": 77.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-19",
+   "index": 77.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-20",
+   "index": 76.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-21",
+   "index": 77.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-22",
+   "index": 78.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-25",
+   "index": 79.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-26",
+   "index": 79.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-27",
+   "index": 78.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-28",
+   "index": 79.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-05-29",
+   "index": 79.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-01",
+   "index": 76.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-02",
+   "index": 74.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-03",
+   "index": 75.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-04",
+   "index": 74.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-05",
+   "index": 74.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-08",
+   "index": 73.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-09",
+   "index": 74.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-10",
+   "index": 73.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-11",
+   "index": 71.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-12",
+   "index": 72.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-15",
+   "index": 75.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-16",
+   "index": 74.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-17",
+   "index": 73.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-18",
+   "index": 73.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-19",
+   "index": 72.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-22",
+   "index": 71.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-23",
+   "index": 70.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-24",
+   "index": 70.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-25",
+   "index": 70.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-26",
+   "index": 72.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-29",
+   "index": 72.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-06-30",
+   "index": 71.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-01",
+   "index": 71.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-02",
+   "index": 73.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-03",
+   "index": 73.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-06",
+   "index": 76.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-07",
+   "index": 77.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-08",
+   "index": 75.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-09",
+   "index": 73.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-10",
+   "index": 73.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-13",
+   "index": 73.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-14",
+   "index": 74.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-15",
+   "index": 75.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-16",
+   "index": 76.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-17",
+   "index": 75.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-21",
+   "index": 77.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-22",
+   "index": 76.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-23",
+   "index": 77.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-24",
+   "index": 75.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-27",
+   "index": 77.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-28",
+   "index": 78.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-29",
+   "index": 84.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-30",
+   "index": 81.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-07-31",
+   "index": 80.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-03",
+   "index": 77.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-04",
+   "index": 76.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-05",
+   "index": 76.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-06",
+   "index": 78.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-07",
+   "index": 77.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-10",
+   "index": 77.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-12",
+   "index": 78.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-13",
+   "index": 78.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-14",
+   "index": 79.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-17",
+   "index": 78.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-18",
+   "index": 79.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-19",
+   "index": 76.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-20",
+   "index": 80.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-21",
+   "index": 81.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-24",
+   "index": 81.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-25",
+   "index": 80.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-26",
+   "index": 80.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-27",
+   "index": 80.4
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-28",
+   "index": 81.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-08-31",
+   "index": 82.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-01",
+   "index": 84.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-02",
+   "index": 81.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-03",
+   "index": 81.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-04",
+   "index": 80.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-07",
+   "index": 80.9
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-08",
+   "index": 77.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-09",
+   "index": 77.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-10",
+   "index": 78.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-11",
+   "index": 79.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-14",
+   "index": 79.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-15",
+   "index": 79.0
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-16",
+   "index": 78.8
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-17",
+   "index": 79.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-18",
+   "index": 79.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-24",
+   "index": 77.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-25",
+   "index": 78.2
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-28",
+   "index": 78.1
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-29",
+   "index": 75.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-09-30",
+   "index": 76.3
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-10-01",
+   "index": 76.5
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-10-02",
+   "index": 74.7
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-10-05",
+   "index": 75.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-10-06",
+   "index": 76.6
+  },
+  {
+   "symbol": "7203.T",
+   "date": "2026-10-07",
+   "index": 75.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-02-27",
+   "index": 100.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-02",
+   "index": 95.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-03",
+   "index": 92.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-04",
+   "index": 93.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-05",
+   "index": 91.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-06",
+   "index": 88.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-09",
+   "index": 86.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-10",
+   "index": 89.2
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-11",
+   "index": 90.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-12",
+   "index": 91.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-13",
+   "index": 88.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-16",
+   "index": 87.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-17",
+   "index": 87.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-18",
+   "index": 87.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-19",
+   "index": 84.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-20",
+   "index": 84.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-23",
+   "index": 85.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-24",
+   "index": 85.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-25",
+   "index": 86.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-26",
+   "index": 85.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-27",
+   "index": 85.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-30",
+   "index": 85.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-03-31",
+   "index": 85.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-01",
+   "index": 87.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-02",
+   "index": 86.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-07",
+   "index": 84.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-08",
+   "index": 89.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-09",
+   "index": 88.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-10",
+   "index": 88.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-13",
+   "index": 86.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-14",
+   "index": 89.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-15",
+   "index": 89.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-16",
+   "index": 88.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-17",
+   "index": 91.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-20",
+   "index": 89.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-21",
+   "index": 88.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-22",
+   "index": 87.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-23",
+   "index": 87.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-24",
+   "index": 85.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-27",
+   "index": 86.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-28",
+   "index": 85.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-29",
+   "index": 84.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-04-30",
+   "index": 85.2
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-04",
+   "index": 82.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-05",
+   "index": 83.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-06",
+   "index": 87.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-07",
+   "index": 87.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-08",
+   "index": 86.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-11",
+   "index": 87.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-12",
+   "index": 85.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-13",
+   "index": 85.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-14",
+   "index": 87.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-15",
+   "index": 86.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-18",
+   "index": 86.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-19",
+   "index": 86.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-20",
+   "index": 86.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-21",
+   "index": 87.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-22",
+   "index": 88.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-25",
+   "index": 89.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-26",
+   "index": 89.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-27",
+   "index": 91.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-28",
+   "index": 91.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-05-29",
+   "index": 90.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-01",
+   "index": 89.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-02",
+   "index": 89.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-03",
+   "index": 88.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-04",
+   "index": 87.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-05",
+   "index": 86.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-08",
+   "index": 86.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-09",
+   "index": 86.2
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-10",
+   "index": 85.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-11",
+   "index": 84.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-12",
+   "index": 87.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-15",
+   "index": 89.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-16",
+   "index": 88.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-17",
+   "index": 85.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-18",
+   "index": 83.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-19",
+   "index": 79.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-22",
+   "index": 79.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-23",
+   "index": 77.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-24",
+   "index": 75.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-25",
+   "index": 75.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-26",
+   "index": 73.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-29",
+   "index": 70.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-06-30",
+   "index": 69.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-01",
+   "index": 69.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-02",
+   "index": 72.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-03",
+   "index": 73.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-06",
+   "index": 74.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-07",
+   "index": 74.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-08",
+   "index": 71.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-09",
+   "index": 70.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-10",
+   "index": 70.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-13",
+   "index": 70.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-14",
+   "index": 71.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-15",
+   "index": 73.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-16",
+   "index": 72.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-17",
+   "index": 72.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-20",
+   "index": 71.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-21",
+   "index": 71.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-22",
+   "index": 72.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-23",
+   "index": 72.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-24",
+   "index": 70.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-27",
+   "index": 69.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-28",
+   "index": 73.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-29",
+   "index": 74.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-30",
+   "index": 75.2
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-07-31",
+   "index": 73.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-03",
+   "index": 75.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-04",
+   "index": 76.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-05",
+   "index": 75.2
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-06",
+   "index": 74.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-07",
+   "index": 75.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-10",
+   "index": 74.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-11",
+   "index": 74.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-12",
+   "index": 73.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-13",
+   "index": 72.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-14",
+   "index": 72.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-17",
+   "index": 72.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-18",
+   "index": 72.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-19",
+   "index": 74.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-20",
+   "index": 73.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-21",
+   "index": 74.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-24",
+   "index": 72.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-25",
+   "index": 72.4
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-26",
+   "index": 71.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-27",
+   "index": 74.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-28",
+   "index": 76.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-08-31",
+   "index": 76.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-01",
+   "index": 75.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-02",
+   "index": 72.8
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-03",
+   "index": 75.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-04",
+   "index": 80.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-07",
+   "index": 80.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-08",
+   "index": 82.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-09",
+   "index": 80.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-10",
+   "index": 80.2
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-11",
+   "index": 80.2
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-14",
+   "index": 80.5
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-15",
+   "index": 80.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-16",
+   "index": 77.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-17",
+   "index": 80.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-18",
+   "index": 75.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-21",
+   "index": 74.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-22",
+   "index": 74.3
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-23",
+   "index": 72.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-24",
+   "index": 70.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-25",
+   "index": 70.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-28",
+   "index": 70.0
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-29",
+   "index": 70.2
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-09-30",
+   "index": 69.6
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-10-01",
+   "index": 67.2
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-10-02",
+   "index": 66.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-10-05",
+   "index": 67.7
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-10-06",
+   "index": 68.1
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-10-07",
+   "index": 68.9
+  },
+  {
+   "symbol": "VOW3.DE",
+   "date": "2026-10-08",
+   "index": 65.8
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-02-27",
+   "index": 100.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-02",
+   "index": 95.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-03",
+   "index": 92.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-04",
+   "index": 92.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-05",
+   "index": 91.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-06",
+   "index": 89.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-09",
+   "index": 88.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-10",
+   "index": 89.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-11",
+   "index": 90.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-12",
+   "index": 91.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-13",
+   "index": 90.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-16",
+   "index": 88.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-17",
+   "index": 88.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-18",
+   "index": 88.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-19",
+   "index": 85.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-20",
+   "index": 84.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-23",
+   "index": 87.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-24",
+   "index": 87.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-25",
+   "index": 88.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-26",
+   "index": 87.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-27",
+   "index": 86.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-30",
+   "index": 87.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-03-31",
+   "index": 87.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-01",
+   "index": 88.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-02",
+   "index": 88.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-07",
+   "index": 87.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-08",
+   "index": 92.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-09",
+   "index": 92.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-10",
+   "index": 93.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-13",
+   "index": 93.8
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-14",
+   "index": 92.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-15",
+   "index": 91.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-16",
+   "index": 90.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-17",
+   "index": 94.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-20",
+   "index": 93.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-21",
+   "index": 93.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-22",
+   "index": 91.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-23",
+   "index": 90.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-24",
+   "index": 88.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-27",
+   "index": 88.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-28",
+   "index": 88.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-29",
+   "index": 86.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-04-30",
+   "index": 87.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-04",
+   "index": 85.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-05",
+   "index": 86.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-06",
+   "index": 91.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-07",
+   "index": 92.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-08",
+   "index": 91.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-11",
+   "index": 90.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-12",
+   "index": 89.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-13",
+   "index": 90.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-14",
+   "index": 85.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-15",
+   "index": 83.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-18",
+   "index": 82.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-19",
+   "index": 82.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-20",
+   "index": 83.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-21",
+   "index": 83.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-22",
+   "index": 83.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-25",
+   "index": 84.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-26",
+   "index": 84.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-27",
+   "index": 86.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-28",
+   "index": 84.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-05-29",
+   "index": 83.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-01",
+   "index": 82.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-02",
+   "index": 81.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-03",
+   "index": 79.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-04",
+   "index": 78.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-05",
+   "index": 78.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-08",
+   "index": 78.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-09",
+   "index": 76.8
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-10",
+   "index": 75.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-11",
+   "index": 74.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-12",
+   "index": 74.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-15",
+   "index": 76.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-16",
+   "index": 75.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-17",
+   "index": 69.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-18",
+   "index": 66.8
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-19",
+   "index": 67.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-22",
+   "index": 68.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-23",
+   "index": 68.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-24",
+   "index": 68.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-25",
+   "index": 67.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-26",
+   "index": 66.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-29",
+   "index": 64.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-06-30",
+   "index": 64.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-01",
+   "index": 65.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-02",
+   "index": 67.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-03",
+   "index": 67.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-06",
+   "index": 67.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-07",
+   "index": 67.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-08",
+   "index": 65.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-09",
+   "index": 65.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-10",
+   "index": 65.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-13",
+   "index": 64.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-14",
+   "index": 64.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-15",
+   "index": 65.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-16",
+   "index": 65.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-17",
+   "index": 65.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-20",
+   "index": 65.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-21",
+   "index": 64.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-22",
+   "index": 64.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-23",
+   "index": 63.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-24",
+   "index": 63.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-27",
+   "index": 64.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-28",
+   "index": 66.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-29",
+   "index": 67.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-30",
+   "index": 67.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-07-31",
+   "index": 66.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-03",
+   "index": 67.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-04",
+   "index": 67.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-05",
+   "index": 66.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-06",
+   "index": 65.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-07",
+   "index": 66.8
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-10",
+   "index": 66.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-11",
+   "index": 67.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-12",
+   "index": 66.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-13",
+   "index": 65.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-14",
+   "index": 66.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-17",
+   "index": 65.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-18",
+   "index": 64.8
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-19",
+   "index": 65.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-20",
+   "index": 64.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-21",
+   "index": 65.8
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-24",
+   "index": 65.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-25",
+   "index": 64.8
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-26",
+   "index": 64.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-27",
+   "index": 67.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-28",
+   "index": 70.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-08-31",
+   "index": 69.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-01",
+   "index": 68.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-02",
+   "index": 67.8
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-03",
+   "index": 69.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-04",
+   "index": 70.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-07",
+   "index": 70.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-08",
+   "index": 71.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-09",
+   "index": 70.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-10",
+   "index": 70.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-11",
+   "index": 70.4
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-14",
+   "index": 70.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-15",
+   "index": 70.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-16",
+   "index": 69.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-17",
+   "index": 70.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-18",
+   "index": 67.5
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-21",
+   "index": 67.2
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-22",
+   "index": 66.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-23",
+   "index": 64.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-24",
+   "index": 63.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-25",
+   "index": 62.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-28",
+   "index": 61.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-29",
+   "index": 60.9
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-09-30",
+   "index": 61.8
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-10-01",
+   "index": 61.3
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-10-02",
+   "index": 60.7
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-10-05",
+   "index": 60.6
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-10-06",
+   "index": 61.1
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-10-07",
+   "index": 60.0
+  },
+  {
+   "symbol": "BMW.DE",
+   "date": "2026-10-08",
+   "index": 58.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-02-27",
+   "index": 100.0
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-02",
+   "index": 92.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-03",
+   "index": 89.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-04",
+   "index": 93.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-05",
+   "index": 90.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-06",
+   "index": 88.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-09",
+   "index": 86.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-10",
+   "index": 87.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-11",
+   "index": 86.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-12",
+   "index": 86.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-13",
+   "index": 82.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-16",
+   "index": 82.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-17",
+   "index": 84.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-18",
+   "index": 83.0
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-19",
+   "index": 80.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-20",
+   "index": 79.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-23",
+   "index": 81.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-24",
+   "index": 84.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-25",
+   "index": 85.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-26",
+   "index": 84.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-27",
+   "index": 84.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-30",
+   "index": 86.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-03-31",
+   "index": 87.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-01",
+   "index": 91.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-02",
+   "index": 94.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-07",
+   "index": 91.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-08",
+   "index": 96.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-09",
+   "index": 96.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-10",
+   "index": 99.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-13",
+   "index": 96.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-14",
+   "index": 99.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-15",
+   "index": 101.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-16",
+   "index": 100.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-17",
+   "index": 107.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-20",
+   "index": 105.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-21",
+   "index": 106.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-22",
+   "index": 105.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-23",
+   "index": 103.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-24",
+   "index": 98.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-27",
+   "index": 98.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-28",
+   "index": 96.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-29",
+   "index": 95.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-04-30",
+   "index": 89.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-04",
+   "index": 88.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-05",
+   "index": 89.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-06",
+   "index": 93.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-07",
+   "index": 92.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-08",
+   "index": 93.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-11",
+   "index": 92.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-12",
+   "index": 90.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-13",
+   "index": 93.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-14",
+   "index": 96.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-15",
+   "index": 93.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-18",
+   "index": 92.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-19",
+   "index": 91.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-20",
+   "index": 92.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-21",
+   "index": 90.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-22",
+   "index": 93.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-25",
+   "index": 96.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-26",
+   "index": 97.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-27",
+   "index": 101.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-28",
+   "index": 100.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-05-29",
+   "index": 98.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-01",
+   "index": 96.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-02",
+   "index": 95.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-03",
+   "index": 91.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-04",
+   "index": 92.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-05",
+   "index": 89.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-08",
+   "index": 88.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-09",
+   "index": 86.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-10",
+   "index": 83.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-11",
+   "index": 83.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-12",
+   "index": 84.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-15",
+   "index": 87.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-16",
+   "index": 86.0
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-17",
+   "index": 83.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-18",
+   "index": 80.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-19",
+   "index": 80.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-22",
+   "index": 81.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-23",
+   "index": 76.0
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-24",
+   "index": 74.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-25",
+   "index": 73.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-26",
+   "index": 72.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-29",
+   "index": 70.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-06-30",
+   "index": 71.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-01",
+   "index": 74.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-02",
+   "index": 73.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-03",
+   "index": 71.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-06",
+   "index": 72.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-07",
+   "index": 71.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-08",
+   "index": 67.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-09",
+   "index": 67.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-10",
+   "index": 69.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-13",
+   "index": 71.0
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-14",
+   "index": 72.0
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-15",
+   "index": 74.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-16",
+   "index": 75.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-17",
+   "index": 73.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-20",
+   "index": 72.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-21",
+   "index": 73.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-22",
+   "index": 73.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-23",
+   "index": 72.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-24",
+   "index": 72.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-27",
+   "index": 71.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-28",
+   "index": 73.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-29",
+   "index": 76.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-30",
+   "index": 72.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-07-31",
+   "index": 71.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-03",
+   "index": 71.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-04",
+   "index": 71.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-05",
+   "index": 70.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-06",
+   "index": 70.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-07",
+   "index": 69.0
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-10",
+   "index": 70.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-11",
+   "index": 68.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-12",
+   "index": 66.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-13",
+   "index": 66.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-14",
+   "index": 66.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-17",
+   "index": 63.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-18",
+   "index": 63.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-19",
+   "index": 66.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-20",
+   "index": 64.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-21",
+   "index": 66.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-24",
+   "index": 63.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-25",
+   "index": 64.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-26",
+   "index": 64.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-27",
+   "index": 65.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-28",
+   "index": 67.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-08-31",
+   "index": 68.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-01",
+   "index": 66.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-02",
+   "index": 65.0
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-03",
+   "index": 67.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-04",
+   "index": 69.0
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-07",
+   "index": 69.2
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-08",
+   "index": 67.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-09",
+   "index": 65.8
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-10",
+   "index": 65.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-11",
+   "index": 67.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-14",
+   "index": 65.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-15",
+   "index": 64.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-16",
+   "index": 62.5
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-17",
+   "index": 63.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-18",
+   "index": 60.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-21",
+   "index": 60.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-22",
+   "index": 60.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-23",
+   "index": 59.7
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-24",
+   "index": 57.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-25",
+   "index": 58.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-28",
+   "index": 58.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-29",
+   "index": 56.3
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-09-30",
+   "index": 56.1
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-10-01",
+   "index": 55.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-10-02",
+   "index": 55.9
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-10-05",
+   "index": 57.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-10-06",
+   "index": 58.6
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-10-07",
+   "index": 59.4
+  },
+  {
+   "symbol": "STLAM.MI",
+   "date": "2026-10-08",
+   "index": 57.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-02-27",
+   "index": 100.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-02",
+   "index": 95.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-03",
+   "index": 91.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-04",
+   "index": 90.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-05",
+   "index": 89.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-06",
+   "index": 88.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-09",
+   "index": 87.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-10",
+   "index": 87.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-11",
+   "index": 90.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-12",
+   "index": 90.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-13",
+   "index": 88.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-16",
+   "index": 87.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-17",
+   "index": 88.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-18",
+   "index": 87.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-19",
+   "index": 85.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-20",
+   "index": 86.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-23",
+   "index": 87.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-24",
+   "index": 86.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-25",
+   "index": 87.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-26",
+   "index": 87.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-27",
+   "index": 88.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-30",
+   "index": 88.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-03-31",
+   "index": 90.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-01",
+   "index": 93.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-02",
+   "index": 93.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-07",
+   "index": 91.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-08",
+   "index": 98.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-09",
+   "index": 96.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-10",
+   "index": 96.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-13",
+   "index": 95.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-14",
+   "index": 96.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-15",
+   "index": 98.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-16",
+   "index": 97.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-17",
+   "index": 101.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-20",
+   "index": 98.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-21",
+   "index": 98.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-22",
+   "index": 97.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-23",
+   "index": 96.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-24",
+   "index": 92.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-27",
+   "index": 95.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-28",
+   "index": 94.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-29",
+   "index": 93.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-04-30",
+   "index": 92.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-04",
+   "index": 92.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-05",
+   "index": 91.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-06",
+   "index": 95.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-07",
+   "index": 97.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-08",
+   "index": 89.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-11",
+   "index": 87.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-12",
+   "index": 85.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-13",
+   "index": 87.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-14",
+   "index": 88.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-15",
+   "index": 88.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-18",
+   "index": 89.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-19",
+   "index": 87.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-20",
+   "index": 86.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-21",
+   "index": 85.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-22",
+   "index": 86.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-25",
+   "index": 89.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-26",
+   "index": 89.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-27",
+   "index": 93.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-28",
+   "index": 92.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-05-29",
+   "index": 92.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-01",
+   "index": 88.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-02",
+   "index": 87.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-03",
+   "index": 84.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-04",
+   "index": 84.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-05",
+   "index": 83.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-08",
+   "index": 84.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-09",
+   "index": 84.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-10",
+   "index": 83.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-11",
+   "index": 83.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-12",
+   "index": 86.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-15",
+   "index": 89.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-16",
+   "index": 86.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-17",
+   "index": 84.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-18",
+   "index": 84.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-19",
+   "index": 87.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-22",
+   "index": 86.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-23",
+   "index": 82.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-24",
+   "index": 82.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-25",
+   "index": 81.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-26",
+   "index": 81.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-29",
+   "index": 78.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-06-30",
+   "index": 78.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-01",
+   "index": 81.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-02",
+   "index": 80.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-03",
+   "index": 82.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-06",
+   "index": 81.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-07",
+   "index": 82.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-08",
+   "index": 78.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-09",
+   "index": 78.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-10",
+   "index": 80.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-13",
+   "index": 81.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-14",
+   "index": 80.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-15",
+   "index": 83.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-16",
+   "index": 83.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-17",
+   "index": 81.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-20",
+   "index": 80.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-21",
+   "index": 80.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-22",
+   "index": 82.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-23",
+   "index": 81.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-24",
+   "index": 81.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-27",
+   "index": 82.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-28",
+   "index": 84.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-29",
+   "index": 86.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-30",
+   "index": 87.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-07-31",
+   "index": 84.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-03",
+   "index": 88.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-04",
+   "index": 88.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-05",
+   "index": 87.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-06",
+   "index": 87.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-07",
+   "index": 89.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-10",
+   "index": 89.5
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-11",
+   "index": 88.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-12",
+   "index": 88.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-13",
+   "index": 87.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-14",
+   "index": 89.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-17",
+   "index": 88.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-18",
+   "index": 89.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-19",
+   "index": 90.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-20",
+   "index": 89.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-21",
+   "index": 89.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-24",
+   "index": 88.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-25",
+   "index": 85.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-26",
+   "index": 84.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-27",
+   "index": 88.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-28",
+   "index": 91.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-08-31",
+   "index": 92.6
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-01",
+   "index": 90.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-02",
+   "index": 86.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-03",
+   "index": 89.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-04",
+   "index": 90.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-07",
+   "index": 90.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-08",
+   "index": 92.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-09",
+   "index": 90.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-10",
+   "index": 90.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-11",
+   "index": 92.1
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-14",
+   "index": 91.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-15",
+   "index": 92.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-16",
+   "index": 88.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-17",
+   "index": 90.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-18",
+   "index": 85.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-21",
+   "index": 84.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-22",
+   "index": 84.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-23",
+   "index": 82.8
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-24",
+   "index": 81.4
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-25",
+   "index": 81.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-28",
+   "index": 82.0
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-29",
+   "index": 81.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-09-30",
+   "index": 80.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-10-01",
+   "index": 79.2
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-10-02",
+   "index": 76.9
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-10-05",
+   "index": 78.7
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-10-06",
+   "index": 80.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-10-07",
+   "index": 83.3
+  },
+  {
+   "symbol": "RNO.PA",
+   "date": "2026-10-08",
+   "index": 81.1
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-02-27",
+   "index": 100.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-02",
+   "index": 98.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-03",
+   "index": 98.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-04",
+   "index": 99.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-05",
+   "index": 96.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-06",
+   "index": 95.6
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-09",
+   "index": 94.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-10",
+   "index": 95.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-11",
+   "index": 95.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-12",
+   "index": 93.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-13",
+   "index": 92.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-16",
+   "index": 92.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-17",
+   "index": 94.1
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-18",
+   "index": 93.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-19",
+   "index": 93.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-20",
+   "index": 92.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-23",
+   "index": 96.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-24",
+   "index": 97.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-25",
+   "index": 97.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-26",
+   "index": 96.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-27",
+   "index": 92.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-30",
+   "index": 92.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-03-31",
+   "index": 94.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-01",
+   "index": 95.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-02",
+   "index": 92.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-06",
+   "index": 93.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-07",
+   "index": 92.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-08",
+   "index": 97.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-09",
+   "index": 97.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-10",
+   "index": 97.1
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-13",
+   "index": 97.6
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-14",
+   "index": 101.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-15",
+   "index": 98.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-16",
+   "index": 99.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-17",
+   "index": 103.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-20",
+   "index": 102.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-21",
+   "index": 100.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-22",
+   "index": 100.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-23",
+   "index": 99.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-24",
+   "index": 99.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-27",
+   "index": 99.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-28",
+   "index": 100.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-29",
+   "index": 97.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-04-30",
+   "index": 97.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-01",
+   "index": 96.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-04",
+   "index": 96.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-05",
+   "index": 96.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-06",
+   "index": 100.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-07",
+   "index": 99.6
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-08",
+   "index": 100.1
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-11",
+   "index": 95.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-12",
+   "index": 97.1
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-13",
+   "index": 96.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-14",
+   "index": 98.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-15",
+   "index": 95.1
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-18",
+   "index": 92.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-19",
+   "index": 92.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-20",
+   "index": 96.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-21",
+   "index": 98.1
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-22",
+   "index": 100.1
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-26",
+   "index": 101.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-27",
+   "index": 106.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-28",
+   "index": 107.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-05-29",
+   "index": 105.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-01",
+   "index": 105.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-02",
+   "index": 103.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-03",
+   "index": 103.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-04",
+   "index": 105.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-05",
+   "index": 104.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-08",
+   "index": 106.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-09",
+   "index": 106.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-10",
+   "index": 100.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-11",
+   "index": 102.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-12",
+   "index": 103.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-15",
+   "index": 106.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-16",
+   "index": 104.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-17",
+   "index": 101.1
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-18",
+   "index": 100.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-22",
+   "index": 102.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-23",
+   "index": 100.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-24",
+   "index": 100.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-25",
+   "index": 99.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-26",
+   "index": 99.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-29",
+   "index": 98.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-06-30",
+   "index": 97.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-01",
+   "index": 95.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-02",
+   "index": 96.6
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-06",
+   "index": 98.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-07",
+   "index": 96.6
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-08",
+   "index": 96.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-09",
+   "index": 97.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-10",
+   "index": 98.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-13",
+   "index": 97.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-14",
+   "index": 97.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-15",
+   "index": 98.6
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-16",
+   "index": 98.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-17",
+   "index": 96.6
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-20",
+   "index": 96.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-21",
+   "index": 101.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-22",
+   "index": 104.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-23",
+   "index": 102.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-24",
+   "index": 105.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-27",
+   "index": 110.6
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-28",
+   "index": 114.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-29",
+   "index": 113.6
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-30",
+   "index": 112.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-07-31",
+   "index": 112.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-03",
+   "index": 111.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-04",
+   "index": 112.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-05",
+   "index": 113.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-06",
+   "index": 110.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-07",
+   "index": 111.3
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-10",
+   "index": 111.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-11",
+   "index": 113.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-12",
+   "index": 110.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-13",
+   "index": 109.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-14",
+   "index": 110.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-17",
+   "index": 107.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-18",
+   "index": 106.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-19",
+   "index": 107.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-20",
+   "index": 109.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-21",
+   "index": 111.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-24",
+   "index": 110.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-25",
+   "index": 109.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-26",
+   "index": 109.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-27",
+   "index": 109.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-28",
+   "index": 109.6
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-08-31",
+   "index": 109.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-01",
+   "index": 108.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-02",
+   "index": 107.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-03",
+   "index": 110.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-04",
+   "index": 111.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-08",
+   "index": 109.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-09",
+   "index": 106.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-10",
+   "index": 109.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-11",
+   "index": 108.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-14",
+   "index": 110.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-15",
+   "index": 108.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-16",
+   "index": 107.1
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-17",
+   "index": 110.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-18",
+   "index": 104.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-21",
+   "index": 106.7
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-22",
+   "index": 106.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-23",
+   "index": 106.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-24",
+   "index": 102.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-25",
+   "index": 105.0
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-28",
+   "index": 102.5
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-29",
+   "index": 102.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-09-30",
+   "index": 97.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-10-01",
+   "index": 100.8
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-10-02",
+   "index": 99.4
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-10-05",
+   "index": 101.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-10-06",
+   "index": 104.2
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-10-07",
+   "index": 102.9
+  },
+  {
+   "symbol": "GM",
+   "date": "2026-10-08",
+   "index": 103.6
+  }
+ ]
+}
