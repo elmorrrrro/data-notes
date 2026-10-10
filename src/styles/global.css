@@ -36,6 +36,10 @@
   --toyota: #c81e3a;
   --byd: #1d6fd6;
   --tesla: #4b5563;
+  /* Russian diesel study: diesel (amber), the vote (indigo), Valero (cyan); validated light + dark, incl. CVD sims. */
+  --rd-diesel: #b45309;
+  --rd-vote: #4338ca;
+  --rd-cyan: #0891b2;
   --accent-1: #6d4aff;
   --accent-2: #0ea5c6;
   --radius: 20px;
@@ -78,6 +82,9 @@
     --toyota: #ff5c6c;
     --byd: #5b9bff;
     --tesla: #9ca3af;
+    --rd-diesel: #c97a22;
+    --rd-vote: #7c7ef5;
+    --rd-cyan: #1a9fb6;
   }
 }
 
@@ -114,6 +121,9 @@
   --toyota: #ff5c6c;
   --byd: #5b9bff;
   --tesla: #9ca3af;
+  --rd-diesel: #c97a22;
+  --rd-vote: #7c7ef5;
+  --rd-cyan: #1a9fb6;
 }
 
 *,

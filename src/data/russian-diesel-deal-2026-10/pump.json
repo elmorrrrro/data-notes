@@ -1,0 +1,226 @@
+{
+ "weekly": [
+  {
+   "date": "2026-01-05",
+   "diesel": 3.477,
+   "gasoline": 2.796
+  },
+  {
+   "date": "2026-01-12",
+   "diesel": 3.459,
+   "gasoline": 2.779
+  },
+  {
+   "date": "2026-01-19",
+   "diesel": 3.53,
+   "gasoline": 2.806
+  },
+  {
+   "date": "2026-01-26",
+   "diesel": 3.624,
+   "gasoline": 2.853
+  },
+  {
+   "date": "2026-02-02",
+   "diesel": 3.681,
+   "gasoline": 2.867
+  },
+  {
+   "date": "2026-02-09",
+   "diesel": 3.688,
+   "gasoline": 2.902
+  },
+  {
+   "date": "2026-02-16",
+   "diesel": 3.711,
+   "gasoline": 2.924
+  },
+  {
+   "date": "2026-02-23",
+   "diesel": 3.809,
+   "gasoline": 2.937
+  },
+  {
+   "date": "2026-03-02",
+   "diesel": 3.897,
+   "gasoline": 3.015
+  },
+  {
+   "date": "2026-03-09",
+   "diesel": 4.859,
+   "gasoline": 3.502
+  },
+  {
+   "date": "2026-03-16",
+   "diesel": 5.071,
+   "gasoline": 3.72
+  },
+  {
+   "date": "2026-03-23",
+   "diesel": 5.375,
+   "gasoline": 3.961
+  },
+  {
+   "date": "2026-03-30",
+   "diesel": 5.401,
+   "gasoline": 3.99
+  },
+  {
+   "date": "2026-04-06",
+   "diesel": 5.643,
+   "gasoline": 4.12
+  },
+  {
+   "date": "2026-04-13",
+   "diesel": 5.608,
+   "gasoline": 4.123
+  },
+  {
+   "date": "2026-04-20",
+   "diesel": 5.403,
+   "gasoline": 4.044
+  },
+  {
+   "date": "2026-04-27",
+   "diesel": 5.351,
+   "gasoline": 4.123
+  },
+  {
+   "date": "2026-05-04",
+   "diesel": 5.64,
+   "gasoline": 4.452
+  },
+  {
+   "date": "2026-05-11",
+   "diesel": 5.639,
+   "gasoline": 4.5
+  },
+  {
+   "date": "2026-05-18",
+   "diesel": 5.596,
+   "gasoline": 4.49
+  },
+  {
+   "date": "2026-05-25",
+   "diesel": 5.523,
+   "gasoline": 4.475
+  },
+  {
+   "date": "2026-06-01",
+   "diesel": 5.35,
+   "gasoline": 4.305
+  },
+  {
+   "date": "2026-06-08",
+   "diesel": 5.21,
+   "gasoline": 4.146
+  },
+  {
+   "date": "2026-06-15",
+   "diesel": 5.059,
+   "gasoline": 4.052
+  },
+  {
+   "date": "2026-06-22",
+   "diesel": 4.832,
+   "gasoline": 3.914
+  },
+  {
+   "date": "2026-06-29",
+   "diesel": 4.668,
+   "gasoline": 3.831
+  },
+  {
+   "date": "2026-07-06",
+   "diesel": 4.578,
+   "gasoline": 3.777
+  },
+  {
+   "date": "2026-07-13",
+   "diesel": 4.796,
+   "gasoline": 3.855
+  },
+  {
+   "date": "2026-07-20",
+   "diesel": 5.134,
+   "gasoline": 4.001
+  },
+  {
+   "date": "2026-07-27",
+   "diesel": 5.313,
+   "gasoline": 4.096
+  },
+  {
+   "date": "2026-08-03",
+   "diesel": 5.348,
+   "gasoline": 4.079
+  },
+  {
+   "date": "2026-08-10",
+   "diesel": 5.257,
+   "gasoline": 4.006
+  },
+  {
+   "date": "2026-08-17",
+   "diesel": 5.454,
+   "gasoline": 4.049
+  },
+  {
+   "date": "2026-08-24",
+   "diesel": 5.652,
+   "gasoline": 4.085
+  },
+  {
+   "date": "2026-08-31",
+   "diesel": 5.599,
+   "gasoline": 4.071
+  },
+  {
+   "date": "2026-09-07",
+   "diesel": 5.967,
+   "gasoline": 4.157
+  },
+  {
+   "date": "2026-09-14",
+   "diesel": 6.285,
+   "gasoline": 4.319
+  },
+  {
+   "date": "2026-09-21",
+   "diesel": 6.529,
+   "gasoline": 4.478
+  },
+  {
+   "date": "2026-09-28",
+   "diesel": 6.382,
+   "gasoline": 4.465
+  },
+  {
+   "date": "2026-10-05",
+   "diesel": 6.199,
+   "gasoline": 4.354
+  }
+ ],
+ "best_case": [
+  {
+   "date": "2026-10-05",
+   "diesel": 6.199
+  },
+  {
+   "date": "2026-10-12",
+   "diesel": 6.113
+  },
+  {
+   "date": "2026-10-19",
+   "diesel": 6.085
+  },
+  {
+   "date": "2026-10-26",
+   "diesel": 6.074
+  },
+  {
+   "date": "2026-11-02",
+   "diesel": 6.062
+  }
+ ]
+}

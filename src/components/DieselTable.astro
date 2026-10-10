@@ -1,0 +1,90 @@
+---
+// Batch table for the Russian diesel study: what was promised, how much it is, when it could land.
+import batches from '../data/russian-diesel-deal-2026-10/batches.json';
+import s from '../data/russian-diesel-deal-2026-10/summary.json';
+
+const day = (x: string) =>
+  new Date(`${x}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const mbbl = (n: number) => `${(n / 1e6).toFixed(1)}m`;
+---
+
+<div class="table-wrap card">
+  <table>
+    <thead>
+      <tr>
+        <th>Batch</th>
+        <th>Promised</th>
+        <th class="r">Tonnes</th>
+        <th class="r">Barrels</th>
+        <th class="r">Days of US use</th>
+        <th class="r">Running total, days</th>
+        <th>Earliest landing in New York</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        batches.map((b) => (
+          <tr class:list={{ before: b.before_election }}>
+            <td>
+              <strong>{b.label}</strong>
+            </td>
+            <td class="wrap">{b.when}</td>
+            <td class="r num">{b.tonnes.toLocaleString('en-US')}</td>
+            <td class="r num">{mbbl(b.barrels)}</td>
+            <td class="r num strong">{b.days_of_us_use.toFixed(1)}</td>
+            <td class="r num">{b.cum_days.toFixed(1)}</td>
+            <td>
+              {day(b.land_from)} – {day(b.land_to)}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+<p class="muted note">
+  US diesel use: {(s.us_use_bpd / 1e6).toFixed(2)} million barrels a day, the EIA weekly average for 2026. One tonne of
+  diesel = 7.46 barrels. Landing assumes loading starts on schedule, 3 days in port and {s.sail_days_primorsk} days at sea
+  from Primorsk ({s.route_nm.Primorsk.toLocaleString('en-US')} nautical miles at 13 knots); from Novorossiysk it is
+  {s.sail_days_novorossiysk} days. Batch 4 is cut at April 7, 2027, when the US license expires.
+</p>
+
+<style>
+  .table-wrap {
+    margin: 1.5em 0 0.6em;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+  th,
+  td {
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--grid);
+  }
+  th {
+    font-weight: 600;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+  .r {
+    text-align: right;
+  }
+  .wrap {
+    white-space: normal;
+    min-width: 180px;
+  }
+  .strong {
+    font-weight: 700;
+  }
+  tr.before td:first-child {
+    box-shadow: inset 3px 0 0 var(--rd-vote);
+  }
+  .note {
+    font-size: 0.82rem;
+  }
+</style>

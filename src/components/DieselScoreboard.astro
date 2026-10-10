@@ -1,0 +1,205 @@
+---
+// Scoreboard for the Russian diesel study: a verdict banner plus one card per obstacle between the deal and the vote.
+import s from '../data/russian-diesel-deal-2026-10/summary.json';
+import market from '../data/russian-diesel-deal-2026-10/market.json';
+
+const m = (t: string) => market.find((x) => x.ticker === t)!;
+const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+const usd = (n: number) => `$${n.toFixed(2)}`;
+const cents = Math.round(s.pump_cut_by_vote * 100);
+
+const cards = [
+  {
+    css: 'vote',
+    name: 'The clock',
+    value: `${s.days_to_election} days`,
+    unit: 'from the deal to election day, November 3',
+    rows: [
+      { k: 'Voting early', v: 'already open' },
+      { k: '2022: voted early', v: 'almost half' },
+    ],
+  },
+  {
+    css: 'ship',
+    name: 'The tankers',
+    value: `${s.before_election_days} days`,
+    unit: 'of US diesel use can land before the vote',
+    rows: [
+      { k: 'Whole deal', v: `${s.total_days_of_us_use} days` },
+      { k: 'At sea from the Baltic', v: `${s.sail_days_primorsk} days` },
+    ],
+  },
+  {
+    css: 'pump',
+    name: 'At the pump',
+    value: `−${cents}¢`,
+    unit: 'a gallon of diesel by election day, best case',
+    rows: [
+      { k: 'Since the war', v: `+${usd(s.diesel.rise)}` },
+      { k: 'Gasoline', v: 'not in the deal' },
+    ],
+  },
+  {
+    css: 'market',
+    name: 'On the stock market',
+    value: pct(m('HO=F').day_pct),
+    unit: 'diesel futures on the day of the deal',
+    rows: [
+      { k: 'Valero', v: pct(m('VLO').day_pct) },
+      { k: 'S&P 500', v: pct(m('^GSPC').day_pct) },
+    ],
+  },
+];
+---
+
+<section class="board" aria-label="Key numbers">
+  <div class="verdict">
+    <span class="eyebrow">Russian diesel vs the midterms</span>
+    <p class="headline">
+      Before Americans vote, the deal can bring at most <span class="big">{s.before_election_days} days</span> of diesel and
+      take about <span class="big">{cents}¢</span> off a gallon.
+    </p>
+    <p class="sub">Diesel now costs {usd(s.diesel.now)} a gallon, {usd(s.diesel.rise)} more than before the war with Iran</p>
+  </div>
+
+  <div class="groups">
+    {
+      cards.map((c) => (
+        <div class={`group ${c.css}`}>
+          <p class="name">{c.name}</p>
+          <p class="value">
+            {c.value}
+            <span class="unit">{c.unit}</span>
+          </p>
+          <dl>
+            {c.rows.map((row) => (
+              <div>
+                <dt>{row.k}</dt>
+                <dd>{row.v}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .board {
+    display: grid;
+    gap: 14px;
+    margin: 2.2em 0;
+  }
+  .verdict {
+    padding: 26px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(110deg, var(--accent-1), var(--accent-2)) border-box;
+    box-shadow: var(--shadow);
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .headline {
+    margin: 6px 0 8px;
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .big {
+    font-weight: 700;
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .groups {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 620px) {
+    .groups {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .group {
+    --c: var(--rd-diesel);
+    position: relative;
+    padding: 20px 22px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .group.vote {
+    --c: var(--rd-vote);
+  }
+  .group.market {
+    --c: var(--rd-cyan);
+  }
+  .group::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--c);
+  }
+  .name {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .value {
+    margin: 12px 0 4px;
+    font-family: var(--display);
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .unit {
+    display: block;
+    margin-top: 6px;
+    font-family: var(--font);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--muted);
+  }
+  dl {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 14px 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  dt {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  dd {
+    margin: 2px 0 0;
+    font-size: 1rem;
+    font-weight: 650;
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="deal-day-moves"
+  title="How the market took the deal"
+  subtitle="Change from the close on Thursday, Oct 8, to the close on Friday, Oct 9, 2026, the day of the announcement. Hover for the change since the war began."
+  source="Source: daily closes from Yahoo Finance (NYMEX diesel and ICE Brent front-month futures, shares unadjusted)."
+  legendItems={[
+    { label: 'Fuel prices', color: 'var(--rd-diesel)' },
+    { label: 'Companies', color: 'var(--rd-cyan)' },
+    { label: 'S&P 500', color: 'var(--muted)' },
+  ]}
+  height={400}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import market from '../../data/russian-diesel-deal-2026-10/market.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const GROUPS: Record<string, string> = {
+    fuel: 'Fuel',
+    refiner: 'Refiner: sells diesel',
+    tanker: 'Tanker: carries it',
+    trucker: 'Trucker: burns it',
+    market: 'Whole market',
+  };
+  const rows = market.map((m) => ({ ...m, label: m.name }));
+  const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+
+  mount(document.querySelector<HTMLElement>('#deal-day-moves .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const color = (g: string) =>
+      css.getPropertyValue(g === 'fuel' ? '--rd-diesel' : g === 'market' ? '--muted' : '--rd-cyan').trim();
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 400,
+      marginLeft: narrow ? 138 : 150,
+      marginRight: 40,
+      x: { label: null, domain: [-5, 1.5], nice: false, tickFormat: (x: number) => `${x}%`, grid: false, axis: narrow ? null : 'bottom' },
+      y: { label: null, domain: rows.map((r) => r.label), padding: 0.3, tickSize: 0 },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.barX(rows, { x: 'day_pct', y: 'label', fill: (r) => color(r.group), rx: 4 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        // Value labels sit beyond the bar end: left of falls, right of rises.
+        // Long falls would collide with the names on a phone, so their label goes inside the bar.
+        Plot.text(rows.filter((r) => r.day_pct < 0 && !(narrow && r.day_pct < -3)), {
+          x: 'day_pct', y: 'label', text: (r) => pct(r.day_pct), fill: t.ink2, fontSize: 11.5, fontWeight: 600, textAnchor: 'end', dx: -6,
+        }),
+        Plot.text(rows.filter((r) => narrow && r.day_pct < -3), {
+          x: 'day_pct', y: 'label', text: (r) => pct(r.day_pct), fill: t.surface, fontSize: 11.5, fontWeight: 700, textAnchor: 'start', dx: 6,
+        }),
+        Plot.text(rows.filter((r) => r.day_pct >= 0), {
+          x: 'day_pct', y: 'label', text: (r) => pct(r.day_pct), fill: t.ink2, fontSize: 11.5, fontWeight: 600, textAnchor: 'start', dx: 6,
+        }),
+        Plot.tip(
+          rows,
+          Plot.pointerY({
+            x: 'day_pct', y: 'label', ...tipStyle(t),
+            title: (r) =>
+              `${r.name} (${r.ticker})\n${GROUPS[r.group]}\n` +
+              `Deal day: ${pct(r.day_pct)} (${r.prev} → ${r.close})\nSince the war began (Feb 27 close): ${r.since_war_pct > 0 ? '+' : ''}${r.since_war_pct}%`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

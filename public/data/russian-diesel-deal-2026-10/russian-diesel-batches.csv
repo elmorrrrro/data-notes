@@ -1,0 +1,5 @@
+label,when,tonnes,barrels,days_of_us_use,cum_tonnes,cum_days,load_from,land_from,land_to,before_election
+Batch 1,“immediately”,300000,2238000,0.6,300000,0.6,2026-10-09,2026-10-26,2026-11-17,True
+Batch 2,November,500000,3730000,1.0,800000,1.6,2026-11-01,2026-11-18,2026-12-17,False
+Batch 3,“immediately thereafter” (December),1000000,7460000,2.0,1800000,3.5,2026-12-01,2026-12-18,2027-01-17,False
+Batch 4,"later, “depending on the condition of Russia's refineries”",3000000,22380000,5.9,4800000,9.4,2027-01-01,2027-01-18,2027-04-07,False

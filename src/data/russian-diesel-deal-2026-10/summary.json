@@ -1,0 +1,52 @@
+{
+ "deal_date": "2026-10-09",
+ "election": "2026-11-03",
+ "days_to_election": 25,
+ "total_tonnes": 4800000,
+ "total_days_of_us_use": 9.4,
+ "before_election_tonnes": 300000,
+ "before_election_days": 0.6,
+ "us_use_bpd": 3814275,
+ "us_exports_bpd": 1489725,
+ "us_imports_bpd": 156425,
+ "sail_days_primorsk": 14,
+ "sail_days_novorossiysk": 18,
+ "route_nm": {
+  "Primorsk": 4189,
+  "Novorossiysk": 5432
+ },
+ "first_landing": "2026-10-26",
+ "pass_through": [
+  0.43,
+  0.57,
+  0.62,
+  0.69,
+  0.73,
+  0.79,
+  0.82
+ ],
+ "pass_through_weeks_fitted": 607,
+ "pass_through_by_vote": 0.69,
+ "surveys_before_vote": 4,
+ "futures_drop": -0.2,
+ "futures_drop_pct": -4.1,
+ "pump_cut_by_vote": 0.14,
+ "diesel": {
+  "pre_war": 3.81,
+  "peak": 6.53,
+  "peak_date": "2026-09-21",
+  "now": 6.2,
+  "now_date": "2026-10-05",
+  "best_case_vote": 6.062,
+  "rise": 2.39
+ },
+ "gasoline": {
+  "pre_war": 2.94,
+  "now": 4.35
+ },
+ "share_of_rise_undone": 6,
+ "deal_value_bn": 7.0,
+ "after_vote_share": 98,
+ "new_congress_share": 73,
+ "refinery_dependent_share": 62
+}

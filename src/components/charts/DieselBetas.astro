@@ -1,0 +1,65 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="diesel-betas"
+  title="Which shares really follow the diesel price"
+  subtitle="When diesel futures move 10% in a day, how much the share moves on the same day, after taking out the whole market's move. Dots: best estimate; whiskers: 95% range. Daily closes, March 2 to October 9, 2026."
+  source="Source: daily closes from Yahoo Finance (NYMEX diesel futures, S&P 500, shares unadjusted); Data Notes regression."
+  legendItems={[
+    { label: 'Valero', color: 'var(--rd-cyan)' },
+    { label: 'Scorpio Tankers', color: 'var(--rd-diesel)' },
+    { label: 'Old Dominion', color: 'var(--rd-vote)' },
+    { label: 'Peers', color: 'var(--muted)' },
+  ]}
+  height={300}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import sens from '../../data/russian-diesel-deal-2026-10/sensitivity.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const ROLE: Record<string, string> = {
+    refiner: 'refiner, sells diesel',
+    tanker: 'tanker owner, carries it',
+    trucker: 'trucker, burns it',
+  };
+  const rows = sens.map((r) => ({ ...r, b: r.beta * 10, lo10: r.lo * 10, hi10: r.hi * 10 }));
+  const pct = (n: number) => `${n > 0.05 ? '+' : n < -0.05 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+
+  mount(document.querySelector<HTMLElement>('#diesel-betas .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const v = (n: string) => css.getPropertyValue(n).trim();
+    const COLOR: Record<string, string> = { VLO: v('--rd-cyan'), STNG: v('--rd-diesel'), ODFL: v('--rd-vote') };
+    const color = (r: (typeof rows)[number]) => COLOR[r.ticker] ?? t.muted;
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 300,
+      marginLeft: narrow ? 128 : 150,
+      marginRight: 48,
+      x: { label: null, domain: [-2, 5], tickFormat: (x: number) => `${x > 0 ? '+' : ''}${x}%`, ticks: narrow ? 4 : 8, grid: false },
+      y: { label: null, domain: rows.map((r) => r.name), padding: 0.4, tickSize: 0 },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1, ticks: narrow ? 4 : 8 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        Plot.ruleY(rows, { x1: 'lo10', x2: 'hi10', y: 'name', stroke: color, strokeWidth: 2, strokeLinecap: 'round' }),
+        Plot.dot(rows, { x: 'b', y: 'name', fill: color, r: 6, stroke: t.surface, strokeWidth: 2 }),
+        Plot.text(rows, { x: 'hi10', y: 'name', text: (r) => pct(r.b), dx: 8, textAnchor: 'start', fill: t.ink2, fontWeight: 650, fontSize: 11.5 }),
+        Plot.tip(
+          rows,
+          Plot.pointerY({
+            x: 'b', y: 'name', ...tipStyle(t),
+            title: (r) =>
+              `${r.name} (${r.ticker}), ${ROLE[r.group]}\n` +
+              `Diesel futures +10% → share ${pct(r.b)} the same day\n` +
+              `95% range: ${pct(r.lo10)} to ${pct(r.hi10)}\n` +
+              (r.lo10 < 0 && r.hi10 > 0 ? 'Range includes zero: no clear link to the diesel price' : 'A clear link to the diesel price'),
+          }),
+        ),
+      ],
+    });
+  });
+</script>

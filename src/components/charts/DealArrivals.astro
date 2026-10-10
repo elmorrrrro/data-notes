@@ -1,0 +1,91 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="deal-arrivals"
+  title="Who is in charge when Putin's diesel lands"
+  subtitle="Russian diesel landed in New York under the deal, cumulative, million tonnes, if every batch ships on schedule and its tankers arrive evenly across the earliest landing window."
+  source="Sources: Trump's Truth Social post of Oct 9, 2026 (via CNBC, CBS); OFAC general license to Apr 7, 2027 (NBC News); sea route from searoute, 13 knots."
+  legendItems={[
+    { label: 'Batches 1–3, promised outright', color: 'var(--rd-diesel)' },
+    { label: 'Batch 4, “depending on the condition of Russia’s refineries”', color: 'color-mix(in srgb, var(--rd-diesel) 40%, transparent)' },
+    { label: 'Election day', color: 'var(--rd-vote)' },
+  ]}
+  height={340}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import arrivals from '../../data/russian-diesel-deal-2026-10/arrivals.json';
+  import s from '../../data/russian-diesel-deal-2026-10/summary.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const d = (x: string) => new Date(`${x}T12:00:00Z`);
+  const rows = arrivals.daily.map((r) => ({ date: d(r.date), total: r.tonnes / 1e6, firm: r.firm / 1e6 }));
+  const election = d(s.election);
+  const congress = d(arrivals.new_congress);
+  const ends = d(arrivals.license_ends);
+  const day = (x: Date) => x.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+  const p = Object.fromEntries(arrivals.periods.map((q) => [q.id, q]));
+  // One label per period, centred over its stretch of time.
+  const mid = (a: string, b: string) => new Date((d(a).getTime() + d(b).getTime()) / 2);
+  const bands = [
+    { x: d(p.before_vote.start), share: p.before_vote.share, short: 'Pre-vote', long: 'Before the vote' },
+    { x: mid(p.lame_duck.start, p.lame_duck.end), share: p.lame_duck.share, short: 'Old Congress', long: 'After the vote, old Congress' },
+    { x: mid(p.new_congress.start, p.new_congress.end), share: p.new_congress.share, short: 'New Congress', long: 'The new Congress sits' },
+  ];
+
+  mount(document.querySelector<HTMLElement>('#deal-arrivals .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const diesel = css.getPropertyValue('--rd-diesel').trim();
+    const vote = css.getPropertyValue('--rd-vote').trim();
+    const narrow = width < 520;
+    const pct = (n: number) => `${n < 10 ? n.toFixed(0) : Math.round(n)}%`;
+    return Plot.plot({
+      ...base(t, width),
+      height: 340,
+      marginTop: 58,
+      marginRight: narrow ? 14 : 24,
+      x: { type: 'utc', domain: [d('2026-10-01'), d('2027-04-14')], label: null, ticks: narrow ? 4 : 7, tickFormat: (x: Date) => x.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' }) },
+      y: { label: '↑ million tonnes landed', domain: [0, 5], grid: false },
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
+        // The new Congress's months, lightly shaded.
+        Plot.rectX([{ a: congress, b: ends }], { x1: 'a', x2: 'b', fill: t.ink, fillOpacity: 0.035 }),
+        Plot.areaY(rows, { x: 'date', y1: 'firm', y2: 'total', fill: diesel, fillOpacity: 0.35, curve: 'monotone-x' }),
+        Plot.areaY(rows, { x: 'date', y: 'firm', fill: diesel, fillOpacity: 0.9, curve: 'monotone-x' }),
+        Plot.lineY(rows, { x: 'date', y: 'total', stroke: diesel, strokeWidth: 2, curve: 'monotone-x' }),
+        Plot.ruleX([election], { stroke: vote, strokeWidth: 2 }),
+        Plot.ruleX([congress], { stroke: t.axis, strokeDasharray: '3,3' }),
+        Plot.ruleX([ends], { stroke: t.axis, strokeDasharray: '3,3' }),
+        // The first band is narrow: on a wide chart its labels start at the deal line, on a phone they end at the
+        // vote line and run into the margin, clear of the next label. The others are centred.
+        ...[bands.slice(0, 1), bands.slice(1)].flatMap((set, i) => {
+          const first = i === 0;
+          const anchor = first ? (narrow ? 'end' : 'start') : 'middle';
+          const dx = first ? (narrow ? -4 : -2) : 0;
+          if (first && narrow) set = set.map((b) => ({ ...b, x: election }));
+          return [
+            Plot.text(set, { x: 'x', frameAnchor: 'top', dy: -44, dx, textAnchor: anchor, text: (b) => pct(b.share), fill: t.ink, fontWeight: 750, fontSize: narrow ? 15 : 18 }),
+            Plot.text(set, { x: 'x', frameAnchor: 'top', dy: -24, dx, textAnchor: anchor, text: (b) => (narrow ? b.short : b.long), fill: t.muted, fontSize: 11 }),
+          ];
+        }),
+        Plot.text([rows.at(-1)!], {
+          x: 'date', y: 'total', dy: -10, textAnchor: 'end', fill: t.ink2, fontWeight: 700, fontSize: 12,
+          text: () => (narrow ? '4.8' : '4.8 by Apr 7, when the license ends'),
+        }),
+        Plot.tip(
+          rows,
+          Plot.pointerX({
+            x: 'date', y: 'total', ...tipStyle(t),
+            title: (r) =>
+              `By ${day(r.date)}: ${r.total.toFixed(2)} million tonnes landed\n` +
+              `of which ${(r.total - r.firm).toFixed(2)} from batch 4, which depends on Russia's refineries\n` +
+              (r.date < election ? 'Before the vote' : r.date < congress ? 'After the vote, before the new Congress' : 'The new Congress sits'),
+          }),
+        ),
+      ],
+    });
+  });
+</script>

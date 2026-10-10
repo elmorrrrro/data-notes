@@ -1,0 +1,80 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="pump-best-case"
+  title="US pump prices in 2026, and the deal's best case by election day"
+  subtitle="Weekly US average, dollars per gallon. Dashed: the latest diesel price minus the share of the deal-day futures drop that historically reaches the pump within four weeks."
+  source="Source: EIA weekly retail prices (to Oct 5, 2026) and NY Harbor diesel spot, 2015–2026; NYMEX diesel futures (Yahoo Finance)."
+  legendItems={[
+    { label: 'Diesel', color: 'var(--rd-diesel)' },
+    { label: 'Gasoline', color: 'var(--muted)' },
+    { label: 'Election day', color: 'var(--rd-vote)' },
+  ]}
+  height={320}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import pump from '../../data/russian-diesel-deal-2026-10/pump.json';
+  import s from '../../data/russian-diesel-deal-2026-10/summary.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const d = (x: string) => new Date(`${x}T12:00:00Z`);
+  const long = pump.weekly.flatMap((r) => [
+    { date: d(r.date), fuel: 'Diesel', price: r.diesel, other: r.gasoline },
+    { date: d(r.date), fuel: 'Gasoline', price: r.gasoline, other: r.diesel },
+  ]);
+  const best = pump.best_case.map((r) => ({ date: d(r.date), price: r.diesel }));
+  const end = best[best.length - 1];
+  const lastGas = long.filter((r) => r.fuel === 'Gasoline').at(-1)!;
+  const lastDiesel = long.filter((r) => r.fuel === 'Diesel').at(-1)!;
+  const election = d(s.election);
+  const war = d('2026-02-28');
+  const day = (x: Date) => x.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const usd = (n: number) => `$${n.toFixed(2)}`;
+
+  mount(document.querySelector<HTMLElement>('#pump-best-case .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const diesel = css.getPropertyValue('--rd-diesel').trim();
+    const vote = css.getPropertyValue('--rd-vote').trim();
+    const color = (f: string) => (f === 'Diesel' ? diesel : t.muted);
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 320,
+      marginRight: narrow ? 44 : 52,
+      marginTop: 24,
+      x: { type: 'utc', domain: [d('2026-01-01'), d('2026-11-10')], label: null, ticks: narrow ? 4 : 8 },
+      y: { label: '↑ $ per gallon', domain: [2, 7], grid: false },
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.ruleX([war], { stroke: t.axis, strokeDasharray: '3,3' }),
+        Plot.text(['War with Iran'], { x: () => war, frameAnchor: 'top', dy: -12, dx: 4, textAnchor: 'start', fill: t.muted, fontSize: 11 }),
+        Plot.ruleX([election], { stroke: vote, strokeWidth: 2 }),
+        Plot.text(['Vote'], { x: () => election, frameAnchor: 'top', dy: -12, textAnchor: 'middle', fill: t.ink2, fontWeight: 700, fontSize: 11 }),
+        Plot.line(long, { x: 'date', y: 'price', z: 'fuel', stroke: (r) => color(r.fuel), strokeWidth: (r) => (r.fuel === 'Diesel' ? 2.5 : 1.75) }),
+        Plot.line(best, { x: 'date', y: 'price', stroke: diesel, strokeWidth: 2, strokeDasharray: '4,4' }),
+        Plot.dot([end], { x: 'date', y: 'price', fill: diesel, r: 4, stroke: t.surface, strokeWidth: 2 }),
+        Plot.text([end], { x: 'date', y: 'price', text: (r) => usd(r.price), dx: 8, dy: 10, textAnchor: 'start', fill: t.ink, fontWeight: 700, fontSize: 12 }),
+        Plot.text(narrow ? [] : [lastDiesel], { x: 'date', y: 'price', text: (r) => usd(r.price), dy: 16, dx: -4, textAnchor: 'end', fill: t.ink2, fontSize: 11.5 }),
+        Plot.text([lastGas], { x: 'date', y: 'price', text: (r) => usd(r.price), dy: 14, textAnchor: 'middle', fill: t.ink2, fontSize: 11.5 }),
+        Plot.tip(
+          long.filter((r) => r.fuel === 'Diesel'),
+          Plot.pointerX({
+            x: 'date', y: 'price', ...tipStyle(t),
+            title: (r) => `Week of ${day(r.date)}\nDiesel ${usd(r.price)} · Gasoline ${usd(r.other)}`,
+          }),
+        ),
+        Plot.tip(
+          best.slice(1),
+          Plot.pointerX({
+            x: 'date', y: 'price', ...tipStyle(t),
+            title: (r) => `Best case, ${day(r.date)}: diesel ${usd(r.price)}\nOnly the deal's effect; everything else held constant`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

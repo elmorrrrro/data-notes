@@ -1,0 +1,92 @@
+[
+ {
+  "ticker": "HO=F",
+  "name": "Diesel futures",
+  "group": "fuel",
+  "prev": 4.88,
+  "close": 4.68,
+  "day_pct": -4.1,
+  "since_war_pct": 75
+ },
+ {
+  "ticker": "BZ=F",
+  "name": "Brent crude",
+  "group": "fuel",
+  "prev": 104.28,
+  "close": 104.43,
+  "day_pct": 0.1,
+  "since_war_pct": 44
+ },
+ {
+  "ticker": "VLO",
+  "name": "Valero",
+  "group": "refiner",
+  "prev": 443.8,
+  "close": 433.75,
+  "day_pct": -2.3,
+  "since_war_pct": 112
+ },
+ {
+  "ticker": "MPC",
+  "name": "Marathon Petroleum",
+  "group": "refiner",
+  "prev": 463.34,
+  "close": 455.03,
+  "day_pct": -1.8,
+  "since_war_pct": 130
+ },
+ {
+  "ticker": "PSX",
+  "name": "Phillips 66",
+  "group": "refiner",
+  "prev": 281.6,
+  "close": 278.18,
+  "day_pct": -1.2,
+  "since_war_pct": 80
+ },
+ {
+  "ticker": "STNG",
+  "name": "Scorpio Tankers",
+  "group": "tanker",
+  "prev": 88.15,
+  "close": 85.14,
+  "day_pct": -3.4,
+  "since_war_pct": 8
+ },
+ {
+  "ticker": "INSW",
+  "name": "International Seaways",
+  "group": "tanker",
+  "prev": 121.82,
+  "close": 119.82,
+  "day_pct": -1.6,
+  "since_war_pct": 59
+ },
+ {
+  "ticker": "ODFL",
+  "name": "Old Dominion",
+  "group": "trucker",
+  "prev": 181.65,
+  "close": 181.97,
+  "day_pct": 0.2,
+  "since_war_pct": -10
+ },
+ {
+  "ticker": "JBHT",
+  "name": "J.B. Hunt",
+  "group": "trucker",
+  "prev": 228.42,
+  "close": 229.26,
+  "day_pct": 0.4,
+  "since_war_pct": -2
+ },
+ {
+  "ticker": "^GSPC",
+  "name": "S&P 500",
+  "group": "market",
+  "prev": 7765.36,
+  "close": 7811.54,
+  "day_pct": 0.6,
+  "since_war_pct": 14
+ }
+]

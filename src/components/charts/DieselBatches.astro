@@ -1,0 +1,73 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="diesel-batches"
+  title="When Putin's diesel could reach America"
+  subtitle="Earliest landing window in New York for each promised batch: loading starts as scheduled, 3 days in port, 14 days at sea from the Baltic. Bar labels: days of US diesel use."
+  source="Sources: Trump's Truth Social post of Oct 9, 2026 (via CNBC, CBS); EIA weekly US distillate use, 2026 average; route length from searoute."
+  legendItems={[
+    { label: 'Russian diesel batch', color: 'var(--rd-diesel)' },
+    { label: 'Election day', color: 'var(--rd-vote)' },
+  ]}
+  height={280}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import batches from '../../data/russian-diesel-deal-2026-10/batches.json';
+  import s from '../../data/russian-diesel-deal-2026-10/summary.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const d = (x: string) => new Date(`${x}T12:00:00Z`);
+  const rows = batches.map((b) => ({ ...b, from: d(b.land_from), to: d(b.land_to) }));
+  const election = d(s.election);
+  const deal = d(s.deal_date);
+  const mt = (t: number) => (t >= 1e6 ? `${t / 1e6} million` : `${t / 1e3}k`);
+  const day = (x: Date) => x.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+
+  mount(document.querySelector<HTMLElement>('#diesel-batches .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const diesel = css.getPropertyValue('--rd-diesel').trim();
+    const vote = css.getPropertyValue('--rd-vote').trim();
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 280,
+      marginLeft: narrow ? 62 : 70,
+      marginRight: 16,
+      marginTop: 26,
+      x: { type: 'utc', domain: [d('2026-10-01'), d('2027-04-15')], label: null, ticks: narrow ? 4 : 7, tickFormat: (x: Date) => x.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' }) },
+      y: { label: null, domain: rows.map((r) => r.label), padding: 0.35, tickSize: 0 },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1, ticks: narrow ? 4 : 7 }),
+        Plot.barX(rows, { x1: 'from', x2: 'to', y: 'label', fill: diesel, rx: 4 }),
+        // Short bars get their label outside, the last (widest) one inside.
+        Plot.text(rows.slice(0, -1), {
+          x: 'to', y: 'label', textAnchor: 'start', dx: 6, fill: t.ink2, fontWeight: 650, fontSize: 11.5,
+          text: (r) => `${r.days_of_us_use.toFixed(1)} days`,
+        }),
+        Plot.text(rows.slice(-1), {
+          x: 'to', y: 'label', textAnchor: 'end', dx: -8, fill: t.surface, fontWeight: 700, fontSize: 11.5,
+          text: (r) => `${r.days_of_us_use.toFixed(1)} days`,
+        }),
+        Plot.ruleX([deal], { stroke: t.axis, strokeDasharray: '3,3' }),
+        Plot.ruleX([election], { stroke: vote, strokeWidth: 2 }),
+        Plot.text(['Vote, Nov 3'], { x: () => election, frameAnchor: 'top', dy: -14, dx: 4, textAnchor: 'start', fill: t.ink2, fontWeight: 700, fontSize: 11 }),
+        Plot.text(['Deal'], { x: () => deal, frameAnchor: 'top', dy: -14, dx: -4, textAnchor: 'end', fill: t.muted, fontSize: 11 }),
+        Plot.tip(
+          rows,
+          Plot.pointerY({
+            x1: 'from', x2: 'to', y: 'label', ...tipStyle(t),
+            title: (r) =>
+              `${r.label}: ${mt(r.tonnes)} tonnes, promised ${r.when}\n` +
+              `= ${(r.barrels / 1e6).toFixed(1)} million barrels, ${r.days_of_us_use.toFixed(1)} days of US diesel use\n` +
+              `Earliest landing: ${day(r.from)} to ${day(r.to)}\n` +
+              (r.before_election ? 'Only this batch can land before the vote, and only its first tankers' : 'Lands after the vote'),
+          }),
+        ),
+      ],
+    });
+  });
+</script>
