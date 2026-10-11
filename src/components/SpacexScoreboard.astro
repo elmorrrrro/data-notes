@@ -1,0 +1,202 @@
+---
+// Scoreboard for the SpaceX orbital-data-centers study: a verdict banner plus one card per part of the check.
+import s from '../data/spacex-orbital-data-centers-2026-10/summary.json';
+
+const bn = (m: number) => `$${(m / 1000).toFixed(1)}B`;
+const [from, to] = s.musk_clock_first_deploy;
+
+const cards = [
+  {
+    css: 'promise',
+    name: 'The promise',
+    value: '2028',
+    unit: 'first orbital data-center satellites, "as early as"',
+    rows: [
+      { k: 'Goal', v: `${s.goal_gw_per_year} GW a year` },
+      { k: 'Musk at Davos', v: 'cheapest in 2–3 years' },
+    ],
+  },
+  {
+    css: 'real',
+    name: 'The lift',
+    value: `${s.times_2025_world}×`,
+    unit: 'everything the world launched to orbit in 2025, every year',
+    rows: [
+      { k: 'Starship launches', v: `${s.starship_flights_per_day} a day` },
+      { k: 'One every', v: `${s.minutes_between_launches} minutes` },
+    ],
+  },
+  {
+    css: 'promise',
+    name: 'The track record',
+    value: `${s.on_time} of ${s.promises}`,
+    unit: 'dated promises by Musk and SpaceX came true on time',
+    rows: [
+      { k: 'Came true late', v: `${s.delivered - s.on_time}` },
+      { k: 'Still waiting or dropped', v: `${s.promises - s.delivered}` },
+    ],
+  },
+  {
+    css: 'money',
+    name: 'The money',
+    value: `−${bn(s.ai_op_loss_2025_musd)}`,
+    unit: "operating loss of SpaceX's AI business in 2025",
+    rows: [
+      { k: 'Its revenue', v: bn(s.ai_revenue_2025_musd) },
+      { k: 'Its compute on Earth', v: `${s.earth_compute_gw_q1_2026} GW` },
+    ],
+  },
+];
+---
+
+<section class="board" aria-label="Key numbers">
+  <div class="verdict">
+    <span class="eyebrow">Musk's orbital data centers vs Musk's clock</span>
+    <p class="headline">
+      SpaceX says the first ones fly <span class="big">as early as 2028</span>. If they slip like the Tesla Semi and Starship did,
+      expect them around <span class="big">{from}–{to}</span>.
+    </p>
+    <p class="sub">SpaceX's own prospectus: the plan "may not achieve commercial viability"</p>
+  </div>
+
+  <div class="groups">
+    {
+      cards.map((c) => (
+        <div class={`group ${c.css}`}>
+          <p class="name">{c.name}</p>
+          <p class="value">
+            {c.value}
+            <span class="unit">{c.unit}</span>
+          </p>
+          <dl>
+            {c.rows.map((row) => (
+              <div>
+                <dt>{row.k}</dt>
+                <dd>{row.v}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .board {
+    display: grid;
+    gap: 14px;
+    margin: 2.2em 0;
+  }
+  .verdict {
+    padding: 26px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(110deg, var(--accent-1), var(--accent-2)) border-box;
+    box-shadow: var(--shadow);
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .headline {
+    margin: 6px 0 8px;
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .big {
+    font-weight: 700;
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .groups {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 620px) {
+    .groups {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .group {
+    --c: var(--sx-promise);
+    position: relative;
+    padding: 20px 22px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .group.real {
+    --c: var(--sx-real);
+  }
+  .group.money {
+    --c: var(--axis);
+  }
+  .group::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--c);
+  }
+  .name {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .value {
+    margin: 12px 0 4px;
+    font-family: var(--display);
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .unit {
+    display: block;
+    margin-top: 6px;
+    font-family: var(--font);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--muted);
+  }
+  dl {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 14px 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  dt {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  dd {
+    margin: 2px 0 0;
+    font-size: 1rem;
+    font-weight: 650;
+  }
+</style>

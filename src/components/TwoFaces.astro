@@ -1,0 +1,81 @@
+---
+// Two quotes side by side: what Musk tells the public vs what SpaceX tells investors in its prospectus.
+interface Quote {
+  who: string;
+  where: string;
+  text: string;
+  href: string;
+}
+interface Props {
+  left: Quote;
+  right: Quote;
+}
+const { left, right } = Astro.props;
+---
+
+<section class="faces" aria-label="Two quotes compared">
+  {
+    [left, right].map((q, i) => (
+      <figure class:list={['face card', i === 0 ? 'promise' : 'real']}>
+        <p class="who">{q.who}</p>
+        <blockquote>“{q.text}”</blockquote>
+        <figcaption>
+          <a href={q.href}>{q.where}</a>
+        </figcaption>
+      </figure>
+    ))
+  }
+</section>
+
+<style>
+  .faces {
+    display: grid;
+    gap: 14px;
+    margin: 1.8em 0;
+  }
+  @media (min-width: 620px) {
+    .faces {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .face {
+    --c: var(--sx-promise);
+    position: relative;
+    margin: 0;
+    padding: 20px 22px 16px;
+    overflow: hidden;
+  }
+  .face.real {
+    --c: var(--sx-real);
+  }
+  .face::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: var(--c);
+  }
+  .who {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  blockquote {
+    margin: 10px 0 12px;
+    padding: 0;
+    border: 0;
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  figcaption {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+</style>

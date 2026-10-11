@@ -1,0 +1,17 @@
+[
+ {
+  "label": "Whole world, 2012",
+  "tonnes": 220,
+  "kind": "past"
+ },
+ {
+  "label": "Whole world, 2025",
+  "tonnes": 2600,
+  "kind": "past"
+ },
+ {
+  "label": "The plan, every year",
+  "tonnes": 1000000,
+  "kind": "plan"
+ }
+]

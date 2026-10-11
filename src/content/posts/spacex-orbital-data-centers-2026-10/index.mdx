@@ -1,0 +1,172 @@
+---
+title: "Musk calls space data centers a 'no-brainer'. SpaceX tells investors they may never pay"
+description: "Musk says AI will be cheapest in orbit within two or three years. SpaceX's own IPO prospectus says the plan 'may not achieve commercial viability' and needs 385 times everything the world launched in 2025, every year. We checked nine of Musk's dated promises: one came true on time. With a live SpaceX (SPCX) share tracker."
+date: 2026-10-11
+rubric: 'Promise check'
+tags: [spacex, ai, data centers]
+accents: ['var(--sx-promise)', 'var(--sx-real)']
+stocks: [SPCX]
+---
+
+import SpacexScoreboard from '../../../components/SpacexScoreboard.astro';
+import TwoFaces from '../../../components/TwoFaces.astro';
+import OrbitLift from '../../../components/charts/OrbitLift.astro';
+import PromiseTimeline from '../../../components/charts/PromiseTimeline.astro';
+import StockWatch from '../../../components/StockWatch.astro';
+import PromiseTable from '../../../components/PromiseTable.astro';
+import snapshot from '../../../data/spacex-orbital-data-centers-2026-10/stocks_snapshot.json';
+import s from '../../../data/spacex-orbital-data-centers-2026-10/summary.json';
+
+**Short answer: data centers in space are possible, but not on Musk's clock.** Musk wants to put AI data centers in
+orbit: satellites with AI chips, powered by the sun. In public he calls it "a no-brainer" and says space will be the
+cheapest place for AI within two or three years. In its IPO prospectus, where every word is checked by lawyers, SpaceX
+says the same plan "may not achieve commercial viability" and that its timeline may be "difficult or impossible to
+determine". The physics allows it. The problem is the size: the plan needs hundreds of times more rockets than the whole
+world launches today. And Musk's own record says his deadlines usually come true years late, if at all.
+
+<SpacexScoreboard />
+
+## 1. One plan, two faces
+
+<TwoFaces
+  left={{
+    who: 'Musk, to the public',
+    text: "It's a no-brainer building solar-power data centres in space ... the lowest-cost place to put AI will be space, and that will be true within two years, three at the latest.",
+    where: 'World Economic Forum, Davos, January 2026 (Reuters)',
+    href: 'https://bdnews24.com/business/b7937e89c6f0',
+  }}
+  right={{
+    who: 'SpaceX, to investors',
+    text: 'Initiatives ... including those to develop orbital AI compute at scale ... involve significant technical complexity, unproven technologies or technologies that do not exist, and such initiatives may not achieve commercial viability.',
+    where: 'SpaceX Form S-1 (IPO prospectus), May 20, 2026',
+    href: 'https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm',
+  }}
+/>
+
+Both are about the same plan. In January, SpaceX asked the US regulator, the FCC, for permission to launch up to
+**a million** data-center satellites. In May, it filed its prospectus to sell shares, and the shares started trading on
+Nasdaq in June as SPCX.
+
+To be fair, a prospectus must list every risk, and this is normal legal language. But this one goes further than usual.
+It says that "we have not, and no one else has, previously operated or attempted to operate orbital AI compute", that
+broken satellites "will not be easily repaired or upgraded", and that investors "may not realize a return". The public
+hears "two or three years". The investors read "may be difficult or impossible to determine".
+
+## 2. The plan needs 385 years of today's rockets, every year
+
+<OrbitLift />
+
+SpaceX's goal is to add **100 gigawatts** of computing in orbit every year. For comparison, all of SpaceX's AI data
+centers on Earth, the ones that run Musk's chatbot Grok, draw about 1 gigawatt today.
+
+The prospectus does the maths itself: 100 gigawatts a year means about **one million tons** sent to orbit every year.
+In 2025 the whole world, all countries and all companies together, sent about 2,600 tons, and SpaceX launched most of
+it. So the plan needs **{s.times_2025_world} times** what humanity launched last year, and not once, but every year.
+
+Starship, SpaceX's giant new rocket, is designed to carry 100 tons. A million tons is about **10,000 Starship flights a
+year: {s.starship_flights_per_day} a day, one every {s.minutes_between_launches} minutes**, day and night. Starship
+reached orbit with a real payload for the first time on September 28, 2026, two weeks ago.
+
+## 3. Musk's clock
+
+<PromiseTimeline />
+
+Musk often hits his goals, but rarely on time. We took nine big promises with a date that are easy to check, from
+self-driving Teslas to people on Mars, and looked at what happened.
+
+- **Only one came true on time:** the prospectus said Starship would start delivering payloads to orbit in the second
+  half of 2026, and it did, on September 28.
+- **Three came true late.** The Tesla Semi truck was promised for 2019 and reached its first customer, PepsiCo, at the
+  end of 2022. Starship was to reach orbit in 2022 and did it in 2026. A Tesla crossing the US on its own was promised
+  for 2017; an owner did it in December 2025, and the system still needs a driver watching.
+- **Five are still waiting or were dropped.** There are no million robotaxis (promised for 2020); about 300 Teslas drive
+  without a safety driver today. The new Roadster (promised for 2020) is still not on sale. The Red Dragon mission to
+  Mars (promised for 2018) was cancelled. Cargo flights to Mars (2022) and people on Mars (2024) were put off in
+  February 2026, when SpaceX said it would go to the Moon first.
+
+Musk said it himself in 2020: "Punctuality is not my strong suit, but I always come through in the end." The hardware
+that did come through late, the Semi and Starship, slipped by about **three to four years**. The same slip on "as early
+as 2028" gives the first data-center satellites in about **2031–2032**. And that is only the first satellites, not 100
+gigawatts a year.
+
+## 4. Who pays while we wait
+
+The AI business that would use these satellites is losing money. In 2025, SpaceX's AI segment, which now includes Musk's
+xAI and X, earned **$3.2 billion** in revenue and lost **$6.4 billion** from operations. In the first three months of
+2026 alone, SpaceX spent $7.7 billion on AI buildings and equipment. Part of the computing on Earth is now rented out:
+Anthropic, a rival AI company, agreed to pay $1.25 billion a month for it until May 2029.
+
+Shareholders are paying for the dream too. SPCX was priced at **$135** at the IPO in June, closed above
+$211 on its third day of trading, fell to $108 in August and closed at **$162.57** on Friday, October 9. So far, the market has not decided whether
+space data centers are a reason to buy.
+
+<StockWatch
+  snapshot={snapshot}
+  tickers={[{ symbol: 'SPCX', name: 'SpaceX', color: 'var(--sx-real)' }]}
+  title="SpaceX share price since the IPO, indexed to publication"
+/>
+
+The price was frozen at the close on Friday, October 9, and the live price loads every time the page opens. Watch it
+around the next Starship flights and the FCC's decision on the million satellites.
+
+**My take:** the idea is not crazy. Google is working on the same thing, and its own study says it can pay off if
+launches get more than ten times cheaper by the mid-2030s. What is off is the clock. Musk sells the dream on a
+two-to-three-year schedule, while his company, in the one document where it can be sued for saying too much, will not
+promise any date. Judging by his record, believe the prospectus. Who do you believe: Musk on stage, or SpaceX on paper?
+
+## What the numbers leave out
+
+- **Heat.** In space there is no air or water to carry heat away. A satellite can only cool by radiating heat from big
+  panels, and AI chips run hot. The prospectus counts on "radiative cooling" but gives no design.
+- **Repairs.** A broken chip on Earth is swapped in an hour. In orbit, the prospectus warns, failures "could result in
+  permanent capacity loss".
+- **Cheaper launches.** Google's [Project Suncatcher](https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design/)
+  expects launch prices could fall below $200 per kilogram by the mid-2030s, and plans two test satellites with Planet
+  by early 2027. If Starship brings prices down faster, the economics change.
+- **Permission.** The FCC has not approved the million satellites yet, and in the past it cut SpaceX's requests.
+- **What counts as a promise.** We used only promises with a clear date and a clear result. Musk has made many more,
+  and trackers count them differently. Some of his biggest goals, like reusable rockets, came true and changed the
+  industry.
+
+## Data
+
+<PromiseTable />
+
+<p class="muted" style="font-size: 0.85rem">
+  Download the list of promises with dates and sources:
+  <a href="/data/spacex-orbital-data-centers-2026-10/musk-promises.csv">musk-promises.csv</a>.
+</p>
+
+## Methodology
+
+- **The prospectus:** SpaceX's [Form S-1](https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm),
+  filed with the SEC on May 20, 2026 (file no. 333-296070). All quotes, the 100 GW goal, "as early as 2028", the one
+  million tons a year, the world launch totals (220 tons in 2012, about 2,600 in 2025, over 80% by SpaceX), Starship's
+  100-ton design capacity, the AI segment's 2025 revenue, operating loss and the 1 GW "nameplate compute draw", the
+  capital spending and the Anthropic contract are from this filing. The analysis script checks that every quoted phrase
+  is in the filing text.
+- **Launch maths:** 1,000,000 tons a year ÷ 100 tons per Starship = 10,000 flights a year, or one every 53 minutes.
+  The prospectus itself says the plan "will require thousands of launches per year".
+- **The million satellites:** SpaceX's FCC application of January 30, 2026, reported by
+  [Broadband Breakfast](https://broadbandbreakfast.com/spacex-seeks-fcc-approval-for-one-million-satellites-in-space/)
+  and [Engadget](https://www.engadget.com/science/space/spacex-wants-to-launch-a-constellation-of-a-million-satellites-to-power-ai-needs-175607771.html).
+- **Launch prices:** Google's [Suncatcher post](https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design/)
+  ("less than $200/kg by the mid-2030s") compared with NASA's estimate of about $2,700 per kilogram for Falcon 9,
+  quoted in the S-1: more than ten times cheaper.
+- **Davos quote:** Reuters, republished by [bdnews24](https://bdnews24.com/business/b7937e89c6f0).
+- **Promises:** each row of the table links to the reports of the promise and of the outcome. A deadline is the last day
+  of the promised year (or half-year). "Years late" runs from the deadline to the day it happened, or to October 11,
+  2026 if it has not. The cross-country drive was done by an owner, David Moss, in December 2025 on FSD (Supervised);
+  we date it December 31. Robotaxi fleet: an independent tracker's count, reported by
+  [Electric Vehicles](https://eletric-vehicles.com/tesla/tesla-robotaxi-fleet-tops-1000-vehicles-tracking-site-shows/);
+  Tesla does not publish one. Mars plans: [Phys.org](https://phys.org/news/2026-02-spacex-shifts-focus-mars-moon.html).
+  Musk's "punctuality" quote is from Tesla's earnings call of April 29, 2020, reported by
+  [Business Insider](https://www.businessinsider.nl/elon-musk-tesla-robo-taxi-network-not-this-year-2020-4/).
+- **"Musk's clock":** the slip of the two hardware programmes that were delivered late (Tesla Semi 2.9 years, Starship
+  to orbit 3.7 years), rounded and added to 2028. It is a rule of thumb from two cases, not a forecast.
+- **Share prices:** daily closes of SPCX from Yahoo Finance via `yfinance` (unadjusted); IPO price $135 on June 11,
+  2026. Prices at publication were saved with `yfinance`; live prices come from a small server function that queries
+  Yahoo Finance when the page loads.
+- **Code:** plain Python scripts (`collect.py`, `analyze.py`, `snapshot_stocks.py`).
+- **Trademarks:** company and product names are trademarks of their respective owners. This site is independent and
+  not affiliated with or sponsored by SpaceX, Tesla, xAI, Google or any other company mentioned.

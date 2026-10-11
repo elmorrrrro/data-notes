@@ -1,0 +1,110 @@
+[
+ {
+  "id": "selfdrive",
+  "what": "A Tesla drives itself from Los Angeles to New York",
+  "said": "2016-10-19",
+  "due": "2017-12-31",
+  "done": "2025-12-31",
+  "status": "late",
+  "outcome": "December 2025: an owner crossed the US on FSD (Supervised) with no interventions; still a driver-assist system",
+  "src": "https://en.wikipedia.org/wiki/List_of_predictions_for_autonomous_Tesla_vehicles_by_Elon_Musk",
+  "src2": "https://www.notateslaapp.com/news/3862/tesla-highlights-2700-mile-fsd-trip-with-zero-interventions",
+  "late_years": 8.0
+ },
+ {
+  "id": "reddragon",
+  "what": "Red Dragon lands on Mars",
+  "said": "2016-04-27",
+  "due": "2018-12-31",
+  "done": "2017-07-19",
+  "status": "dropped",
+  "outcome": "Cancelled in July 2017 before it flew",
+  "src": "https://www.space.com/37563-spacex-drops-plans-for-powered-dragon-landings.html",
+  "src2": "",
+  "late_years": null
+ },
+ {
+  "id": "semi",
+  "what": "Tesla Semi in production",
+  "said": "2017-11-16",
+  "due": "2019-12-31",
+  "done": "2022-12-01",
+  "status": "late",
+  "outcome": "First trucks delivered to PepsiCo on December 1, 2022",
+  "src": "https://www.freightwaves.com/news/musk-1st-tesla-semi-trucks-going-to-pepsi-in-december",
+  "src2": "",
+  "late_years": 2.9
+ },
+ {
+  "id": "roadster",
+  "what": "New Tesla Roadster on sale",
+  "said": "2017-11-16",
+  "due": "2020-12-31",
+  "done": null,
+  "status": "not_yet",
+  "outcome": "Not on sale; the reveal moved again, to October 15, 2026",
+  "src": "https://electrek.co/2026/04/22/tesla-roadster-unveil-delayed-again-earnings-call/",
+  "src2": "",
+  "late_years": 5.8
+ },
+ {
+  "id": "marscargo",
+  "what": "First Starship cargo flights to Mars",
+  "said": "2017-09-29",
+  "due": "2022-12-31",
+  "done": "2026-02-09",
+  "status": "dropped",
+  "outcome": "Never flew; in February 2026 SpaceX put Mars off by 5 to 7 years to focus on the Moon",
+  "src": "https://engadget.com/2017/09/29/spacex-mars-bfr",
+  "src2": "https://phys.org/news/2026-02-spacex-shifts-focus-mars-moon.html",
+  "late_years": null
+ },
+ {
+  "id": "marscrew",
+  "what": "First crew flies to Mars",
+  "said": "2017-09-29",
+  "due": "2024-12-31",
+  "done": null,
+  "status": "not_yet",
+  "outcome": "Not yet; Mars is now behind the Moon in SpaceX's plans",
+  "src": "https://engadget.com/2017/09/29/spacex-mars-bfr",
+  "src2": "https://phys.org/news/2026-02-spacex-shifts-focus-mars-moon.html",
+  "late_years": 1.8
+ },
+ {
+  "id": "robotaxi",
+  "what": "A million Tesla robotaxis on the road",
+  "said": "2019-04-22",
+  "due": "2020-12-31",
+  "done": null,
+  "status": "not_yet",
+  "outcome": "About 300 run without a safety driver in 2026 (independent tracker)",
+  "src": "https://www.thedrive.com/tech/27605/tesla-network-promises-one-million-robotaxis-on-the-road-by-2020",
+  "src2": "https://eletric-vehicles.com/tesla/tesla-robotaxi-fleet-tops-1000-vehicles-tracking-site-shows/",
+  "late_years": 5.8
+ },
+ {
+  "id": "starship",
+  "what": "Starship reaches orbit",
+  "said": "2022-02-10",
+  "due": "2022-12-31",
+  "done": "2026-09-28",
+  "status": "late",
+  "outcome": "First orbit and first real payload (26 Starlink satellites) on September 28, 2026",
+  "src": "https://www.cbsnews.com/amp/news/elon-musk-spacex-first-orbital-starship-flight/",
+  "src2": "https://www.cnn.com/2026/09/28/science/live-news/spacex-starship-flight-14-launch",
+  "late_years": 3.7
+ },
+ {
+  "id": "payload",
+  "what": "Starship delivers payload to orbit (prospectus)",
+  "said": "2026-05-20",
+  "due": "2026-12-31",
+  "done": "2026-09-28",
+  "status": "on_time",
+  "outcome": "Done on September 28, 2026: on time",
+  "src": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm",
+  "src2": "https://www.cnn.com/2026/09/28/science/live-news/spacex-starship-flight-14-launch",
+  "late_years": 0.0
+ }
+]

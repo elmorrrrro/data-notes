@@ -1,0 +1,93 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="promise-timeline"
+  title="Musk's deadlines vs what happened"
+  subtitle="Each row: the day he promised it (hollow dot), the deadline (pink) and the day it came true (blue). Dashed: still waiting. ✕: dropped. Shaded: data centers on his usual slip."
+  source="Sources: see the table and Methodology below; dates are the end of the promised year unless he named a month."
+  legendItems={[
+    { label: 'Deadline', color: 'var(--sx-promise)' },
+    { label: 'Came true', color: 'var(--sx-real)' },
+  ]}
+  height={500}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import promises from '../../data/spacex-orbital-data-centers-2026-10/promises.json';
+  import s from '../../data/spacex-orbital-data-centers-2026-10/summary.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const d = (x: string) => new Date(`${x}T12:00:00Z`);
+  const today = d('2026-10-11');
+  const start = d('2016-01-01');
+  const day = (x: Date) => x.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+  const [from, to] = s.musk_clock_first_deploy;
+
+  const rows = promises.map((p) => ({ ...p, saidD: d(p.said), dueD: d(p.due), doneD: p.done ? d(p.done) : null }));
+  // The study's subject goes last: promised for 2028, projected with the Semi/Starship slip.
+  const odc = { what: 'Orbital data centers (prospectus)', saidD: d(s.s1_filed), dueD: d('2028-12-31'), from: d(`${from}-01-01`), to: d(`${to}-12-31`) };
+  const order = [...rows.map((r) => r.what), odc.what];
+  // Phone width: shorter labels so they clear the ✕ and the "Today" rule.
+  const short: Record<string, string> = {
+    'A Tesla drives itself from Los Angeles to New York': 'A Tesla drives itself coast to coast',
+    'First Starship cargo flights to Mars': 'Cargo flights to Mars',
+    'Starship delivers payload to orbit (prospectus)': 'Starship payload to orbit (prospectus)',
+  };
+  const status: Record<string, string> ={ on_time: 'On time', late: 'Late', not_yet: 'Not yet', dropped: 'Dropped' };
+
+  mount(document.querySelector<HTMLElement>('#promise-timeline .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const promise = css.getPropertyValue('--sx-promise').trim();
+    const real = css.getPropertyValue('--sx-real').trim();
+    const narrow = width < 520;
+    const late = rows.filter((r) => r.status === 'late' || r.status === 'on_time');
+    const waiting = rows.filter((r) => r.status === 'not_yet');
+    const dropped = rows.filter((r) => r.status === 'dropped');
+    return Plot.plot({
+      ...base(t, width),
+      height: 500,
+      marginLeft: 6,
+      marginRight: 14,
+      marginTop: 22,
+      marginBottom: 28,
+      x: { type: 'utc', domain: [start, d('2033-06-30')], label: null, ticks: narrow ? 5 : 9 },
+      y: { domain: order, axis: null, padding: 0 },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1, ticks: narrow ? 5 : 9 }),
+        Plot.ruleX([today], { stroke: t.axis, strokeDasharray: '3,3' }),
+        Plot.text(['Today'], { x: () => today, frameAnchor: 'top', dy: -12, textAnchor: 'middle', fill: t.muted, fontSize: 11 }),
+        // Row labels sit above each line, from the left edge, so they work at phone width.
+        Plot.text(order, { x: () => start, y: (w) => w, dy: -11, textAnchor: 'start', fill: t.ink2, fontWeight: 600, fontSize: narrow ? 11 : 12, text: (w) => (narrow && short[w]) || w }),
+        // Promise window: from the day he said it to the deadline.
+        Plot.link(rows, { x1: 'saidD', x2: 'dueD', y1: 'what', y2: 'what', stroke: t.axis, strokeWidth: 2 }),
+        Plot.link([odc], { x1: 'saidD', x2: 'dueD', y1: 'what', y2: 'what', stroke: t.axis, strokeWidth: 2 }),
+        // Lateness: from the deadline to the day it happened, or to today if it hasn't.
+        Plot.link(late, { x1: 'dueD', x2: 'doneD', y1: 'what', y2: 'what', stroke: real, strokeWidth: 2 }),
+        Plot.link(waiting, { x1: 'dueD', x2: () => today, y1: 'what', y2: 'what', stroke: promise, strokeWidth: 2, strokeDasharray: '4,3', markerEnd: 'arrow' }),
+        // Projected first launch of orbital data centers on Musk's usual slip.
+        Plot.rectX([odc], { x1: 'from', x2: 'to', y: 'what', fill: real, fillOpacity: 0.22, insetTop: 9, insetBottom: 9, rx: 4 }),
+        Plot.text([odc], { x: 'to', y: 'what', dx: 6, textAnchor: 'start', fill: t.ink2, fontWeight: 650, fontSize: 11, text: () => '?' }),
+        Plot.dot([...rows, odc], { x: 'saidD', y: 'what', r: 4.5, stroke: t.muted, fill: t.surface, strokeWidth: 1.5 }),
+        Plot.dot([...rows.filter((r) => r.status !== 'dropped'), odc], { x: 'dueD', y: 'what', r: 5.5, fill: promise, stroke: t.surface, strokeWidth: 2 }),
+        Plot.dot(late, { x: 'doneD', y: 'what', r: 5.5, fill: real, stroke: t.surface, strokeWidth: 2 }),
+        Plot.dot(dropped, { x: 'dueD', y: 'what', r: 5.5, fill: promise, fillOpacity: 0.35, stroke: t.surface, strokeWidth: 2 }),
+        Plot.text(dropped, { x: 'doneD', y: 'what', text: () => '✕', fill: t.ink2, fontSize: 14, fontWeight: 700 }),
+        Plot.tip(
+          [...rows, odc],
+          Plot.pointerY({
+            x: 'dueD', y: 'what', ...tipStyle(t),
+            title: (r: any) =>
+              r.status
+                ? `${r.what}\nPromised: ${day(r.saidD)}, for ${day(r.dueD)}\n${status[r.status]}` +
+                  (r.late_years ? `: ${r.late_years} years past the deadline${r.status === 'not_yet' ? ' so far' : ''}` : '') +
+                  `\n${r.outcome}`
+                : `${r.what}\nFirst satellites "as early as 2028"\nWith the Semi's and Starship's slip (${s.hardware_slip_years.join(' and ')} years): ${from}–${to}`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

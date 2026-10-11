@@ -1,0 +1,89 @@
+---
+// Promise table for the SpaceX orbital-data-centers study: each dated Musk promise, its deadline and what happened.
+import promises from '../data/spacex-orbital-data-centers-2026-10/promises.json';
+
+const month = (x: string) =>
+  new Date(`${x}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+const label: Record<string, string> = { on_time: 'On time', late: 'Late', not_yet: 'Not yet', dropped: 'Dropped' };
+const host = (u: string) => new URL(u).hostname.replace(/^www\./, '');
+---
+
+<div class="table-wrap card">
+  <table>
+    <thead>
+      <tr>
+        <th>Promise</th>
+        <th>Said</th>
+        <th>Deadline</th>
+        <th>Status</th>
+        <th class="r">Years late</th>
+        <th>What happened</th>
+        <th>Sources</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        promises.map((p) => (
+          <tr class={p.status}>
+            <td class="wrap">
+              <strong>{p.what}</strong>
+            </td>
+            <td>{month(p.said)}</td>
+            <td>{month(p.due)}</td>
+            <td>{label[p.status]}</td>
+            <td class="r num">{p.late_years === null ? '–' : p.status === 'not_yet' ? `${p.late_years}+` : p.late_years}</td>
+            <td class="wrap">{p.outcome}</td>
+            <td class="wrap">
+              <a href={p.src}>{host(p.src)}</a>
+              {p.src2 && (
+                <>
+                  , <a href={p.src2}>{host(p.src2)}</a>
+                </>
+              )}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .table-wrap {
+    margin: 1.5em 0 0.6em;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+  th,
+  td {
+    padding: 9px 12px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--grid);
+  }
+  th {
+    font-weight: 600;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+  .r {
+    text-align: right;
+  }
+  .wrap {
+    white-space: normal;
+    min-width: 170px;
+  }
+  tr.late td:first-child,
+  tr.on_time td:first-child {
+    box-shadow: inset 3px 0 0 var(--sx-real);
+  }
+  tr.not_yet td:first-child,
+  tr.dropped td:first-child {
+    box-shadow: inset 3px 0 0 var(--sx-promise);
+  }
+</style>

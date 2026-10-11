@@ -1,0 +1,63 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="orbit-lift"
+  title="Mass the plan needs to launch every year, vs the whole world's launches"
+  subtitle="Metric tons of payload sent to orbit. The plan: 100 GW of computing a year at about 100 kW per ton."
+  source="Source: SpaceX Form S-1, May 20, 2026 (world totals and the plan's yearly mass are the prospectus's own figures)."
+  legendItems={[
+    { label: 'Actually launched, all countries', color: 'var(--sx-real)' },
+    { label: 'SpaceX plan, per year', color: 'var(--sx-promise)' },
+  ]}
+  height={230}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import lift from '../../data/spacex-orbital-data-centers-2026-10/lift.json';
+  import s from '../../data/spacex-orbital-data-centers-2026-10/summary.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const tons = (n: number) => `${n.toLocaleString('en-US')} t`;
+
+  mount(document.querySelector<HTMLElement>('#orbit-lift .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const promise = css.getPropertyValue('--sx-promise').trim();
+    const real = css.getPropertyValue('--sx-real').trim();
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 230,
+      marginLeft: narrow ? 128 : 150,
+      marginRight: 20,
+      marginBottom: 30,
+      x: { domain: [0, s.tonnes_per_year], label: null, ticks: narrow ? 3 : 5, tickFormat: (x: number) => (x === 0 ? '0' : `${x / 1000}k t`) },
+      y: { label: null, domain: lift.map((r) => r.label), padding: 0.38, tickSize: 0 },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1, ticks: narrow ? 3 : 5 }),
+        Plot.barX(lift, { x: 'tonnes', y: 'label', fill: (r) => (r.kind === 'plan' ? promise : real), rx: 4 }),
+        // The world's bars are slivers: label them outside, the plan inside.
+        Plot.text(lift.filter((r) => r.kind === 'past'), {
+          x: 'tonnes', y: 'label', textAnchor: 'start', dx: 8, fill: t.ink2, fontWeight: 650, fontSize: 12, text: (r) => tons(r.tonnes),
+        }),
+        Plot.text(lift.filter((r) => r.kind === 'plan'), {
+          x: 'tonnes', y: 'label', textAnchor: 'end', dx: -10, fill: t.surface, fontWeight: 700, fontSize: 12,
+          text: () => `${s.times_2025_world}× the world's 2025`,
+        }),
+        Plot.tip(
+          lift,
+          Plot.pointerY({
+            x: 'tonnes', y: 'label', ...tipStyle(t),
+            title: (r) =>
+              r.kind === 'plan'
+                ? `${tons(r.tonnes)} a year, every year\n= ${s.starship_flights_per_year.toLocaleString('en-US')} Starship flights at ${s.starship_tonnes} t each\n= one launch every ${s.minutes_between_launches} minutes`
+                : `${r.label}: ${tons(r.tonnes)}` +
+                  (r.label.includes('2025') ? `\nOver ${Math.round(s.spacex_share_2025 * 100)}% of it on SpaceX rockets` : ''),
+          }),
+        ),
+      ],
+    });
+  });
+</script>

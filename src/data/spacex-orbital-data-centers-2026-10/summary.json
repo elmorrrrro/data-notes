@@ -1,0 +1,41 @@
+{
+ "s1_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm",
+ "s1_filed": "2026-05-20",
+ "first_deploy": "as early as 2028",
+ "goal_gw_per_year": 100,
+ "tonnes_per_year": 1000000,
+ "world_tonnes_2012": 220,
+ "world_tonnes_2025": 2600,
+ "spacex_share_2025": 0.8,
+ "starship_tonnes": 100,
+ "falcon9_launches_2025": 165,
+ "ai_revenue_2025_musd": 3201,
+ "ai_op_loss_2025_musd": 6355,
+ "ai_capex_2025_musd": 12727,
+ "earth_compute_gw_q1_2026": 1,
+ "times_2025_world": 385,
+ "starship_flights_per_year": 10000,
+ "starship_flights_per_day": 27,
+ "minutes_between_launches": 53,
+ "promises": 9,
+ "delivered": 4,
+ "on_time": 1,
+ "late_min_years": 2.9,
+ "late_max_years": 8.0,
+ "hardware_slip_years": [
+  2.9,
+  3.7
+ ],
+ "spcx": {
+  "ipo_price": 135.0,
+  "first_close": 160.95,
+  "high_close": 211.39,
+  "low_close": 108.27,
+  "last_close": 162.57,
+  "last_date": "2026-10-09"
+ },
+ "musk_clock_first_deploy": [
+  2031,
+  2032
+ ]
+}

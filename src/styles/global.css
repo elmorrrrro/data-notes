@@ -40,6 +40,8 @@
   --rd-diesel: #b45309;
   --rd-vote: #4338ca;
   --rd-cyan: #0891b2;
+  --sx-promise: #db2777;
+  --sx-real: #0284c7;
   --accent-1: #6d4aff;
   --accent-2: #0ea5c6;
   --radius: 20px;
@@ -85,6 +87,8 @@
     --rd-diesel: #c97a22;
     --rd-vote: #7c7ef5;
     --rd-cyan: #1a9fb6;
+    --sx-promise: #ec4899;
+    --sx-real: #2f9ad6;
   }
 }
 
@@ -124,6 +128,8 @@
   --rd-diesel: #c97a22;
   --rd-vote: #7c7ef5;
   --rd-cyan: #1a9fb6;
+  --sx-promise: #ec4899;
+  --sx-real: #2f9ad6;
 }
 
 *,
