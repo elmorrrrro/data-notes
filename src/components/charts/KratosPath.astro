@@ -1,0 +1,67 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="kratos-path"
+  title="Kratos: the price fell first, the targets followed"
+  subtitle="Daily close over the past year. Arrows: the four target cuts from Oct 30 to Nov 6, 2026, old target to new; every firm kept its buy rating."
+  source="Sources: daily closes from Yahoo Finance (unadjusted); target cuts from stockanalysis.com and MarketBeat."
+  legendItems={[
+    { label: 'Kratos share price', color: 'var(--df-drone)' },
+    { label: 'Analyst target cut', color: 'var(--ink-2)' },
+  ]}
+  height={420}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import kratos from '../../data/defense-analysts-2026-11/kratos.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const day = (d: string) => new Date(`${d}T12:00:00Z`);
+  const prices = kratos.prices.map((p) => ({ date: day(p.date), close: p.close }));
+  // Two cuts share Nov 6: spread the arrows a few days apart so both stay visible.
+  const SPREAD: Record<string, number> = { 'B. Riley': -8, KeyBanc: -3, Baird: 2, BTIG: 7 };
+  const cuts = kratos.cuts.map((c) => ({ ...c, x: new Date(day(c.date).getTime() + SPREAD[c.firm] * 86_400_000) }));
+  const events = kratos.events.map((e) => ({ ...e, x: day(e.date) }));
+  const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+  const fmt = (d: string) => new Date(`${d}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+  mount(document.querySelector<HTMLElement>('#kratos-path .plot')!, (width, t) => {
+    const drone = getComputedStyle(document.documentElement).getPropertyValue('--df-drone').trim();
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 420,
+      marginLeft: 44,
+      marginRight: 16,
+      x: { label: null, ticks: narrow ? 4 : 8 },
+      y: { label: null, domain: [0, 140], tickFormat: (y: number) => `$${y}`, grid: true },
+      marks: [
+        Plot.ruleY([0], { stroke: t.axis }),
+        Plot.lineY(prices, { x: 'date', y: 'close', stroke: drone, strokeWidth: 2 }),
+        Plot.arrow(cuts, { x: 'x', y1: 'from', y2: 'to', stroke: t.ink2, strokeWidth: 1.5, headLength: 7 }),
+        Plot.text([cuts[0]], {
+          x: 'x', y: 'from', text: () => 'Target cuts', textAnchor: 'end', dx: -8, stroke: t.surface, strokeWidth: 4, fill: t.ink2, fontSize: 11.5, fontWeight: 600,
+        }),
+        Plot.dot(events, { x: 'x', y: 'close', r: 5, fill: t.surface, stroke: t.ink, strokeWidth: 1.5 }),
+        Plot.link([events[0]], { x1: 'x', x2: 'x', y1: (e) => e.close - 6, y2: 46, stroke: t.ink2, strokeWidth: 1 }),
+        Plot.text([events[0]], {
+          x: 'x', y: () => 46, text: () => (narrow ? 'Share sale' : 'Sells ~$1B of new shares'), dy: 10, stroke: t.surface, strokeWidth: 4, textAnchor: 'middle', fill: t.ink2, fontSize: 11.5, fontWeight: 600,
+        }),
+        Plot.text([events[1]], {
+          x: 'x', y: 'close', text: () => (narrow ? 'Midterms, Q3' : 'Midterms, then Q3 report'), dy: 22, stroke: t.surface, strokeWidth: 4, textAnchor: 'end', fill: t.ink2, fontSize: 11.5, fontWeight: 600,
+        }),
+        Plot.tip(
+          prices,
+          Plot.pointerX({ x: 'date', y: 'close', ...tipStyle(t), title: (p) => `${p.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}\nClose $${p.close.toFixed(2)}` }),
+        ),
+        Plot.tip(
+          cuts,
+          Plot.pointer({ x: 'x', y: 'to', ...tipStyle(t), maxRadius: 18, title: (c) => `${c.firm}, ${fmt(c.date)}\nTarget $${c.from} → $${c.to} (${pct(c.cut_pct)})\nRating kept: ${c.rating}\nClose that day $${c.close}` }),
+        ),
+      ],
+    });
+  });
+</script>

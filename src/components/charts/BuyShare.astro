@@ -1,0 +1,60 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="buy-share"
+  title="Who analysts like: the share saying buy"
+  subtitle="Buy and Strong Buy as a share of all ratings on each stock. Hover for hold, sell and the average target."
+  source="Source: stockanalysis.com analyst forecast pages, read November 7, 2026."
+  legendItems={[
+    { label: 'Drone makers', color: 'var(--df-drone)' },
+    { label: 'Old prime contractors', color: 'var(--df-prime)' },
+    { label: 'Software (Palantir)', color: 'var(--muted)' },
+  ]}
+  height={380}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import stocks from '../../data/defense-analysts-2026-11/stocks.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const GROUPS: Record<string, string> = { drones: 'Drone maker', prime: 'Old prime contractor', software: 'Software' };
+  const rows = stocks
+    .map((s) => ({ ...s, share: (s.buy / s.total) * 100, label: `${s.name} (${s.ticker})` }))
+    .sort((a, b) => b.share - a.share);
+
+  mount(document.querySelector<HTMLElement>('#buy-share .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const color = (g: string) => css.getPropertyValue(g === 'drones' ? '--df-drone' : g === 'prime' ? '--df-prime' : '--muted').trim();
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 380,
+      marginLeft: narrow ? 120 : 170,
+      marginRight: 70,
+      x: { label: null, domain: [0, 100], tickFormat: (x: number) => `${x}%`, grid: false, axis: narrow ? null : 'bottom' },
+      y: { label: null, domain: rows.map((r) => r.label), padding: 0.3, tickSize: 0, tickFormat: (l: string) => (narrow ? l.replace(/ \(.*\)/, '') : l) },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.ruleX([50], { stroke: t.axis, strokeDasharray: '3,3' }),
+        Plot.barX(rows, { x: 'share', y: 'label', fill: (r) => color(r.group), rx: 4 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        Plot.text(rows, {
+          x: 'share', y: 'label', text: (r) => `${r.buy} of ${r.total}`, fill: t.ink2, fontSize: 11.5, fontWeight: 600, textAnchor: 'start', dx: 6,
+        }),
+        Plot.tip(
+          rows,
+          Plot.pointerY({
+            x: 'share', y: 'label', ...tipStyle(t),
+            title: (r) =>
+              `${r.name} (${r.ticker}), ${GROUPS[r.group].toLowerCase()}\n` +
+              `Buy ${r.buy} · Hold ${r.hold} · Sell ${r.sell}\n` +
+              `Average target $${r.target_avg} vs price $${r.price}`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

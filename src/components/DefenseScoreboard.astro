@@ -1,0 +1,113 @@
+---
+// Scoreboard for the defense analysts study: what the consensus says, then three numbers on why it looks that way.
+import stats from '../data/defense-analysts-2026-11/stats.json';
+
+const cards = [
+  { value: `${Math.round(stats.ktos_from_high_pct)}%`, label: `Kratos from its January high of $${stats.ktos_high.toFixed(0)} to $${stats.ktos_price.toFixed(2)} on November 6` },
+  { value: `${stats.cuts} of ${stats.cuts}`, label: 'Firms that cut their Kratos target in eight days and still said buy' },
+  { value: `${stats.corr_upside_vs_drop.toFixed(2)}`, label: 'Correlation across the nine stocks: the further a stock fell, the bigger its “upside”' },
+];
+---
+
+<section class="board" aria-label="Key numbers">
+  <div class="verdict">
+    <span class="eyebrow">{stats.total} analyst ratings, nine US defense stocks</span>
+    <p class="headline">
+      <span class="big">{stats.buy}</span> say buy, {stats.hold} hold, {stats.sell} sell. The biggest “upside”,{' '}
+      <span class="big">+{Math.round(stats.ktos_upside_pct)}%</span>, belongs to the stock that fell the most.
+    </p>
+    <p class="sub">Ratings and average 12-month targets from stockanalysis.com; prices at the close of Friday, November 6, 2026.</p>
+  </div>
+  <div class="cards">
+    {
+      cards.map((c) => (
+        <div class="card-k">
+          <p class="value">{c.value}</p>
+          <p class="label">{c.label}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .board {
+    display: grid;
+    gap: 14px;
+    margin: 2.2em 0;
+  }
+  .verdict {
+    padding: 26px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(110deg, var(--accent-1), var(--accent-2)) border-box;
+    box-shadow: var(--shadow);
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .headline {
+    margin: 6px 0 8px;
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .big {
+    font-weight: 700;
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .cards {
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 620px) {
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .card-k {
+    position: relative;
+    padding: 20px 20px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .card-k::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--accent-1);
+  }
+  .value {
+    margin: 4px 0 6px;
+    font-family: var(--display);
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .label {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+</style>

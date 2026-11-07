@@ -1,0 +1,95 @@
+---
+// The nine defense stocks: analyst ratings, targets, upside and how far each price is from its 52-week high.
+import stocks from '../data/defense-analysts-2026-11/stocks.json';
+
+const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(Math.round(n))}%`;
+const usd = (n: number) => `$${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+const whole = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
+const color = (g: string) => (g === 'drones' ? 'var(--df-drone)' : g === 'prime' ? 'var(--df-prime)' : 'var(--muted)');
+---
+
+<div class="table-wrap card">
+  <table>
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th class="r">Buy / Hold / Sell</th>
+        <th class="r">Price</th>
+        <th class="r">Targets: low – avg – high</th>
+        <th class="r">Upside</th>
+        <th class="r">From 52-wk high</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        stocks.map((s) => (
+          <tr>
+            <td>
+              <span class="swatch" style={`background: ${color(s.group)}`} />
+              <strong>{s.name}</strong> <span class="muted">{s.ticker}</span>
+            </td>
+            <td class="r num">{s.buy} / {s.hold} / {s.sell}</td>
+            <td class="r num">{usd(s.price)}</td>
+            <td class="r num">
+              {whole(s.target_low)} – <strong>{whole(s.target_avg)}</strong> – {whole(s.target_high)}
+            </td>
+            <td class="r num strong">{pct(s.upside_pct)}</td>
+            <td class="r num">{pct(s.from_high_pct)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+<p class="muted note">
+  Ratings and 12-month targets: stockanalysis.com, read November 7, 2026. Prices: close on November 6, 2026; 52-week high is the highest
+  daily high since November 7, 2025 (Yahoo Finance). Upside = average target ÷ price − 1.
+</p>
+
+<style>
+  .table-wrap {
+    margin: 1.5em 0 0.6em;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+  th,
+  td {
+    padding: 9px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--grid);
+  }
+  th {
+    font-weight: 600;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+  .wrap {
+    white-space: normal;
+    min-width: 200px;
+  }
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .r {
+    text-align: right;
+  }
+  .swatch {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin-right: 7px;
+  }
+  .strong {
+    font-weight: 650;
+  }
+  .note {
+    font-size: 0.8rem;
+    margin: 0 4px 1.5em;
+  }
+</style>

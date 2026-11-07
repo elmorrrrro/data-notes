@@ -42,6 +42,11 @@
   --rd-cyan: #0891b2;
   --sx-promise: #db2777;
   --sx-real: #0284c7;
+  /* Defense analysts study: drone makers (orange) vs old prime contractors (blue); validated light + dark, incl. CVD sims. */
+  --df-drone: #c2410c;
+  --df-prime: #1f4fbf;
+  --df-avav: #1baf7a;
+  --df-rtx: #eda100;
   --accent-1: #6d4aff;
   --accent-2: #0ea5c6;
   --radius: 20px;
@@ -89,6 +94,10 @@
     --rd-cyan: #1a9fb6;
     --sx-promise: #ec4899;
     --sx-real: #2f9ad6;
+    --df-drone: #e8651a;
+    --df-prime: #5b8cff;
+    --df-avav: #199e70;
+    --df-rtx: #c98500;
   }
 }
 
@@ -130,6 +139,10 @@
   --rd-cyan: #1a9fb6;
   --sx-promise: #ec4899;
   --sx-real: #2f9ad6;
+  --df-drone: #e8651a;
+  --df-prime: #5b8cff;
+  --df-avav: #199e70;
+  --df-rtx: #c98500;
 }
 
 *,

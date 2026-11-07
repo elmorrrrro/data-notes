@@ -1,0 +1,61 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="upside-vs-drop"
+  title="The bigger the fall, the bigger the “upside”"
+  subtitle="Each dot is a stock. Across: how far the price is below its 52-week high. Up: how far the average analyst target is above the price."
+  source="Sources: average targets from stockanalysis.com (read Nov 7, 2026); prices and 52-week highs (daily highs, Nov 7, 2025 – Nov 6, 2026) from Yahoo Finance."
+  legendItems={[
+    { label: 'Drone makers', color: 'var(--df-drone)' },
+    { label: 'Old prime contractors', color: 'var(--df-prime)' },
+    { label: 'Software (Palantir)', color: 'var(--muted)' },
+  ]}
+  height={420}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import stocks from '../../data/defense-analysts-2026-11/stocks.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(0)}%`;
+  // Hand-placed label offsets so the crowded primes don't overlap: [dx, dy, anchor].
+  const OFFSET: Record<string, [number, number, 'start' | 'end' | 'middle']> = {
+    KTOS: [-10, 0, 'end'], AVAV: [10, 0, 'start'], PLTR: [0, -14, 'middle'], LHX: [0, -14, 'middle'], HII: [10, 0, 'start'],
+    NOC: [0, 16, 'middle'], RTX: [0, -14, 'middle'], GD: [-10, 0, 'end'], LMT: [0, 16, 'middle'],
+  };
+
+  mount(document.querySelector<HTMLElement>('#upside-vs-drop .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const color = (g: string) => css.getPropertyValue(g === 'drones' ? '--df-drone' : g === 'prime' ? '--df-prime' : '--muted').trim();
+    return Plot.plot({
+      ...base(t, width),
+      height: 420,
+      marginLeft: 48,
+      marginRight: 20,
+      marginBottom: 40,
+      x: { label: 'Below the 52-week high →', labelAnchor: 'left', domain: [-80, 0], reverse: true, tickFormat: (x: number) => `${x}%`, ticks: width < 520 ? 4 : 8 },
+      y: { label: '↑ Upside to the average target', domain: [0, 170], tickFormat: (y: number) => `+${y}%`, grid: true },
+      marks: [
+        Plot.ruleY([0], { stroke: t.axis }),
+        Plot.dot(stocks, { x: 'from_high_pct', y: 'upside_pct', r: 7, fill: (s) => color(s.group), stroke: t.surface, strokeWidth: 2 }),
+        ...Object.entries(OFFSET).map(([tk, [dx, dy, anchor]]) =>
+          Plot.text(stocks.filter((s) => s.ticker === tk), {
+            x: 'from_high_pct', y: 'upside_pct', text: 'ticker', dx, dy, textAnchor: anchor, fill: t.ink2, fontSize: 11.5, fontWeight: 600,
+          }),
+        ),
+        Plot.tip(
+          stocks,
+          Plot.pointer({
+            x: 'from_high_pct', y: 'upside_pct', ...tipStyle(t),
+            title: (s) =>
+              `${s.name} (${s.ticker})\nPrice $${s.price}, 52-week high $${s.high_52w} (${pct(s.from_high_pct)})\n` +
+              `Average target $${s.target_avg} (${pct(s.upside_pct)})\nSince the start of 2026: ${pct(s.ytd_pct)}`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>

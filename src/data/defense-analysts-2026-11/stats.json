@@ -1,0 +1,21 @@
+{
+ "asof": "2026-11-06",
+ "buy": 141,
+ "hold": 68,
+ "sell": 5,
+ "total": 214,
+ "ktos_high": 134.0,
+ "ktos_high_date": "2026-01-20",
+ "ktos_price": 35.1,
+ "ktos_from_high_pct": -73.8,
+ "ktos_ytd_pct": -53.8,
+ "ktos_upside_pct": 155.2,
+ "cuts": 4,
+ "lmt_election_pct": -6.9,
+ "spy_election_pct": 1.7,
+ "rtx_low_upside_pct": 5.5,
+ "primes_kept_low_above_price": [
+  "RTX"
+ ],
+ "corr_upside_vs_drop": -0.89
+}

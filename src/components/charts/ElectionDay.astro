@@ -1,0 +1,65 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="election-day"
+  title="The day after the midterms"
+  subtitle="Change from the close on Tuesday, Nov 3, to the close on Wednesday, Nov 4, 2026, when Democrats had won both houses of Congress."
+  source="Source: daily closes from Yahoo Finance (unadjusted). S&P 500 = SPY, US aerospace & defense = ITA, both ETFs."
+  legendItems={[
+    { label: 'Drone makers', color: 'var(--df-drone)' },
+    { label: 'Old prime contractors', color: 'var(--df-prime)' },
+    { label: 'Software and the market', color: 'var(--muted)' },
+  ]}
+  height={440}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import stocks from '../../data/defense-analysts-2026-11/stocks.json';
+  import market from '../../data/defense-analysts-2026-11/market.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  const rows = [
+    ...stocks.map((s) => ({ name: s.name, ticker: s.ticker, group: s.group, day: s.election_pct, ytd: s.ytd_pct })),
+    ...market.map((m) => ({ name: m.ticker === 'SPY' ? 'S&P 500' : 'Aerospace & defense ETF', ticker: m.ticker, group: 'market', day: m.election_pct, ytd: m.ytd_pct })),
+  ].sort((a, b) => a.day - b.day);
+  const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+
+  mount(document.querySelector<HTMLElement>('#election-day .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const color = (g: string) => css.getPropertyValue(g === 'drones' ? '--df-drone' : g === 'prime' ? '--df-prime' : '--muted').trim();
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 440,
+      marginLeft: narrow ? 150 : 175,
+      marginRight: 40,
+      x: { label: null, domain: [-15, 3], nice: false, tickFormat: (x: number) => `${x}%`, grid: false, axis: narrow ? null : 'bottom' },
+      y: { label: null, domain: rows.map((r) => r.name), padding: 0.3, tickSize: 0 },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1 }),
+        Plot.barX(rows, { x: 'day', y: 'name', fill: (r) => color(r.group), rx: 4 }),
+        Plot.ruleX([0], { stroke: t.axis }),
+        // Falls: label left of the bar end, except long ones on a phone, which go inside the bar.
+        Plot.text(rows.filter((r) => r.day < 0 && !(narrow && r.day < -6)), {
+          x: 'day', y: 'name', text: (r) => pct(r.day), fill: t.ink2, fontSize: 11.5, fontWeight: 600, textAnchor: 'end', dx: -6,
+        }),
+        Plot.text(rows.filter((r) => narrow && r.day < -6), {
+          x: 'day', y: 'name', text: (r) => pct(r.day), fill: t.surface, fontSize: 11.5, fontWeight: 700, textAnchor: 'start', dx: 6,
+        }),
+        Plot.text(rows.filter((r) => r.day >= 0), {
+          x: 'day', y: 'name', text: (r) => pct(r.day), fill: t.ink2, fontSize: 11.5, fontWeight: 600, textAnchor: 'start', dx: 6,
+        }),
+        Plot.tip(
+          rows,
+          Plot.pointerY({
+            x: 'day', y: 'name', ...tipStyle(t),
+            title: (r) => `${r.name} (${r.ticker})\nNov 4: ${pct(r.day)}\nSince the start of 2026: ${pct(r.ytd)}`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>
