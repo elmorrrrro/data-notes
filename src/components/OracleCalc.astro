@@ -1,0 +1,235 @@
+---
+// Interactive check: pick fiscal 2029 revenue, cash share and building spend, see whose number comes true.
+import s from '../data/oracle-30b-bet-2026-11/summary.json';
+import history from '../data/oracle-30b-bet-2026-11/history.json';
+
+const rev = Math.round(s.rev29);
+const share = Math.round(s.fy26.cash_share * 1000) / 10;
+const capex = s.fy27.capex_mid;
+const fy24 = history.find((h) => h.fy === 2024)!;
+---
+
+<figure class="calc card" id="oracle-calc" data-target={s.target} data-consensus={s.consensus}>
+  <figcaption>
+    <h3>Run the math yourself: Oracle's free cash flow in fiscal 2029</h3>
+    <p class="subtitle">Start values: revenue on Oracle's path to $225B, last year's cash share, and this year's building plan.</p>
+  </figcaption>
+
+  <div class="sliders">
+    <label>
+      <span class="k">Revenue</span>
+      <input type="range" name="rev" min="100" max="225" step="1" value={rev} aria-describedby="rev-out" />
+      <output id="rev-out">${rev}B</output>
+      <span class="hint">Oracle's path: about ${rev}B. Fiscal 2026: ${s.fy26.revenue}B.</span>
+    </label>
+    <label>
+      <span class="k">Cash share of revenue</span>
+      <input type="range" name="share" min="25" max="60" step="0.5" value={share} aria-describedby="share-out" />
+      <output id="share-out">{share}%</output>
+      <span class="hint">Fiscal 2023–2025: about {Math.round(s.cases[0].cash_share * 100)}%. Fiscal 2026: {share}% (with prepayments).</span>
+    </label>
+    <label>
+      <span class="k">Spent on building</span>
+      <input type="range" name="capex" min="10" max="100" step="0.5" value={capex} aria-describedby="capex-out" />
+      <output id="capex-out">${capex}B</output>
+      <span class="hint">Plan for this year: ${s.fy27.capex_lo}–{s.fy27.capex_hi}B. Fiscal 2024: ${fy24.capex}B.</span>
+    </label>
+  </div>
+
+  <div class="result" aria-live="polite">
+    <p class="fcf"><span class="label">Free cash flow</span> <strong class="value"></strong></p>
+    <div class="track" aria-hidden="true">
+      <div class="bar"></div>
+      <span class="mark m-cons"><span>$6B</span></span>
+      <span class="mark m-target"><span>$30B</span></span>
+      <span class="zero"></span>
+    </div>
+    <p class="verdict"></p>
+    <p class="need"></p>
+  </div>
+</figure>
+
+<script>
+  const root = document.getElementById('oracle-calc')!;
+  const target = Number(root.dataset.target);
+  const cons = Number(root.dataset.consensus);
+  const input = (n: string) => root.querySelector<HTMLInputElement>(`input[name="${n}"]`)!;
+  const [rev, share, capex] = ['rev', 'share', 'capex'].map(input);
+  const MIN = -60;
+  const MAX = 60;
+  const pos = (v: number) => `${((Math.max(MIN, Math.min(MAX, v)) - MIN) / (MAX - MIN)) * 100}%`;
+  const money = (v: number) => `${v < 0 ? '−' : ''}$${Math.abs(v).toFixed(1)}B`;
+
+  root.querySelector<HTMLElement>('.m-cons')!.style.left = pos(cons);
+  root.querySelector<HTMLElement>('.m-target')!.style.left = pos(target);
+  root.querySelector<HTMLElement>('.zero')!.style.left = pos(0);
+
+  function update() {
+    const r = Number(rev.value);
+    const sh = Number(share.value) / 100;
+    const c = Number(capex.value);
+    const ocf = r * sh;
+    const fcf = ocf - c;
+    root.querySelector('#rev-out')!.textContent = `$${r}B`;
+    root.querySelector('#share-out')!.textContent = `${share.value}%`;
+    root.querySelector('#capex-out')!.textContent = `$${c}B`;
+    root.querySelector('.value')!.textContent = money(fcf);
+    const side = fcf >= target ? 'stocks' : fcf <= cons ? 'bonds' : 'middle';
+    root.dataset.side = side;
+    const bar = root.querySelector<HTMLElement>('.bar')!;
+    const a = pos(Math.min(0, fcf));
+    const b = pos(Math.max(0, fcf));
+    bar.style.left = a;
+    bar.style.width = `calc(${b} - ${a})`;
+    root.querySelector('.verdict')!.textContent =
+      side === 'stocks'
+        ? "Oracle's number comes true: the stock market was right."
+        : side === 'bonds'
+          ? fcf < 0
+            ? 'Oracle is still burning cash: the bond market was right.'
+            : "The analysts' number or worse: the bond market was right."
+          : 'In between: better than analysts expected, short of Oracle’s target.';
+    root.querySelector('.need')!.textContent =
+      `With ${money(ocf)} of cash from the business, Oracle can spend at most ${money(ocf - target)} on building and still make $30B.`;
+  }
+  [rev, share, capex].forEach((el) => el.addEventListener('input', update));
+  update();
+</script>
+
+<style>
+  .calc {
+    margin: 2em 0;
+    padding: 22px 24px 18px;
+  }
+  @media (max-width: 560px) {
+    .calc {
+      padding: 18px 14px 14px;
+    }
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+  .subtitle {
+    margin: 0.2em 0 0;
+    color: var(--ink-2);
+    font-size: 0.92rem;
+  }
+  .sliders {
+    display: grid;
+    gap: 16px;
+    margin-top: 18px;
+  }
+  label {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+    align-items: center;
+  }
+  .k {
+    grid-column: 1 / -1;
+    font-weight: 650;
+    font-size: 0.92rem;
+  }
+  input[type='range'] {
+    width: 100%;
+    accent-color: var(--ink-2);
+  }
+  output {
+    min-width: 4.5em;
+    text-align: right;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .hint {
+    grid-column: 1 / -1;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .result {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .fcf {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .fcf .label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .value {
+    font-family: var(--display);
+    font-size: 2.4rem;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  [data-side='stocks'] .value {
+    color: var(--or-stocks);
+  }
+  [data-side='bonds'] .value {
+    color: var(--or-bonds);
+  }
+  .track {
+    position: relative;
+    height: 14px;
+    margin: 30px 0 10px;
+    border-radius: 999px;
+    background: var(--grid);
+  }
+  .bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 999px;
+    background: var(--muted);
+  }
+  [data-side='stocks'] .bar {
+    background: var(--or-stocks);
+  }
+  [data-side='bonds'] .bar {
+    background: var(--or-bonds);
+  }
+  .zero {
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    width: 2px;
+    background: var(--axis);
+  }
+  .mark {
+    position: absolute;
+    top: -6px;
+    bottom: -6px;
+    width: 2px;
+    background: var(--ink-2);
+  }
+  .mark span {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 2px;
+    font-size: 0.75rem;
+    font-weight: 650;
+    white-space: nowrap;
+    color: var(--ink-2);
+  }
+  .verdict {
+    margin: 12px 0 4px;
+    font-weight: 650;
+  }
+  .need {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--ink-2);
+  }
+</style>

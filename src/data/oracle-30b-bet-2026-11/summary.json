@@ -1,0 +1,60 @@
+{
+ "target": 30,
+ "consensus": 5.9,
+ "gap": 24.1,
+ "fy26": {
+  "revenue": 67.4,
+  "ocf": 32.0,
+  "capex": 55.7,
+  "fcf": -23.7,
+  "cash_share": 0.475,
+  "cash_share_ex_prepay": 0.407,
+  "prepay": 4.6,
+  "net_capex": 47.7
+ },
+ "q1": {
+  "revenue": 19.3,
+  "ocf": 23.1,
+  "prepay": 11.4,
+  "capex": 28.5,
+  "fcf": -5.4,
+  "net_capex": 18.0
+ },
+ "fy27": {
+  "revenue": 90,
+  "capex_lo": 90,
+  "capex_hi": 95,
+  "capex_mid": 92.5,
+  "net_capex_max": 70,
+  "capex_share": 1.03
+ },
+ "fy30_revenue": 225,
+ "growth": 0.357,
+ "rev28": 122.1,
+ "rev29": 165.8,
+ "cases": [
+  {
+   "key": "pre_ai",
+   "label": "Cash share like fiscal 2023-2025",
+   "cash_share": 0.353,
+   "ocf": 58.5,
+   "capex_for_target": 28.5,
+   "capex_for_consensus": 52.6
+  },
+  {
+   "key": "last",
+   "label": "Cash share like fiscal 2026",
+   "cash_share": 0.475,
+   "ocf": 78.7,
+   "capex_for_target": 48.7,
+   "capex_for_consensus": 72.8
+  }
+ ],
+ "capex_cut_lo": 0.47,
+ "capex_cut_hi": 0.69,
+ "capex_share_needed": [
+  0.17,
+  0.29
+ ],
+ "fy24_capex_share": 0.13
+}

@@ -1,0 +1,195 @@
+---
+title: "Oracle says $30 billion. Analysts said $6 billion. We ran the math"
+description: "Oracle promised $30 billion of free cash flow in fiscal 2029. Before that, analysts expected $5.9 billion. For Oracle to be right, its yearly spending on data centers has to fall by half or more in two years, while its sales almost double. A plain-language breakdown, a calculator to test it yourself, and a live ORCL tracker."
+date: 2026-11-08
+rubric: 'Duel of numbers'
+tags: [oracle, ai, data centers, cash flow]
+accents: ['var(--or-stocks)', 'var(--or-bonds)']
+stocks: [ORCL]
+---
+
+import OracleScoreboard from '../../../components/OracleScoreboard.astro';
+import CashDuel from '../../../components/charts/CashDuel.astro';
+import CapexNeeded from '../../../components/charts/CapexNeeded.astro';
+import PrepayGap from '../../../components/charts/PrepayGap.astro';
+import OracleCalc from '../../../components/OracleCalc.astro';
+import StockWatch from '../../../components/StockWatch.astro';
+import snapshot from '../../../data/oracle-30b-bet-2026-11/stocks_snapshot.json';
+import s from '../../../data/oracle-30b-bet-2026-11/summary.json';
+
+**Short answer: Oracle's $30 billion can come true, but only if Oracle cuts its building spending by half or more within
+two years.** Today Oracle spends more on data centers than it makes. On October 28 it promised that by fiscal 2029
+(June 2028 to May 2029) it will have **$30 billion** of real cash left over every year. Analysts had expected about
+**$6 billion**. The difference is not about how much Oracle sells. It is about how fast it can stop building. And part
+of Oracle's cash is money customers pay in advance, which makes the number look better than the business behind it.
+
+<OracleScoreboard />
+
+## 1. One company, two numbers
+
+<CashDuel />
+
+**Free cash flow** is the simplest test of a business: the cash it brings in, minus what it spends on buildings and
+equipment. It is what is left to pay debts, pay shareholders, or save. In fiscal 2023 and 2024, Oracle had $8–12 billion of it a year.
+Then the AI boom started. Oracle signed huge contracts to rent computing power to AI companies, and to deliver them it has
+to build data centers first. In fiscal 2026 (the year to May 2026) it spent **${s.fy26.capex} billion** on building and
+ended the year **${-s.fy26.fcf} billion** short.
+
+Investors read this in two ways. Stock investors see a company that has already signed $664 billion of future sales and
+trades at only about $10 for every dollar of next year's profit, less than Microsoft, Amazon or Google. Bond investors,
+who lend Oracle money, see a company borrowing to build: insuring Oracle's debt against default now costs almost four
+times more than a year ago, and S&P rates it one step above "junk".
+
+On October 28, at its Investor Day, Oracle answered with a number: free cash flow turns positive in the second half of
+fiscal 2028 and reaches **at least $30 billion** in fiscal 2029. The stock jumped 11% that day. Analysts tracked by TIKR
+had expected **$5.9 billion** for that year. Some reports say analysts expected free cash flow to still be negative.
+Either way, Oracle's number is far above what Wall Street had.
+
+## 2. The math: the building has to slow down, a lot
+
+<CapexNeeded />
+
+Free cash flow has two parts: cash in and cash out. So we checked what each number needs.
+
+**Cash in.** Oracle says it will sell at least **$90 billion** this fiscal year and **$225 billion or more** in fiscal
+2030. Growing evenly between the two, that is about **${s.rev28} billion** in fiscal 2028 and **${s.rev29} billion** in
+fiscal 2029: {Math.round(s.growth * 100)}% more every year. Not all of that becomes cash. In fiscal 2023–2025, Oracle's
+cash from operations was about **{Math.round(s.cases[0].cash_share * 100)}%** of its sales. In fiscal 2026 it was
+**{Math.round(s.fy26.cash_share * 1000) / 10}%**, partly because customers started paying in advance. That gives fiscal
+2029 cash from operations of about **${Math.round(s.cases[0].ocf)}–{Math.round(s.cases[1].ocf)} billion**.
+
+**Cash out.** Take $30 billion away and what is left is the most Oracle can spend on building:
+**${Math.round(s.cases[0].capex_for_target)}–{Math.round(s.cases[1].capex_for_target)} billion**. This year Oracle plans
+to spend **${s.fy27.capex_lo}–{s.fy27.capex_hi} billion**. So spending has to fall by
+**{Math.round(s.capex_cut_lo * 100)}–{Math.round(s.capex_cut_hi * 100)}%** in two years.
+
+The analysts' $5.9 billion is the same math with more building: about
+**${Math.round(s.cases[0].capex_for_consensus)}–{Math.round(s.cases[1].capex_for_consensus)} billion** of spending. That
+is the whole duel. Stocks bet that the building slows down fast. Bonds worry it does not.
+
+Here is why that is hard. This year Oracle spends about **$1 on building for every $1 of sales**. For $30 billion it
+needs **{Math.round(s.capex_share_needed[0] * 100)}–{Math.round(s.capex_share_needed[1] * 100)} cents**, in the same
+years its sales have to keep growing. To reach $225 billion in fiscal 2030, sales still have to grow by about
+**${Math.round(s.fy30_revenue - s.rev29)} billion** the year after fiscal 2029, and new sales need new data centers.
+Before the AI boom, in fiscal 2024, Oracle spent {Math.round(s.fy24_capex_share * 100)} cents per dollar of sales.
+
+## 3. Why Oracle thinks it can do it
+
+Oracle has a real argument. A data center costs most while it is being built, and earns for years after. The ones Oracle
+is building in fiscal 2027 and 2028 start bringing in rent later, without the building cost. Oracle says spending
+peaks in fiscal 2027–2028 and **steps down in fiscal 2029**. It did not say by how much.
+
+It also plans to make other people pay part of the bill. In Oracle's words: "Vendor financing, customer-provided hardware
+and customer prepayments are expected to reduce upfront cash requirements." In plain words: suppliers wait to be paid,
+some customers bring their own chips, and some pay in advance. Some analysts believe the plan. In March, a Guggenheim
+analyst said Oracle's cash "turns into a free cash flow waterfall in fiscal 29 and 30".
+
+## 4. The catch: part of the cash is customers' money in advance
+
+<PrepayGap />
+
+When a customer pays upfront for computing it will use later, Oracle counts that money as cash from operations, so it
+raises free cash flow. In the last quarter alone, customers prepaid **${s.q1.prepay} billion**. With it, Oracle's free
+cash flow was **−${-s.q1.fcf} billion**. Without it, it would have been **−${(-(s.q1.fcf - s.q1.prepay)).toFixed(1)} billion**.
+
+The money is real: it sits in Oracle's bank account. But it is not free. Oracle owes those customers years of computing
+in return, and it still has to build the data centers to deliver it. This is where stocks and bonds disagree again.
+Shareholders see cash. Lenders see a promise Oracle still has to keep. If a big part of the $30 billion in fiscal 2029
+comes from prepayments, the number can be hit while the business itself is still spending more than it earns.
+
+## 5. Run the math yourself
+
+<OracleCalc />
+
+Move the sliders. Two things stand out. First, sales matter less than you would think: even at $225 billion of sales
+and last year's cash share, Oracle cannot make $30 billion while it keeps building at this year's pace. Second, the cash share matters a lot. Five
+points of it on $166 billion of sales is about $8 billion, a third of the gap between the two numbers. That is
+where prepayments come in.
+
+## 6. What to watch
+
+- **Mid-December 2026, second-quarter results.** Is spending still on track for $90–95 billion this year, and how much
+  of the cash came from prepayments?
+- **June 2027, fiscal 2028 outlook.** How high is the peak? A higher peak means a steeper drop is needed later.
+- **December 2027 to May 2028.** Oracle says free cash flow turns positive in these months. This is the first hard test.
+- **June 2028, fiscal 2029 outlook.** The step-down in spending gets a number. If it is above about
+  ${Math.round(s.cases[1].capex_for_target)} billion, $30 billion becomes very hard.
+
+<StockWatch
+  snapshot={snapshot}
+  tickers={[{ symbol: 'ORCL', name: 'Oracle', color: 'var(--or-stocks)' }]}
+  title="Oracle share price since October 1, indexed to publication"
+/>
+
+The price was frozen at the close on Friday, November 6, at $116.10. The live price loads every time the page opens. The
+stock jumped from $130.53 to $144.54 on the day of the promise, and has fallen about 20% since.
+
+**My take:** neither number is a fantasy. The $30 billion is not about selling more; Oracle already has the contracts.
+It is a bet that Oracle can almost stop building new data centers just one year after its biggest building spree, and
+that customers keep paying in advance. Oracle has not said how much it will spend in fiscal 2029, and that is the
+number that decides the duel. Until it does, the $30 billion is a promise, and the bond market prices it like one. Which
+number do you believe?
+
+## What the numbers leave out
+
+- **Our revenue path is a straight line.** Oracle gave only fiscal 2027 and fiscal 2030. If sales grow faster early,
+  fiscal 2029 cash is higher; if they grow later, lower.
+- **The cash share can change.** As data centers age, depreciation (a cost on paper, not in cash) grows, which can lift
+  cash from operations above its old share. Higher interest on Oracle's debt pushes the other way.
+- **Not all spending is the same.** Oracle also reports "net" building spending, after money from customers and short-term
+  financing: ${s.fy26.net_capex} billion in fiscal 2026, against ${s.fy26.capex} billion in total. For this year, it
+  guides net spending to no more than ${s.fy27.net_capex_max} billion. Free cash flow uses the total.
+- **Customers and politics.** About half of Oracle's contracts reportedly come from OpenAI, which still loses money.
+  And after the November 3 elections, Texas, home of Oracle's biggest AI campus, elected a governor who wants to pause
+  new data centers.
+- **The funding cap.** On October 28, Oracle promised to raise no more than $20 billion of new money through fiscal 2030.
+  On November 2, it filed to sell $10 billion of shares and $10 billion of bonds. If that counts toward the cap, Oracle
+  has little room left if the cash comes later than planned.
+- **The consensus.** $5.9 billion is TIKR's consensus of the analysts it tracks. Other reports say analysts expected
+  free cash flow to still be negative in fiscal 2029.
+
+## Data
+
+<p class="muted" style="font-size: 0.85rem">
+  Download the yearly figures and both fiscal 2029 scenarios:
+  <a href="/data/oracle-30b-bet-2026-11/oracle-cash-math.csv">oracle-cash-math.csv</a>.
+</p>
+
+## Methodology
+
+- **Oracle's targets:** Investor Day release of October 28, 2026,
+  [SEC 8-K Exhibit 99.1](https://www.sec.gov/Archives/edgar/data/0001341439/000119312526435853/d75538dex991.htm):
+  free cash flow of "$30 billion+ for FY29", positive in "the second half of FY28", "$225 billion or more in FY30",
+  spending that is "expected to step-down in FY29", the $20 billion funding cap and the quote on vendor financing,
+  customer-provided hardware and prepayments. The analysis script checks every quoted phrase against the filing.
+- **Past results:** yearly revenue, cash from operations and capital spending for fiscal 2023–2026 from Yahoo Finance
+  (`yfinance`), matched with Oracle's fiscal 2026 results release
+  ([SEC 8-K](https://www.sec.gov/Archives/edgar/data/1341439/000119312526265848/orcl-ex99_1.htm)): cash from operations
+  $31,977M, capital spending $55,663M, free cash flow −$23,686M, prepayments $4,592M, net building spending $47,726M.
+- **Last quarter:** Q1 fiscal 2027 release ([SEC 8-K](https://www.sec.gov/Archives/edgar/data/1341439/000119312526387905/orcl-ex99_1.htm)):
+  revenue $19,345M, cash from operations $23,103M including $11,363M of customer prepayments, capital spending $28,499M,
+  free cash flow −$5,396M. "Without prepayments" is our arithmetic: reported free cash flow minus prepayments.
+- **This year's plan:** capital spending of $90–95 billion and net spending of no more than $70 billion, from the
+  September 10, 2026 earnings call, reported by [erp.today](https://erp.today/oracle-q1-fy27-results-664b-backlog-ai-contracts)
+  and [CNBC](https://www.cnbc.com/2026/10/19/oracle-debt-faces-an-ai-stress-test-why-some-investors-arent-worried-.html).
+- **The model:** fiscal 2029 revenue = $90B × (225 / 90)^(2/3) ≈ ${s.rev29}B (constant growth between Oracle's two
+  targets). Cash from operations = revenue × cash share; we use two shares from Oracle's own history:
+  {Math.round(s.cases[0].cash_share * 1000) / 10}% (average of fiscal 2023–2025) and
+  {Math.round(s.fy26.cash_share * 1000) / 10}% (fiscal 2026). Allowed spending = cash from operations − target. These are
+  scenarios to show what each number needs, not a forecast.
+- **Consensus:** $5.9 billion for fiscal 2029 from
+  [TIKR](https://www.tikr.com/blog/oracle-is-up-12-in-a-week-is-its-free-cash-flow-plan-really-that-good) (Oct 29, 2026);
+  "analysts had expected the figure to still be negative" from [The Next Web](https://thenextweb.com/news/oracle-30b-free-cash-flow-2029-shares-jump).
+  Guggenheim quote: [24/7 Wall St.](https://247wallst.com/investing/2026/03/11/guggenheim-analyst-predicts-oracle-free-cash-flow-waterfall-in-fiscal-29-30/).
+- **Bonds and rating:** default-insurance (CDS) prices from
+  [Securitas Global](https://www.securitasglobal.com/risk-perspectives/oracle-cds-record-288-basis-points-ai-debt/) and
+  CNBC (Oct 19, 2026); S&P rating BBB−. Price per dollar of profit: forward P/E from Yahoo Finance, November 6, 2026.
+- **Other events:** the $20 billion share and bond sale filed on November 2
+  ([CNBC](https://www.cnbc.com/2026/11/02/oracle-files-to-sell-20-billion-in-new-stock-bonds-to-finance-ai-buildout.html));
+  Texas election ([CNBC](https://www.cnbc.com/2026/11/04/ai-stocks-texas-governor-data-centers.html)); OpenAI's share of
+  contracts is a press estimate, not disclosed by Oracle.
+- **Share prices:** daily closes of ORCL from Yahoo Finance via `yfinance` (unadjusted). Prices at publication were saved
+  with `yfinance`; live prices come from a small server function that queries Yahoo Finance when the page loads.
+- **Code:** plain Python scripts (`collect.py`, `analyze.py`, `snapshot_stocks.py`).
+- **Trademarks:** company and product names are trademarks of their respective owners. This site is independent and
+  not affiliated with or sponsored by Oracle, OpenAI or any other company mentioned.

@@ -1,0 +1,44 @@
+[
+ {
+  "label": "FY23",
+  "kind": "actual",
+  "lo": 8.7,
+  "hi": 8.7
+ },
+ {
+  "label": "FY24",
+  "kind": "actual",
+  "lo": 6.9,
+  "hi": 6.9
+ },
+ {
+  "label": "FY25",
+  "kind": "actual",
+  "lo": 21.2,
+  "hi": 21.2
+ },
+ {
+  "label": "FY26",
+  "kind": "actual",
+  "lo": 55.7,
+  "hi": 55.7
+ },
+ {
+  "label": "FY27 plan",
+  "kind": "plan",
+  "lo": 90,
+  "hi": 95
+ },
+ {
+  "label": "FY29 for $6B",
+  "kind": "bonds",
+  "lo": 52.6,
+  "hi": 72.8
+ },
+ {
+  "label": "FY29 for $30B",
+  "kind": "stocks",
+  "lo": 28.5,
+  "hi": 48.7
+ }
+]

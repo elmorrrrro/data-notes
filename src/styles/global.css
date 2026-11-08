@@ -47,6 +47,8 @@
   --df-prime: #1f4fbf;
   --df-avav: #1baf7a;
   --df-rtx: #eda100;
+  --or-stocks: #0d8a7a;
+  --or-bonds: #d9480f;
   --accent-1: #6d4aff;
   --accent-2: #0ea5c6;
   --radius: 20px;
@@ -98,6 +100,8 @@
     --df-prime: #5b8cff;
     --df-avav: #199e70;
     --df-rtx: #c98500;
+    --or-stocks: #22a892;
+    --or-bonds: #e5612b;
   }
 }
 
@@ -143,6 +147,8 @@
   --df-prime: #5b8cff;
   --df-avav: #199e70;
   --df-rtx: #c98500;
+  --or-stocks: #22a892;
+  --or-bonds: #e5612b;
 }
 
 *,

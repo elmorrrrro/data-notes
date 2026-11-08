@@ -1,0 +1,59 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="capex-needed"
+  title="How much Oracle can spend on building in fiscal 2029, for each number to come true"
+  subtitle="Capital spending, $ billions. Ranges: from a cash share of revenue like fiscal 2023–2025 (low end) to one like fiscal 2026 (high end)."
+  source="Sources: Oracle annual results via Yahoo Finance; fiscal 2027 plan from the Sep 10, 2026 earnings call (CNBC, erp.today); fiscal 2029 ranges are our estimate, see Methodology."
+  legendItems={[
+    { label: 'Actual and planned', color: 'var(--muted)' },
+    { label: 'Allowed for $30B', color: 'var(--or-stocks)' },
+    { label: 'Allowed for $6B', color: 'var(--or-bonds)' },
+  ]}
+  height={330}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import capex from '../../data/oracle-30b-bet-2026-11/capex.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  type Row = (typeof capex)[number];
+  const range = (r: Row) => (r.lo === r.hi ? `$${r.lo}B` : `$${Math.round(r.lo)}–${Math.round(r.hi)}B`);
+  const note: Record<string, string> = {
+    actual: 'Actual capital spending',
+    plan: 'Guidance for the year to May 2027',
+    stocks: 'Spending that still leaves $30B of free cash flow',
+    bonds: 'Spending that leaves only $5.9B of free cash flow',
+  };
+
+  mount(document.querySelector<HTMLElement>('#capex-needed .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const color: Record<string, string> = {
+      actual: t.muted,
+      plan: t.muted,
+      stocks: css.getPropertyValue('--or-stocks').trim(),
+      bonds: css.getPropertyValue('--or-bonds').trim(),
+    };
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 330,
+      marginLeft: narrow ? 92 : 112,
+      marginRight: narrow ? 64 : 76,
+      marginBottom: 30,
+      x: { domain: [0, 100], label: null, ticks: narrow ? [0, 50, 100] : 5, tickFormat: (x: number) => (x === 0 ? '0' : `$${x}B`) },
+      y: { domain: capex.map((r) => r.label), label: null, padding: 0.32, tickSize: 0 },
+      marks: [
+        Plot.gridX({ stroke: t.grid, strokeOpacity: 1, ticks: narrow ? [0, 50, 100] : 5 }),
+        // Solid up to the low end; the uncertain part of a range is lighter.
+        Plot.barX(capex, { x1: 0, x2: 'lo', y: 'label', fill: (r: Row) => color[r.kind], rx: 4 }),
+        Plot.barX(capex.filter((r) => r.hi > r.lo), { x1: 'lo', x2: 'hi', y: 'label', fill: (r: Row) => color[r.kind], fillOpacity: 0.4, rx: 4 }),
+        Plot.text(capex, { x: 'hi', y: 'label', text: range, textAnchor: 'start', dx: 8, fill: t.ink2, fontWeight: 650, fontSize: 12 }),
+        Plot.tip(capex, Plot.pointerY({ x: 'hi', y: 'label', ...tipStyle(t), title: (r: Row) => `${r.label}: ${range(r)}\n${note[r.kind]}` })),
+      ],
+    });
+  });
+</script>

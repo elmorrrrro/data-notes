@@ -1,0 +1,61 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="cash-duel"
+  title="Oracle's free cash flow: the past four years and the two numbers for fiscal 2029"
+  subtitle="Cash from the business minus money spent on data centers and equipment, $ billions. Fiscal years end in May."
+  source="Sources: Oracle annual results via Yahoo Finance (fiscal 2023–2026); Oracle Investor Day release, Oct 28, 2026 (SEC 8-K); TIKR consensus, Oct 29, 2026."
+  legendItems={[
+    { label: 'Actual', color: 'var(--muted)' },
+    { label: 'Oracle target', color: 'var(--or-stocks)' },
+    { label: 'Analyst consensus', color: 'var(--or-bonds)' },
+  ]}
+  height={300}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import history from '../../data/oracle-30b-bet-2026-11/history.json';
+  import s from '../../data/oracle-30b-bet-2026-11/summary.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  type Row = { label: string; fcf: number; kind: 'actual' | 'stocks' | 'bonds'; note: string };
+  const rows: Row[] = [
+    ...history.map((h) => ({
+      label: `FY${h.fy % 100}`,
+      fcf: h.fcf,
+      kind: 'actual' as const,
+      note: `Cash from the business $${h.ocf}B − building $${h.capex}B`,
+    })),
+    { label: 'FY29 Oracle', fcf: s.target, kind: 'stocks', note: 'Oracle: "at least $30 billion"' },
+    { label: 'FY29 analysts', fcf: s.consensus, kind: 'bonds', note: 'Consensus before Investor Day (TIKR)' },
+  ];
+  const fmt = (n: number) => (n < 0 ? `−$${Math.abs(n).toFixed(1)}B` : `$${n.toFixed(1)}B`);
+
+  mount(document.querySelector<HTMLElement>('#cash-duel .plot')!, (width, t) => {
+    const css = getComputedStyle(document.documentElement);
+    const color = { actual: t.muted, stocks: css.getPropertyValue('--or-stocks').trim(), bonds: css.getPropertyValue('--or-bonds').trim() };
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 300,
+      marginLeft: narrow ? 40 : 44,
+      marginTop: 24,
+      marginBottom: narrow ? 44 : 30,
+      x: { domain: rows.map((r) => r.label), label: null, padding: 0.3, tickSize: 0, tickFormat: (d: string) => (!narrow ? d : d === 'FY29 Oracle' ? "'29\nOracle" : d === 'FY29 analysts' ? "'29\nWall St" : `'${d.slice(2)}`) },
+      y: { domain: [-30, 38], label: null, ticks: 5, tickFormat: (y: number) => (y === 0 ? '0' : `${y > 0 ? '' : '−'}$${Math.abs(y)}B`) },
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1, ticks: 5 }),
+        Plot.barY(rows, { x: 'label', y: 'fcf', fill: (r: Row) => color[r.kind], rx: 4 }),
+        Plot.ruleY([0], { stroke: t.axis }),
+        Plot.text(rows, {
+          x: 'label', y: 'fcf', text: (r: Row) => fmt(r.fcf), dy: (r: Row) => (r.fcf < 0 ? 12 : -10),
+          fill: t.ink2, stroke: t.surface, strokeWidth: 4, paintOrder: 'stroke', fontWeight: 650, fontSize: narrow ? 10.5 : 12,
+        }),
+        Plot.tip(rows, Plot.pointerX({ x: 'label', y: 'fcf', ...tipStyle(t), title: (r: Row) => `${r.label}: ${fmt(r.fcf)}\n${r.note}` })),
+      ],
+    });
+  });
+</script>
