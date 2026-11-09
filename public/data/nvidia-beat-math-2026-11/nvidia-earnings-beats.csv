@@ -1,0 +1,11 @@
+date,quarter,revenue,revenue_consensus,revenue_beat_pct,guidance,guidance_consensus,guidance_beat_pct,eps,eps_consensus,close_before,close_after,move_pct,run_in_pct,source,source_note
+2024-05-22,Q1 FY25,26.04,24.65,5.64,28.0,26.66,5.03,0.61,0.56,94.95,103.8,9.32,19.17,https://www.business-standard.com/companies/news/nvidia-forecasts-quarterly-revenue-above-estimates-unveils-stock-split-124052301333_1.html,Reuters (LSEG)
+2024-08-28,Q2 FY25,30.04,28.7,4.67,32.5,31.77,2.3,0.68,0.64,125.61,117.59,-6.38,7.34,https://www.cnbc.com/2024/08/28/nvidia-nvda-earnings-report-q2-2025.html,CNBC (LSEG); guidance consensus LSEG via Wccftech
+2024-11-20,Q3 FY25,35.08,33.16,5.79,37.5,37.08,1.13,0.81,0.75,145.89,146.67,0.53,4.54,https://www.cnbc.com/2024/11/20/nvidia-nvda-earnings-report-q3-2025.html,CNBC (LSEG)
+2025-02-26,Q4 FY25,39.33,38.05,3.36,43.0,41.78,2.92,0.89,0.85,131.28,120.15,-8.48,1.78,https://www.cnbc.com/2025/02/26/nvidia-nvda-earnings-report-q4-2025.html,CNBC (LSEG)
+2025-05-28,Q1 FY26,44.06,43.31,1.73,45.0,45.9,-1.96,0.81,0.75,134.81,139.19,3.25,23.66,https://www.cnbc.com/2025/05/28/nvidia-nvda-earnings-report-q1-2026.html,CNBC (LSEG)
+2025-08-27,Q2 FY26,46.74,46.06,1.48,54.0,53.1,1.69,1.05,1.01,181.6,180.17,-0.79,1.3,https://www.cnbc.com/2025/08/27/nvidia-nvda-earnings-report-q2-2026.html,CNBC (LSEG)
+2025-11-19,Q3 FY26,57.01,54.92,3.81,65.0,61.66,5.42,1.3,1.26,186.52,180.64,-3.15,3.46,https://www.cnbc.com/2025/11/19/nvidia-nvda-earnings-report-q3-2026.html,CNBC (LSEG)
+2026-02-25,Q4 FY26,68.13,66.2,2.92,78.0,72.6,7.44,1.62,1.54,195.56,184.89,-5.46,3.73,https://www.cnbc.com/investingclub/2026/02/25/nvidia-keeps-the-ai-party-alive-with-a-booming-quarter-and-even-better-outlook.html,CNBC (LSEG)
+2026-05-20,Q1 FY27,81.62,78.89,3.46,91.0,86.84,4.79,1.87,1.77,223.47,219.51,-1.77,10.36,https://www.cnbc.com/investingclub/2026/05/20/were-raising-our-price-target-on-nvidia-after-another-knockout-quarter-and-guide-.html,CNBC (LSEG)
+2026-08-26,Q2 FY27,96.22,92.165,4.4,108.0,104.2,3.65,2.22,2.09,209.66,227.98,8.74,10.34,https://www.cnbc.com/investingclub/2026/08/26/nvidia-wows-wall-street-with-a-strong-quarter-eye-popping-sales-forecast.html,CNBC (LSEG)

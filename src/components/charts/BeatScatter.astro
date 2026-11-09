@@ -1,0 +1,104 @@
+---
+// One report = one dot: how much Nvidia beat (across) against the next day's move (up and down).
+import Figure from './Figure.astro';
+
+interface Props {
+  metric: 'revenue' | 'guidance';
+}
+const { metric } = Astro.props;
+const id = `beat-scatter-${metric}`;
+const text =
+  metric === 'revenue'
+    ? {
+        title: 'Revenue: the bigger beats mostly came with a rise',
+        subtitle: 'How much revenue beat the consensus (%, across) and the stock the next day (%, up and down). The dashed line is a 4.4% beat.',
+      }
+    : {
+        title: 'Next-quarter forecast: no pattern at all',
+        subtitle: "How much Nvidia's forecast for the next quarter beat the consensus for it (%, across) and the stock the next day (%, up and down).",
+      };
+---
+
+<Figure
+  id={id}
+  title={text.title}
+  subtitle={text.subtitle}
+  source="Sources: LSEG consensus as quoted by CNBC and Reuters; daily closes from Yahoo Finance. Our calculation."
+  legendItems={[
+    { label: 'Rose', color: 'var(--up)' },
+    { label: 'Fell', color: 'var(--down)' },
+  ]}
+  height={320}
+>
+  <span hidden data-metric={metric}></span>
+</Figure>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import reports from '../../data/nvidia-beat-math-2026-11/reports.json';
+  import s from '../../data/nvidia-beat-math-2026-11/summary.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  type R = (typeof reports)[number];
+  const leftLabels = { revenue: [] as string[], guidance: ["Aug '26"] };
+  const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+
+  document.querySelectorAll<HTMLElement>('[id^="beat-scatter-"]').forEach((fig) => {
+    const metric = fig.querySelector<HTMLElement>('[data-metric]')!.dataset.metric as 'revenue' | 'guidance';
+    const key = metric === 'revenue' ? 'revenue_beat_pct' : 'guidance_beat_pct';
+    const xDomain = metric === 'revenue' ? [0, 7] : [-3, 9];
+    mount(fig.querySelector<HTMLElement>('.plot')!, (width, t) => {
+      const narrow = width < 520;
+      return Plot.plot({
+        ...base(t, width),
+        height: 320,
+        marginLeft: 44,
+        marginRight: 16,
+        marginTop: 16,
+        marginBottom: 36,
+        x: {
+          domain: xDomain,
+          label: metric === 'revenue' ? 'Revenue beat →' : 'Forecast beat →',
+          labelAnchor: 'right',
+          tickFormat: (x: number) => `${x}%`,
+        },
+        y: { domain: [-11, 11], label: null, ticks: 5, tickFormat: (y: number) => pct(y) },
+        marks: [
+          Plot.gridY({ stroke: t.grid, strokeOpacity: 1, ticks: 5 }),
+          Plot.ruleY([0], { stroke: t.axis }),
+          metric === 'guidance' ? Plot.ruleX([0], { stroke: t.axis }) : null,
+          metric === 'revenue' ? Plot.ruleX([s.cut], { stroke: t.ink2, strokeDasharray: '4 4' }) : null,
+          Plot.dot(reports, { x: key, y: 'move_pct', r: 7, fill: (r: R) => (r.move_pct > 0 ? t.up : t.down), stroke: t.surface, strokeWidth: 2 }),
+          // Labels go right of the dot, except where that would hit the edge or a neighbour.
+          ...[false, true].map((left) =>
+            Plot.text(
+              reports.filter((r) => leftLabels[metric].includes(r.label) === left),
+              {
+                x: key,
+                y: 'move_pct',
+                text: 'label',
+                dx: left ? -10 : 10,
+                textAnchor: left ? 'end' : 'start',
+                fill: t.ink2,
+                stroke: t.surface,
+                strokeWidth: 3,
+                paintOrder: 'stroke',
+                fontSize: narrow ? 9.5 : 11,
+              },
+            ),
+          ),
+          Plot.tip(
+            reports,
+            Plot.pointer({
+              x: key,
+              y: 'move_pct',
+              ...tipStyle(t),
+              title: (r: R) =>
+                `${r.quarter}, reported ${r.date}\n${metric === 'revenue' ? `Revenue $${r.revenue}B vs $${r.revenue_consensus}B` : `Forecast $${r.guidance}B vs $${r.guidance_consensus}B`} (${pct(r[key])})\nStock next day: ${pct(r.move_pct)}`,
+            }),
+          ),
+        ],
+      });
+    });
+  });
+</script>

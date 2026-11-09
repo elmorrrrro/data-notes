@@ -1,0 +1,38 @@
+{
+ "n": 10,
+ "rises": 4,
+ "falls": 6,
+ "cut": 4.4,
+ "big": {
+  "n": 4,
+  "rises": 3
+ },
+ "small": {
+  "n": 6,
+  "rises": 1
+ },
+ "corr": {
+  "revenue_beat_pct": 0.27,
+  "guidance_beat_pct": -0.14,
+  "run_in_pct": 0.66
+ },
+ "avg_rev_beat": 3.7,
+ "max_guide_beat": {
+  "label": "Feb '26",
+  "guidance_beat_pct": 7.44,
+  "move_pct": -5.46
+ },
+ "next": {
+  "date": "2026-11-17",
+  "street": 109.0,
+  "analysts": 45,
+  "guide": 108.0,
+  "need": 113.8,
+  "avg_beat_rev": 113.0,
+  "street_next_q": 124.7,
+  "run_in_pct": -21.1,
+  "close": 178.67,
+  "close_date": "2026-11-09"
+ },
+ "min_run_in": 1.3
+}

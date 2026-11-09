@@ -1,0 +1,147 @@
+---
+// Interactive check: pick Nvidia's revenue for the Nov 17 report, see the beat and what similar beats did before.
+import s from '../data/nvidia-beat-math-2026-11/summary.json';
+import reports from '../data/nvidia-beat-math-2026-11/reports.json';
+
+const past = JSON.stringify(reports.map((r) => ({ label: r.label, beat: r.revenue_beat_pct, move: r.move_pct })));
+---
+
+<figure class="calc card" id="beat-calc" data-street={s.next.street} data-cut={s.cut} data-past={past}>
+  <figcaption>
+    <h3>Try it: Nvidia's revenue on November 17</h3>
+    <p class="subtitle">Pick a number. We compare the beat with Nvidia's last 10 reports.</p>
+  </figcaption>
+
+  <label>
+    <span class="k">Revenue for the quarter</span>
+    <input type="range" name="rev" min="104" max="122" step="0.1" value={s.next.street} aria-describedby="rev-out" />
+    <output id="rev-out">${s.next.street}B</output>
+    <span class="hint">Nvidia's own forecast: ${s.next.guide}B. Wall Street: ${s.next.street}B. The average past beat would give ${s.next.avg_beat_rev}B.</span>
+  </label>
+
+  <div class="result" aria-live="polite">
+    <p class="beat"><span class="label">Beat vs Wall Street</span> <strong class="value"></strong></p>
+    <p class="verdict"></p>
+    <p class="near"></p>
+  </div>
+</figure>
+
+<script>
+  const root = document.getElementById('beat-calc')!;
+  const street = Number(root.dataset.street);
+  const cut = Number(root.dataset.cut);
+  const past: { label: string; beat: number; move: number }[] = JSON.parse(root.dataset.past!);
+  const rev = root.querySelector<HTMLInputElement>('input[name="rev"]')!;
+  const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+
+  function update() {
+    const r = Number(rev.value);
+    const beat = (r / street - 1) * 100;
+    root.querySelector('#rev-out')!.textContent = `$${r.toFixed(1)}B`;
+    root.querySelector('.value')!.textContent = pct(beat);
+    const group = past.filter((p) => (beat >= cut ? p.beat >= cut : p.beat < cut));
+    const rose = group.filter((p) => p.move > 0).length;
+    root.dataset.side = beat < 0 ? 'miss' : beat >= cut ? 'up' : 'down';
+    root.querySelector('.verdict')!.textContent =
+      beat < 0
+        ? 'A miss. Nvidia has not missed the revenue consensus in any of the last 10 reports, so there is nothing to compare with.'
+        : beat >= cut
+          ? `In the past, a beat this big came with a rise ${rose} times out of ${group.length}.`
+          : `In the past, a beat this size came with a rise only ${rose} time${rose === 1 ? '' : 's'} out of ${group.length}.`;
+    const near = [...past].sort((a, b) => Math.abs(a.beat - beat) - Math.abs(b.beat - beat)).slice(0, 2);
+    root.querySelector('.near')!.textContent =
+      beat < 0 ? '' : `Closest past beats: ${near.map((p) => `${p.label} (${pct(p.beat)}, stock ${pct(p.move)} next day)`).join(' and ')}.`;
+  }
+  rev.addEventListener('input', update);
+  update();
+</script>
+
+<style>
+  .calc {
+    margin: 2em 0;
+    padding: 22px 24px 18px;
+  }
+  @media (max-width: 560px) {
+    .calc {
+      padding: 18px 14px 14px;
+    }
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+  .subtitle {
+    margin: 0.2em 0 0;
+    color: var(--ink-2);
+    font-size: 0.92rem;
+  }
+  label {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+    align-items: center;
+    margin-top: 18px;
+  }
+  .k {
+    grid-column: 1 / -1;
+    font-weight: 650;
+    font-size: 0.92rem;
+  }
+  input[type='range'] {
+    width: 100%;
+    accent-color: var(--ink-2);
+  }
+  output {
+    min-width: 5em;
+    text-align: right;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .hint {
+    grid-column: 1 / -1;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .result {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .beat {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .beat .label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .value {
+    font-family: var(--display);
+    font-size: 2.4rem;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  [data-side='up'] .value {
+    color: var(--up);
+  }
+  [data-side='down'] .value,
+  [data-side='miss'] .value {
+    color: var(--down);
+  }
+  .verdict {
+    margin: 10px 0 4px;
+    font-weight: 650;
+  }
+  .near {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--ink-2);
+  }
+</style>

@@ -1,0 +1,177 @@
+---
+title: "Nvidia beat forecasts 10 times in a row. The stock fell after 6. How big a beat does it need?"
+description: "Nvidia reports on November 17. Wall Street expects $109 billion of revenue. We lined up Nvidia's last 10 reports: the size of the beat on the next quarter's forecast told nothing about the next day, but a revenue beat of 4.4% or more came with a rise 3 times out of 4. For November 17 that is about $114 billion. A plain-language breakdown, a calculator, and a live NVDA tracker."
+date: 2026-11-09
+rubric: 'Duel of numbers'
+tags: [nvidia, ai, earnings, stocks]
+accents: ['var(--up)', 'var(--down)']
+stocks: [NVDA]
+---
+
+import NvidiaScoreboard from '../../../components/NvidiaScoreboard.astro';
+import BeatReactions from '../../../components/charts/BeatReactions.astro';
+import BeatScatter from '../../../components/charts/BeatScatter.astro';
+import BeatCalc from '../../../components/BeatCalc.astro';
+import StockWatch from '../../../components/StockWatch.astro';
+import snapshot from '../../../data/nvidia-beat-math-2026-11/stocks_snapshot.json';
+import s from '../../../data/nvidia-beat-math-2026-11/summary.json';
+
+**Short answer: about ${s.next.need} billion, if the last 10 reports are a guide.** Nvidia reports on November 17.
+Wall Street expects **${s.next.street} billion** of revenue. In Nvidia's last {s.n} reports, a revenue beat of
+**{s.cut}% or more** came with a rise the next day **{s.big.rises} times out of {s.big.n}**. Smaller beats came with a
+rise only **{s.small.rises} time out of {s.small.n}**. The forecast for the next quarter, which investors usually talk
+about most, showed no pattern at all. Two warnings: ten reports is a tiny sample, and this time the stock goes into the
+report after a fall, which did not happen once in those ten.
+
+<NvidiaScoreboard />
+
+## 1. Always a beat, mostly a fall
+
+<BeatReactions />
+
+Since May 2024, Nvidia has beaten the analysts' revenue and profit forecasts every single quarter, by
+**{s.avg_rev_beat}%** of revenue on average. And yet the stock fell the next day **{s.falls} times out of {s.n}**.
+That is not as strange as it sounds. A forecast is what analysts write down. What moves the price is what investors
+already paid for. When everyone knows Nvidia will beat, a beat is the starting point, not the news.
+
+So the real question is not whether Nvidia beats on November 17. It almost certainly will. The question is by how much,
+and whether that is more than investors already expect.
+
+## 2. Revenue: the size of the beat mattered a little
+
+<BeatScatter metric="revenue" />
+
+Put each report on a chart, with the size of the revenue beat across and the next day's move up and down, and a rough
+line shows up at about **{s.cut}%**. Of the four reports at or above it, three came with a rise. Of the six below it,
+only one did: May 2025, when Nvidia had just lost about $8 billion of China sales to export rules, investors expected
+worse, and the stock had already gained 24% in the month before.
+
+Two of the three big-beat rises also had something extra. In May 2024, Nvidia announced a 10-for-1 stock split together
+with the results. In August 2026, Jensen Huang said revenue could grow about 70% next fiscal year, while analysts had
+pencilled in 44%. A big beat helped, but it was rarely the only news.
+
+## 3. The next-quarter forecast: no pattern at all
+
+<BeatScatter metric="guidance" />
+
+With every report, Nvidia also says what it expects to sell the next quarter. You would think a big jump there matters
+most. In these ten reports, it did not. The biggest forecast beat, **+{s.max_guide_beat.guidance_beat_pct.toFixed(1)}%**
+in February 2026, was followed by a **{s.max_guide_beat.move_pct.toFixed(1)}%** day. The only time the forecast came in
+*below* what analysts wanted, in May 2025, the stock rose.
+
+For November 17, Wall Street expects Nvidia to forecast about **${s.next.street_next_q} billion** for the quarter after.
+Going by the last ten reports, beating that number is no guarantee of a good day.
+
+## 4. Try it: what would ${s.next.need} billion look like?
+
+<BeatCalc />
+
+Move the slider. At Wall Street's ${s.next.street} billion, the beat is zero. Nvidia has not been that close to the
+consensus in any of the last ten reports. At Nvidia's average past beat, revenue would be about **${s.next.avg_beat_rev} billion**, just under
+the line. To land in the group where the stock usually rose, revenue has to reach about **${s.next.need} billion**.
+
+## 5. The part that has never happened before
+
+The size of the beat was not the strongest pattern in the data. How the stock ran into the report was. In the four
+reports where Nvidia's stock had risen most in the 20 trading days before, it rose three times after. In the four
+where it had risen least, it fell every time. In all ten, though, the stock went into the report **up**: the weakest
+run-in was **+{s.min_run_in}%**.
+
+This time it goes in **{s.next.run_in_pct}%** over the last 20 trading days. That is outside everything in our data,
+and it can be read both ways:
+
+- **Bulls:** after a fall like that, expectations are low. A normal beat could be enough this time.
+- **Bears:** in the past, the weaker the run-in, the worse the next day. A falling stock has kept falling.
+
+The ten reports cannot settle that. November 17 will.
+
+## 6. The duel so far: 2 : 2
+
+Our video put the case for and against Nvidia in four rounds before the report:
+
+- **Sales, point for the bulls.** Revenue last quarter: $96.2 billion, more than double the $46.7 billion of a year
+  earlier.
+- **Price, point for the bulls.** About $11 for every dollar of profit analysts expect next year. Microsoft: about 22.
+  Amazon: 24. Apple: 33.
+- **Customers, point for the bears.** In the first half of this fiscal year, just three customers brought in 16%, 15%
+  and 13% of Nvidia's revenue: 44% together. If one of them slows down, Nvidia feels it.
+- **The boss, point for the bears.** Nvidia's board opened an independent investigation into CEO Jensen Huang, and House
+  committee chairs asked for a closed-door briefing. The board says it has "no reason to believe that either national
+  security or NVIDIA secrets were compromised", and Huang remains CEO.
+
+The fifth round is November 17.
+
+<StockWatch
+  snapshot={snapshot}
+  tickers={[{ symbol: 'NVDA', name: 'Nvidia', color: 'var(--up)' }]}
+  title="Nvidia share price since September 1, indexed to publication"
+/>
+
+The price was frozen at the close on {snapshot.tickers.NVDA.close_date}, at ${snapshot.tickers.NVDA.close}. The live
+price loads every time the page opens. The record close was $239.24 on October 6.
+
+**My take:** a beat is not the answer by itself, because Nvidia always beats. What mattered in the past was a beat big
+enough to surprise people who already expected one, about {s.cut}% on revenue, plus a reason to believe the growth keeps
+going. On November 17, watch the revenue line first: around ${s.next.need} billion or more, history leans to a rise.
+Around ${s.next.street} billion, it leans the other way. Where do you think it lands?
+
+## What the numbers leave out
+
+- **Ten reports is a tiny sample.** The {s.cut}% line is where rises and falls happened to split in these ten reports,
+  not a law. One more report on either side of it changes the score.
+- **One day is short.** We measure from the close before the report to the next day's close. A week later, the picture
+  can look different.
+- **Other news on the same day.** A stock split (May 2024), China export rules (May 2025) and Huang's long-range forecast
+  (August 2026) arrived with the results. We cannot separate them from the beat.
+- **Consensus differs by source.** LSEG, FactSet, Yahoo Finance and others poll different analysts. Where CNBC did not
+  give an LSEG number, we used the closest one (see Methodology). The difference is usually a few hundred million
+  dollars, small next to the beats.
+- **Profit and margins.** Nvidia's profit per share also beat every time (Yahoo Finance data), so it cannot explain the
+  difference between rises and falls. We did not test gross margin, which some investors watch closely.
+
+## Data
+
+<p class="muted" style="font-size: 0.85rem">
+  Download all 10 reports with revenue, forecast, consensus, profit per share and the stock's move:
+  <a href="/data/nvidia-beat-math-2026-11/nvidia-earnings-beats.csv">nvidia-earnings-beats.csv</a>.
+</p>
+
+## Methodology
+
+- **Revenue and consensus:** Nvidia's revenue for each quarter, its forecast for the next quarter and the LSEG consensus
+  for both, as quoted by CNBC on the day of each report:
+  [Aug 2024](https://www.cnbc.com/2024/08/28/nvidia-nvda-earnings-report-q2-2025.html) (revenue; the forecast consensus
+  of $31.77 billion is LSEG as quoted by [Wccftech](https://wccftech.com/nvidia-shares-sink-amidst-tepid-guidance-beat-blackwell-mask-change/)),
+  [Nov 2024](https://www.cnbc.com/2024/11/20/nvidia-nvda-earnings-report-q3-2025.html),
+  [Feb 2025](https://www.cnbc.com/2025/02/26/nvidia-nvda-earnings-report-q4-2025.html),
+  [May 2025](https://www.cnbc.com/2025/05/28/nvidia-nvda-earnings-report-q1-2026.html),
+  [Aug 2025](https://www.cnbc.com/2025/08/27/nvidia-nvda-earnings-report-q2-2026.html),
+  [Nov 2025](https://www.cnbc.com/2025/11/19/nvidia-nvda-earnings-report-q3-2026.html),
+  [Feb 2026](https://www.cnbc.com/investingclub/2026/02/25/nvidia-keeps-the-ai-party-alive-with-a-booming-quarter-and-even-better-outlook.html),
+  [May 2026](https://www.cnbc.com/investingclub/2026/05/20/were-raising-our-price-target-on-nvidia-after-another-knockout-quarter-and-guide-.html),
+  [Aug 2026](https://www.cnbc.com/investingclub/2026/08/26/nvidia-wows-wall-street-with-a-strong-quarter-eye-popping-sales-forecast.html).
+  May 2024: Reuters, via [Business Standard](https://www.business-standard.com/companies/news/nvidia-forecasts-quarterly-revenue-above-estimates-unveils-stock-split-124052301333_1.html)
+  (LSEG). Where Nvidia gave a range ("plus or minus 2%"), we use the middle.
+- **Beat:** revenue ÷ consensus − 1. Forecast beat: Nvidia's forecast for the next quarter ÷ the consensus for that
+  quarter − 1.
+- **Stock move:** close on the report day (Nvidia reports after the US market closes) to the next trading day's close,
+  from Yahoo Finance via `yfinance` (unadjusted closes; the 2024 stock split does not affect a one-day change).
+  Run-in: change over the 20 trading days before the report day's close. Correlations with the next-day move across
+  the ten reports: revenue beat {s.corr.revenue_beat_pct}, forecast beat {s.corr.guidance_beat_pct}, run-in
+  {s.corr.run_in_pct}.
+- **The {s.cut}% line:** the revenue beat that best splits the ten reports into rises and falls. ${s.next.need} billion is
+  ${s.next.street} billion × (1 + {s.cut}%).
+- **November 17 consensus:** average of {s.next.analysts} analysts on Yahoo Finance: ${s.next.street} billion for the
+  quarter Nvidia reports, ${s.next.street_next_q} billion for the next one. Nvidia's own forecast of $108 billion, plus or
+  minus 2%, is from its August 26, 2026 results.
+- **Profit per share:** estimate and reported figure for each report from the Yahoo Finance earnings calendar.
+- **The four rounds:** revenue of $96.2 billion vs $46.7 billion a year earlier from CNBC (links above). Price per dollar
+  of next year's profit: forward P/E from Yahoo Finance on November 9, 2026. Customer concentration: Nvidia's
+  [10-Q](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/) for the quarter ended July 26, 2026,
+  "Concentration of Revenue". Investigation and briefing request:
+  [CNBC](https://www.cnbc.com/2026/11/08/nvidia-jensen-huang-investigation-china-spy.html), November 8, 2026.
+- **Share prices:** prices at publication were saved with `yfinance`; live prices come from a small server function that
+  queries Yahoo Finance when the page loads.
+- **Code:** plain Python scripts (`collect.py`, `analyze.py`, `snapshot_stocks.py`).
+- **Trademarks:** company and product names are trademarks of their respective owners. This site is independent and
+  not affiliated with or sponsored by Nvidia or any other company mentioned.

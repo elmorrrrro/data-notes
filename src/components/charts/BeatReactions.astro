@@ -1,0 +1,69 @@
+---
+import Figure from './Figure.astro';
+---
+
+<Figure
+  id="beat-reactions"
+  title="Ten beats in a row, and what the stock did the next day"
+  subtitle="Change from the close before each report to the next day's close, %. Every report beat the forecasts for both revenue and profit."
+  source="Sources: daily closes from Yahoo Finance; consensus from LSEG as quoted by CNBC and Reuters. Our calculation."
+  legendItems={[
+    { label: 'Rose', color: 'var(--up)' },
+    { label: 'Fell', color: 'var(--down)' },
+  ]}
+  height={300}
+/>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+  import reports from '../../data/nvidia-beat-math-2026-11/reports.json';
+  import { mount, base, tipStyle } from '../../lib/chart';
+
+  type R = (typeof reports)[number];
+  const pct = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toFixed(1)}%`;
+
+  mount(document.querySelector<HTMLElement>('#beat-reactions .plot')!, (width, t) => {
+    const narrow = width < 520;
+    return Plot.plot({
+      ...base(t, width),
+      height: 300,
+      marginLeft: 40,
+      marginTop: 20,
+      marginBottom: narrow ? 40 : 30,
+      x: { domain: reports.map((r) => r.label), label: null, padding: 0.3, tickSize: 0, tickFormat: (d: string) => (narrow ? d.replace(' ', '\n') : d) },
+      y: { domain: [-11, 11], label: null, ticks: 5, tickFormat: (y: number) => pct(y) },
+      marks: [
+        Plot.gridY({ stroke: t.grid, strokeOpacity: 1, ticks: 5 }),
+        Plot.barY(reports, { x: 'label', y: 'move_pct', fill: (r: R) => (r.move_pct > 0 ? t.up : t.down), rx: 4 }),
+        Plot.ruleY([0], { stroke: t.axis }),
+        ...[
+          { keep: (r: R) => r.move_pct >= 0, dy: -9 },
+          { keep: (r: R) => r.move_pct < 0, dy: 11 },
+        ].map(({ keep, dy }) =>
+          Plot.text(reports.filter(keep), {
+            x: 'label',
+            y: 'move_pct',
+            text: (r: R) => pct(r.move_pct),
+            dy,
+            fill: t.ink2,
+            stroke: t.surface,
+            strokeWidth: 4,
+            paintOrder: 'stroke',
+            fontWeight: 650,
+            fontSize: narrow ? 9.5 : 12,
+          }),
+        ),
+        Plot.tip(
+          reports,
+          Plot.pointerX({
+            x: 'label',
+            y: 'move_pct',
+            ...tipStyle(t),
+            title: (r: R) =>
+              `${r.quarter}, reported ${r.date}\nRevenue $${r.revenue}B vs $${r.revenue_consensus}B expected (+${r.revenue_beat_pct.toFixed(1)}%)\nNext-quarter forecast $${r.guidance}B vs $${r.guidance_consensus}B (${pct(r.guidance_beat_pct)})\nStock next day: ${pct(r.move_pct)}`,
+          }),
+        ),
+      ],
+    });
+  });
+</script>
